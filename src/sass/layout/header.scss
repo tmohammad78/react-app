@@ -1,0 +1,128 @@
+.header-section {
+    position: fixed;
+    z-index: 4000;
+    width: 100%;
+    height: 68px;
+    background: darkkhaki;
+    padding: 15px 0px;
+  }
+  .header-number {
+    font-size: 15px;
+  }
+  .search {
+    text-align: center;
+    direction: rtl;
+  }
+  .search__input {
+    font-family: 'IRANSans', Tahoma;
+    font-weight: 400;
+    font-size: 24px;
+    padding: 5px 10px;
+    outline: none;
+    border: none;
+    width: 90%;
+    transition: all 0.4s;
+  }
+  .box-input {
+    border-radius: 5px;
+    width: 50%;
+    margin: 0 auto;
+    background: white;
+  }
+  .box-input:focus {
+    transform: scaleX(1.1);
+  }
+  // input:focus{
+  //     transform:scaleX(1.1);
+  // }
+  input::-webkit-input-placeholder {
+    color: rgb(175, 175, 175);
+  }
+  .search-img {
+    float: right;
+    margin: 10px;
+    width: 19px;
+    color: grey;
+  }
+  @media only screen and (max-width: 600px) {
+    input:focus {
+      transform: none;
+    }
+    .header-section {
+      padding: 12px 0px;
+      width: 100%;
+      background: darkkhaki;
+    }
+    .header-number {
+      font-size: 15px;
+    }
+    .search {
+      text-align: right;
+      direction: rtl;
+    }
+    .header {
+      overflow: auto;
+      padding: 15px 2px;
+    }
+    .box-input {
+      margin-right: 5px;
+      border-radius: 5px;
+      width: 78%;
+      float: right;
+      background: white;
+    }
+    .search__input {
+      font-size: 24px;
+      padding: 5px 10px;
+      outline: none;
+      border: none;
+      text-decoration: none;
+      border-radius: 5px;
+      width: 78%;
+      transition: all 0.5s;
+      .search__input:focus {
+        transform: scaleX(10px);
+      }
+      .search__input::-webkit-input-placeholder {
+        color: blue;
+      }
+    }
+  }
+  @media only screen and (max-width: 340px) {
+    input:focus {
+      transform: none;
+    }
+    .header-section {
+      padding: 12px 0px;
+      width: 100%;
+      background: darkkhaki;
+    }
+    .header-number {
+      font-size: 15px;
+    }
+    .search {
+      text-align: right;
+      direction: rtl;
+    }
+    .header {
+      overflow: auto;
+      padding: 15px 2px;
+    }
+    .search__input {
+      font-size: 24px;
+      padding: 5px 10px;
+      outline: none;
+      border: none;
+      text-decoration: none;
+      border-radius: 5px;
+      width: 70%;
+      transition: all 0.5s;
+      .search__input:focus {
+        transform: scaleX(10px);
+      }
+      .search__input::-webkit-input-placeholder {
+        color: blue;
+      }
+    }
+  }
+  
