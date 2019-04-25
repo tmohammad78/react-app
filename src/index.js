@@ -1,31 +1,25 @@
-import React from 'react'; //JSX
-import ReactDOM from 'react-dom'; //Render a React element into the DOM
+import React , { Component } from 'react';
+import Header from './Header';
+import ReactDOM from 'react-dom';
+import JSON from './data.json';
+import FoodList from './FoodList';
+// compo= ()=>{
+//     fetch("https://api.delino.com/restaurant/menu/890d958f-9e64-4211-a2fa-d732c7a3920f")
+//     .then
+// }
 
-const Test=()=>{
-    // return 'mohammad'; // its for return just one tag and things or one section
-    //  React.createElement('h1',{className:'title'},React.createElement('div',{className:'box-1'}));
-    return ( //use ( ) for using alot element because return see just one element and use ClassName in react instead of class 
-        <div className="newElement"> 
-            <h1>hello react</h1>
-            <div>Hey</div>
-        </div>
-    )
+class App extends Component {
+    state = {
+        foodList:JSON
+    }
+    render(){ 
+        return (
+            <div>
+                <Header/>
+                <FoodList food={this.state.foodList} />
+            </div>
+        )
+    }
 }
-ReactDOM.render(<Test/>,document.querySelector('#APP'));  //render is method of reactDom  ,enter component
 
-
-file2.js
-
-export const name="mohammad";
-export const pass="123"
-export defualt "ok"
-
-
-file1.js
-
-import {name as username} from "file2";
-
-import * as data from "file2"
-
-data.namedata.pass
-
+ReactDOM.render(<App/>,document.querySelector('#APP'));
