@@ -5,23 +5,23 @@
   padding: 0;
   box-sizing: border-box;
 }
-html {
-  font-size: 100%;
-  @include respond(tab-land) {
-    font-size: 56.25%;
-  }
-  @include respond(tab-port) {
-    font-size: 50%;
-  }
-  @include respond(big-desktop) {
-    font-size: 100%;
-  }
-}
+// html {
+//   font-size: 100%;
+//   @include respond(tab-land) {
+//     font-size: 56.25%;
+//   }
+//   @include respond(tab-port) {
+//     font-size: 50%;
+//   }
+//   @include respond(big-desktop) {
+//     font-size: 100%;
+//   }
+// }
 body {
   box-sizing: border-box;
-  @include respond(tab-port) {
-    padding: 0;
-  }
+  // @include respond(tab-port) {
+  //   padding: 0;
+  // }
 }
 .clearfix {
   overflow: auto;
