@@ -1,26 +1,11 @@
-import React , { Component } from 'react';
-import Header from './Header';
+import React ,{Component} from 'react';
 import ReactDOM from 'react-dom';
-import JSON from './data.json';
-import FoodList from './FoodList';
+import App from "./App";
 
-// compo= ()=>{
-//     fetch("https://api.delino.com/restaurant/menu/890d958f-9e64-4211-a2fa-d732c7a3920f")
-//     .then
-// }
-
-class App extends Component {
-    state = {
-        foodList:JSON
-    }
-    render(){ 
-        return (
-            <div>
-                <Header/>
-                <FoodList food={this.state.foodList} />
-            </div>
-        )
-    }
+const Main = ()=>{
+    return(
+        <App/>
+    )
 }
 
-ReactDOM.render(<App/>,document.querySelector('#APP'));
+ReactDOM.render(<Main/>,document.querySelector('#APP'));
