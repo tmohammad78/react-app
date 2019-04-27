@@ -3,8 +3,6 @@ import React, { Component } from "react";
 import Header from "./Header";
 import axios from "axios";
 import Menu from "./Component/Menu/Index.js";
-
-import '../src/sass/components/'
 class App extends Component {
   state = {
     foodList: []
@@ -28,7 +26,7 @@ class App extends Component {
     console.log(this.state.foodList);
     return (
       // <Headr />
-          <Menu />
+          <Menu Food={}/>
       // <Footer />
     );
   }

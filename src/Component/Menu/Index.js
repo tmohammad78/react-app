@@ -5,7 +5,7 @@ class Menu extends Component {
     render(){
         return(
             <div>
-                <Category/>
+                <Category />
             </div>
         )
     }

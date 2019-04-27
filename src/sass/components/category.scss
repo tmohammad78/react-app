@@ -49,14 +49,10 @@
     .categories__indexbox--inner:active {
       color: white;
     }
-    // &--inner:visited,
-    // &--inner:link,
-    // &--inner:active{
-    // }
   }
 }
 .active-box {
-  border: 3px solid $color-primary;
+  border: 3px solid #ef4123;
   transform: translateY(-5%);
 }
 
@@ -65,7 +61,7 @@
     width: 100%;
     .categories__indexbox {
       .categories__indexbox:not(:last-child) {
-        border-left: 1px solid $color-primary;
+        border-left: 1px solid #ef4123;
       }
       white-space: nowrap;
       overflow: hidden;
@@ -75,7 +71,7 @@
       width: 20%;
       display: inline-block;
       .categories__indexbox:hover {
-        border-bottom: 4px solid $color-primary;
+        border-bottom: 4px solid #ef4123;
       }
     }
     .categories__img {

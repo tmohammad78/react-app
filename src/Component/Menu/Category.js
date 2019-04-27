@@ -1,6 +1,6 @@
 import React ,{Component } from 'react';
 
-import '../sass/components/category.scss';
+import "../../sass/components/category.scss"
 class Category extends Component {
 
     render(){
@@ -14,7 +14,7 @@ class Category extends Component {
         //     </a>
         // </div>
             <div className="categories__indexbox" data-cat-id="">
-                <a class="categories__indexbox--inner scroll">
+                <a className="categories__indexbox--inner scroll">
                     <img className="categories__img " />
                     <b className="categories__caption"></b>
                 </a>
