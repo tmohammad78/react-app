@@ -8,7 +8,6 @@ class App extends Component {
   };
 
   render() {
-    console.log(this.state.foodList);
     return (
       // <Headr />
           <Menu />

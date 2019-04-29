@@ -1,6 +1,9 @@
 import React, { Component } from "react";
 import Category from "./Category";
 import axios from "axios";
+import FoodList from "./FoodList";
+
+import "../../sass/layout/foodBox.scss";
 
 class Menu extends Component {
   state = {
@@ -18,6 +21,11 @@ class Menu extends Component {
       .then(response => {
         const { data } = response;
         const foodList = data.categories;
+        const prices = foodList;
+        prices.sort((a, b) => {
+          return a.index - b.index;
+        });
+        this.setState({ prices });
         this.setState({ foodList });
       })
       .catch(error => {
@@ -28,13 +36,7 @@ class Menu extends Component {
       });
   }
 
-  sorting = () => {
-    const prices = this.state;
-    prices.sort((a, b) => {
-      return a.index - b.index;
-    });
-    this.setState({ prices });
-  };
+  sorting = () => {};
 
   render() {
     if (this.state.loading) {
@@ -42,14 +44,18 @@ class Menu extends Component {
     }
 
     return (
-      <div className="parent" data-show-category="true">
-        <div className="categories">
-          {!this.state.timeEnd ? <Category title="yes" /> : null}
-
-          {/* {// console.log(this.state.foodList)
-          this.state.foodList.map((item, i) => {
-            return <Category title={item.title} />;
-          })} */}
+      <div>
+        <div className="parent">
+          <div className="categories">
+            {this.state.foodList.map((item, i) => {
+              return <Category item={item} key={`cat-${i}`} />;
+            })}
+          </div>
+        </div>
+        <div className="foodBox">
+          {this.state.foodList.map((item, i) => {
+            return <FoodList item={item} key={`food-${i}`} />;
+          })}
         </div>
       </div>
     );
