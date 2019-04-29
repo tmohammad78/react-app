@@ -27,7 +27,7 @@ class Category extends Component {
     return (
       <div className="categories__indexbox">
         <a className="categories__indexbox--inner scroll">
-          <img className="categories__img " src={item.logo} />
+          <img className="categories__img " src={`img/${item.logo}.png`} />
           <b className="categories__caption">{item.title}</b>
         </a>
       </div>
