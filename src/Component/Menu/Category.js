@@ -7,28 +7,28 @@ class Category extends Component {
     title: ""
   };
 
-  componentWillMount() {
-    this.timer = setTimeout(() => {
-      //if (!this.willUnmount) {
-        this.setState({
-          title: "done"
-        });
-      //}
-    }, 3000);
-  }
+  // componentWillMount() {
+  //   this.timer = setTimeout(() => {
+  //     //if (!this.willUnmount) {
+  //       this.setState({
+  //         title: "done"
+  //       });
+  //     //}
+  //   }, 3000);
+  // }
 
-  componentWillUnmount() {
-    //this.willUnmount = true;
-    clearTimeout( this.timer);
-  }
+  // componentWillUnmount() {
+  //   //this.willUnmount = true;
+  //   clearTimeout( this.timer);
+  // }
 
   render() {
-    console.log(this.props.title + " " + this.state.title);
+    const { item } = this.props;
     return (
-      <div className="categories__indexbox" data-cat-id={this.props.id}>
+      <div className="categories__indexbox">
         <a className="categories__indexbox--inner scroll">
-          <img className="categories__img " src={this.props.logo} />
-          <b className="categories__caption">{this.props.title}</b>
+          <img className="categories__img " src={`img/${item.logo}.png`} />
+          <b className="categories__caption">{item.title}</b>
         </a>
       </div>
     );
