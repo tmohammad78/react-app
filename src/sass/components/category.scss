@@ -103,7 +103,7 @@
   white-space: nowrap;
   height: 75px;
   padding-top: 12px;  
-    &__indexbox {
+    .indexbox {
       text-align: center;
       cursor: pointer;
     border-radius: 6px;
@@ -120,5 +120,8 @@
       -moz-box-shadow: 0px 8px 10px -1px rgba(0, 0, 0, 0.76);
       box-shadow: 0px 8px 10px -1px rgba(0, 0, 0, 0.76);
     }
+  }
+  img{
+      display: none;
   }
 }

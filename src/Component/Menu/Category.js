@@ -1,6 +1,8 @@
 import React, { Component } from "react";
 
 import "../../sass/components/category.scss";
+import { Link ,animateScroll as scroll } from 'react-scroll';
+import { link } from "fs";
 
 class Category extends Component {
   state = {
@@ -25,12 +27,22 @@ class Category extends Component {
   render() {
     const { item } = this.props;
     return (
-      <div className="categories__indexbox">
-        <a className="categories__indexbox--inner scroll">
-          <img className="categories__img " src={`img/${item.logo}.png`} />
-          <b className="categories__caption">{item.title}</b>
-        </a>
-      </div>
+
+    <div className="indexbox">
+    <a className="inner scroll">
+    <Link
+        activeClass="active"
+        to={item.title}
+        spy={true}
+        smooth={true}
+        offset={-70}
+        duration= {500}
+    >
+      <img className="img" src={`/img/${item.logo}.png`} />
+      <b className="caption">{item.title}</b>
+      </Link>
+    </a>
+  </div>
     );
   }
 }

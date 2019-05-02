@@ -237,6 +237,7 @@
   float: left;
 }
 img {
+  fill: white;
   border-radius: 9px;
   width: 100%;
   overflow: hidden;
@@ -253,6 +254,11 @@ img {
   width: 100%;
   font-size: 20px;
   float: right; // display:inline-block
+  img{
+    cursor: pointer;
+    width: 15px;
+    height: 15px;
+  }
 }
 .price {
   float: right;
@@ -261,8 +267,7 @@ img {
   padding: 5px 4px;
   width: 40%;
 }
-.cartBox {
-  float: left;
+.addBtn {
   padding: 7px 0px;
   width: 60%;
   font-size: 25px;
@@ -275,4 +280,7 @@ img {
 
 .description-index {
   
+}
+.quantity-holder{
+  margin-left: 10px;
 }
