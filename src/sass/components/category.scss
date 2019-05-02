@@ -97,12 +97,11 @@
 }
 
 .categories{
-  width: 100%;
-    direction: rtl;
+  direction: rtl;
   overflow-x: auto;
   white-space: nowrap;
-  height: 75px;
-  padding-top: 12px;  
+  height: 123px;
+  padding-top: 10px; 
     .indexbox {
       text-align: center;
       cursor: pointer;
@@ -110,7 +109,6 @@
     background-color: #eee;
     width: 80px;
     padding: 11px 0;
-    height: 41px;
     display: inline-block;
     margin: 0 5px;
     transition: all 0.5s;
@@ -124,4 +122,23 @@
   img{
       display: none;
   }
+}
+@media only screen and (min-width:600px){
+.parent {
+  height: 111px;
+}
+.categories{
+  width: 100%;
+  height: 128px;
+  padding-top: 12px;  
+    .indexbox {
+    width: 130px;
+  }
+  img{
+    width: 45px;
+    text-align: center;
+    margin: 0 auto;
+    display: block;
+  }
+}
 }
