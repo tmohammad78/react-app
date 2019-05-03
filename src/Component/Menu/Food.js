@@ -11,9 +11,17 @@ class Food extends Component {
 
   render() {
     const { item } = this.props;
-    const image = (
-      <img className="food_Box__img" src={this.imageFood(item.img)} />
-    );
+    let image;
+    if(item.img){
+     image = (
+        <img className="food_Box__img" src={this.imageFood(item.img)} />
+      );
+    }else{
+     image = (
+        <img className="food_Box__img nullImage" src="/img/fig-cart-empty.png" />
+        );
+    }
+
 
     return (
       <div className="food_Box col-1-of-3">

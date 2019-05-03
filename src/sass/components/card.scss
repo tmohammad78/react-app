@@ -296,4 +296,20 @@ img {
     margin: 8px 56px;
 
   }
+  .boxImage {
+    text-align: center;
+    width: 100%;
+  }
+  img {
+    margin: 0 auto;
+    width: 90%;
+  }
+  .description {
+    width: 100%;
+    float: right;
+    padding: 5px 9px ;
+  }
+  .nullImage{
+    width: 71%;
+  }
 }

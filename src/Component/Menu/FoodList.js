@@ -26,7 +26,7 @@ class FoodList extends Component {
     const data = item.sub[0];
 
     return (
-      <div>
+      <div id={item.title}>
         <h1 className="Header">{item.title}</h1>
         <div className="food_section" >
           {/* {this.props.Food.sub[0].food.map((item, i) => {
