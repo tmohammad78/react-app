@@ -24,8 +24,6 @@ class Category extends Component {
   //   clearTimeout( this.timer);
   // }
 
-  handleSetActive() {}
-
   render() {
     const { item } = this.props;
     return (

@@ -277,9 +277,14 @@ img {
   overflow: auto;
   padding: 8px;
 }
-
+.quantity{
+  font-size: 20px;
+}
 .quantity-holder{
   margin-left: 10px;
+}
+.qty-minusBtn{
+  display: inline;
 }
 @media only screen and (min-width:600px){
   .food_section{
@@ -312,4 +317,6 @@ img {
   .nullImage{
     width: 71%;
   }
+
+
 }

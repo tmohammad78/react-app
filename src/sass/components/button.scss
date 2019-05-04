@@ -59,7 +59,6 @@
   }
   .btn-minus {
     @include btn();
-    display: none;
   }
   .selected {
     .quantity {

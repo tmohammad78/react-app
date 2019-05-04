@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import Food from './Food.js';
+import Food from "./Food.js";
 import "../../sass/components/card.scss";
 
 class FoodList extends Component {
@@ -28,7 +28,7 @@ class FoodList extends Component {
     return (
       <div id={item.id}>
         <h1 className="Header">{item.title}</h1>
-        <div className="food_section" >
+        <div className="food_section">
           {/* {this.props.Food.sub[0].food.map((item, i) => {
             return(
                 <div className="" >
@@ -36,13 +36,16 @@ class FoodList extends Component {
                 </div>
             )
           })} */}
-          {
-            data.food.map((item,i)=>{
-              return(
-                <Food item={item} />
-              )
-            })
-          }
+          {data.food.map((item, i) => {
+            return (
+              <Food
+                item={item}
+                onPress={data => {
+                  console.log("press:", item);
+                }}
+              />
+            );
+          })}
         </div>
       </div>
     );

@@ -10,7 +10,11 @@ class App extends Component {
   render() {
     return (
       // <Headr />
-          <Menu />
+      <React.Fragment>
+        <Header />
+        <Menu />
+      </React.Fragment>
+
       // <Footer />
     );
   }

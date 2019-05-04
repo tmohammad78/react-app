@@ -3,14 +3,49 @@ import React, { Component } from "react";
 import "../../sass/components/card.scss";
 import "../../sass/layout/grid.scss";
 import { truncate, currancy } from "../../helper/index";
+import Cart from "./Cart";
 class Food extends Component {
-  state = {
-    count: 0,
-    show: false
-  };
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      count: 0,
+      show: false
+    };
+
+    this.addBtn = this.addBtn.bind(this);
+    this.removeBtn = this.removeBtn.bind(this);
+  }
+
   imageFood = data => {
     return data.replace("#SIZEOFIMAGE#", "280x175");
   };
+
+  removeBtn(e) {
+    e.preventDefault();
+    if (this.state.count > 1) {
+      this.setState({
+        count: this.state.count - 1,
+        show: true
+      });
+    } else if (this.state.count == 1) {
+      this.setState({
+        count: 0,
+        show: false
+      });
+    }
+  }
+
+  addBtn(e) {
+    e.preventDefault();
+    this.setState({
+      count: this.state.count + 1,
+      show: true
+    });
+    this.props.onPress()
+    //<Cart quantiyt={this.state.count} />;
+  }
+
   render() {
     const { item } = this.props;
     let image;
@@ -24,11 +59,18 @@ class Food extends Component {
         />
       );
     }
-    let testing;
+    let addBox;
     if (this.state.show == true) {
-      testing = `<span className="quantity"> </span><button className="btn-minus" /> `;
+      addBox = (
+        <React.Fragment>
+          <span className="quantity">{this.state.count}</span>
+          <button className="btn-minus" onClick={this.removeBtn}>
+            <img src="/img/remove.svg" />
+          </button>
+        </React.Fragment>
+      );
     } else {
-      testing = "";
+      addBox = "";
     }
     return (
       <div className="food_Box col-1-of-3">
@@ -45,16 +87,10 @@ class Food extends Component {
           <div className="price">{currancy(item.price)}</div>
           <div className="addBtn">
             <div className="quantity-holder">
-              <button
-                className="btn-plus"
-                onClick={this.setState({
-                  count: this.state.count + 1,
-                  show: true
-                })}
-              >
+              <button className="btn-plus" onClick={this.addBtn}>
                 <img src="/img/add.svg" />
               </button>
-              {testing}
+              {addBox}
             </div>
           </div>
         </div>

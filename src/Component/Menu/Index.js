@@ -2,8 +2,9 @@ import React, { Component } from "react";
 import Category from "./Category";
 import axios from "axios";
 import FoodList from "./FoodList";
-
+import '../../sass/layout/grid.scss';
 import "../../sass/layout/foodBox.scss";
+
 
 class Menu extends Component {
   state = {
@@ -40,11 +41,11 @@ class Menu extends Component {
 
   render() {
     if (this.state.loading) {
-      return <div>loading...</div>;
+      return <React.Fragment><div class="lds-dual-ring"></div><p className="loading" >Loading...</p></React.Fragment>
     }
 
     return (
-      <div>
+      <div className="fullBox" >
         <div className="parent">
           <div className="categories">
             {this.state.foodList.map((item, i) => {
