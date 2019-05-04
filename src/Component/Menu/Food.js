@@ -3,26 +3,33 @@ import React, { Component } from "react";
 import "../../sass/components/card.scss";
 import "../../sass/layout/grid.scss";
 import { truncate, currancy } from "../../helper/index";
-import FontAwesome from 'react-fontawesome';
 class Food extends Component {
-  imageFood(data) {
+  state = {
+    count: 0,
+    show: false
+  };
+  imageFood = data => {
     return data.replace("#SIZEOFIMAGE#", "280x175");
-  }
-
+  };
   render() {
     const { item } = this.props;
     let image;
-    if(item.img){
-     image = (
-        <img className="food_Box__img" src={this.imageFood(item.img)} />
+    if (item.img) {
+      image = <img className="food_Box__img" src={this.imageFood(item.img)} />;
+    } else {
+      image = (
+        <img
+          className="food_Box__img nullImage"
+          src="/img/fig-cart-empty.png"
+        />
       );
-    }else{
-     image = (
-        <img className="food_Box__img nullImage" src="/img/fig-cart-empty.png" />
-        );
     }
-
-
+    let testing;
+    if (this.state.show == true) {
+      testing = `<span className="quantity"> </span><button className="btn-minus" /> `;
+    } else {
+      testing = "";
+    }
     return (
       <div className="food_Box col-1-of-3">
         <div className="desimg">
@@ -38,11 +45,16 @@ class Food extends Component {
           <div className="price">{currancy(item.price)}</div>
           <div className="addBtn">
             <div className="quantity-holder">
-              <button className="btn-plus">
-                    <img src="/img/add.svg"></img>        
+              <button
+                className="btn-plus"
+                onClick={this.setState({
+                  count: this.state.count + 1,
+                  show: true
+                })}
+              >
+                <img src="/img/add.svg" />
               </button>
-              <span className="quantity"> </span>
-              <button className="btn-minus" />
+              {testing}
             </div>
           </div>
         </div>

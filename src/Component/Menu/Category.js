@@ -1,11 +1,12 @@
 import React, { Component } from "react";
 
 import "../../sass/components/category.scss";
-import { Link ,animateScroll as scroll } from 'react-scroll';
+import { Link, animateScroll as scroll } from "react-scroll";
 
 class Category extends Component {
   state = {
-    title: ""
+    title: "",
+    loading: true
   };
 
   // componentWillMount() {
@@ -23,23 +24,23 @@ class Category extends Component {
   //   clearTimeout( this.timer);
   // }
 
+  handleSetActive() {}
+
   render() {
     const { item } = this.props;
     return (
-
-    <Link
+      <Link
         className=" indexbox"
         activeClass="active"
-        to={item.title}
+        to={item.id}
         spy={true}
         smooth={true}
         offset={-70}
-        duration= {500}
-    >
+      >
         <div className="inner scroll">
-      <img className="img" src={`/img/${item.logo}.png`} />
-      <b className="caption">{item.title}</b>
-  </div>
+          <img className="img" src={`/img/${item.logo}.png`} />
+          <b className="caption">{item.title}</b>
+        </div>
       </Link>
     );
   }
