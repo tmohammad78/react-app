@@ -21,12 +21,12 @@ class Header extends Component {
     return (
       <div className="header-section">
         <button className="btn btn-showCount ">
-          <i className="fas fa-shopping-cart" />
+          <img className="shopping-cart-icon" src="/img/shopping-cart.svg" alt="search" />
           <span className="header-number" id="cart-count" />
         </button>
         <div action="#" className="search">
           <div className="box-input">
-            <img className="search-img" src="./img/search.svg" alt="search" />
+            <img className="search-img" src="/img/search.svg" alt="search" />
             <input
               type="text"
               className="search__input"
