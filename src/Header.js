@@ -1,11 +1,17 @@
 import React, { Component } from "react";
+import Cart from "./Component/Menu/Cart";
 import "./sass/layout/header.scss";
 import "./sass/components/button.scss";
 
 class Header extends Component {
-  state = {
-    keywords: "testing"
-  };
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      keywords: "testing"
+    };
+    this.showCart = this.showCart.bind(this);
+  }
 
   //use arrow function to know whats event instead of that you should use bind to use setstate
 
@@ -16,12 +22,24 @@ class Header extends Component {
     });
   };
 
+  showCart(e) {
+    // e.preventDefault();
+
+    return (
+      <Cart />
+    )
+  }
+
   render() {
     console.log(this.state.keywords);
     return (
       <div className="header-section">
-        <button className="btn btn-showCount ">
-          <img className="shopping-cart-icon" src="/img/shopping-cart.svg" alt="search" />
+        <button className="btn btn-showCount " onClick={this.showCart}>
+          <img
+            className="shopping-cart-icon"
+            src="/img/shopping-cart.svg"
+            alt="search"
+          />
           <span className="header-number" id="cart-count" />
         </button>
         <div action="#" className="search">

@@ -3,29 +3,10 @@ import React, { Component } from "react";
 import "../../sass/components/category.scss";
 import { Link, animateScroll as scroll } from "react-scroll";
 
-class Category extends Component {
-  state = {
-    title: "",
-    loading: true
-  };
+//import Category  from "./Category";
 
-  // componentWillMount() {
-  //   this.timer = setTimeout(() => {
-  //     //if (!this.willUnmount) {
-  //       this.setState({
-  //         title: "done"
-  //       });
-  //     //}
-  //   }, 3000);
-  // }
-
-  // componentWillUnmount() {
-  //   //this.willUnmount = true;
-  //   clearTimeout( this.timer);
-  // }
-
-  render() {
-    const { item } = this.props;
+class CategoryList extends Component {
+  renderItem(item) {
     return (
       <Link
         className=" indexbox"
@@ -42,6 +23,16 @@ class Category extends Component {
       </Link>
     );
   }
+
+  render() {
+    return (
+      <div className="parent">
+        <div className="categories">
+          {this.props.items.map(this.renderItem)} 
+        </div>
+      </div>
+    );
+  }
 }
 
-export default Category;
+export default CategoryList;

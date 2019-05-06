@@ -4,14 +4,11 @@ class Cart extends Component {
   constructor(props) {
     super(props);
   }
-
-  rneder(){
-      console.log(this.props);
-      return(
-        <div>
-
-        </div>
-      );
+  render() {
+    console.log('dddd');
+    return (
+     <div></div>
+    );
   }
 }
 

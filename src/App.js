@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 
 import Header from "./Header";
-import Menu from "./Component/Menu/Index.js";
+import Menu from "./Component/Menu/index.js";
 class App extends Component {
   state = {
     foodList: []

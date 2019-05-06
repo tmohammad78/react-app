@@ -89,7 +89,10 @@
   }
   .btn-showCount {
     border-radius: 5px;
-    padding: 7px;
+    padding-top: 12px;
+    padding-bottom: 12px;
+    padding-right: 30px;
+    padding-left: 10px;
     position: absolute;
     left: 7px;
   }
@@ -98,5 +101,13 @@
     border-radius: 5px;
     background: linear-gradient(-60deg, #ef4123, #ef2379);
     padding: 11px 80px;
+  }
+  @media only screen and (min-width:600px){
+    .btn-showCount {
+      border-radius: 5px;
+      padding: 7px 20px 5px 5px ;
+      position: absolute;
+      left: 7px;
+    }
   }
   

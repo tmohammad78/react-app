@@ -45,8 +45,7 @@
     color: grey;
   }
   .shopping-cart-icon{
-    width: 10px;
-    height: 10px;
+    width: 30px;
   }
   @media only screen and (max-width: 600px) {
     input:focus {
@@ -90,6 +89,9 @@
       .search__input::-webkit-input-placeholder {
         color: blue;
       }
+    }
+    .shopping-cart-icon{
+      width: 25px;
     }
   }
   @media only screen and (max-width: 340px) {
