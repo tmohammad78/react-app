@@ -7,7 +7,6 @@ class Header extends Component {
   constructor(props) {
     super(props);
 
-
     this.showCart = this.showCart.bind(this);
   }
 
@@ -23,9 +22,7 @@ class Header extends Component {
   showCart(e) {
     // e.preventDefault();
 
-    return (
-      <Cart />
-    )
+    return <Cart />;
   }
 
   render() {
@@ -39,17 +36,6 @@ class Header extends Component {
           />
           <span className="header-number" id="cart-count" />
         </button>
-        <div action="#" className="search">
-          <div className="box-input">
-            <img className="search-img" src="/img/search.svg" alt="search" />
-            <input
-              type="text"
-              className="search__input"
-              placeholder="جستجوی غذا"
-              name="search-input"
-            />
-          </div>
-        </div>
       </div>
     );
   }

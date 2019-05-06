@@ -1,12 +1,9 @@
 import React, { Component } from "react";
 
 class Cart extends Component {
- 
   render() {
-    console.log('dddd');
-    return (
-     <div></div>
-    );
+    console.log("dddd");
+    return <div />;
   }
 }
 

@@ -1,41 +1,40 @@
-.foodBox{
-    padding: 65px 0px;
-    width: 90%;
-    margin: 0 auto;
+.foodBox {
+  padding: 150px 0px;
+  width: 90%;
+  margin: 0 auto;
 }
 .lds-dual-ring {
-    position: absolute;
-    display: inline-block;
-    top: 50%;
-    right: 50%;
-    width: 64px;
-    height: 64px;
-    background: white;
+  position: absolute;
+  display: inline-block;
+  top: 50%;
+  right: 50%;
+  width: 64px;
+  height: 64px;
+  background: white;
+}
+.lds-dual-ring:after {
+  content: " ";
+  display: block;
+  width: 46px;
+  height: 46px;
+  margin: 1px;
+  border-radius: 50%;
+  border: 5px solid #ef4123;
+  border-color: #ef4123 transparent #ef4123 transparent;
+  animation: lds-dual-ring 1.2s linear infinite;
+}
+@keyframes lds-dual-ring {
+  0% {
+    transform: rotate(0deg);
   }
-  .lds-dual-ring:after {
-    content: " ";
-    display: block;
-    width: 46px;
-    height: 46px;
-    margin: 1px;
-    border-radius: 50%;
-    border: 5px solid #EF4123;
-    border-color: #EF4123 transparent #EF4123 transparent;
-    animation: lds-dual-ring 1.2s linear infinite;
+  100% {
+    transform: rotate(360deg);
   }
-  @keyframes lds-dual-ring {
-    0% {
-      transform: rotate(0deg);
-    }
-    100% {
-      transform: rotate(360deg);
-    }
-  }
-  
-  .loading{
-    position: absolute;
-    top: 55%;
-    right: 50%;  
-    text-align: center;
+}
 
-  }
+.loading {
+  position: absolute;
+  top: 55%;
+  right: 50%;
+  text-align: center;
+}

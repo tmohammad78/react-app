@@ -17,14 +17,19 @@ class Food extends Component {
   //   console.log(state, props)
   //   return true
   // }
-  
 
   render() {
     console.log("ok");
     const { item } = this.props;
     let image;
     if (item.img) {
-      image = <img className="food_Box__img" src={this.imageFood(item.img)} alt="true" />;
+      image = (
+        <img
+          className="food_Box__img"
+          src={this.imageFood(item.img)}
+          alt="true"
+        />
+      );
     } else {
       image = (
         <img
@@ -64,7 +69,7 @@ class Food extends Component {
           <div className="addBtn">
             <div className="quantity-holder">
               <button className="btn-plus" onClick={this.changeCount("add")}>
-                <img src="/img/add.svg" alt="true"  />
+                <img src="/img/add.svg" alt="true" />
               </button>
               {addBox}
             </div>

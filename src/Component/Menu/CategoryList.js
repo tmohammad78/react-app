@@ -29,7 +29,7 @@ class CategoryList extends Component {
     return (
       <div className="parent">
         <div className="categories">
-          {this.props.items.map(this.renderItem)} 
+          {this.props.items.map(this.renderItem)}
         </div>
       </div>
     );

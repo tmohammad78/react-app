@@ -112,7 +112,29 @@ class FoodList extends Component {
   render() {
     if (this.state.foodList.length) {
       return (
-        <div className="foodBox">{this.state.foodList.map(this.foodPack)}</div>
+        <div className="foodBox">
+          <div>
+            <div action="#" className="search">
+              <div className="box-input">
+                <div className="box-searchicon">
+                  <img
+                    className="search-img"
+                    src="/img/search.svg"
+                    alt="search"
+                  />
+                </div>
+                <input
+                  type="text"
+                  className="search__input"
+                  placeholder="جستجوی غذا"
+                  name="search-input"
+                />
+              </div>
+            </div>
+          </div>
+
+          {this.state.foodList.map(this.foodPack)}
+        </div>
       );
     } else {
       return (
