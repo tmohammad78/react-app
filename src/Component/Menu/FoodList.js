@@ -15,6 +15,7 @@ class FoodList extends Component {
 
     this.foodPack = this.foodPack.bind(this);
     this.onChange = this.onChange.bind(this);
+    this.handleSearch=this.handleSearch.bind(this);
   }
 
   componentWillMount() {
@@ -87,6 +88,10 @@ class FoodList extends Component {
     return food;
   }
 
+  handleSearch(){
+      
+  }
+
   foodPack(item, i) {
     return (
       <div key={`${item.id}-${i}`} id={item.id}>
@@ -128,11 +133,12 @@ class FoodList extends Component {
                   className="search__input"
                   placeholder="جستجوی غذا"
                   name="search-input"
+                  onChange={this.handleSearch}
                 />
+
               </div>
             </div>
           </div>
-
           {this.state.foodList.map(this.foodPack)}
         </div>
       );
