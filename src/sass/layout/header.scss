@@ -15,6 +15,7 @@
   width: 100%;
   font-size: 0;
   float: left;
+  border-radius: 5px;
   // background: linear-gradient(-60deg,#ef4123,#ef2379);
   background-color: #f5f5f5;
   padding: 3px 0px;
@@ -23,16 +24,15 @@
   font-family: "IRANSans", Tahoma;
   font-weight: 400;
   font-size: 24px;
-  padding: 3px 3px;
+  padding: 5px 23px;
   outline: none;
   border: none;
   width: calc(100% - 50px);
-  float: left;
   transition: all 0.4s;
 }
 .box-input {
-  border-radius: 5px;
-  width: 100%;
+  border-radius: 25px;
+  width: 97%;
   font-size: 16px;
   border: 3px;
   position: relative;
@@ -53,6 +53,10 @@
 }
 .box-input:focus {
   width: 90%;
+}
+.searchBox{
+  overflow: auto;
+  padding-bottom: 35px;
 }
 // input:focus{
 //     transform:scaleX(1.1);

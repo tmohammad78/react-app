@@ -113,7 +113,7 @@ class FoodList extends Component {
     if (this.state.foodList.length) {
       return (
         <div className="foodBox">
-          <div>
+          <div className="searchBox">
             <div action="#" className="search">
               <div className="box-input">
                 <div className="box-searchicon">
