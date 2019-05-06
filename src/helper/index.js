@@ -12,17 +12,13 @@ export const truncate = (str, num = 5) => {
   }
 };
 
-export const toPersianNum = (num, dontTrim) => {
-  var i = 0,
-    dontTrim = dontTrim || false,
-    num = dontTrim ? num.toString() : num.toString().trim(),
-    len = num.length,
+export const toPersianNum = (value, dontTrim = false) => {
+  let i = 0,
+    num = dontTrim ? value.toString() : value.toString().trim(),
+    len = value.length,
     res = "",
     pos,
-    persianNumbers =
-      typeof persianNumber == "undefined"
-        ? ["۰", "۱", "۲", "۳", "۴", "۵", "۶", "۷", "۸", "۹"]
-        : persianNumbers;
+    persianNumbers = ["۰", "۱", "۲", "۳", "۴", "۵", "۶", "۷", "۸", "۹"];
 
   for (; i < len; i++)
     if ((pos = persianNumbers[num.charAt(i)])) res += pos;

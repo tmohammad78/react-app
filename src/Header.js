@@ -7,9 +7,7 @@ class Header extends Component {
   constructor(props) {
     super(props);
 
-    this.state = {
-      keywords: "testing"
-    };
+
     this.showCart = this.showCart.bind(this);
   }
 
@@ -31,7 +29,6 @@ class Header extends Component {
   }
 
   render() {
-    console.log(this.state.keywords);
     return (
       <div className="header-section">
         <button className="btn btn-showCount " onClick={this.showCart}>
