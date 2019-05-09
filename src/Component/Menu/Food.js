@@ -13,12 +13,18 @@ class Food extends Component {
     onChangeQuantity(action);
   };
 
+  checkTime(){
+    let data=new Date();
+    return console.log(data.getHours());
+  }
+
   // shouldComponentUpdate(props, state){
   //   console.log(state, props)
   //   return true
   // }
 
   render() {
+    let date=new Date().getHours();
     console.log("ok");
     const { item } = this.props;
     let image;
@@ -58,6 +64,7 @@ class Food extends Component {
         <div className="desimg">
           <figure className="boxImage">{image}</figure>
           <div className="description">
+     { date < 20 ? <label className="unavailableText"><span >{item.unavailableText}</span></label> : ""}
             <div className="index">
               <h3>{item.title}</h3>
               <p>{truncate(item.ingredient)}</p>
