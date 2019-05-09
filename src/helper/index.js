@@ -1,7 +1,14 @@
-export const currancy = number => {
-  const toman = number.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1,");
-  return toPersianNum(toman) + " تومان";
+export const currancy = (number) => {
+  const realPrice=number;
+  let final = realPrice.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1,");
+  return toPersianNum(final) + " تومان";
 };
+
+export const discountPrice = (number,discountPercentage)=>{
+  const discountPrice=number-number*(discountPercentage/100);
+  let final = discountPrice.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1,");
+  return toPersianNum(final) + " تومان";
+}
 
 export const truncate = (str, num = 5) => {
   const arrStr = str.split(" ");

@@ -2,8 +2,11 @@ import React, { Component } from "react";
 // import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import "../../sass/components/card.scss";
 import "../../sass/layout/grid.scss";
-import { truncate, currancy } from "../../helper/index";
+import { truncate, currancy , discountPrice } from "../../helper/index";
 class Food extends Component {
+  state = {
+    haveDiscount: false
+  }
   imageFood = data => {
     return data.replace("#SIZEOFIMAGE#", "280x175");
   };
@@ -22,11 +25,23 @@ class Food extends Component {
   //   console.log(state, props)
   //   return true
   // }
+  hoverfoodBox=(e)=>{
+    console.log('hover');
+  }
 
   render() {
+    let className;
     let date=new Date().getHours();
     console.log("ok");
     const { item } = this.props;
+    if(item.discountPercentage !== 0 ){
+      this.setState.haveDiscount= true;
+    }
+    if(this.state.haveDiscount == true){
+      className='price-discount'
+    }else{
+      className='price'
+    }
     let image;
     if (item.img) {
       image = (
@@ -60,11 +75,11 @@ class Food extends Component {
     }
 
     return (
-      <div className="food_Box col-1-of-3">
+      <div className="food_Box col-1-of-3" onhover={this.hoverfoodBox}>
         <div className="desimg">
           <figure className="boxImage">{image}</figure>
           <div className="description">
-     { date < 20 ? <label className="unavailableText"><span >{item.unavailableText}</span></label> : ""}
+            { date < 20 ? <label className="unavailableText"><span >{item.unavailableText}</span></label> : ""}
             <div className="index">
               <h3>{item.title}</h3>
               <p>{truncate(item.ingredient)}</p>
@@ -72,7 +87,10 @@ class Food extends Component {
           </div>
         </div>
         <div className="last">
-          <div className="price">{currancy(item.price)}</div>
+   
+          <div className={className}>{currancy(item.price)}</div>
+          {
+            item.discountPercentage ? <div>{discountPrice(item.price,item.discountPercentage)}</div> : null }
           <div className="addBtn">
             <div className="quantity-holder">
               <button className="btn-plus" onClick={this.changeCount("add")}>
