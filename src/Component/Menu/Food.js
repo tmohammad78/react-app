@@ -5,7 +5,8 @@ import "../../sass/layout/grid.scss";
 import { truncate, currancy , discountPrice } from "../../helper/index";
 class Food extends Component {
   state = {
-    haveDiscount: false
+    haveDiscount: false,
+    activeDiscountshow:'boxImage'
   }
   imageFood = data => {
     return data.replace("#SIZEOFIMAGE#", "280x175");
@@ -26,7 +27,18 @@ class Food extends Component {
   //   return true
   // }
   hoverfoodBox=(e)=>{
-    console.log('hover');
+    this.setState({
+      activeDiscountshow:'boxImageDiscount'
+    },function(){
+      console.log(this.state.activeDiscountshow);
+    });
+  }
+
+  hoverfoodOut=(e) => {
+    this.setState({
+      activeDiscountshow:'boxImage'
+    })
+    console.log('out');
   }
 
   render() {
@@ -34,6 +46,11 @@ class Food extends Component {
     let date=new Date().getHours();
     console.log("ok");
     const { item } = this.props;
+    // if(item.discountPercentage !==0  ){
+    //   this.setState({
+    //     activeDiscountshow:'boxImage'
+    //   })
+    // }
     if(item.discountPercentage !== 0 ){
       this.setState.haveDiscount= true;
     }
@@ -60,6 +77,16 @@ class Food extends Component {
         />
       );
     }
+    let showDiscount;
+    if(this.state.activeDiscountshow == 'boxImageDiscount'){
+      showDiscount=(
+        <div>
+            retetetete
+        </div>
+      )
+    }else{
+      showDiscount='';
+    }
 
     const quantity = item.quantity || 0;
     let addBox;
@@ -75,9 +102,10 @@ class Food extends Component {
     }
 
     return (
-      <div className="food_Box col-1-of-3" onhover={this.hoverfoodBox}>
+      <div className="food_Box col-1-of-3" onMouseEnter={this.hoverfoodBox} onMouseLeave={this.hoverfoodOut}>
         <div className="desimg">
-          <figure className="boxImage">{image}</figure>
+          <figure className={item.discountPercentage == 0 ? 'boxImage': this.state.activeDiscountshow}>{image}</figure>
+          {showDiscount}
           <div className="description">
             { date < 20 ? <label className="unavailableText"><span >{item.unavailableText}</span></label> : ""}
             <div className="index">
