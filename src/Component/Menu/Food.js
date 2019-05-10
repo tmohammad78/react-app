@@ -4,10 +4,14 @@ import "../../sass/components/card.scss";
 import "../../sass/layout/grid.scss";
 import { truncate, currancy , discountPrice } from "../../helper/index";
 class Food extends Component {
-  state = {
-    haveDiscount: false,
-    activeDiscountshow:'boxImage'
+  constructor(props){
+    super();
+    this.state = {
+      haveDiscount: false,
+      activeDiscountshow:'boxImage'
+    }    
   }
+
   imageFood = data => {
     return data.replace("#SIZEOFIMAGE#", "280x175");
   };
@@ -78,14 +82,14 @@ class Food extends Component {
       );
     }
     let showDiscount;
-    if(this.state.activeDiscountshow == 'boxImageDiscount'){
+    if(this.state.activeDiscountshow == "boxImageDiscount"){
       showDiscount=(
-        <div>
-            retetetete
+        <div className="discountBox">
+dbd;lkdv
         </div>
       )
     }else{
-      showDiscount='';
+      showDiscount=('');
     }
 
     const quantity = item.quantity || 0;
