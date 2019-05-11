@@ -1,16 +1,13 @@
 import React, { Component } from "react";
-import Cart from "./Component/Menu/Cart";
-import "./sass/layout/header.scss";
-import "./sass/components/button.scss";
-
+import Cart from "../Cart/index";
+import "../../sass/layout/header.scss";
+import "../../sass/components/button.scss";
 class Header extends Component {
   constructor(props) {
     super(props);
-
     this.showCart = this.showCart.bind(this);
-  }
 
-  //use arrow function to know whats event instead of that you should use bind to use setstate
+  }
 
   inputChangeHeader = event => {
     // console.log(event.target.value);
@@ -20,12 +17,12 @@ class Header extends Component {
   };
 
   showCart(e) {
-    // e.preventDefault();
-
-    return <Cart />;
+    this.props.ready(true);
   }
 
   render() {
+    const { show } = this.props;
+    console.log(show);
     return (
       <div className="header-section">
         <button className="btn btn-showCount " onClick={this.showCart}>

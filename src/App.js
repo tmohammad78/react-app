@@ -1,21 +1,32 @@
 import React, { Component } from "react";
 
-import Header from "./Header";
+import Header from "./Component/Header/index";
 import Menu from "./Component/Menu/Index.js";
+import Cart from "./Component/Cart";
 class App extends Component {
-  state = {
-    foodList: []
-  };
+
+  constructor(props){
+    super(props)
+    this.state = {
+      foodList: [],
+      show: false
+    };
+  }
+
 
   render() {
     return (
-      // <Headr />
       <React.Fragment>
-        <Header />
+        <Cart show={this.state.show} />
+        <Header
+          ready={() => 
+            this.setState({
+              show: true
+            }) 
+          }
+        />
         <Menu />
       </React.Fragment>
-
-      // <Footer />
     );
   }
 }

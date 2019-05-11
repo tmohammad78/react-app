@@ -1,7 +1,8 @@
 .foodBox {
   padding: 150px 0px;
-  width: 90%;
+  width: 78%;
   margin: 0 auto;
+  margin-right: 0px;
 }
 .lds-dual-ring {
   position: absolute;
@@ -31,10 +32,15 @@
     transform: rotate(360deg);
   }
 }
-
 .loading {
   position: absolute;
   top: 55%;
   right: 50%;
   text-align: center;
+}
+.shopCart{
+  position:fixed;
+  background: #eeeeee;
+  width: 22%;
+  height: 100%;
 }

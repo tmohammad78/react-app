@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import Food from "./Food.js";
 import axios from "axios";
+import Cart from "../Cart/index";
 import "../../sass/components/card.scss";
 import "../../sass/layout/foodBox.scss";
 import "../../sass/layout/grid.scss";
@@ -12,7 +13,7 @@ class FoodList extends Component {
     this.state = {
       foodList: [],
       value: "",
-      show:true
+      show: true
     };
 
     this.foodPack = this.foodPack.bind(this);
@@ -117,11 +118,12 @@ class FoodList extends Component {
                   subData[z].ingredient.indexOf(value) > -1
                 ) {
                   subData[z].hide = false;
-                  this.setState({
-                    show:false
-                  },()=>{
-                    
-                  })
+                  this.setState(
+                    {
+                      show: false
+                    },
+                    () => {}
+                  );
                 } else {
                   subData[z].hide = true;
                 }
@@ -141,13 +143,12 @@ class FoodList extends Component {
     });
   }
 
-
   foodPack(item, i) {
-   let title;
-    if(this.state.show){
+    let title;
+    if (this.state.show) {
       title = item.title;
-    }else{
-      title=''
+    } else {
+      title = "";
     }
     return (
       <div key={`${item.id}-${i}`} id={item.id}>
@@ -173,34 +174,38 @@ class FoodList extends Component {
     );
   }
 
-
   render() {
     if (this.state.foodList.length) {
       return (
-        <div className="foodBox">
-          <div className="searchBox">
-            <div action="#" className="search">
-              <div className="box-input">
-                <div className="box-searchicon">
-                  <img
-                    className="search-img"
-                    src="/img/search.svg"
-                    alt="search"
+        <React.Fragment>
+          <div className="shopCart">
+            <Cart />
+          </div>
+          <div className="foodBox">
+            <div className="searchBox">
+              <div action="#" className="search">
+                <div className="box-input">
+                  <div className="box-searchicon">
+                    <img
+                      className="search-img"
+                      src="/img/search.svg"
+                      alt="search"
+                    />
+                  </div>
+                  <input
+                    type="text"
+                    className="search__input"
+                    placeholder="جستجوی غذا"
+                    name="search-input"
+                    onChange={this.handleSearch}
+                    value={this.state.value}
                   />
                 </div>
-                <input
-                  type="text"
-                  className="search__input"
-                  placeholder="جستجوی غذا"
-                  name="search-input"
-                  onChange={this.handleSearch}
-                  value={this.state.value}
-                />
               </div>
             </div>
+            {this.state.foodList.map(this.foodPack)}
           </div>
-          {this.state.foodList.map(this.foodPack)}
-        </div>
+        </React.Fragment>
       );
     } else {
       return (
@@ -211,7 +216,6 @@ class FoodList extends Component {
       );
     }
   }
-  
 }
 
 export default FoodList;

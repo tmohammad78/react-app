@@ -17,6 +17,7 @@ class Menu extends Component {
           ready={categories =>
             this.setState({
               categories
+              //vaghti meghdare vorodi ba esme state yeki bashad lazem nist sample:sample benevisim 
             })
           }
         />
@@ -24,4 +25,6 @@ class Menu extends Component {
     );
   }
 }
+
+
 export default Menu;
