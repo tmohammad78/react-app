@@ -7,6 +7,6 @@ configure({adapter:new Adapter()});
 describe('<App/>', () => {
   it('should',()=>{
       const wrapper=shallow(<App/>);
-      expect(wrapper.find(<Menu/>)).toHaveLength(1);
+      expect(wrapper.find(<Menu/>));
   });
 })
