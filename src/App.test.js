@@ -1,12 +1,12 @@
+import React from 'react';
+import {configure,shallow } from 'enzyme';
 import Adapter from 'enzyme-adapter-react-16';
-import { expect } from 'chai'
-import { shallow } from 'enzyme';
 import App from './App';
-import Menu from './Component/Menu';
-
-describe('<App />', ()=> {
-  it('rendering Food',()=>{
-    const wrapper=shallow(<App/>);
-    expect(wrapper.find(Menu)).to.have.lengthOf(1);
-  })
-});
+import Menu from './Component/Menu/Index';
+configure({adapter:new Adapter()});
+describe('<App/>', () => {
+  it('should',()=>{
+      const wrapper=shallow(<App/>);
+      expect(wrapper.find(<Menu/>)).toHaveLength(1);
+  });
+})
