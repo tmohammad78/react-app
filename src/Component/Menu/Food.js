@@ -2,14 +2,14 @@ import React, { Component } from "react";
 // import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import "../../sass/components/card.scss";
 import "../../sass/layout/grid.scss";
-import { truncate, currancy , discountPrice } from "../../helper/index";
+import { truncate, currancy, discountPrice } from "../../helper/index";
 class Food extends Component {
-  constructor(props){
+  constructor(props) {
     super();
     this.state = {
       haveDiscount: false,
-      activeDiscountshow:'boxImage'
-    }    
+      activeDiscountshow: "boxImage"
+    };
   }
 
   imageFood = data => {
@@ -21,47 +21,22 @@ class Food extends Component {
     onChangeQuantity(action);
   };
 
-  checkTime(){
-    let data=new Date();
-    return console.log(data.getHours());
-  }
-
-  // shouldComponentUpdate(props, state){
-  //   console.log(state, props)
-  //   return true
-  // }
-  hoverfoodBox=(e)=>{
-    this.setState({
-      activeDiscountshow:'boxImageDiscount'
-    },function(){
-      console.log(this.state.activeDiscountshow);
-    });
-  }
-
-  hoverfoodOut=(e) => {
-    this.setState({
-      activeDiscountshow:'boxImage'
-    })
-    console.log('out');
-  }
-
   render() {
     let className;
-    let date=new Date().getHours();
-    console.log("ok");
+    let date = new Date().getHours();
     const { item } = this.props;
     // if(item.discountPercentage !==0  ){
     //   this.setState({
     //     activeDiscountshow:'boxImage'
     //   })
     // }
-    if(item.discountPercentage !== 0 ){
-      this.setState.haveDiscount= true;
+    if (item.discountPercentage !== 0) {
+      this.setState.haveDiscount = true;
     }
-    if(this.state.haveDiscount == true){
-      className='price-discount'
-    }else{
-      className='price'
+    if (this.state.haveDiscount === true) {
+      className = "price-discount";
+    } else {
+      className = "price";
     }
     let image;
     if (item.img) {
@@ -82,14 +57,10 @@ class Food extends Component {
       );
     }
     let showDiscount;
-    if(this.state.activeDiscountshow == "boxImageDiscount"){
-      showDiscount=(
-        <div className="discountBox">
-dbd;lkdv
-        </div>
-      )
-    }else{
-      showDiscount=('');
+    if (this.state.activeDiscountshow === "boxImageDiscount") {
+      showDiscount = <div className="discountBox">dbd;lkdv</div>;
+    } else {
+      showDiscount = "";
     }
 
     const quantity = item.quantity || 0;
@@ -106,12 +77,26 @@ dbd;lkdv
     }
 
     return (
-      <div className="food_Box col-1-of-3" onMouseEnter={this.hoverfoodBox} onMouseLeave={this.hoverfoodOut}>
+      <React.Fragment>
         <div className="desimg">
-          <figure className={item.discountPercentage == 0 ? 'boxImage': this.state.activeDiscountshow}>{image}</figure>
+          <figure
+            className={
+              item.discountPercentage === 0
+                ? "boxImage"
+                : this.state.activeDiscountshow
+            }
+          >
+            {image}
+          </figure>
           {showDiscount}
           <div className="description">
-            { date < 20 ? <label className="unavailableText"><span >{item.unavailableText}</span></label> : ""}
+            {date < 20 ? (
+              <label className="unavailableText">
+                <span>{item.unavailableText}</span>
+              </label>
+            ) : (
+              ""
+            )}
             <div className="index">
               <h3>{item.title}</h3>
               <p>{truncate(item.ingredient)}</p>
@@ -119,10 +104,10 @@ dbd;lkdv
           </div>
         </div>
         <div className="last">
-   
           <div className={className}>{currancy(item.price)}</div>
-          {
-            item.discountPercentage ? <div>{discountPrice(item.price,item.discountPercentage)}</div> : null }
+          {item.discountPercentage ? (
+            <div>{discountPrice(item.price, item.discountPercentage)}</div>
+          ) : null}
           <div className="addBtn">
             <div className="quantity-holder">
               <button className="btn-plus" onClick={this.changeCount("add")}>
@@ -132,7 +117,7 @@ dbd;lkdv
             </div>
           </div>
         </div>
-      </div>
+      </React.Fragment>
     );
   }
 }

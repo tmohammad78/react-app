@@ -46,7 +46,7 @@ img {
   width: 100%;
   font-size: 20px;
   float: right; // display:inline-block
-  img{
+  img {
     cursor: pointer;
     width: 15px;
     height: 15px;
@@ -66,22 +66,20 @@ img {
   padding-bottom: 6px;
 }
 .desimg {
-  overflow: auto;
-  padding: 8px;
 }
-.quantity{
+.quantity {
   font-size: 20px;
 }
-.quantity-holder{
+.quantity-holder {
   margin-left: 10px;
 }
-.qty-minusBtn{
+.qty-minusBtn {
   display: inline;
 }
-@media only screen and (min-width:600px){
-  .food_section{
+@media only screen and (min-width: 600px) {
+  .food_section {
     padding: 10px;
-      margin: 20px;
+    margin: 20px;
     border-radius: 6px;
   }
   .food_Box {
@@ -91,17 +89,15 @@ img {
     transition: all 0.5s;
     overflow: hidden;
     margin: 8px 56px;
-
   }
   .boxImage {
     text-align: center;
     width: 100%;
   }
-  .boxImageDiscount{
+  .boxImageDiscount {
     filter: brightness(0.5);
-
   }
-  .discountBox{
+  .discountBox {
     top: 0;
     right: 30px;
     color: red;
@@ -109,18 +105,18 @@ img {
   }
   img {
     margin: 0 auto;
-    width: 90%;
+    width: 100%;
   }
   .description {
     position: relative;
     width: 100%;
     float: right;
-    padding: 5px 9px ;
+    padding: 5px 9px;
   }
-  .nullImage{
+  .nullImage {
     width: 71%;
   }
-  .unavailableText{
+  .unavailableText {
     color: #888;
     border-radius: 20px;
     border: 1px solid #eeeeee;
@@ -131,5 +127,4 @@ img {
     background-color: #ffffff;
     padding: 0px 10px;
   }
-
 }

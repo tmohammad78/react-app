@@ -10,12 +10,14 @@ class FoodList extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      foodList: []
+      foodList: [],
+      value: "",
+      show:true
     };
 
     this.foodPack = this.foodPack.bind(this);
     this.onChange = this.onChange.bind(this);
-    this.handleSearch=this.handleSearch.bind(this);
+    this.handleSearch = this.handleSearch.bind(this);
   }
 
   componentWillMount() {
@@ -88,31 +90,89 @@ class FoodList extends Component {
     return food;
   }
 
-  handleSearch(){
-      
+  handleSearch(event) {
+    const value = event.target.value || "";
+    this.setState(
+      {
+        value
+      },
+      () => {
+        this.search(value);
+      }
+    );
   }
 
+  search(value) {
+    //console.log(value)
+    const foodList = [...this.state.foodList];
+    for (var i = 0; i < foodList.length; i++) {
+      for (var j = 0; j < foodList[i].sub.length; j++) {
+        if (foodList[i].sub[j].id === 0) {
+          const subData = foodList[i].sub[j].food;
+          if (subData) {
+            for (var z = 0; z < subData.length; z++) {
+              if (value) {
+                if (
+                  subData[z].title.indexOf(value) > -1 ||
+                  subData[z].ingredient.indexOf(value) > -1
+                ) {
+                  subData[z].hide = false;
+                  this.setState({
+                    show:false
+                  },()=>{
+                    
+                  })
+                } else {
+                  subData[z].hide = true;
+                }
+              } else {
+                subData[z].hide = false;
+              }
+            }
+          }
+        } else {
+          // loop
+        }
+      }
+    }
+
+    this.setState({
+      foodList
+    });
+  }
+
+
   foodPack(item, i) {
+   let title;
+    if(this.state.show){
+      title = item.title;
+    }else{
+      title=''
+    }
     return (
       <div key={`${item.id}-${i}`} id={item.id}>
-        <h1 className="Header">{item.title}</h1>
+        <h1 className="Header">{title}</h1>
         <div className="food_section">
-          {/* {this.props.Food.sub[0].food.map((item, i) => {
-            return <div className="">{item.title}</div>;
-          })} */}
           {item.sub[0].food.map((item, i) => {
             return (
-              <Food
-                key={`${i}`}
-                item={item}
-                onChangeQuantity={this.onChange(item)}
-              />
+              <div
+                key={i}
+                className="food_Box col-1-of-3"
+                style={{ display: item.hide ? "none" : "inline-block" }}
+              >
+                <Food
+                  key={`${i}`}
+                  item={item}
+                  onChangeQuantity={this.onChange(item)}
+                />
+              </div>
             );
           })}
         </div>
       </div>
     );
   }
+
 
   render() {
     if (this.state.foodList.length) {
@@ -134,8 +194,8 @@ class FoodList extends Component {
                   placeholder="جستجوی غذا"
                   name="search-input"
                   onChange={this.handleSearch}
+                  value={this.state.value}
                 />
-
               </div>
             </div>
           </div>
@@ -151,6 +211,7 @@ class FoodList extends Component {
       );
     }
   }
+  
 }
 
 export default FoodList;
