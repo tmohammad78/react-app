@@ -21,7 +21,8 @@ describe('<App/>', () => {
     // wrapper.setState({id : 19300 });
 });
 it('testing props',()=>{
-const wrapper =shallow(<Cart show={this.state.show} />)
+const wrapper =shallow(<Cart show={true} />)
 expect(wrapper.props().show).to.equal(true);
 });
+//wrapper.setprops
 })

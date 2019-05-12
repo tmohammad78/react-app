@@ -2,6 +2,7 @@ import React, { Component } from "react";
 // import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import "../../sass/components/card.scss";
 import "../../sass/layout/grid.scss";
+import '../../helper/index';
 import { truncate, currancy, discountPrice } from "../../helper/index";
 class Food extends Component {
   constructor(props) {
@@ -75,9 +76,19 @@ class Food extends Component {
         </React.Fragment>
       );
     }
-
+    let discount;
+    if(item.discountPercentage){
+      discount=(
+        <div className="discount">
+          <span>{currancy(item.discountPercentage,false)}</span>        
+        </div>
+      )
+    }else{
+      discount='';
+    }
     return (
       <React.Fragment>
+            {discount}
         <div className="desimg">
           <figure
             className={

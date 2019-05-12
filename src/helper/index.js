@@ -1,7 +1,15 @@
-export const currancy = (number) => {
-  const realPrice=number;
-  let final = realPrice.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1,");
-  return toPersianNum(final) + " تومان";
+export const currancy = (number,showToman=true) => {
+  if(showToman){
+    const realPrice=number;
+    let final = realPrice.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1,");
+    return toPersianNum(final) + " تومان";
+  }
+  else{
+    const realPrice=number;
+    let final = realPrice.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1,");
+    return toPersianNum(final) +'%' ;
+  }
+
 };
 
 export const discountPrice = (number,discountPercentage)=>{
