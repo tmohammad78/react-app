@@ -22,7 +22,15 @@ class App extends Component {
             })
           }
         />
-        <Menu show={this.state.show} testing={this.handeler} />
+        <Menu show={this.state.show} testing={this.handeler} onPress={()=>{
+          console.log('before',this.state.show);
+          this.setState({
+            show:false
+          }, () => {
+          console.log('after',this.state.show);
+
+          })
+        }}  />
       </React.Fragment>
     );
   }

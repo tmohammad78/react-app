@@ -34,6 +34,14 @@ class FoodList extends Component {
         prices.sort((a, b) => {
           return a.index - b.index;
         });
+
+
+
+        /// get az local quantity
+
+
+
+
         this.setState({ foodList });
 
         const categories = foodList.map(item => {
@@ -59,6 +67,12 @@ class FoodList extends Component {
     this.setState({
       foodList
     });
+
+
+    // store local
+
+
+    this.props.reloadCart();
   };
 
   getFood(id) {

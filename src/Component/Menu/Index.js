@@ -6,14 +6,22 @@ import "../../sass/layout/grid.scss";
 import "../../sass/layout/foodBox.scss";
 class Menu extends Component {
   state = {
-    categories: []
+    categories: [],
+    cart: []
   };
+
+
   render() {
     return (
       <div className="fullBox">
         <CategoryList items={this.state.categories} />
-        <Cart show={this.props.show} testing={this.props.testing} />
+        
+        <Cart show={this.props.show} testing={this.props.testing} onPress={this.props.onPress}  />
+        
         <FoodList
+          reloadCart={cartData=>{
+
+          }}
           ready={categories =>
             this.setState({
               categories
