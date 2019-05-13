@@ -51,7 +51,9 @@ class FoodList extends Component {
   onChange = food => action => {
     let quantity = food.quantity || 0;
     if (action === "remove") {
-      quantity--;
+      if(quantity > 0){
+        quantity--;
+      }
     } else {
       quantity++;
     }
@@ -60,7 +62,11 @@ class FoodList extends Component {
     this.setState({
       foodList
     });
-    sessionStorage.setItem(food.id, food.quantity);
+      sessionStorage.setItem(food.id, food.quantity);
+    
+    if(food.quantity == 0){
+      sessionStorage.removeItem(food.id);
+    }
 
     // store local
 

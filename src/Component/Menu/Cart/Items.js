@@ -6,11 +6,7 @@ class Items extends Component {
   //   this.props.onPress();
   // }
   render() {
-    return (
-      <div>
-        
-      </div>
-    );
+    return <div />;
   }
 }
 export default Items;

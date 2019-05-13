@@ -14,6 +14,7 @@
   height: 123px;
   padding-top: 10px;
   .indexbox {
+    overflow: hidden;
     text-align: center;
     cursor: pointer;
     border-radius: 6px;
@@ -48,6 +49,7 @@
     height: 132px;
     padding-top: 12px;
     .indexbox {
+      overflow:visible;
       width: 170px;
     }
     img {
