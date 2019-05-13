@@ -1,7 +1,7 @@
 import React, { Component } from "react";
-import Food from "./Food.js";
+import Food from "./food/Food";
 import axios from "axios";
-import Cart from "../Cart/index";
+import Cart from './Cart/Index';
 import "../../sass/components/card.scss";
 import "../../sass/layout/foodBox.scss";
 import "../../sass/layout/grid.scss";

@@ -1,12 +1,10 @@
 import React, { Component } from "react";
-import Cart from "../Cart/index";
 import "../../sass/layout/header.scss";
 import "../../sass/components/button.scss";
 class Header extends Component {
   constructor(props) {
     super(props);
     this.showCart = this.showCart.bind(this);
-
   }
 
   inputChangeHeader = event => {

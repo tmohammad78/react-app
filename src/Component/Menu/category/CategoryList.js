@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 
-import "../../sass/components/category.scss";
+import "../../../sass/components/category.scss";
 import { Link } from "react-scroll";
 
 //import Category  from "./Category";
