@@ -2,7 +2,7 @@ import React, { Component } from "react";
 // import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import "../../../sass/components/card.scss";
 import "../../../sass/layout/grid.scss";
-import '../../../helper/index';
+import "../../../helper/index";
 import { truncate, currancy, discountPrice } from "../../../helper/index";
 class Food extends Component {
   constructor(props) {
@@ -77,18 +77,41 @@ class Food extends Component {
       );
     }
     let discount;
-    if(item.discountPercentage){
-      discount=(
+    if (item.discountPercentage) {
+      discount = (
         <div className="discount">
-          <span>{currancy(item.discountPercentage,false)}</span>        
+          <span>{currancy(item.discountPercentage, false)}</span>
         </div>
-      )
-    }else{
-      discount='';
+      );
+    } else {
+      discount = "";
     }
+
+    let unavailableText;
+    let qty;
+    if (date < 20) {
+      unavailableText = (
+        <label className="unavailableText">
+          <span>{item.unavailableText}</span>
+        </label>
+      );
+    } else {
+      unavailableText = "";
+      qty = (
+        <div className="addBtn">
+          <div className="quantity-holder">
+            <button className="btn-plus" onClick={this.changeCount("add")}>
+              <img src="/img/add.svg" alt="true" />
+            </button>
+            {addBox}
+          </div>
+        </div>
+      );
+    }
+
     return (
       <React.Fragment>
-            {discount}
+        {discount}
         <div className="desimg">
           <figure
             className={
@@ -101,13 +124,6 @@ class Food extends Component {
           </figure>
           {showDiscount}
           <div className="description">
-            {date < 20 ? (
-              <label className="unavailableText">
-                <span>{item.unavailableText}</span>
-              </label>
-            ) : (
-              ""
-            )}
             <div className="index">
               <h3>{item.title}</h3>
               <p>{truncate(item.ingredient)}</p>
@@ -119,14 +135,9 @@ class Food extends Component {
           {item.discountPercentage ? (
             <div>{discountPrice(item.price, item.discountPercentage)}</div>
           ) : null}
-          <div className="addBtn">
-            <div className="quantity-holder">
-              <button className="btn-plus" onClick={this.changeCount("add")}>
-                <img src="/img/add.svg" alt="true" />
-              </button>
-              {addBox}
-            </div>
-          </div>
+          {unavailableText}
+
+          {qty}
         </div>
       </React.Fragment>
     );

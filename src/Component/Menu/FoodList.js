@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import Food from "./food/Food";
 import axios from "axios";
-import Cart from './Cart/Index';
+import Cart from "./Cart/Index";
 import "../../sass/components/card.scss";
 import "../../sass/layout/foodBox.scss";
 import "../../sass/layout/grid.scss";
@@ -35,15 +35,9 @@ class FoodList extends Component {
           return a.index - b.index;
         });
 
-
-
         /// get az local quantity
 
-
-
-
         this.setState({ foodList });
-
         const categories = foodList.map(item => {
           return { id: item.id, title: item.title, logo: item.logo };
         });
@@ -62,15 +56,13 @@ class FoodList extends Component {
       quantity++;
     }
     food.quantity = quantity;
-
     const foodList = [...this.state.foodList];
     this.setState({
       foodList
     });
-
+    sessionStorage.setItem(food.id, food.quantity);
 
     // store local
-
 
     this.props.reloadCart();
   };

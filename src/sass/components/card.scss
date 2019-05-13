@@ -9,12 +9,31 @@
   background: red;
 }
 .food_Box {
+  position: relative;
   border: 1px solid #eeeeee;
   border-radius: 9px;
   display: inline-block;
   transition: all 0.5s;
-  overflow: hidden;
+  overflow: visible;
   margin: 10px auto;
+}
+.discount {
+  text-align: center;
+  color: white;
+  top: -10px;
+  width: 40px;
+  height: 40px;
+  position: absolute;
+  -webkit-border-top-left-radius: 9px;
+  -webkit-border-top-right-radius: 9px;
+  -webkit-border-bottom-right-radius: 204px;
+  -moz-border-radius-topleft: 9px;
+  -moz-border-radius-topright: 9px;
+  -moz-border-radius-bottomright: 204px;
+  border-top-left-radius: 9px;
+  border-top-right-radius: 9px;
+  border-bottom-right-radius: 204px;
+  background: linear-gradient(-60deg, #ef4123, #ef2379);
 }
 
 .food_Box:hover,
@@ -42,6 +61,7 @@ img {
   padding: 5px;
 }
 .last {
+  position: relative;
   background-color: #eeeeee;
   width: 100%;
   font-size: 20px;
@@ -51,6 +71,17 @@ img {
     width: 15px;
     height: 15px;
   }
+}
+.unavailableText {
+  color: #888;
+  border-radius: 20px;
+  border: 1px solid #eeeeee;
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  font-size: 14px;
+  background-color: #ffffff;
+  padding: 0px 10px;
 }
 .price {
   float: right;
@@ -76,6 +107,7 @@ img {
 .qty-minusBtn {
   display: inline;
 }
+
 @media only screen and (min-width: 600px) {
   .food_section {
     padding: 10px;
@@ -91,25 +123,7 @@ img {
     position: relative;
     overflow: visible;
   }
-  .discount{
-    text-align: center;
-    color: white;
-    top: -10px;
-    width: 40px;
-    height: 40px;
-    position: absolute;
-    right: 0;
-    -webkit-border-top-left-radius: 9px;
--webkit-border-top-right-radius: 9px;
--webkit-border-bottom-left-radius: 204px;
--moz-border-radius-topleft: 9px;
--moz-border-radius-topright: 9px;
--moz-border-radius-bottomleft: 204px;
-border-top-left-radius: 9px;
-border-top-right-radius: 9px;
-border-bottom-left-radius: 204px;
-background:linear-gradient(-60deg,#ef4123,#ef2379);
-  }
+
   .boxImage {
     text-align: center;
     width: 100%;
@@ -136,15 +150,17 @@ background:linear-gradient(-60deg,#ef4123,#ef2379);
   .nullImage {
     width: 71%;
   }
-  .unavailableText {
-    color: #888;
-    border-radius: 20px;
-    border: 1px solid #eeeeee;
-    position: absolute;
-    top: 18px;
-    left: 0;
-    font-size: 14px;
-    background-color: #ffffff;
-    padding: 0px 10px;
+  .discount {
+    right: 0px;
+    background: linear-gradient(-60deg, #ef4123, #ef2379);
+    -webkit-border-top-left-radius: 9px;
+    -webkit-border-top-right-radius: 9px;
+    -webkit-border-bottom-left-radius: 204px;
+    -moz-border-radius-topleft: 9px;
+    -moz-border-radius-topright: 9px;
+    -moz-border-radius-bottomleft: 204px;
+    border-top-left-radius: 9px;
+    border-top-right-radius: 9px;
+    border-bottom-right-radius: 5px;
   }
 }

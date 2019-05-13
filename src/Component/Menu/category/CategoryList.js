@@ -1,10 +1,7 @@
 import React, { Component } from "react";
-
 import "../../../sass/components/category.scss";
 import { Link } from "react-scroll";
-
 //import Category  from "./Category";
-
 class CategoryList extends Component {
   renderItem(item) {
     return (
@@ -24,7 +21,6 @@ class CategoryList extends Component {
       </Link>
     );
   }
-
   render() {
     return (
       <div className="parent">
@@ -35,5 +31,4 @@ class CategoryList extends Component {
     );
   }
 }
-
 export default CategoryList;

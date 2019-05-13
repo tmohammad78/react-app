@@ -133,9 +133,10 @@
   width: 100%;
   height: 100%;
   z-index: 4500;
+  top: 0px;
 }
 .cartBox {
-  width: 22%;
+  width: 100%;
   position: absolute;
   top: 0;
   left: 0;
@@ -143,6 +144,7 @@
   background: white;
 }
 .header-cart {
+    position: relative;
   padding-top: 9px;
   border-bottom: 1px solid #eeeeee;
   padding-bottom: 15px;
@@ -150,10 +152,12 @@
   color: white;
 }
 .close-icon {
-  width: 30px;
-  height: 30px;
+  cursor: pointer;
+  width: 20px;
+  height: 20px;
 }
 .cart-text {
+    position: absolute;
   direction: rtl;
   text-align: right;
   float: right;
@@ -161,4 +165,17 @@
   font-size: 30px;
   line-height: 12px;
   padding: 4px 11px;
+  top: 0;
+  right: 5px;
+}
+.finalOrder {
+    border-top: 1px solid #eeeeee;
+    padding-top: 10px;
+    text-align: center;
+  }
+@media only screen and (min-width: 600px) {
+  .cartBox {
+    width: 22%;
+  }
+
 }
