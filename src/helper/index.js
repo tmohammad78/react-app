@@ -1,4 +1,4 @@
-export const currancy = (number,showToman=true) => {
+export const currency = (number,showToman=true) => {
   if(showToman){
     const realPrice=number;
     let final = realPrice.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1,");

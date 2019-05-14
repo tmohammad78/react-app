@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import Food from "./food/Food";
 import axios from "axios";
 import Cart from "./Cart/Index";
+import { parseMenu } from "./util/menu";
 import "../../sass/components/card.scss";
 import "../../sass/layout/foodBox.scss";
 import "../../sass/layout/grid.scss";
@@ -11,7 +12,7 @@ class FoodList extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      foodList: [],
+      foodList: null,
       value: "",
       show: true
     };
@@ -29,18 +30,30 @@ class FoodList extends Component {
       )
       .then(response => {
         const { data } = response;
-        const foodList = data.categories;
-        const prices = foodList;
-        prices.sort((a, b) => {
-          return a.index - b.index;
-        });
+        const menu = parseMenu(data);
+        console.log(menu);
+
+        // foodList = foodList.sort((a, b) => {
+        //   return a.index - b.index;
+        // });
 
         /// get az local quantity
+        // let tempCart = sessionStorage.getItem("key");
+        // console.log(tempCart);
 
-        this.setState({ foodList });
-        const categories = foodList.map(item => {
-          return { id: item.id, title: item.title, logo: item.logo };
-        });
+        // if (tempCart) {
+        //   let cart_arr = tempCart.split("-");
+        //   cart_arr.forEach(node => {
+        //     let item = node.split(":");
+        //     const quantity = parseInt(item[1]);
+        //     if (quantity > 0) {
+        //       cart[item[0]] = quantity;
+        //     }
+        //   });
+        // }
+
+        this.setState({ foodList: menu.menuList });
+        const categories = menu.categoryList;
         ready(categories);
       })
       .catch(error => {
@@ -51,7 +64,7 @@ class FoodList extends Component {
   onChange = food => action => {
     let quantity = food.quantity || 0;
     if (action === "remove") {
-      if(quantity > 0){
+      if (quantity > 0) {
         quantity--;
       }
     } else {
@@ -62,13 +75,15 @@ class FoodList extends Component {
     this.setState({
       foodList
     });
-      sessionStorage.setItem(food.id, food.quantity);
-    
-    if(food.quantity == 0){
-      sessionStorage.removeItem(food.id);
-    }
+
+    console.log(foodList);
 
     // store local
+    sessionStorage.setItem("key", food.id);
+
+    if (food.quantity === 0) {
+      sessionStorage.removeItem(food.id);
+    }
 
     this.props.reloadCart();
   };
@@ -119,40 +134,29 @@ class FoodList extends Component {
     //console.log(value)
     const foodList = [...this.state.foodList];
     for (var i = 0; i < foodList.length; i++) {
-      for (var j = 0; j < foodList[i].sub.length; j++) {
-        if (foodList[i].sub[j].id === 0) {
-          const subData = foodList[i].sub[j].food;
-          if (subData) {
-            for (var z = 0; z < subData.length; z++) {
-              if (value) {
-                if (
-                  subData[z].title.indexOf(value) > -1 ||
-                  subData[z].ingredient.indexOf(value) > -1
-                ) {
-                  subData[z].hide = false;
-                  this.setState(
-                    {
-                      show: false
-                    },
-                    () => {}
-                  );
-                } else {
-                  subData[z].hide = true;
-                }
-              } else {
-                subData[z].hide = false;
-              }
-            }
+      for (var j = 0; j < foodList[i].foods.length; j++) {
+        console.log(foodList[i].foods[j]);
+        if (value) {
+          if (
+            foodList[i].foods[j].title.indexOf(value) > -1 ||
+            foodList[i].foods[j].ingredient.indexOf(value) > -1
+          ) {
+            console.log(foodList[i].foods[j].title, true);
+            foodList[i].foods[j].hide = false;
+            // subData[z].hide = false;
+            this.setState({
+              show: false
+            });
+          } else {
+            foodList[i].foods[j].hide = true;
+            // subData[z].hide = true;
           }
         } else {
-          // loop
+          foodList[i].foods[j].hide = false;
+          // subData[z].hide = false;
         }
       }
     }
-
-    this.setState({
-      foodList
-    });
   }
 
   foodPack(item, i) {
@@ -164,9 +168,9 @@ class FoodList extends Component {
     }
     return (
       <div key={`${item.id}-${i}`} id={item.id}>
-        <h1 className="Header">{title}</h1>
+        <h1 className="Header" style={{ borderBottom:"2px solid #eeee"}}>{title}</h1>
         <div className="food_section">
-          {item.sub[0].food.map((item, i) => {
+          {item.foods.map((item, i) => {
             return (
               <div
                 key={i}
@@ -187,7 +191,8 @@ class FoodList extends Component {
   }
 
   render() {
-    if (this.state.foodList.length) {
+    const foodList = this.state.foodList;
+    if (foodList) {
       return (
         <React.Fragment>
           <div className="shopCart">
@@ -215,7 +220,7 @@ class FoodList extends Component {
                 </div>
               </div>
             </div>
-            {this.state.foodList.map(this.foodPack)}
+            {foodList.map(this.foodPack)}
           </div>
         </React.Fragment>
       );

@@ -12,7 +12,8 @@
     "react-fontawesome": "^1.6.1",
     "react-router-dom": "^5.0.0",
     "react-scripts": "2.1.8",
-    "react-scroll": "^1.7.11"
+    "react-scroll": "^1.7.11",
+    "underscore": "^1.9.1"
   },
   "scripts": {
     "start": "react-scripts start",

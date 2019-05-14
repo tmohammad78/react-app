@@ -3,7 +3,7 @@ import React, { Component } from "react";
 import "../../../sass/components/card.scss";
 import "../../../sass/layout/grid.scss";
 import "../../../helper/index";
-import { truncate, currancy, discountPrice } from "../../../helper/index";
+import { truncate, currency, discountPrice } from "../../../helper/index";
 class Food extends Component {
   constructor(props) {
     super();
@@ -80,7 +80,7 @@ class Food extends Component {
     if (item.discountPercentage) {
       discount = (
         <div className="discount">
-          <span>{currancy(item.discountPercentage, false)}</span>
+          <span>{currency(item.discountPercentage, false)}</span>
         </div>
       );
     } else {
@@ -89,7 +89,7 @@ class Food extends Component {
 
     let unavailableText;
     let qty;
-    if (date < 17) {
+    if (date < 13) {
       unavailableText = (
         <label className="unavailableText">
           <span>{item.unavailableText}</span>
@@ -131,7 +131,7 @@ class Food extends Component {
           </div>
         </div>
         <div className="last">
-          <div className={className}>{currancy(item.price)}</div>
+          <div className={className}>{currency(item.price)}</div>
           {item.discountPercentage ? (
             <div>{discountPrice(item.price, item.discountPercentage)}</div>
           ) : null}

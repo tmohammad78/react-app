@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import Items from "./Items";
 import "../../../sass/components/cart.scss";
 import "../../../sass/components/button.scss";
 class Cart extends Component {
@@ -23,10 +22,12 @@ class Cart extends Component {
               </button>
               <div className="cart-text">
                 <img
+
                   className="shopping-cart-icon"
                   style={{ paddingTop: 10 }}
                   src="/img/shopping-cart.svg"
-                />
+                alt=""
+              />
                 <span style={{ display: "inline" }}>سبد خرید</span>
               </div>
             </header>
@@ -61,6 +62,3 @@ class Cart extends Component {
   }
 }
 export default Cart;
-{
-  /* <div>{this.props.show ? <Items onPress={this.props.testing} /> : <div />}</div> */
-}
