@@ -22,6 +22,10 @@ class Food extends Component {
     onChangeQuantity(action);
   };
 
+  // modal = e => {
+  //   this.props;
+  // };
+
   render() {
     let className;
     let date = new Date().getHours();
@@ -46,6 +50,7 @@ class Food extends Component {
           className="food_Box__img"
           src={this.imageFood(item.img)}
           alt="true"
+          onClick={this.modal}
         />
       );
     } else {

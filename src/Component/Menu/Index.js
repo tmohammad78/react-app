@@ -8,7 +8,7 @@ class Menu extends Component {
   state = {
     categories: [],
     cart: [],
-    cartData:[]
+    cartData: []
   };
   render() {
     return (

@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import Food from "./food/Food";
 import axios from "axios";
 import Cart from "./Cart/Index";
+import Modal from './modal/Index';
 import { parseMenu } from "./util/menu";
 import "../../sass/components/card.scss";
 import "../../sass/layout/foodBox.scss";
@@ -14,7 +15,8 @@ class FoodList extends Component {
     this.state = {
       foodList: null,
       value: "",
-      show: true
+      show: true,
+      showModal:true
     };
 
     this.foodPack = this.foodPack.bind(this);
@@ -168,7 +170,9 @@ class FoodList extends Component {
     }
     return (
       <div key={`${item.id}-${i}`} id={item.id}>
-        <h1 className="Header" style={{ borderBottom:"2px solid #eeee"}}>{title}</h1>
+        <h1 className="Header" style={{ borderBottom: "2px solid #eeee" }}>
+          {title}
+        </h1>
         <div className="food_section">
           {item.foods.map((item, i) => {
             return (
@@ -222,6 +226,12 @@ class FoodList extends Component {
             </div>
             {foodList.map(this.foodPack)}
           </div>
+          <Modal 
+              showing={data => this.setState({
+                
+              })}
+              data={foodList}
+          />
         </React.Fragment>
       );
     } else {
