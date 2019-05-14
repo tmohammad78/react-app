@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import Food from "./food/Food";
 import axios from "axios";
 import Cart from "./Cart/Index";
-import Modal from './modal/Index';
+import Modal from "./modal/Index";
 import { parseMenu } from "./util/menu";
 import "../../sass/components/card.scss";
 import "../../sass/layout/foodBox.scss";
@@ -16,7 +16,7 @@ class FoodList extends Component {
       foodList: null,
       value: "",
       show: true,
-      showModal:true
+      selectedFood: null
     };
 
     this.foodPack = this.foodPack.bind(this);
@@ -185,6 +185,11 @@ class FoodList extends Component {
                   key={`${i}`}
                   item={item}
                   onChangeQuantity={this.onChange(item)}
+                  onSelect={() => {
+                    this.setState({
+                      selectedFood: item
+                    });
+                  }}
                 />
               </div>
             );
@@ -226,12 +231,31 @@ class FoodList extends Component {
             </div>
             {foodList.map(this.foodPack)}
           </div>
-          <Modal 
-              showing={data => this.setState({
-                
-              })}
-              data={foodList}
-          />
+          {/* 
+        <Modal backDrop={true} title="dszfsdfsdf" close={true} isOpen="this.state.showModal">
+          
+        </Modal> */}
+
+          {this.state.selectedFood ? (
+            <div
+              style={{
+                position: "fixed",
+                width: 100,
+                height: 100,
+                top: "50%",
+                left: "50%",
+                marginLeft: -50,
+                marginTop: -50,
+                zIndex: 0
+              }}
+            >
+              <Food
+                inModal={true}
+                item={this.state.selectedFood}
+                onChangeQuantity={this.onChange(this.state.selectedFood)}
+              />
+            </div>
+          ) : null}
         </React.Fragment>
       );
     } else {

@@ -13,7 +13,7 @@ class Food extends Component {
     };
   }
 
-  imageFood = data => {
+  imageFood(data){
     return data.replace("#SIZEOFIMAGE#", "280x175");
   };
 
@@ -22,9 +22,12 @@ class Food extends Component {
     onChangeQuantity(action);
   };
 
-  // modal = e => {
-  //   this.props;
-  // };
+  showDetails(e){
+    e.preventDefault();
+    if (!this.props.inModal){
+      this.props.onSelect();
+    }
+  };
 
   render() {
     let className;
@@ -50,7 +53,7 @@ class Food extends Component {
           className="food_Box__img"
           src={this.imageFood(item.img)}
           alt="true"
-          onClick={this.modal}
+          onClick={this.showDetails.bind(this)}
         />
       );
     } else {
