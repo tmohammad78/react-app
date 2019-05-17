@@ -1,26 +1,75 @@
 import React, { Component } from "react";
-import "../../../sass/components/popup.scss";
+import { currency, discountPrice } from "../../../helper/index";
+import '../../../sass/components/popup.scss';
 class Modal extends Component {
   constructor(props) {
     super(props);
   }
+
+  imageFood(data){
+    return data.replace("#SIZEOFIMAGE#", "280x175");
+  };
+  close =(e)=>{
+    e.preventDefault();
+    this.props.isOpen();
+  }
   render() {
+
+    let image;
+    if (this.props.item.img) {
+      image = (
+        <img
+          className="imageFood"
+          src={this.imageFood(this.props.item.img)}
+          alt="true"
+        />
+      );
+    } else {
+      image = (
+        <img
+          className="imageFood nullImage"
+          src="/img/fig-cart-empty.png"
+          alt="true"
+        />
+      );
+    }
+
+    let discount;
+    if (this.props.item.discountPercentage) {
+      discount = (
+        <div className="discount discount-popup">
+          <span>{currency(this.props.item.discountPercentage, false)}</span>
+        </div>
+      );
+    } else {
+      discount = "";
+    }
+console.log(this.props.item);
+    // const items=this.props.item;
+    //food-box-holder
     return (
-      <div className="popup__content food-box-holder">
+
+    <div className="popup">
+      <div className="popup__content ">
+        {discount}
         <header>
-          <button className="btn-action anc-close" />
+          <button className="btn-action anc-close">
+            <img className="closeImg" src="/img/close.svg" onClick={this.close} ></img>
+          </button>
         </header>
         <section>
-          <figure className="figure" />
+          <figure className="figure">
+            {image}
+          </figure>
           <div className="details">
             <h2> {this.props.title} </h2>
-            <div className="ingredient">{this.props.ingredient}</div>
+            <div className="ingredient">{this.props.item.ingredient}</div>
             <footer>
-              <span className="price">{this.props.price} </span>
+              <span className="price">{currency(this.props.item.price)} </span>
               <div className="quantity-holder">
                 <button className="btn-plus" />
-                <span classNameName="quantity"> </span>
-                <button classNameName="btn-minus" />
+                <span className="quantity"> </span>
+                <button className="btn-minus" />
               </div>
             </footer>
           </div>
@@ -28,6 +77,8 @@ class Modal extends Component {
             <button className="btn-cart">افزودن به سبد خرید</button>
           </div>
         </section>
+      </div>
+      
       </div>
     );
   }

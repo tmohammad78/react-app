@@ -65,12 +65,6 @@ class Food extends Component {
         />
       );
     }
-    let showDiscount;
-    if (this.state.activeDiscountshow === "boxImageDiscount") {
-      showDiscount = <div className="discountBox">dbd;lkdv</div>;
-    } else {
-      showDiscount = "";
-    }
 
     const quantity = item.quantity || 0;
     let addBox;
@@ -130,7 +124,6 @@ class Food extends Component {
           >
             {image}
           </figure>
-          {showDiscount}
           <div className="description">
             <div className="index">
               <h3>{item.title}</h3>
