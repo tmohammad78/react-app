@@ -6,17 +6,6 @@ class Modal extends Component {
     super(props);
   }
 
-<<<<<<< HEAD
-  imageFood(data){
-    return data.replace("#SIZEOFIMAGE#", "280x175");
-  };
-  close =(e)=>{
-    e.preventDefault();
-    this.props.isOpen();
-    this.props.close();
-  }
-=======
->>>>>>> 1dea717c9f7beac34299c384b58b319f218fd740
   render() {
     console.log(this.props.item);
     return (
