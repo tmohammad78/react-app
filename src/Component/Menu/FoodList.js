@@ -16,8 +16,7 @@ class FoodList extends Component {
       foodList: null,
       value: "",
       show: true,
-      selectedFood: null,
-      showModal:true
+      modalSelectedFood: null
     };
 
     this.foodPack = this.foodPack.bind(this);
@@ -171,7 +170,7 @@ class FoodList extends Component {
     }
     return (
       <div key={`${item.id}-${i}`} id={item.id}>
-        <h1 className="Header" style={{ borderBottom: "2px solid #eeee" }}>
+        <h1 className="Header">
           {title}
         </h1>
         <div className="food_section">
@@ -188,7 +187,7 @@ class FoodList extends Component {
                   onChangeQuantity={this.onChange(item)}
                   onSelect={() => {
                     this.setState({
-                      selectedFood: item
+                      modalSelectedFood: item
                     });
                   }}
                 />
@@ -209,36 +208,45 @@ class FoodList extends Component {
             <Cart />
           </div>
           <div className="foodBox">
-            <div className="searchBox">
-              <div action="#" className="search">
-                <div className="box-input">
-                  <div className="box-searchicon">
-                    <img
-                      className="search-img"
-                      src="/img/search.svg"
-                      alt="search"
+            <div className="foodBox-inner">
+              <div className="searchBox">
+                <div action="#" className="search">
+                  <div className="box-input">
+                    <div className="box-searchicon">
+                      <img
+                        className="search-img"
+                        src="/img/search.svg"
+                        alt="search"
+                      />
+                    </div>
+                    <input
+                      type="text"
+                      className="search__input"
+                      placeholder="جستجوی غذا"
+                      name="search-input"
+                      onChange={this.handleSearch}
+                      value={this.state.value}
                     />
                   </div>
-                  <input
-                    type="text"
-                    className="search__input"
-                    placeholder="جستجوی غذا"
-                    name="search-input"
-                    onChange={this.handleSearch}
-                    value={this.state.value}
-                  />
                 </div>
               </div>
+              {foodList.map(this.foodPack)}
             </div>
-            {foodList.map(this.foodPack)}
           </div>
-          {this.state.selectedFood && this.state.showModal  ? 
-        <Modal item={this.state.selectedFood}  backDrop={true} title={this.state.selectedFood.title} close={()=>{this.setState({ closeModal })}} isOpen={()=>{ this.setState({ showModal:false  }) }}>
-          
-        </Modal>
-           :
-          null
-          }
+
+          {this.state.modalSelectedFood ? (
+            <Modal
+              item={this.state.modalSelectedFood}
+              backDrop={true}
+              close={true}
+              onClose={() => {
+                this.setState({
+                  modalSelectedFood: null
+                });
+              }}
+            />
+          ) : null}
+
           {/* {this.state.selectedFood ? (
             <div className="modal">
               <Food

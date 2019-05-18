@@ -13,21 +13,21 @@ class Food extends Component {
     };
   }
 
-  imageFood(data){
+  imageFood(data) {
     return data.replace("#SIZEOFIMAGE#", "280x175");
-  };
+  }
 
   changeCount = action => e => {
     const { onChangeQuantity } = this.props;
     onChangeQuantity(action);
   };
 
-  showDetails(e){
+  showDetails(e) {
     e.preventDefault();
-    if (!this.props.inModal){
+    if (!this.props.inModal) {
       this.props.onSelect();
     }
-  };
+  }
 
   render() {
     let className;
@@ -91,7 +91,7 @@ class Food extends Component {
 
     let unavailableText;
     let qty;
-    if (date < 13) {
+    if (date < 10) {
       unavailableText = (
         <label className="unavailableText">
           <span>{item.unavailableText}</span>
