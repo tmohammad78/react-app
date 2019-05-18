@@ -1,10 +1,3 @@
-// .modal {
-// }
-.selected {
-  .quantity {
-    display: inline;
-  }
-}
 .imageFood {
   width: 100%;
   border-radius: 10px;
@@ -23,9 +16,6 @@
 .quantity-holder {
   margin: 5px 19px;
   float: left;
-}
-.quantity {
-  display: none;
 }
 .countcart {
   background: linear-gradient(-60deg, #ef4123, #ef2379) !important;
@@ -48,11 +38,15 @@ footer {
 .footerpopup {
   overflow: hidden;
 }
-.closeImg{
+.closeImg {
   width: 25px;
   height: 25px;
   color: #eee;
-
+}
+.addModal {
+  width: 15px;
+  height: 15px;
+  cursor: pointer;
 }
 @media only screen and (max-width: 600px) {
   .details {
@@ -83,7 +77,6 @@ footer {
   }
 }
 
-
 .popup {
   visibility: visible;
   width: 100%;
@@ -94,23 +87,23 @@ footer {
   background-color: rgba(black, 0.5);
   z-index: 4000;
 }
-  .popup__content {
-    border-radius: 5px;
-    width: 35%;
-    transform: translateY(23%);
-    margin: 0 auto;
-    background-color: white;
-    .figure{
-        padding: 10px 30px;
-    }
+.popup__content {
+  border-radius: 5px;
+  width: 28%;
+  transform: translateY(23%);
+  margin: 0 auto;
+  background-color: white;
+  .figure {
+    padding: 10px 30px;
   }
-.modal{
-    position: fixed;
-    width: 100px;
-    height: 100px;
-    top: 50%;
-    left: 50%;
-    margin-left: -50;
-    margin-top: -50;
-    z-index: 0;
+}
+.modal {
+  position: fixed;
+  width: 100px;
+  height: 100px;
+  top: 50%;
+  left: 50%;
+  margin-left: -50;
+  margin-top: -50;
+  z-index: 0;
 }

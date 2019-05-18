@@ -1,7 +1,17 @@
 .foodBox {
-  padding: 150px 0px;
-  width: 90%;
-  margin: 0 auto;
+  position: absolute;
+  top: 18px;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+  width: 100%;
+  z-index: 1000;
+  margin-top: 175px;
+  // margin: 0 auto;
+  background: white;
+  .foodBox-inner {
+    width: 80%;
+    margin: 0 auto;
+  }
 }
 .lds-dual-ring {
   position: absolute;

@@ -91,7 +91,7 @@ class Food extends Component {
 
     let unavailableText;
     let qty;
-    if (date < 13) {
+    if (date < 10) {
       unavailableText = (
         <label className="unavailableText">
           <span>{item.unavailableText}</span>

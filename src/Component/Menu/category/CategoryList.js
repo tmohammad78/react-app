@@ -14,9 +14,11 @@ class CategoryList extends Component {
         smooth={true}
         offset={-70}
       >
-        <div className="inner scroll">
-          <img className="img" src={`/img/${item.logo}.png`} alt="true" />
-          <b className="caption">{item.title}</b>
+        <div className="inner">
+          <figure>
+             <div className="imagetest"><img className="img" src={`/img/${item.logo}.png`} alt="true" /></div>
+            <span className="caption">{item.tilte}</span>
+          </figure>
         </div>
       </Link>
     );
