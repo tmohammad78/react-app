@@ -233,7 +233,7 @@ class FoodList extends Component {
             {foodList.map(this.foodPack)}
           </div>
           {this.state.selectedFood && this.state.showModal  ? 
-        <Modal item={this.state.selectedFood}  backDrop={true} title={this.state.selectedFood.title} close={true} isOpen={()=>{ this.setState({ showModal:false  }) }}>
+        <Modal item={this.state.selectedFood}  backDrop={true} title={this.state.selectedFood.title} close={()=>{this.setState({ closeModal })}} isOpen={()=>{ this.setState({ showModal:false  }) }}>
           
         </Modal>
            :

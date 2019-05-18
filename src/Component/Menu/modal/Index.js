@@ -12,6 +12,7 @@ class Modal extends Component {
   close =(e)=>{
     e.preventDefault();
     this.props.isOpen();
+    this.props.close();
   }
   render() {
 
