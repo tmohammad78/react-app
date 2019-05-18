@@ -13,21 +13,21 @@ class Food extends Component {
     };
   }
 
-  imageFood(data){
+  imageFood(data) {
     return data.replace("#SIZEOFIMAGE#", "280x175");
-  };
+  }
 
   changeCount = action => e => {
     const { onChangeQuantity } = this.props;
     onChangeQuantity(action);
   };
 
-  showDetails(e){
+  showDetails(e) {
     e.preventDefault();
-    if (!this.props.inModal){
+    if (!this.props.inModal) {
       this.props.onSelect();
     }
-  };
+  }
 
   render() {
     let className;
@@ -64,12 +64,6 @@ class Food extends Component {
           alt="true"
         />
       );
-    }
-    let showDiscount;
-    if (this.state.activeDiscountshow === "boxImageDiscount") {
-      showDiscount = <div className="discountBox">dbd;lkdv</div>;
-    } else {
-      showDiscount = "";
     }
 
     const quantity = item.quantity || 0;
@@ -130,7 +124,6 @@ class Food extends Component {
           >
             {image}
           </figure>
-          {showDiscount}
           <div className="description">
             <div className="index">
               <h3>{item.title}</h3>

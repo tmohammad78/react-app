@@ -16,7 +16,8 @@ class FoodList extends Component {
       foodList: null,
       value: "",
       show: true,
-      selectedFood: null
+      selectedFood: null,
+      showModal: true
     };
 
     this.foodPack = this.foodPack.bind(this);
@@ -231,31 +232,26 @@ class FoodList extends Component {
             </div>
             {foodList.map(this.foodPack)}
           </div>
-          {/* 
-        <Modal backDrop={true} title="dszfsdfsdf" close={true} isOpen="this.state.showModal">
-          
-        </Modal> */}
-
-          {this.state.selectedFood ? (
-            <div
-              style={{
-                position: "fixed",
-                width: 100,
-                height: 100,
-                top: "50%",
-                left: "50%",
-                marginLeft: -50,
-                marginTop: -50,
-                zIndex: 0
+          {this.state.selectedFood && this.state.showModal ? (
+            <Modal
+              item={this.state.selectedFood}
+              backDrop={true}
+              title={this.state.selectedFood.title}
+              close={true}
+              isOpen={() => {
+                this.setState({ showModal: false });
               }}
-            >
+            />
+          ) : null}
+          {/* {this.state.selectedFood ? (
+            <div className="modal">
               <Food
                 inModal={true}
                 item={this.state.selectedFood}
                 onChangeQuantity={this.onChange(this.state.selectedFood)}
               />
             </div>
-          ) : null}
+          ) : null} */}
         </React.Fragment>
       );
     } else {
