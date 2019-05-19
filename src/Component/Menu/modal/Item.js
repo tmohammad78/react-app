@@ -11,7 +11,7 @@ class Item extends Component {
   }
 
   imageFood(data) {
-    return data.replace("#SIZEOFIMAGE#", "280x175");
+    return data.replace("#SIZEOFIMAGE#", "560x350");
   }
 
   close = e => {
@@ -72,8 +72,7 @@ class Item extends Component {
 
     return (
       <div className="popup__content ">
-        {discount}
-        <header>
+        <header className="header">
           <button className="btn-action anc-close">
             <img
               className="closeImg"
@@ -84,8 +83,10 @@ class Item extends Component {
         </header>
         <section>
           <figure className="figure">{image}</figure>
+          <div className="bottomBox">
+          {discount}
           <div className="details">
-            <h2> {item.title} </h2>
+            <h1 style={{ color:"black" }} > {item.title} </h1>
             <div className="ingredient">{item.ingredient}</div>
             <footer>
               <span className="price">{currency(item.price)} </span>
@@ -95,6 +96,8 @@ class Item extends Component {
           <div className="parent-btn">
             <button className="btn-cart">افزودن به سبد خرید</button>
           </div>
+          </div>
+
         </section>
       </div>
     );

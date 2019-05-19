@@ -1,3 +1,62 @@
+.popup{
+  // visibility: visible;
+  // width: 100%;
+  // height: 100vh;
+  // position: fixed;
+  // top: 0;
+  // right: 0;
+  // background-color: rgba(black, 0.5);
+  // z-index: 4000;
+  .popup__content {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    height: 100vh;
+    z-index: 4000;
+    background: white;
+    .popup__content-img {
+      width: 90%;
+      .popup__content-img--inner {
+        width: 100%;
+      }
+    }
+    .popup__content-title {
+      font-size: 3.5rem;
+    }
+    .popup__content-text {
+      width: 90%;
+    }
+    .popup__content-ingredient {
+      padding-top: 10px;
+      font-size: 15px;
+      color: rgb(116, 114, 114);
+    }
+    .bottomBox{
+      color: white;
+      position: relative;
+      height: 100vh;
+      // background: linear-gradient(-60deg, #ef4123, #ef2379);
+      background: #b74b4be3;
+      top: -45px;
+      border-top-right-radius: 35px;
+      border-top-left-radius: 35px;
+      .ingredient{
+        padding: 15px;
+        text-align: center;
+        font-size: 18px;
+      }
+      .discount-popup{
+        top: 12px;
+        left: 12px;
+        position: absolute;
+      }
+    }
+    .header{
+      padding: 10px 0px;
+    }
+  }
+}
+
 .imageFood {
   width: 100%;
   border-radius: 10px;
@@ -7,10 +66,11 @@
   cursor: default !important ;
 }
 .details {
-  padding: 9px;
-  direction: rtl;
+  padding: 33px 14px;
+    direction: rtl;
 }
 .price {
+  font-size: 24px;
   float: right;
 }
 .quantity-holder {
@@ -28,6 +88,7 @@
   color: white;
 }
 footer {
+  padding: 15px;
   display: inline-block;
   width: 100%;
 }
@@ -48,55 +109,48 @@ footer {
   height: 15px;
   cursor: pointer;
 }
-@media only screen and (max-width: 600px) {
-  .details {
-    font-size: 18px;
-  }
-  .popup {
-    .popup__content {
-      width: 95%;
-      transform: translateY(25%);
-      .popup__content-img {
-        width: 90%;
-        .popup__content-img--inner {
-          width: 100%;
-        }
-      }
-      .popup__content-title {
-        font-size: 3.5rem;
-      }
-      .popup__content-text {
-        width: 90%;
-      }
-      .popup__content-ingredient {
-        padding-top: 10px;
-        font-size: 15px;
-        color: rgb(116, 114, 114);
-      }
-    }
-  }
-}
+// @media only screen and (max-width: 600px) {
+//   .details {
+//     font-size: 18px;
+//   }
+//   .popup {
+//     .popup__content {
+//       width: 95%;
+//       transform: translateY(25%);
+//       .popup__content-img {
+//         width: 90%;
+//         .popup__content-img--inner {
+//           width: 100%;
+//         }
+//       }
+//       .popup__content-title {
+//         font-size: 3.5rem;
+//       }
+//       .popup__content-text {
+//         width: 90%;
+//       }
+//       .popup__content-ingredient {
+//         padding-top: 10px;
+//         font-size: 15px;
+//         color: rgb(116, 114, 114);
+//       }
+//     }
+//   }
+// }
 
 .popup {
-  visibility: visible;
-  width: 100%;
-  height: 100vh;
-  position: fixed;
-  top: 0;
-  right: 0;
-  background-color: rgba(black, 0.5);
-  z-index: 4000;
+ 
 }
-.popup__content {
-  border-radius: 5px;
-  width: 28%;
-  transform: translateY(23%);
-  margin: 0 auto;
-  background-color: white;
-  .figure {
-    padding: 10px 30px;
-  }
-}
+// .popup__content {
+//   border-radius: 5px;
+//   width: 28%;
+//   transform: translateY(23%);
+//   margin: 0 auto;
+//   background-color: white;
+//   .figure {
+//     padding: 10px 30px;
+//   }
+// }
 .modal {
   position: fixed;
   width: 100px;

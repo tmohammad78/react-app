@@ -1,6 +1,6 @@
 .foodBox {
   position: absolute;
-  top: 18px;
+  top: -3px;
   border-top-left-radius: 10px;
   border-top-right-radius: 10px;
   width: 100%;
@@ -16,6 +16,7 @@
 .lds-dual-ring {
   position: absolute;
   display: inline-block;
+  transform: translate(50%,50%);
   top: 50%;
   right: 50%;
   width: 64px;
@@ -30,8 +31,8 @@
   margin: 1px;
   border-radius: 50%;
   border: 5px solid #ef4123;
-  border-color: #ef4123 transparent #ef4123 transparent;
-  animation: lds-dual-ring 1.2s linear infinite;
+  border-bottom-color: white;
+  animation: lds-dual-ring .28s linear infinite;
 }
 @keyframes lds-dual-ring {
   0% {

@@ -262,7 +262,6 @@ class FoodList extends Component {
       return (
         <React.Fragment>
           <div className="lds-dual-ring" />
-          <p className="loading">Loading...</p>
         </React.Fragment>
       );
     }

@@ -16,6 +16,10 @@
   transition: all 0.5s;
   overflow: visible;
   margin: 10px auto;
+  min-width: 16pc;
+  -webkit-box-shadow: 0px 0px 8px 4px rgba(0,0,0,0.29);
+  -moz-box-shadow: 0px 0px 8px 4px rgba(0,0,0,0.29);
+  box-shadow: 0px 0px 8px 4px rgba(0,0,0,0.29);
 }
 .discount {
   padding-top: 3px;
@@ -50,7 +54,6 @@
 .description {
   direction: rtl;
   width:75%;
-  float: left;
   padding: 5px;
 }
 .last {
@@ -107,65 +110,65 @@
   display: inline;
 }
 
-@media only screen and (min-width: 600px) {
-  .food_section {
-    padding: 10px;
-    margin: 20px;
-    border-radius: 6px;
-  }
-  .food_Box {
-    border: 1px solid #eeeeee;
-    border-radius: 9px;
-    display: inline-block;
-    transition: all 0.5s;
-    margin: 8px 56px;
-    position: relative;
-    overflow: visible;
-  }
+// @media only screen and (min-width: 600px) {
+//   .food_section {
+//     padding: 10px;
+//     margin: 20px;
+//     border-radius: 6px;
+//   }
+//   .food_Box {
+//     border: 1px solid #eeeeee;
+//     border-radius: 9px;
+//     display: inline-block;
+//     transition: all 0.5s;
+//     margin: 8px 56px;
+//     position: relative;
+//     overflow: visible;
+//   }
 
-  .boxImage {
-    text-align: center;
-    width: 100%;
-  }
-  .boxImageDiscount {
-    filter: brightness(0.5);
-  }
-  .discountBox {
-    top: 0;
-    right: 30px;
-    color: red;
-    transform: rotate(30deg);
-  }
-  img {
-    margin: 0 auto;
-    width: 100%;
-  }
-  .description {
-    position: relative;
-    width: 100%;
-    float: right;
-    padding: 5px 9px;
-  }
-  .nullImage {
-    width: 71%;
-  }
-  .discount {
-    right: -9px;
-    top: -9px;
-    background: linear-gradient(-60deg, #ef4123, #ef2379);
-    -webkit-border-top-left-radius: 9px;
-    -webkit-border-top-right-radius: 9px;
-    -webkit-border-bottom-left-radius: 204px;
-    -moz-border-radius-topleft: 9px;
-    -moz-border-radius-topright: 9px;
-    -moz-border-radius-bottomleft: 204px;
-    border-top-left-radius: 9px;
-    border-top-right-radius: 9px;
-    border-bottom-right-radius: 5px;
-    &-popup {
-      width: 75px;
-      height: 75px;
-      font-size: 30px;
-    }
-  }
-}
+//   .boxImage {
+//     text-align: center;
+//     width: 100%;
+//   }
+//   .boxImageDiscount {
+//     filter: brightness(0.5);
+//   }
+//   .discountBox {
+//     top: 0;
+//     right: 30px;
+//     color: red;
+//     transform: rotate(30deg);
+//   }
+//   img {
+//     margin: 0 auto;
+//     width: 100%;
+//   }
+//   .description {
+//     position: relative;
+//     width: 100%;
+//     float: right;
+//     padding: 5px 9px;
+//   }
+//   .nullImage {
+//     width: 71%;
+//   }
+//   .discount {
+//     right: -9px;
+//     top: -9px;
+//     background: linear-gradient(-60deg, #ef4123, #ef2379);
+//     -webkit-border-top-left-radius: 9px;
+//     -webkit-border-top-right-radius: 9px;
+//     -webkit-border-bottom-left-radius: 204px;
+//     -moz-border-radius-topleft: 9px;
+//     -moz-border-radius-topright: 9px;
+//     -moz-border-radius-bottomleft: 204px;
+//     border-top-left-radius: 9px;
+//     border-top-right-radius: 9px;
+//     border-bottom-right-radius: 5px;
+//     &-popup {
+//       width: 75px;
+//       height: 75px;
+//       font-size: 30px;
+//     }
+//   }
+// }
