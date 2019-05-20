@@ -16,7 +16,8 @@ class FoodList extends Component {
       foodList: null,
       value: "",
       show: true,
-      modalSelectedFood: null
+      modalSelectedFood: null,
+      quantity: []
     };
 
     this.foodPack = this.foodPack.bind(this);
@@ -34,10 +35,6 @@ class FoodList extends Component {
         const { data } = response;
         const menu = parseMenu(data);
         console.log(menu);
-
-        // foodList = foodList.sort((a, b) => {
-        //   return a.index - b.index;
-        // });
 
         /// get az local quantity
         // let tempCart = sessionStorage.getItem("key");
@@ -72,22 +69,49 @@ class FoodList extends Component {
     } else {
       quantity++;
     }
+
     food.quantity = quantity;
     const foodList = [...this.state.foodList];
     this.setState({
       foodList
     });
 
+    this.updatecount(food.quantity);
+    // let test=(
+    //   <div>
+    //     {food.quantity}
+    //   </div>
+    // )
+
     console.log(foodList);
+    // let qty = [];
+    // qty.push(food.id + ":" + food.quantity);
+    this.update(food);
+    // console.log(qty);
+
+    // this.setState({
+    //   quantity:[food.id,food.quantity]
+    // })
+    // this.setState(state=>{
+    //  const quantity=state.quantity.concat()
+    // })
+    console.log(food.quantity);
 
     // store local
-    sessionStorage.setItem("key", food.id);
+    sessionStorage.setItem("key", food.quantity);
 
     if (food.quantity === 0) {
       sessionStorage.removeItem(food.id);
     }
-
+    
     this.props.reloadCart();
+  };
+  updatecount = count => {
+
+  };
+
+  update = food => {
+    console.log(food.quantity);
   };
 
   getFood(id) {
@@ -170,9 +194,7 @@ class FoodList extends Component {
     }
     return (
       <div key={`${item.id}-${i}`} id={item.id}>
-        <h1 className="Header">
-          {title}
-        </h1>
+        <h1 className="Header">{title}</h1>
         <div className="food_section">
           {item.foods.map((item, i) => {
             return (
@@ -204,9 +226,8 @@ class FoodList extends Component {
     if (foodList) {
       return (
         <React.Fragment>
-          <div className="shopCart">
-            <Cart />
-          </div>
+          {this.updatee}
+          {/* <div className="shopCart"> {this.updatecount} </div> */}
           <div className="foodBox">
             <div className="foodBox-inner">
               <div className="searchBox">

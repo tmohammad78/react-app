@@ -18,12 +18,6 @@ class Cart extends Component {
               </button>
               <div className="cart-text">
                 <i className="icon-shopping-cart" />
-                {/* <img
-                  className="shopping-cart-icon"
-                  style={{ paddingTop: 10 }}
-                  src="/img/shopping-cart.svg"
-                  alt=""
-                /> */}
                 <span style={{ display: "inline" }}>سبد خرید</span>
               </div>
             </header>

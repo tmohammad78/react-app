@@ -28,25 +28,28 @@ class Food extends Component {
       this.props.onSelect();
     }
   }
-
+  
   render() {
-    let className;
-    let date = new Date().getHours();
     const { item } = this.props;
-    // if(item.discountPercentage !==0  ){
-    //   this.setState({
-    //     activeDiscountshow:'boxImage'
-    //   })
-    // }
+    let image;
+    let className;
+    const quantity = item.quantity || 0;
+    let addBox;
+    let discount;
+    let unavailableText;
+    let qty;
+    let date = new Date().getHours();
+
     if (item.discountPercentage !== 0) {
       this.setState.haveDiscount = true;
     }
+
     if (this.state.haveDiscount === true) {
       className = "price-discount";
     } else {
       className = "price";
     }
-    let image;
+    
     if (item.img) {
       image = (
         <img
@@ -66,8 +69,6 @@ class Food extends Component {
       );
     }
 
-    const quantity = item.quantity || 0;
-    let addBox;
     if (quantity) {
       addBox = (
         <React.Fragment>
@@ -78,7 +79,7 @@ class Food extends Component {
         </React.Fragment>
       );
     }
-    let discount;
+
     if (item.discountPercentage) {
       discount = (
         <div className="discount">
@@ -89,8 +90,6 @@ class Food extends Component {
       discount = "";
     }
 
-    let unavailableText;
-    let qty;
     if (date < 10) {
       unavailableText = (
         <label className="unavailableText">

@@ -17,7 +17,7 @@ class CategoryList extends Component {
         <div className="inner">
           <figure>
              <div className="imagetest"><img className="img" src={`/img/${item.logo}.png`} alt="true" /></div>
-            <span className="caption">{item.tilte}</span>
+            <span className="caption">{item.title}</span>
           </figure>
         </div>
       </Link>
