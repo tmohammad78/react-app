@@ -1,4 +1,4 @@
-.popup{
+.popup {
   // visibility: visible;
   // width: 100%;
   // height: 100vh;
@@ -31,48 +31,67 @@
       font-size: 15px;
       color: rgb(116, 114, 114);
     }
-    .bottomBox{
-      color: white;
+    .bottomBox {
+      color: black;
       position: relative;
-      height: 100vh;
+      height: 70%;
       // background: linear-gradient(-60deg, #ef4123, #ef2379);
-      background: #b74b4be3;
+      background: white;
       top: -45px;
       border-top-right-radius: 35px;
       border-top-left-radius: 35px;
-      .ingredient{
-        padding: 15px;
-        text-align: center;
-        font-size: 18px;
+      .ingredient {
+        font-size: 15px;
+        padding-top: 29px;
       }
-      .discount-popup{
+      .discount-popup {
+        border: none;
+        padding-top: 10px;
         top: 12px;
         left: 12px;
         position: absolute;
       }
+      .price {
+        font-size: 24px;
+        float: right;
+
+        text-align: right;
+        direction: rtl;
+        padding: 5px 0px;
+        width: 50%;
+      }
+      .parent-btn {
+        width: 100%;
+        top: 88%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        text-align: center;
+        position: absolute;
+      }
     }
-    .header{
-      padding: 10px 0px;
+    .header {
+      position: absolute;
     }
   }
 }
 
+.icon-close:before {
+  content: "\2715";
+  color: black;
+  font-size: 30px;
+}
 .imageFood {
   width: 100%;
-  border-radius: 10px;
 }
 .disactive {
   background: #d2d2d2 !important ;
   cursor: default !important ;
 }
 .details {
-  padding: 33px 14px;
-    direction: rtl;
+  padding: 25px 33px;
+  direction: rtl;
 }
-.price {
-  font-size: 24px;
-  float: right;
-}
+
 .quantity-holder {
   margin: 5px 19px;
   float: left;
@@ -88,7 +107,6 @@
   color: white;
 }
 footer {
-  padding: 15px;
   display: inline-block;
   width: 100%;
 }
@@ -100,8 +118,8 @@ footer {
   overflow: hidden;
 }
 .closeImg {
-  width: 25px;
-  height: 25px;
+  width: 18px;
+  height: 18px;
   color: #eee;
 }
 .addModal {
@@ -139,7 +157,6 @@ footer {
 // }
 
 .popup {
- 
 }
 // .popup__content {
 //   border-radius: 5px;

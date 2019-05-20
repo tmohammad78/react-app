@@ -17,9 +17,9 @@
   overflow: visible;
   margin: 10px auto;
   min-width: 16pc;
-  -webkit-box-shadow: 0px 0px 8px 4px rgba(0,0,0,0.29);
-  -moz-box-shadow: 0px 0px 8px 4px rgba(0,0,0,0.29);
-  box-shadow: 0px 0px 8px 4px rgba(0,0,0,0.29);
+  -webkit-box-shadow: 0px 0px 8px 4px rgba(0, 0, 0, 0.29);
+  -moz-box-shadow: 0px 0px 8px 4px rgba(0, 0, 0, 0.29);
+  box-shadow: 0px 0px 8px 4px rgba(0, 0, 0, 0.29);
 }
 .discount {
   padding-top: 3px;
@@ -53,7 +53,7 @@
 
 .description {
   direction: rtl;
-  width:75%;
+  width: 75%;
   padding: 5px;
 }
 .last {
@@ -67,6 +67,13 @@
     width: 15px;
     height: 15px;
   }
+  .price {
+    float: right;
+    text-align: right;
+    direction: rtl;
+    padding: 5px 4px;
+    width: 50%;
+  }
 }
 .unavailableText {
   color: #888;
@@ -76,13 +83,7 @@
   background-color: #ffffff;
   padding: 0px 10px;
 }
-.price {
-  float: right;
-  text-align: right;
-  direction: rtl;
-  padding: 5px 4px;
-  width: 50%;
-}
+
 .addBtn {
   padding: 7px 0px;
   width: 60%;

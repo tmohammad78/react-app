@@ -74,14 +74,10 @@ class Item extends Component {
       <div className="popup__content ">
         <header className="header">
           <button className="btn-action anc-close">
-            <img
-              className="closeImg"
-              src="/img/close.svg"
-              onClick={this.close}
-            />
+            <span className="icon-close" style={{ paddingTop:5  }}  onClick={this.close} ></span>
           </button>
         </header>
-        <section>
+        <section style={{ height:'100%' }} >
           <figure className="figure">{image}</figure>
           <div className="bottomBox">
           {discount}

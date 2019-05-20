@@ -12,22 +12,23 @@ class Cart extends Component {
               <button
                 className="btn-action anc-close close-cart"
                 data-close-modal
+                onClick={this.props.onPress}
               >
-                <img
+              <i className="icon-shopping-cart" />
+                {/* <img
                   className="close-icon"
                   src="/img/cancel-music.svg"
-                  onClick={this.props.onPress}
+                  
                   alt=""
-                />
+                /> */}
               </button>
               <div className="cart-text">
                 <img
-
                   className="shopping-cart-icon"
                   style={{ paddingTop: 10 }}
                   src="/img/shopping-cart.svg"
-                alt=""
-              />
+                  alt=""
+                />
                 <span style={{ display: "inline" }}>سبد خرید</span>
               </div>
             </header>

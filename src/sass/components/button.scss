@@ -1,4 +1,6 @@
 @mixin btn-base() {
+    font-size: 14px;
+    font-family: 'IRANSans', Tahoma;
     border-radius: 10px;
     padding: 5px 15px;
     line-height: 1;
@@ -8,10 +10,11 @@
       outline: none;
     }
   }
-  @mixin btn($background: #ef4123, $textColor: white) {
+  @mixin btn($background: #ef4123, $textColor: white,$padding_tb:5px,$padding_rl:15px) {
     @include btn-base();
     background-color: $background;
     color: $textColor;
+    padding: $padding_tb $padding_rl;
     &:hover {
       background-color: darken($background, 5%);
     }
@@ -35,6 +38,9 @@
   [class*=" btn"] {
     @include btn();
   }
+  .btn-cart{
+    @include btn(#ef4123,white,10px,100px);
+  }
   [class^="btn-outline"],
   [class*=" btn-outline"] {
     @include btn-outline();
@@ -44,18 +50,6 @@
   }
   .btn-green {
     @include btn(green, white);
-  }
-  .btn-cart {
-    @include btn(grey, white);
-    margin: auto;
-    cursor: default;
-    font-size: 30px;
-    &:hover {
-      background: grey;
-    }
-    &:active {
-      transform: none;
-    }
   }
   .btn-buy{
     background: transparent;
@@ -76,14 +70,6 @@
     .btn-minus {
       display: inline;
     }
-    .btn-cart {
-      @include btn(#ef4123, white);
-    }
-  }
-  .parent-btn {
-    display: block;
-    text-align: center;
-    padding: 5px 0px;
   }
   .btn-action {
     @include btn(transparent, black);
@@ -108,7 +94,10 @@
     left: 7px;
     border: 2px solid white
   }
-  .anc-close{
+  .popup__content{
+    .anc-close{
+      padding: 10px 10px;
+    }
   }
   @media only screen and (min-width:600px){
     .btn-showCount {

@@ -1,7 +1,15 @@
-@import 'layout/header.scss';
-@import 'components/popup.scss';
+// Core
 @import "abstracts/mixin";
 @import "abstracts/variable";
 
+// Fonticon
+@import 'font-icon/style.scss';
+
+// General
+@import 'layout/header.scss';
+
+
+// Components
+@import 'components/popup.scss';
 @import "component/buttons.scss";
 
