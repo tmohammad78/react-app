@@ -1,18 +1,23 @@
-@import "variables";
+@import './variables.scss';
 @font-face {
-  font-family: '#{$icomoon-font-family}';
-  src:  url('#{$icomoon-font-path}/#{$icomoon-font-family}.eot?lvsy2x');
-  src:  url('#{$icomoon-font-path}/#{$icomoon-font-family}.eot?lvsy2x#iefix') format('embedded-opentype'),
-    url('#{$icomoon-font-path}/#{$icomoon-font-family}.ttf?lvsy2x') format('truetype'),
-    url('#{$icomoon-font-path}/#{$icomoon-font-family}.woff?lvsy2x') format('woff'),
-    url('#{$icomoon-font-path}/#{$icomoon-font-family}.svg?lvsy2x##{$icomoon-font-family}') format('svg');
+  font-family: "#{$icomoon-font-family}";
+  src: url("#{$icomoon-font-path}/#{$icomoon-font-family}.eot?lvsy2x");
+  src: url("#{$icomoon-font-path}/#{$icomoon-font-family}.eot?lvsy2x#iefix")
+      format("embedded-opentype"),
+    url("#{$icomoon-font-path}/#{$icomoon-font-family}.ttf?lvsy2x")
+      format("truetype"),
+    url("#{$icomoon-font-path}/#{$icomoon-font-family}.woff?lvsy2x")
+      format("woff"),
+    url("#{$icomoon-font-path}/#{$icomoon-font-family}.svg?lvsy2x##{$icomoon-font-family}")
+      format("svg");
   font-weight: normal;
   font-style: normal;
 }
 
-[class^="icon-"], [class*=" icon-"] {
+[class^="icon-"],
+[class*=" icon-"] {
   /* use !important to prevent issues with browser extensions that change fonts */
-  font-family: '#{$icomoon-font-family}' !important;
+  font-family: "#{$icomoon-font-family}" !important;
   speak: none;
   font-style: normal;
   font-weight: normal;
@@ -27,77 +32,76 @@
 
 .icon-checkmark {
   &:before {
-    content: $icon-checkmark; 
+    content: $icon-checkmark;
   }
 }
 .icon-shopping-cart {
   &:before {
-    content: $icon-shopping-cart; 
+    content: $icon-shopping-cart;
   }
 }
 .icon-user {
   &:before {
-    content: $icon-user; 
+    content: $icon-user;
   }
 }
 .icon-add_box {
   &:before {
-    content: $icon-add_box; 
+    content: $icon-add_box;
   }
 }
 .icon-add_circle {
   &:before {
-    content: $icon-add_circle; 
+    content: $icon-add_circle;
   }
 }
 .icon-control_point {
   &:before {
-    content: $icon-control_point; 
+    content: $icon-control_point;
   }
 }
 .icon-add_shopping_cart {
   &:before {
-    content: $icon-add_shopping_cart; 
+    content: $icon-add_shopping_cart;
   }
 }
 .icon-arrow_back {
   &:before {
-    content: $icon-arrow_back; 
+    content: $icon-arrow_back;
   }
 }
 .icon-arrow_downward {
   &:before {
-    content: $icon-arrow_downward; 
+    content: $icon-arrow_downward;
   }
 }
 .icon-arrow_drop_down {
   &:before {
-    content: $icon-arrow_drop_down; 
+    content: $icon-arrow_drop_down;
   }
 }
 .icon-arrow_forward {
   &:before {
-    content: $icon-arrow_forward; 
+    content: $icon-arrow_forward;
   }
 }
 .icon-arrow_upward {
   &:before {
-    content: $icon-arrow_upward; 
+    content: $icon-arrow_upward;
   }
 }
 .icon-close {
   &:before {
-    content: $icon-close; 
+    content: $icon-close;
   }
 }
 .icon-search {
   &:before {
-    content: $icon-search; 
+    content: $icon-search;
   }
 }
 .icon-bookmark {
   &:before {
-    content: $icon-bookmark; 
+    content: $icon-bookmark;
   }
 }
-

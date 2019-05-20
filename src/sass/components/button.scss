@@ -76,6 +76,12 @@
     cursor: pointer;
     font-size: 23px;
   }
+  .btn-profile{
+    @include btn(#ef4123,white,3px,12px);
+    position: absolute;
+    right: 7px;
+    border: 2px solid white;
+  }
   .close-cart {
     color: white;
   }
@@ -89,10 +95,11 @@
     padding: 11px 80px;
   }
   .btn-showCount{
-    border-radius: 5px;
+    padding: 3px 12px;
+    border-radius: 10px;
     position: absolute;
     left: 7px;
-    border: 2px solid white
+    border: 2px solid white;
   }
   .popup__content{
     .anc-close{

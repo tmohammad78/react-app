@@ -1,3 +1,8 @@
+// Base
+@import 'base/base.scss';
+@import 'base/typography.scss';
+@import 'base/utitities.scss';
+
 // Core
 @import "abstracts/mixin";
 @import "abstracts/variable";
@@ -8,8 +13,7 @@
 // General
 @import 'layout/header.scss';
 
-
 // Components
 @import 'components/popup.scss';
-@import "component/buttons.scss";
+@import "components/button.scss";
 

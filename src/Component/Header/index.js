@@ -24,18 +24,12 @@ class Header extends Component {
     return (
       <div className="header-section">
         <button className="btn btn-showCount " onClick={this.showCart}>
-          <img
-            className="shopping-cart-img"
-            src="/img/shopping-cart.svg"
-            alt="search"
-          />
+          <i className="icon-shopping-cart shopping-cart-img" />
           <span className="header-number" id="cart-count" />
         </button>
 
-        <button className="btn btn-profile" >
-            <img className="profile-img">
-            
-            </img>
+        <button className="btn btn-profile">
+          <i className="icon-user" />
         </button>
       </div>
     );
