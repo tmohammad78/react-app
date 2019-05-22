@@ -3,10 +3,10 @@
    z-index: 4000;
    width: 100%;
    height: 48px;
-  background: #EF4123;
-  // padding: 15px 0px;
-    padding: 12px 0px;
-    width: 100%;
+   background: #EF4123;
+   padding: 12px 0px;
+   width: 100%;
+   border-bottom: 1px solid white;
 }
 .header-number {
   font-size: 15px;
@@ -16,6 +16,7 @@
   direction: rtl;
   width: 97%;
   font-size: 0;
+  margin: 0 auto;
   border-radius: 5px;
   // background: linear-gradient(-60deg,#ef4123,#ef2379);
   padding: 3px 0px;
@@ -72,6 +73,14 @@ input::-webkit-input-placeholder {
 }
 .shopping-cart-img {
   width: 20px;
+}
+@media only screen and (min-width:600px){
+  .searchBox {
+    overflow: auto;
+    padding: 10px 0px;
+    margin: 0 auto;
+    width: 98%;
+    }
 }
 // @media only screen and (max-width: 600px) {
 //   input:focus {
