@@ -72,69 +72,48 @@ class FoodList extends Component {
       foodList
     });
 
-    this.updatecount(food.quantity);
-    // let test=(
-    //   <div>
-    //     {food.quantity}
-    //   </div>
-    // )
-
     console.log(foodList);
-    // let qty = [];
-    // qty.push(food.id + ":" + food.quantity);
-    this.update(food);
-    // console.log(qty);
 
-    // this.setState({
-    //   quantity:[food.id,food.quantity]
-    // })
-    // this.setState(state=>{
-    //  const quantity=state.quantity.concat()
-    // })
-    console.log(food.quantity);
+    console.log(food.quantity +  ' id' + food.id);
 
     // store local
-    sessionStorage.setItem("key", food.quantity);
 
-    if (food.quantity === 0) {
-      sessionStorage.removeItem(food.id);
-    }
+    // sessionStorage.setItem("key", food.quantity);
 
-    this.props.reloadCart();
+    // if (food.quantity === 0) {
+    //   sessionStorage.removeItem(food.id);
+    // }
+
   };
-  updatecount = count => {};
+  update=(item,i)=>{
+    return(
+      <div >
+        {item.foods.map((item,i)=>{
+          if(item.quantity>0){
+            return (
+              <div>{this.getFood(item.id)} ++ {item.quantity} </div>
+            )
+          }
+        })}
+      </div>
+    )
+  }
 
-  update = food => {
-    console.log(food.quantity);
-  };
-
-  getFood(id) {
+  getFood=(id)=> {
     const foodList = this.state.foodList;
     let food = null;
     for (var i = 0; i < foodList.length; i++) {
-      for (var j = 0; j < foodList[i].sub.length; j++) {
-        if (foodList[i].sub[j].id === 0) {
-          const subData = foodList[i].sub[j].food;
+      for (var j = 0; j < foodList[i].foods.length; j++) {
+          const subData = foodList[i].foods[j];
           if (subData) {
-            for (var z = 0; z < subData.length; z++) {
-              if (subData[z].id === id) {
-                food = subData[z];
+              if (subData.id === id) {
+                food = subData.title;
                 break;
               }
-            }
+            
           }
-        } else {
-          // loop
-        }
-        if (food) {
-          break;
-        }
-      }
-      if (food) {
-        break;
       }
     }
-
     return food;
   }
 
@@ -178,6 +157,8 @@ class FoodList extends Component {
       }
     }
   }
+
+
 
   foodPack(item, i) {
     let title;
@@ -247,6 +228,10 @@ class FoodList extends Component {
               </div>
               {foodList.map(this.foodPack)}
             </div>
+          </div>
+
+          <div className="cartTest">
+                {foodList.map(this.update)}
           </div>
 
           {this.state.modalSelectedFood ? (
