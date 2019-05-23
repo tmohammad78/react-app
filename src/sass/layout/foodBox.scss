@@ -4,7 +4,7 @@
   border-top-left-radius: 10px;
   border-top-right-radius: 10px;
   width: 100%;
-  z-index:1000;
+  z-index: 1000;
   background: white;
   .foodBox-inner {
     overflow-y: auto;
@@ -15,7 +15,7 @@
 .lds-dual-ring {
   position: absolute;
   display: inline-block;
-  transform: translate(50%,50%);
+  transform: translate(50%, 50%);
   top: 50%;
   right: 50%;
   width: 64px;
@@ -31,7 +31,7 @@
   border-radius: 50%;
   border: 5px solid #ef4123;
   border-bottom-color: white;
-  animation: lds-dual-ring .28s linear infinite;
+  animation: lds-dual-ring 0.28s linear infinite;
 }
 
 @keyframes lds-dual-ring {
@@ -70,11 +70,33 @@
     margin-right: 0px;
     z-index: unset;
     .foodBox-inner {
-      width: 92%;
+      width: 85%;
       margin: 0 auto;
-      overflow-y:visible; 
+      overflow-y: visible;
       padding: 0;
       height: auto;
+    }
+  }
+}
+@media only screen and (min-width: 1024px) and (max-width:1600px) {
+  .col-1-of-3 {
+    width: calc((100% - 6 * 50px) / 3);
+    margin: 20px 50px;
+  }
+  .foodBox {
+    .foodBox-inner {
+      width: 90%;
+    }
+  }
+}
+@media only screen and (min-width: 1400px) {
+  .col-1-of-3 {
+    width: calc((100% - 6 * 50px) / 3);
+    margin: 20px 50px;
+  }
+  .foodBox {
+    .foodBox-inner {
+      width: 70%;
     }
   }
 }

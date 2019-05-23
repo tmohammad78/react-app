@@ -39,13 +39,13 @@
       padding: 5px 4px;
       width: 50%;
     }
-    
-.addBtn {
-  padding: 7px 0px;
-  width: 60%;
-  font-size: 25px;
-  padding-bottom: 6px;
-}
+
+    .addBtn {
+      padding: 7px 0px;
+      width: 60%;
+      font-size: 25px;
+      padding-bottom: 6px;
+    }
   }
 
   .desimg {
@@ -69,9 +69,7 @@
       float: right;
       overflow: hidden;
     }
-    
   }
-  
 }
 
 .food_Box:hover,
@@ -97,9 +95,6 @@
   background: linear-gradient(-60deg, #ef4123, #ef2379);
 }
 
-
-
-
 .unavailableText {
   color: #888;
   border-radius: 20px;
@@ -108,7 +103,6 @@
   background-color: #ffffff;
   padding: 0px 10px;
 }
-
 
 .quantity {
   font-size: 20px;
@@ -121,6 +115,20 @@
 }
 
 @media only screen and (min-width: 600px) {
+  .food_Box {
+    .desimg {
+      padding: 0;
+      .boxImage {
+        width: 100%;
+        height: 100%;
+      }
+      .description{
+        overflow: auto;
+        width:100%;
+        padding: 5px;
+      }
+    }
+  }
   // .food_box {
   //   position: relative;
   //   border: 1px solid #eeeeee;
@@ -135,8 +143,9 @@
   //   box-shadow: 0px 0px 8px 4px rgba(0, 0, 0, 0.29);
   // }
 
-  // .food_section {
-  // }
+  .food_section {
+    padding: 0px 10px;
+  }
   // .food_section {
   //   padding: 10px;
   //   margin: 20px;
@@ -150,11 +159,6 @@
   //   margin: 8px 56px;
   //   position: relative;
   //   overflow: visible;
-  // }
-
-  // .boxImage {
-  //   text-align: center;
-  //   width: 100%;
   // }
   // .boxImageDiscount {
   //   filter: brightness(0.5);
