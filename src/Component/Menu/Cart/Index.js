@@ -1,6 +1,4 @@
 import React, { Component } from "react";
-import "../../../sass/components/cart.scss";
-import "../../../sass/components/button.scss";
 class Cart extends Component {
   render() {
     if (this.props.show) {

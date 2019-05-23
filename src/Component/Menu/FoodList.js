@@ -4,10 +4,6 @@ import axios from "axios";
 import Cart from "./Cart/Index";
 import Modal from "./modal/Index";
 import { parseMenu } from "./util/menu";
-import "../../sass/components/card.scss";
-import "../../sass/layout/foodBox.scss";
-import "../../sass/layout/grid.scss";
-import "../../sass/components/card.scss";
 
 class FoodList extends Component {
   constructor(props) {
@@ -103,12 +99,10 @@ class FoodList extends Component {
     if (food.quantity === 0) {
       sessionStorage.removeItem(food.id);
     }
-    
+
     this.props.reloadCart();
   };
-  updatecount = count => {
-
-  };
+  updatecount = count => {};
 
   update = food => {
     console.log(food.quantity);

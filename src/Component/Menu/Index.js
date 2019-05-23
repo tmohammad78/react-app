@@ -2,8 +2,6 @@ import React, { Component } from "react";
 import CategoryList from "./category/CategoryList";
 import FoodList from "./FoodList";
 import Cart from "./Cart/Index";
-import "../../sass/layout/grid.scss";
-import "../../sass/layout/foodBox.scss";
 class Menu extends Component {
   state = {
     categories: [],

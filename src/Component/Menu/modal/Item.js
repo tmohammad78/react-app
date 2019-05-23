@@ -1,8 +1,5 @@
 import React from "react";
 import { Component } from "react";
-import "../../../sass/components/popup.scss";
-import '../../../sass/components/button.scss';
-
 import { currency } from "../../../helper/index";
 
 class Item extends Component {
@@ -62,7 +59,7 @@ class Item extends Component {
         <div className="addBtn">
           <div className="quantity-holder">
             <button className="btn-plus">
-              <img className="addModal"  src="/img/add.svg" alt="true" />
+              <img className="addModal" src="/img/add.svg" alt="true" />
             </button>
             {/* {addBox} */}
           </div>
@@ -74,26 +71,29 @@ class Item extends Component {
       <div className="popup__content ">
         <header className="header">
           <button className="btn-action anc-close">
-            <span className="icon-close" style={{ paddingTop:5  }}  onClick={this.close} ></span>
+            <span
+              className="icon-close"
+              style={{ paddingTop: 5 }}
+              onClick={this.close}
+            />
           </button>
         </header>
-        <section style={{ height:'100%' }} >
+        <section style={{ height: "100%" }}>
           <figure className="figure">{image}</figure>
           <div className="bottomBox">
-          {discount}
-          <div className="details">
-            <h1 style={{ color:"black" }} > {item.title} </h1>
-            <div className="ingredient">{item.ingredient}</div>
-            <footer>
-              <span className="price">{currency(item.price)} </span>
-              {qty}
-            </footer>
+            {discount}
+            <div className="details">
+              <h1 style={{ color: "black" }}> {item.title} </h1>
+              <div className="ingredient">{item.ingredient}</div>
+              <footer>
+                <span className="price">{currency(item.price)} </span>
+                {qty}
+              </footer>
+            </div>
+            <div className="parent-btn">
+              <button className="btn-cart">افزودن به سبد خرید</button>
+            </div>
           </div>
-          <div className="parent-btn">
-            <button className="btn-cart">افزودن به سبد خرید</button>
-          </div>
-          </div>
-
         </section>
       </div>
     );

@@ -1,19 +1,23 @@
 // Base
-@import 'base/base.scss';
-@import 'base/typography.scss';
-@import 'base/utitities.scss';
+@import "./base/base.scss";
+@import "./base/typography.scss";
+@import "./base/utitities.scss";
 
 // Core
-@import "abstracts/mixin";
-@import "abstracts/variable";
+@import "./abstracts/mixin.scss";
+@import "./abstracts/variable.scss";
 
 // Fonticon
-@import 'font-icon/style.scss';
+@import "./font-icon/style.scss";
 
 // General
-@import 'layout/header.scss';
+@import "./layout/foodBox.scss";
+@import "./layout/grid.scss";
+@import "./layout/header.scss";
 
 // Components
-@import 'components/popup.scss';
-@import "components/button.scss";
-
+@import "./components/button.scss";
+@import "./components/card.scss";
+@import "./components/cart.scss";
+@import "./components/category.scss";
+@import "./components/popup.scss";

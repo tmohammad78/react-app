@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import Item from "./Item";
-import "../../../sass/components/popup.scss";
 class Modal extends Component {
   constructor(props) {
     super(props);

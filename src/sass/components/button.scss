@@ -1,117 +1,125 @@
 @mixin btn-base() {
-    font-size: 14px;
-    font-family: 'IRANSans', Tahoma;
-    border-radius: 10px;
-    padding: 5px 15px;
-    line-height: 1;
-    border: none;
-    cursor: pointer;
-    &:focus {
-      outline: none;
-    }
+  font-size: 14px;
+  font-family: "IRANSans", Tahoma;
+  border-radius: 10px;
+  padding: 5px 15px;
+  line-height: 1;
+  border: none;
+  cursor: pointer;
+  &:focus {
+    outline: none;
   }
-  @mixin btn($background: #ef4123, $textColor: white,$padding_tb:5px,$padding_rl:15px) {
-    @include btn-base();
-    background-color: $background;
-    color: $textColor;
-    padding: $padding_tb $padding_rl;
-    &:hover {
-      background-color: darken($background, 5%);
-    }
-    &:active {
-      transform: scale(0.95);
-    }
+}
+@mixin btn(
+  $background: #ef4123,
+  $textColor: white,
+  $padding_tb: 5px,
+  $padding_rl: 15px
+) {
+  @include btn-base();
+  background-color: $background;
+  color: $textColor;
+  padding: $padding_tb $padding_rl;
+  &:hover {
+    background-color: darken($background, 5%);
   }
-  @mixin btn-outline($borderColor: #333, $textColor: #333) {
-    @include btn-base();
-    background: none;
-    border: 1px solid $borderColor;
-    color: $textColor;
-    &:hover {
-      background: #ef4123;
-    }
-    &:active {
-      transform: scale(0.95);
-    }
+  &:active {
+    transform: scale(0.95);
   }
-  [class^="btn"],
-  [class*=" btn"] {
-    @include btn();
+}
+@mixin btn-outline($borderColor: #333, $textColor: #333) {
+  @include btn-base();
+  background: none;
+  border: 1px solid $borderColor;
+  color: $textColor;
+  &:hover {
+    background: #ef4123;
   }
-  .btn-cart{
-    @include btn(#ef4123,white,10px,100px);
+  &:active {
+    transform: scale(0.95);
   }
-  [class^="btn-outline"],
-  [class*=" btn-outline"] {
-    @include btn-outline();
-  }
-  .btn-default {
-    @include btn();
-  }
-  .btn-green {
-    @include btn(green, white);
-  }
-  .btn-buy{
-    background: transparent;
-    border: none;
-    padding: 10px;
-    position: absolute;
-    right: 46%;
-    top: -26px;
-
+}
+[class^="btn"],
+[class*=" btn"] {
+  @include btn();
+}
+.btn-cart {
+  @include btn(#ef4123, white, 10px, 100px);
+}
+[class^="btn-outline"],
+[class*=" btn-outline"] {
+  @include btn-outline();
+}
+.btn-default {
+  @include btn();
+}
+.btn-green {
+  @include btn(green, white);
+}
+.btn-buy {
+  background: transparent;
+  border: none;
+  padding: 10px;
+  position: absolute;
+  right: 46%;
+  top: -26px;
+}
+.btn-minus {
+  @include btn();
+}
+.selected {
+  .quantity {
+    display: inline;
   }
   .btn-minus {
-    @include btn();
+    display: inline;
   }
-  .selected {
-    .quantity {
-      display: inline;
-    }
-    .btn-minus {
-      display: inline;
-    }
+}
+.btn-action {
+  @include btn(transparent, black);
+  cursor: pointer;
+  font-size: 23px;
+}
+.btn-profile {
+  @include btn(#ef4123, white, 3px, 12px);
+  position: absolute;
+  right: 7px;
+  border: 2px solid white;
+}
+.close-cart {
+  color: white;
+}
+.btn-outline-white {
+  @include btn-outline(#ffffff, #ffffff);
+}
+.btn-finalOrder {
+  font-size: 20px;
+  border-radius: 5px;
+  background: linear-gradient(-60deg, #ef4123, #ef2379);
+  padding: 11px 80px;
+}
+.btn-showCount {
+  padding: 3px 12px;
+  border-radius: 10px;
+  position: absolute;
+  left: 7px;
+  border: 2px solid white;
+}
+.popup__content {
+  .anc-close {
+    padding: 10px 10px;
   }
-  .btn-action {
-    @include btn(transparent, black);
-    cursor: pointer;
-    font-size: 23px;
-  }
-  .btn-profile{
-    @include btn(#ef4123,white,3px,12px);
-    position: absolute;
-    right: 7px;
-    border: 2px solid white;
-  }
-  .close-cart {
-    color: white;
-  }
-  .btn-outline-white {
-    @include btn-outline(#ffffff, #ffffff);
-  }
-  .btn-finalOrder {
-    font-size: 20px;
-    border-radius: 5px;
-    background: linear-gradient(-60deg, #ef4123, #ef2379);
-    padding: 11px 80px;
-  }
-  .btn-showCount{
-    padding: 3px 12px;
-    border-radius: 10px;
+}
+@media only screen and (min-width: 600px,5px,15px) {
+  .btn-showCount {
+    border-radius: 5px solid white;
     position: absolute;
     left: 7px;
-    border: 2px solid white;
   }
-  .popup__content{
-    .anc-close{
-      padding: 10px 10px;
-    }
+  .btn-profile {
+    @include btn(#ef4123, white, 5px, 15px);
+    position: absolute;
+    right: 7px;
+    border-radius: 5px solid white;
   }
-  @media only screen and (min-width:600px){
-    .btn-showCount {
-      border-radius: 5px;
-      padding: 7px 20px 5px 5px ;
-      position: absolute;
-      left: 7px;
-    }
-  }
-  
+}

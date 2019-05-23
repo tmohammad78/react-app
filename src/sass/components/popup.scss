@@ -121,47 +121,19 @@ footer {
   height: 15px;
   cursor: pointer;
 }
-// @media only screen and (max-width: 600px) {
-//   .details {
-//     font-size: 18px;
-//   }
-//   .popup {
-//     .popup__content {
-//       width: 95%;
-//       transform: translateY(25%);
-//       .popup__content-img {
-//         width: 90%;
-//         .popup__content-img--inner {
-//           width: 100%;
-//         }
-//       }
-//       .popup__content-title {
-//         font-size: 3.5rem;
-//       }
-//       .popup__content-text {
-//         width: 90%;
-//       }
-//       .popup__content-ingredient {
-//         padding-top: 10px;
-//         font-size: 15px;
-//         color: rgb(116, 114, 114);
-//       }
-//     }
-//   }
-// }
-
-.popup {
+@media only screen and (min-width: 600px) {
+  .popup {
+    .popup__content {
+      position: fixed;
+      top: 50%;
+      right: 50%;
+      width: 567px;
+      height: 567px;
+      -webkit-transform: translate(50%, 50%);
+      transform: translate(50%, -50%);
+    }
+  }
 }
-// .popup__content {
-//   border-radius: 5px;
-//   width: 28%;
-//   transform: translateY(23%);
-//   margin: 0 auto;
-//   background-color: white;
-//   .figure {
-//     padding: 10px 30px;
-//   }
-// }
 .modal {
   position: fixed;
   width: 100px;

@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import "../../../sass/components/category.scss";
 import { Link } from "react-scroll";
 //import Category  from "./Category";
 class CategoryList extends Component {
@@ -8,7 +7,7 @@ class CategoryList extends Component {
       <Link
         key={`${item.id}`}
         className=" indexbox"
-        activeClass="active"
+        activeClass="activecategory"
         to={item.id.toString()}
         spy={true}
         smooth={true}

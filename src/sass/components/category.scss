@@ -4,7 +4,7 @@
   overflow: hidden;
   position: fixed;
   z-index: 1000;
-  background: #EF4123;
+  background: #ef4123;
   .categories {
     direction: rtl;
     overflow-x: auto;
@@ -28,11 +28,10 @@
       }
       .inner {
         background: transparent;
-        .caption{
+        .caption {
           color: white;
         }
       }
-      
     }
     img {
       border-radius: 50%;
@@ -40,9 +39,13 @@
       height: 70px;
       border: 2px solid white;
     }
+    .activecategory {
+      img {
+        border: 5px solid rgb(146, 143, 143);
+      }
+    }
   }
 }
-
 @media only screen and (min-width: 600px) {
   .parent {
     width: 100%;
@@ -61,7 +64,7 @@
         }
         .inner {
           background: transparent;
-          .caption{
+          .caption {
             color: white;
           }
         }

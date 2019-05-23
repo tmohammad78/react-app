@@ -1,7 +1,5 @@
 import React, { Component } from "react";
 // import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import "../../../sass/components/card.scss";
-import "../../../sass/layout/grid.scss";
 import "../../../helper/index";
 import { truncate, currency, discountPrice } from "../../../helper/index";
 class Food extends Component {
