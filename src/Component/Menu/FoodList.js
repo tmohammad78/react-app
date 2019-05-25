@@ -36,8 +36,8 @@ class FoodList extends Component {
 
         /// get az local quantity
 
-        // let tempCart = sessionStorage.getItem("key");
-        // console.log(tempCart);
+        let tempCart = sessionStorage.getItem("key");
+        console.log(tempCart);
 
         // if (tempCart) {
         //   let cart_arr = tempCart.split("-");
@@ -78,30 +78,40 @@ class FoodList extends Component {
 
   renderCart(foodList) {
     const cartItems = [];
+    let sessionData = [];
+    let totalPrice = 0;
+    let test;
     foodList.forEach((item, i) => {
       item.foods.forEach(food => {
         if (food.quantity > 0) {
           cartItems.push(food);
-          //sessionData.push(item.id + ":" + item.quantity);
+          sessionData.push(food.id + ":" + food.quantity);
+          totalPrice += food.price * food.quantity;
         }
       });
     });
-
     clearTimeout(this.cartTimer);
     this.cartTimer = setTimeout(() => {
-      sessionStorage.setItem("cart", JSON.stringify(cartItems));
+      sessionStorage.setItem("cart", JSON.stringify(sessionData));
     }, 1000);
 
-    return cartItems.map((item, i) => {
-      if (item.quantity > 0) {
-        totalPrice += item.price * item.quantity;
-        return (
-          <div>
-            {item.title} ++ {item.quantity}
-          </div>
-        );
-      }
-    });
+    test=(
+      cartItems.map((item, i) => {
+        if (item.quantity > 0) {
+          return (
+            <div>
+              {item.title} ++ {item.quantity} + {item.price}
+            </div>
+          );
+        }
+      })
+    )
+    return (
+      <div>
+        {test}
+         {(totalPrice>0) ? totalPrice : '' }
+      </div>
+    );
   }
 
   getFood(id) {
