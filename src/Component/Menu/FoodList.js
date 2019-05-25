@@ -19,6 +19,8 @@ class FoodList extends Component {
     this.foodPack = this.foodPack.bind(this);
     this.onChange = this.onChange.bind(this);
     this.handleSearch = this.handleSearch.bind(this);
+    this.renderCart = this.renderCart.bind(this);
+    this.getFood = this.getFood.bind(this);
   }
 
   componentWillMount() {
@@ -33,6 +35,7 @@ class FoodList extends Component {
         console.log(menu);
 
         /// get az local quantity
+
         // let tempCart = sessionStorage.getItem("key");
         // console.log(tempCart);
 
@@ -71,47 +74,48 @@ class FoodList extends Component {
     this.setState({
       foodList
     });
-
-    console.log(foodList);
-
-    console.log(food.quantity +  ' id' + food.id);
-
-    // store local
-
-    // sessionStorage.setItem("key", food.quantity);
-
-    // if (food.quantity === 0) {
-    //   sessionStorage.removeItem(food.id);
-    // }
-
   };
-  update=(item,i)=>{
-    return(
-      <div >
-        {item.foods.map((item,i)=>{
-          if(item.quantity>0){
-            return (
-              <div>{this.getFood(item.id)} ++ {item.quantity} </div>
-            )
-          }
-        })}
-      </div>
-    )
+
+  renderCart(foodList) {
+    const cartItems = [];
+    foodList.forEach((item, i) => {
+      item.foods.forEach(food => {
+        if (food.quantity > 0) {
+          cartItems.push(food);
+          //sessionData.push(item.id + ":" + item.quantity);
+        }
+      });
+    });
+
+    clearTimeout(this.cartTimer);
+    this.cartTimer = setTimeout(() => {
+      sessionStorage.setItem("cart", JSON.stringify(cartItems));
+    }, 1000);
+
+    return cartItems.map((item, i) => {
+      if (item.quantity > 0) {
+        totalPrice += item.price * item.quantity;
+        return (
+          <div>
+            {item.title} ++ {item.quantity}
+          </div>
+        );
+      }
+    });
   }
 
-  getFood=(id)=> {
+  getFood(id) {
     const foodList = this.state.foodList;
     let food = null;
     for (var i = 0; i < foodList.length; i++) {
       for (var j = 0; j < foodList[i].foods.length; j++) {
-          const subData = foodList[i].foods[j];
-          if (subData) {
-              if (subData.id === id) {
-                food = subData.title;
-                break;
-              }
-            
+        const subData = foodList[i].foods[j];
+        if (subData) {
+          if (subData.id === id) {
+            food = subData.title;
+            break;
           }
+        }
       }
     }
     return food;
@@ -130,7 +134,6 @@ class FoodList extends Component {
   }
 
   search(value) {
-    //console.log(value)
     const foodList = [...this.state.foodList];
     for (var i = 0; i < foodList.length; i++) {
       for (var j = 0; j < foodList[i].foods.length; j++) {
@@ -142,23 +145,18 @@ class FoodList extends Component {
           ) {
             console.log(foodList[i].foods[j].title, true);
             foodList[i].foods[j].hide = false;
-            // subData[z].hide = false;
             this.setState({
               show: false
             });
           } else {
             foodList[i].foods[j].hide = true;
-            // subData[z].hide = true;
           }
         } else {
           foodList[i].foods[j].hide = false;
-          // subData[z].hide = false;
         }
       }
     }
   }
-
-
 
   foodPack(item, i) {
     let title;
@@ -201,8 +199,6 @@ class FoodList extends Component {
     if (foodList) {
       return (
         <React.Fragment>
-          {this.updatee}
-          {/* <div className="shopCart"> {this.updatecount} </div> */}
           <div className="foodBox">
             <div className="foodBox-inner">
               <div className="searchBox">
@@ -229,11 +225,7 @@ class FoodList extends Component {
               {foodList.map(this.foodPack)}
             </div>
           </div>
-
-          <div className="cartTest">
-                {foodList.map(this.update)}
-          </div>
-
+          <div className="cartTest">{this.renderCart(foodList)}</div>
           {this.state.modalSelectedFood ? (
             <Modal
               item={this.state.modalSelectedFood}
@@ -246,16 +238,6 @@ class FoodList extends Component {
               }}
             />
           ) : null}
-
-          {/* {this.state.selectedFood ? (
-            <div className="modal">
-              <Food
-                inModal={true}
-                item={this.state.selectedFood}
-                onChangeQuantity={this.onChange(this.state.selectedFood)}
-              />
-            </div>
-          ) : null} */}
         </React.Fragment>
       );
     } else {
