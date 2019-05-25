@@ -11,6 +11,15 @@ class Food extends Component {
     };
   }
 
+  shouldComponentUpdate(nextProps, nextState) {
+    console.log(this.props.item.quantity, nextProps.item.quantity);
+    if (nextProps.item.quantity !== this.props.quantity) {
+      console.log("ss");
+      return true;
+    }
+    return false;
+  }
+
   imageFood(data) {
     return data.replace("#SIZEOFIMAGE#", "280x175");
   }
@@ -26,8 +35,10 @@ class Food extends Component {
       this.props.onSelect();
     }
   }
-  
+
   render() {
+    console.log("ok");
+
     const { item } = this.props;
     let image;
     let className;
@@ -47,7 +58,7 @@ class Food extends Component {
     } else {
       className = "price";
     }
-    
+
     if (item.img) {
       image = (
         <img

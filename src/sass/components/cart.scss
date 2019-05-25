@@ -1,6 +1,6 @@
 .shop {
   position: fixed;
-  width: 100%;
+  width: 25%;
   height: 100%;
   z-index: 4500;
   top: 0px;
@@ -52,7 +52,7 @@
 @media only screen and (min-width: 600px) {
   .shop {
     .cartBox {
-      width: 30%;
+      width: 100%;
     }
   }
   .cartTest{

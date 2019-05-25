@@ -1,7 +1,54 @@
 import React, { Component } from "react";
 class Cart extends Component {
+  constructor(props) {
+    super(props);
+    this.handel = this.handel.bind(this);
+  }
+
+  handel(foodList) {
+    // console.log(foodList);
+    // foodList = JSON.parse(foodList);
+    const cartItems = [];
+    let sessionData = [];
+    let totalPrice = 0;
+    let test;
+    foodList.forEach((item, i) => {
+      item.foods.forEach(food => {
+        if (food.quantity > 0) {
+          cartItems.push(food);
+          sessionData.push(food.id + ":" + food.quantity);
+          totalPrice += food.price * food.quantity;
+        }
+      });
+    });
+
+    clearTimeout(this.cartTimer);
+    this.cartTimer = setTimeout(() => {
+      sessionStorage.setItem("cart", JSON.stringify(sessionData));
+    }, 1000);
+
+    test = cartItems.map((item, i) => {
+      if (item.quantity > 0) {
+        return (
+          <div>
+            {item.title} ++ {item.quantity} + {item.price}
+          </div>
+        );
+      }
+    });
+    return (
+      <div>
+        {test}
+        {totalPrice > 0 ? totalPrice : ""}
+      </div>
+    );
+  }
+
   render() {
     if (this.props.show) {
+      
+      return null;
+      //console.log(this.props.foodList)
       return (
         <div className="shop">
           <div className="lightBox transition-all" data-close-modal />
@@ -32,6 +79,7 @@ class Cart extends Component {
 </div>
 </div>
 <%}%> */}
+            {this.handel(this.props.foodList)}
             <div className="cart-bottom">
               <div className="totalPrice">
                 <label for="">هزینه ی کل</label>

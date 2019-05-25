@@ -22,6 +22,9 @@ class FoodList extends Component {
     this.renderCart = this.renderCart.bind(this);
     this.getFood = this.getFood.bind(this);
   }
+  // shouldComponentUpdate(nextProps,nextState){
+  //     return this.state.quantity!==nextState.quantity;
+  // }
 
   componentWillMount() {
     const { ready } = this.props;
@@ -77,41 +80,43 @@ class FoodList extends Component {
   };
 
   renderCart(foodList) {
-    const cartItems = [];
-    let sessionData = [];
-    let totalPrice = 0;
-    let test;
-    foodList.forEach((item, i) => {
-      item.foods.forEach(food => {
-        if (food.quantity > 0) {
-          cartItems.push(food);
-          sessionData.push(food.id + ":" + food.quantity);
-          totalPrice += food.price * food.quantity;
-        }
-      });
-    });
-    clearTimeout(this.cartTimer);
-    this.cartTimer = setTimeout(() => {
-      sessionStorage.setItem("cart", JSON.stringify(sessionData));
-    }, 1000);
+    console.log("ddd");
+    console.log(foodList);
+    return <div>{}</div>;
 
-    test=(
-      cartItems.map((item, i) => {
-        if (item.quantity > 0) {
-          return (
-            <div>
-              {item.title} ++ {item.quantity} + {item.price}
-            </div>
-          );
-        }
-      })
-    )
-    return (
-      <div>
-        {test}
-         {(totalPrice>0) ? totalPrice : '' }
-      </div>
-    );
+    // const cartItems = [];
+    // let sessionData = [];
+    // let totalPrice = 0;
+    // let test;
+    // foodList.forEach((item, i) => {
+    //   item.foods.forEach(food => {
+    //     if (food.quantity > 0) {
+    //       cartItems.push(food);
+    //       sessionData.push(food.id + ":" + food.quantity);
+    //       totalPrice += food.price * food.quantity;
+    //     }
+    //   });
+    // });
+    // clearTimeout(this.cartTimer);
+    // this.cartTimer = setTimeout(() => {
+    //   sessionStorage.setItem("cart", JSON.stringify(sessionData));
+    // }, 1000);
+
+    // test = cartItems.map((item, i) => {
+    //   if (item.quantity > 0) {
+    //     return (
+    //       <div>
+    //         {item.title} ++ {item.quantity} + {item.price}
+    //       </div>
+    //     );
+    //   }
+    // });
+    // return (
+    //   <div>
+    //     {test}
+    //     {totalPrice > 0 ? totalPrice : ""}
+    //   </div>
+    // );
   }
 
   getFood(id) {
@@ -235,7 +240,12 @@ class FoodList extends Component {
               {foodList.map(this.foodPack)}
             </div>
           </div>
-          <div className="cartTest">{this.renderCart(foodList)}</div>
+          {
+            <Cart
+              show={true}
+              foodList={this.state.foodList}
+            />
+          }
           {this.state.modalSelectedFood ? (
             <Modal
               item={this.state.modalSelectedFood}

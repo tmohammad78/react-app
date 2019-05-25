@@ -12,11 +12,11 @@ class Menu extends Component {
     return (
       <div className="fullBox">
         <CategoryList items={this.state.categories} />
-        <Cart
+        {/* <Cart
           show={this.props.show}
           testing={this.props.testing}
           onPress={this.props.onPress}
-        />
+        /> */}
         <FoodList
           reloadCart={cartData => {}}
           ready={categories =>
