@@ -15,13 +15,13 @@ class App extends Component {
   render() {
     return (
       <React.Fragment>
-        <Header
+        {/* <Header
           ready={() =>
             this.setState({
               show: true
             })
           }
-        />
+        /> */}
         <Menu
           show={this.state.show}
           testing={this.handeler}

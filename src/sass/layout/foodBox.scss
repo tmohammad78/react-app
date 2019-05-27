@@ -1,6 +1,5 @@
 .foodBox {
   position: relative;
-  top: 125px;
   border-top-left-radius: 10px;
   border-top-right-radius: 10px;
   width: 100%;
@@ -63,8 +62,7 @@
   }
   .foodBox {
     border-radius: 0;
-    top: 185px;
-    width: 100%;
+    width: 75%;
     border: none;
     margin: 0 auto;
     margin-right: 0px;

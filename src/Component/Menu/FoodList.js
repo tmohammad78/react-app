@@ -215,6 +215,7 @@ class FoodList extends Component {
       return (
         <React.Fragment>
           <div className="foodBox">
+
             <div className="foodBox-inner">
               <div className="searchBox">
                 <div action="#" className="search">
@@ -239,7 +240,10 @@ class FoodList extends Component {
               </div>
               {foodList.map(this.foodPack)}
             </div>
+         
+     
           </div>
+
           {
             <Cart
               show={true}

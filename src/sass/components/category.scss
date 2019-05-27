@@ -4,7 +4,10 @@
   overflow: hidden;
   position: fixed;
   z-index: 1000;
-  background: #ef4123;
+
+  display: none;
+
+  background: #f6f6f6;
   .categories {
     direction: rtl;
     overflow-x: auto;

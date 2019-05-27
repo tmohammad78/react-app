@@ -50,6 +50,18 @@
   text-align: center;
 }
 @media only screen and (min-width: 600px) {
+  .cartSection{
+    width: 25%;
+    float: left;
+    height: 400px;
+    background: red;
+    top: 0px;
+    // position: sticky;
+    // top: 10px;
+    // transition: top 0.5s ease 0s;     
+    position:sticky;
+    position: -webkit-sticky;
+  }
   .shop {
     .cartBox {
       width: 100%;

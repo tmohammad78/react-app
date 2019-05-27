@@ -11,6 +11,10 @@ class Menu extends Component {
   render() {
     return (
       <div className="fullBox">
+        <div className="cartSection">
+        
+        </div>   
+        
         <CategoryList items={this.state.categories} />
         {/* <Cart
           show={this.props.show}
