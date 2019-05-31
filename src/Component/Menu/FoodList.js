@@ -181,8 +181,8 @@ class FoodList extends Component {
       title = "";
     }
     return (
-      <div key={`${item.id}-${i}`} id={item.id}>
-        <h1 className="Header">{title}</h1>
+        <div className="foodPack" key={`${item.id}-${i}`} id={item.id}>
+        <h3 className="Header">{title}</h3>
         <div className="food_section">
           {item.foods.map((item, i) => {
             return (
@@ -206,6 +206,7 @@ class FoodList extends Component {
           })}
         </div>
       </div>
+
     );
   }
 
@@ -217,42 +218,68 @@ class FoodList extends Component {
           <div className="">
 
           </div>
-
-          <div className="foodBox">
-
-            <div className="foodBox-inner">
-              <div className="searchBox">
-                <div action="#" className="search">
-                  <div className="box-input">
-                    <div className="box-searchicon">
-                      <img
-                        className="search-img"
-                        src="/img/search.svg"
-                        alt="search"
-                      />
+          <div className="main-content">
+            <div className="resProfile container">
+              <div className="row" style={{position:"relative"}} >
+              <div className="col-md-9">
+                <div className="FoodBox">
+                  <div className="searchBox">
+                    <div action="#" className="search">
+                      <div className="box-input">
+                        <div className="box-searchicon">
+                          <img
+                            className="search-img"
+                            src="/img/search.svg"
+                            alt="search"
+                          />
+                        </div>
+                        <input
+                          type="text"
+                          className="search__input"
+                          placeholder="جستجوی غذا"
+                          name="search-input"
+                          onChange={this.handleSearch}
+                          value={this.state.value}
+                        />
+                      </div>
                     </div>
-                    <input
-                      type="text"
-                      className="search__input"
-                      placeholder="جستجوی غذا"
-                      name="search-input"
-                      onChange={this.handleSearch}
-                      value={this.state.value}
-                    />
+                  </div>
+                  <div className="FoodBox-inner">
+                        <div className="container-fluid">
+                          <div className="row" style={{ position:"relative"}}>
+                           <div className="col-md-9">
+                            <div className="inner" style={{paddingLeft:10}} >
+                           {foodList.map(this.foodPack)}
+
+                            </div>
+                           </div>
+                          </div>
+                        </div>
                   </div>
                 </div>
-              </div>
-              {foodList.map(this.foodPack)}
-            </div>
-         
-     
-          </div>
 
+              </div>
+              <div className="col-md-3 " style={{ position:"sticky" , top:-80}}>
+                  {/* <Cart
+                  show={true}
+                  foodList={this.state.foodList}
+                /> */}
+                <div className="basketBox">
+                    <div className="basketHeader">
+                        <div className="inner">
+                              سفارشات
+                        </div>
+                    </div>
+                    <div className="emptyBasket">
+                        سبد شما خالی است.
+                    </div>
+                </div>
+              </div>
+            </div>
+            </div>
+          </div>
           {
-            <Cart
-              show={true}
-              foodList={this.state.foodList}
-            />
+
           }
           {this.state.modalSelectedFood ? (
             <Modal

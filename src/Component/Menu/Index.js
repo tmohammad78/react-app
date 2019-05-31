@@ -10,10 +10,11 @@ class Menu extends Component {
   };
   render() {
     return (
-      <div className="fullBox">
-        <div className="cartSection">
+      <div className="main-wrapper">
+        {/* <div className="cartSection">
         
-        </div>   
+        </div>    */}
+        <div className="header-wrapper"></div>
         
         <CategoryList items={this.state.categories} />
         {/* <Cart

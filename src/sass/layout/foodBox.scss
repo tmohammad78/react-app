@@ -1,16 +1,18 @@
+
 .foodBox {
+  background: #f1f1f1;
   position: relative;
   border-top-left-radius: 10px;
   border-top-right-radius: 10px;
   width: 100%;
   z-index: 1000;
-  background: white;
   .foodBox-inner {
     overflow-y: auto;
     padding: 20px 20px 0 20px;
     height: 639px;
   }
 }
+
 .lds-dual-ring {
   position: absolute;
   display: inline-block;
@@ -76,6 +78,32 @@
     }
   }
 }
+.FoodBox{
+  background-color: #fff;
+  border: 1px solid #d9d9d9;
+  -webkit-border-radius: 4px;
+  border-radius: 4px;
+  .foodBox-inner{
+
+    // >.active{
+    //   display: block;
+    //   visibility: visible;
+    // }
+  }
+}
+.foodPack{
+  margin-bottom: 50px;
+  .Header{
+    font-size: 15px;
+
+    margin-top: 10px;
+    margin-bottom: 20px;
+    color: #505050;
+    text-align: center;
+    font-weight: 600;
+  }
+}
+
 @media only screen and (min-width: 1024px) and (max-width:1600px) {
   .col-1-of-3 {
     width: calc((100% - 6 * 50px) / 3);
@@ -87,14 +115,15 @@
     }
   }
 }
-@media only screen and (min-width: 1400px) {
+@media only screen and (min-width: 1200px) {
   .col-1-of-3 {
     width: calc((100% - 6 * 50px) / 3);
     margin: 20px 50px;
   }
-  .foodBox {
+  .foodBox {    
     .foodBox-inner {
       width: 75%;
     }
   }
+
 }

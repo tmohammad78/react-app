@@ -1,0 +1,26 @@
+@mixin colbase() {
+    position: relative;
+    min-height: 1px;
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+
+[class^="col-"],
+[class*="col-"] {
+  @include colbase();
+}
+.col-md-9{
+float: right;
+}
+.col-md-3{
+float: right;
+}
+@media only screen and (min-width:992px){
+    .col-md-9{
+        width: 75%;
+    }
+    .col-md-3{
+        width: 25%;
+    }
+}

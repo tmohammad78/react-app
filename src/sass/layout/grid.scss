@@ -12,3 +12,34 @@
   background: #F6F6F6;
   padding-top: 48px;
 }
+.main-content{
+  background: #f1f1f1;
+}
+.resProfile{
+  margin-top: 15px;
+    margin-bottom: 30px;
+}
+.main-wrapper{
+  direction: rtl;
+  position: relative;
+}
+.row{
+  margin-left: -15px;
+  margin-right: -15px;
+  overflow: auto;
+}
+
+.container,
+.container-fluid{
+  padding-left: 15px;
+  padding-right: 15px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+@media only screen and (min-width: 1200px) {
+
+  .container{
+  width: 1170px;
+  }
+}

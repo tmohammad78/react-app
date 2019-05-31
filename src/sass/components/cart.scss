@@ -1,3 +1,29 @@
+.basketBox{
+  position: relative;
+  .basketHeader{
+    border: 1px solid #e0e0e0;
+    background: #fff;
+    margin-bottom: 15px;
+    border-radius: 4px 4px 0 0;
+    .inner{
+      text-align: center;
+      cursor: pointer;
+      padding: 9px 4px;
+      background: #fafafa;
+      border-radius: 4px 4px 0 0;
+      color: black;
+      height: 45px;
+    }
+  }
+  .emptyBasket{
+    background: #f2f2f2;
+    border: 1px solid #c7c7c7;
+    text-align: center;
+    font-size: 13px;
+    border-radius: 4px;
+    height: 200px;
+  }
+}
 .shop {
   position: fixed;
   width: 25%;
@@ -59,7 +85,7 @@
     // position: sticky;
     // top: 10px;
     // transition: top 0.5s ease 0s;     
-    position:sticky;
+    position:sticky !important;
     position: -webkit-sticky;
   }
   .shop {
