@@ -247,6 +247,9 @@ class FoodList extends Component {
                   <div className="FoodBox-inner">
                         <div className="container-fluid">
                           <div className="row" style={{ position:"relative"}}>
+                          <div className="col-md-3 category " >
+                              sfvkj
+                          </div>
                            <div className="col-md-9">
                             <div className="inner" style={{paddingLeft:10}} >
                            {foodList.map(this.foodPack)}
