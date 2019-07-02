@@ -267,7 +267,7 @@ class FoodList extends Component {
                   show={true}
                   foodList={this.state.foodList}
                 /> */}
-                {/* <div className="basketBox">
+                <div className="basketBox">
                     <div className="basketHeader">
                         <div className="inner">
                               سفارشات
@@ -276,7 +276,7 @@ class FoodList extends Component {
                     <div className="emptyBasket">
                         سبد شما خالی است.
                     </div>
-                </div> */}
+                </div>
               </div>
             </div>
             </div>

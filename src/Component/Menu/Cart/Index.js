@@ -46,8 +46,6 @@ class Cart extends Component {
 
   render() {
     if (this.props.show) {
-      
-      return null;
       //console.log(this.props.foodList)
       return (
         <div className="shop">

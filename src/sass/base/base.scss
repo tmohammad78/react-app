@@ -23,10 +23,13 @@ body {
   //   padding: 0;
   // }
 }
-.clearfix {
-  overflow: auto;
+.clearfix:after {
+  content: " "; /* Older browser do not support empty content */
+  visibility: hidden;
+  display: block;
+  height: 0;
+  clear: both;
 }
-
 .transition-all {
   transition: all 250ms ease;
 }
