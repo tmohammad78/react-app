@@ -37,8 +37,6 @@ class Food extends Component {
   }
 
   render() {
-    console.log("ok");
-
     const { item } = this.props;
     let image;
     let className;

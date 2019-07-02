@@ -220,7 +220,7 @@ class FoodList extends Component {
           </div>
           <div className="main-content">
             <div className="resProfile container">
-              <div className="row" style={{position:"relative"}} >
+              <div className="row clearfix" style={{position:"relative"}} >
               <div className="col-md-9">
                 <div className="FoodBox">
                   <div className="searchBox">
@@ -244,10 +244,10 @@ class FoodList extends Component {
                       </div>
                     </div>
                   </div>
-                  <div className="FoodBox-inner">
-                        <div className="container-fluid">
-                          <div className="row" style={{ position:"relative"}}>
-                          <div className="col-md-3 category " >
+                  <div className="FoodBox-inner clearfix">
+                        <div className="container-fluid clearfix">
+                          <div className="row clearfix" style={{ position:"relative"}}>
+                          <div className="col-md-3 category " style={{position:'sticky' , top:50}} >
                               sfvkj
                           </div>
                            <div className="col-md-9">
@@ -262,7 +262,7 @@ class FoodList extends Component {
                 </div>
 
               </div>
-              <div className="col-md-3 " style={{ position:"sticky" , top:-80}}>
+              <div className="col-md-3 " style={{ position:"sticky" , top:0}}>
                   {/* <Cart
                   show={true}
                   foodList={this.state.foodList}
