@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import CategoryList from "./category/CategoryList";
 import FoodList from "./FoodList";
-import Cart from "./Cart/Index";
+
 class Menu extends Component {
   state = {
     categories: [],

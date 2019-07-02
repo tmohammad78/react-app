@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import Food from "./food/Food";
 import axios from "axios";
-import Cart from "./Cart/Index";
+
 import Modal from "./modal/Index";
 import { parseMenu } from "./util/menu";
 
@@ -267,7 +267,7 @@ class FoodList extends Component {
                   show={true}
                   foodList={this.state.foodList}
                 /> */}
-                <div className="basketBox">
+                {/* <div className="basketBox">
                     <div className="basketHeader">
                         <div className="inner">
                               سفارشات
@@ -276,7 +276,7 @@ class FoodList extends Component {
                     <div className="emptyBasket">
                         سبد شما خالی است.
                     </div>
-                </div>
+                </div> */}
               </div>
             </div>
             </div>
