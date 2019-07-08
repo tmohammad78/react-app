@@ -41,7 +41,7 @@ class Cover extends Component {
 					<div
 						className="rest-cover"
 						style={{
-							backgroundImage: `url(https://static.delino.com/Image/Restaurant/Cover/st5xrnas.i4s_big.jpg)`
+							backgroundImage: `url(https://static.delino.com/Image/Restaurant/Cover/hrbmnm0b.t32_big.jpg)`
 						}}
 					/>
 					<div className="wrapper clearfix">
