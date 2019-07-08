@@ -1,0 +1,115 @@
+.parent {
+	width: 100%;
+	height: 89px;
+	overflow: hidden;
+	position: sticky;
+	top: 0px;
+	z-index: 1000;
+	border-bottom: 1px solid #e4e4e4;
+	.categories {
+		direction: rtl;
+		overflow-x: auto;
+		white-space: nowrap;
+		height: 107px;
+		padding-top: 10px;
+		margin: 0 auto;
+		z-index: 1100;
+		background-color: hsla(0, 0%, 100%, 0.95);
+		border-bottom: 1px solid #e4e4e4;
+		.i-w {
+			overflow: hidden;
+			text-align: center;
+			cursor: pointer;
+			background-color: transparent;
+			width: 95px;
+			display: inline-block;
+			margin: 0 5px;
+			transition: all 0.5s;
+
+			.inner {
+				background: transparent;
+				.caption {
+					color: white;
+				}
+			}
+			.activecategory {
+				border-bottom: 5px soild #be901e !important  ;
+			}
+		}
+	}
+}
+.indexbox {
+	position: relative;
+	width: 121.539px;
+	display: inline-block;
+}
+.f-m-t {
+	position: sticky;
+	top: 0;
+	left: 0;
+	right: 0;
+	height: 111px;
+	z-index: 15;
+}
+.c-1-h {
+	overflow: hidden;
+	margin: 0 auto;
+	z-index: 1100;
+	background-color: hsla(0, 0%, 100%, 0.95);
+	border-bottom: 1px solid #e4e4e4;
+	.c-1 {
+		height: 110px;
+	}
+}
+.owl-carousel {
+	width: 100%;
+	-webkit-tap-highlight-color: transparent;
+	position: relative;
+	z-index: 1;
+	.owl-rtl {
+		direction: rtl;
+		.owl-item {
+			float: right;
+		}
+	}
+	.owl-stage-outer {
+		position: relative;
+		overflow: hidden;
+		-webkit-transform: translateZ(0);
+	}
+	.owl-stage {
+		position: relative;
+	}
+	.owl-drag {
+		.owl-item {
+			-webkit-user-select: none;
+			-moz-user-select: none;
+			-ms-user-select: none;
+			user-select: none;
+		}
+	}
+	.owl-item {
+		position: relative;
+		min-height: 1px;
+		float: left;
+		-webkit-backface-visibility: hidden;
+		-webkit-tap-highlight-color: transparent;
+		-webkit-touch-callout: none;
+	}
+}
+.activecategory::before {
+	position: absolute;
+	content: "";
+	bottom: 0;
+	left: 10%;
+	right: 10%;
+	height: 4px;
+	background-color: #be901e;
+}
+@media only screen and (min-width: 767px) {
+	.categories {
+		.owl-item {
+			margin: 0 auto;
+		}
+	}
+}

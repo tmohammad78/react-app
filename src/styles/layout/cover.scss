@@ -1,0 +1,100 @@
+.cover-container {
+	position: relative;
+	background-color: #111;
+	color: #fff;
+	.rest-cover {
+		position: absolute;
+		left: 0;
+		top: 0;
+		width: 100%;
+		// height: 100%;
+		height: 100%;
+		opacity: 0.4;
+		background-repeat: no-repeat;
+		background-position: 50%;
+		background-size: cover;
+		z-index: 1;
+	}
+	.wrapper {
+		position: relative;
+		height: 100%;
+		z-index: 3;
+		padding: 41px 0;
+	}
+	.rest-logo-holder {
+		text-align: center;
+		margin-bottom: 20px;
+		aside {
+			direction: rtl;
+		}
+		h1 {
+			margin: 10px 0;
+			white-space: nowrap;
+			line-height: 1;
+			font-size: 24px;
+			font-size: 1.5rem;
+		}
+		h2 {
+			font-size: 14px;
+			font-size: 0.875rem;
+			margin: 0 0 10px;
+		}
+	}
+	.online-status {
+		font-size: 13px;
+		font-size: 0.8125rem;
+		direction: rtl;
+		white-space: nowrap;
+		margin-bottom: 20px;
+		span {
+			display: inline-block;
+			vertical-align: middle;
+			line-height: normal;
+			text-align: center;
+		}
+		label {
+			display: block;
+			font-size: 12px;
+			font-size: 0.75rem;
+		}
+	}
+	.online-status.offline {
+		line-height: normal;
+		label {
+			margin-top: 4px;
+		}
+	}
+	footer {
+		direction: rtl;
+		text-align: center;
+	}
+}
+@media only screen and (min-width: 1400px) {
+	.wrapper {
+		margin: 0 auto;
+		max-width: 1400px;
+	}
+}
+@media only screen and (min-width: 767px) {
+	.wrapper {
+		padding: 50px 0;
+	}
+	.cover-container {
+		height: 300px;
+		.online-status {
+			float: right;
+			margin-bottom: 0;
+		}
+		.rest-logo-holder {
+			float: right;
+			text-align: right;
+		}
+		footer {
+			position: absolute;
+			bottom: 20px;
+			left: 0;
+			right: 0;
+			text-align: right;
+		}
+	}
+}

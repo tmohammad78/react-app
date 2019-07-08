@@ -1,10 +1,11 @@
 import React from "react";
 import ReactDOM from "react-dom";
-import App from "./App";
-import "../src/sass/main.scss";
-
-const Main = () => {
-  return <App />;
-};
-
-ReactDOM.render(<Main />, document.querySelector("#APP"));
+import Root from "./Root";
+import Routs from "./routes";
+import "./styles/main.scss";
+ReactDOM.render(
+	<Root>
+		<Routs />
+	</Root>,
+	document.getElementById("root")
+);

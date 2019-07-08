@@ -1,0 +1,76 @@
+*,
+*::after,
+*::before {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+body {
+	background-color: #f8f8f8;
+}
+.clearfix::after {
+	content: "";
+	clear: both;
+	display: table;
+}
+figure {
+	margin: 0;
+}
+img {
+	border: 0;
+}
+a {
+	text-decoration: none;
+}
+.lds-dual-ring {
+	position: absolute;
+	display: inline-block;
+	transform: translate(50%, 50%);
+	top: 50%;
+	right: 50%;
+	width: 64px;
+	height: 64px;
+	background: white;
+}
+.lds-dual-ring:after {
+	content: " ";
+	display: block;
+	width: 46px;
+	height: 46px;
+	margin: 1px;
+	border-radius: 50%;
+	border: 5px solid #ef4123;
+	border-bottom-color: white;
+	animation: lds-dual-ring 0.28s linear infinite;
+}
+.white-box {
+	background-color: #fff;
+	border: 1px solid #e4e4e4;
+}
+h2 {
+	font-size: 1.5em;
+	line-height: 2em;
+	margin-top: 1em;
+	margin-bottom: 1em;
+}
+h3 {
+	font-size: 1.17em;
+	line-height: 1.28205em;
+	margin-top: 1.28205em;
+	margin-bottom: 1.28205em;
+}
+
+ul {
+	padding: 0;
+	margin: 0;
+	list-style: none;
+}
+
+@keyframes lds-dual-ring {
+	0% {
+		transform: rotate(0deg);
+	}
+	100% {
+		transform: rotate(360deg);
+	}
+}

@@ -1,22 +1,28 @@
-export const currency = (number,showToman=true) => {
-  if(showToman && number !==0){
-    const realPrice=number;
+export const currency = (number, showToman = true) => {
+  if (showToman && number !== 0) {
+    const realPrice = number;
     let final = realPrice.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1,");
     return toPersianNum(final) + " تومان";
-  }
-   else if(number !==0){
-    const realPrice=number;
+  } 
+// else if ( showToman===false &&  number !== 0) {
+//     const realPrice = number;
+//     let final = realPrice.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1,");
+//     return toPersianNum(final) + "%";
+//   }
+else if (showToman === false){
+	const realPrice = number;
     let final = realPrice.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1,");
-    return toPersianNum(final) +'%' ;
+    return toPersianNum(final);
   }
-
 };
 
-export const discountPrice = (number,discountPercentage)=>{
-  const discountPrice=number-number*(discountPercentage/100);
-  let final = discountPrice.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1,");
+export const discountPrice = (number, discountPercentage) => {
+  const discountPrice = number - number * (discountPercentage / 100);
+  let final = discountPrice
+    .toString()
+    .replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1,");
   return toPersianNum(final) + " تومان";
-}
+};
 
 export const truncate = (str, num = 5) => {
   const arrStr = str.split(" ");

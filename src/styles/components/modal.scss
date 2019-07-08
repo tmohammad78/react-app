@@ -1,0 +1,68 @@
+.form {
+	max-width: 500px;
+	margin: 0 auto;
+	font-weight: 300;
+}
+.field-group {
+	position: relative;
+	float: right;
+	width: 100%;
+}
+.inputLabel {
+	position: absolute;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	pointer-events: none;
+	display: block;
+}
+
+.modal {
+	width: 100%;
+	height: 100vh;
+	background: #eee;
+	position: absolute;
+	.logo {
+		margin: 20px auto;
+		width: 150px;
+		figure {
+			margin: 0;
+			.modal-logo {
+				width: 100%;
+			}
+		}
+	}
+	.details {
+		.form {
+			max-width: 250px;
+			margin: 40px auto 20px;
+			.field-group {
+				margin-bottom: 50px;
+			}
+		}
+	}
+	.details {
+		text-align: center;
+	}
+	.inputLogin {
+		height: 45px;
+		font-size: 16px;
+		font-size: 1rem;
+		padding: 5px;
+		text-align: right;
+		direction: rtl;
+		background-color: #fff;
+		border: none;
+		border-bottom: 1px solid #ccc;
+	}
+}
+
+.close {
+	width: 10px;
+	height: 10px;
+	color: red;
+	::before {
+		content: "\E912";
+	}
+}

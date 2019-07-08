@@ -1,0 +1,53 @@
+.main-footer {
+	background-color: #fff;
+	text-align: center;
+	color: #333;
+	direction: rtl;
+	border-top: 1px solid #ddd;
+	.wrapper {
+		padding: 10px 10px 15px;
+	}
+	.delino {
+		background-color: #fff;
+		border-top: 1px solid #e4e4e4;
+		text-align: center;
+		float: right;
+		width: 100%;
+		font-size: 14px;
+		font-size: 0.875rem;
+		color: #888;
+	}
+	.right {
+		font-size: 14px;
+		font-size: 0.875rem;
+	}
+	.social-list {
+		direction: rtl;
+		a {
+			color: #333;
+			font-size: 24px;
+			font-size: 1.5rem;
+			margin: 0 2px;
+		}
+	}
+	a {
+		color: #a81931;
+	}
+}
+@media only screen and (min-width: 767px) {
+	.main-footer {
+		.right {
+			float: right;
+			width: 50%;
+			text-align: right;
+		}
+		.left {
+			float: left;
+			width: 50%;
+			text-align: left;
+		}
+		.social-list {
+			margin: 1em 0;
+		}
+	}
+}
