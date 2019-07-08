@@ -220,7 +220,7 @@ class FoodList extends Component {
           </div>
           <div className="main-content">
             <div className="resProfile container">
-              <div className="row clearfix" style={{position:"relative"}} >
+              <div className=" clearfix" style={{position:"relative"}} >
               <div className="col-md-9">
                 <div className="FoodBox">
                   <div className="searchBox">
@@ -246,7 +246,7 @@ class FoodList extends Component {
                   </div>
                   <div className="FoodBox-inner clearfix">
                         <div className="container-fluid clearfix">
-                          <div className="row clearfix" style={{ position:"relative"}}>
+                          <div className="clearfix" style={{ position:"relative"}}>
                           <div className="col-md-3 category " style={{position:'sticky' , top:50}} >
                               sfvkj
                           </div>

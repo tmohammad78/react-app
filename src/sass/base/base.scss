@@ -5,26 +5,11 @@
   padding: 0;
   box-sizing: border-box;
 }
-// html {
-//   font-size: 100%;
-//   @include respond(tab-land) {
-//     font-size: 56.25%;
-//   }
-//   @include respond(tab-port) {
-//     font-size: 50%;
-//   }
-//   @include respond(big-desktop) {
-//     font-size: 100%;
-//   }
-// }
 body {
   box-sizing: border-box;
-  // @include respond(tab-port) {
-  //   padding: 0;
-  // }
 }
 .clearfix:after {
-  content: " "; /* Older browser do not support empty content */
+  content: " ";
   visibility: hidden;
   display: block;
   height: 0;
@@ -33,11 +18,3 @@ body {
 .transition-all {
   transition: all 250ms ease;
 }
-//for change scroll ,fun :)
-// body::-webkit-scrollbar {
-//   width: 1rem;
-// }
-// body::-webkit-scrollbar-thumb {
-//   background-color: red;
-//   outline: 1px solid slategrey;
-// }
