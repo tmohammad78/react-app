@@ -69,16 +69,7 @@
 		text-align: center;
 	}
 }
-@media only screen and (min-width: 1400px) {
-	.wrapper {
-		margin: 0 auto;
-		max-width: 1400px;
-	}
-}
 @media only screen and (min-width: 767px) {
-	.wrapper {
-		padding: 50px 0;
-	}
 	.cover-container {
 		height: 300px;
 		.online-status {

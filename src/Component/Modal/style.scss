@@ -1,0 +1,132 @@
+.alert-enter {
+  opacity: 0;
+  transform: scale(0.9);
+}
+.alert-enter-active {
+  opacity: 1;
+  transform: translateX(0);
+  transition: opacity 300ms, transform 300ms;
+}
+.alert-exit {
+  opacity: 1;
+}
+.alert-exit-active {
+  opacity: 0;
+  transform: scale(0.9);
+  transition: opacity 300ms, transform 300ms;
+}
+
+.modal-inner {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  height: 100vh;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  z-index: 2000;
+  .lightBox {
+    position: fixed;
+    top: 0;
+    z-index: 1000;
+    width: 100%;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.7);
+  }
+}
+.modal-box {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 400px;
+  // overflow-y: scroll;
+  overflow-x: hidden;
+  z-index: 3000;
+  background: white;
+  -webkit-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+  label {
+    font-family: 'IRANSans', Tahoma;
+  }
+  header {
+    padding: 4px 10px;
+  }
+  figure {
+    padding: 0;
+  }
+  .login-content {
+    position: relative;
+    top: 0;
+    width: 100%;
+    height: 302px;
+  }
+  .new-user {
+    padding: 10px;
+    height: 100%;
+  }
+  .new-user-content {
+    padding: 0px 25px;
+  }
+  h4 {
+    text-align: center;
+  }
+  .field-group {
+    float: right;
+    width: 100%;
+    margin-bottom: 50px;
+    position: relative;
+    span {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      right: 0;
+      pointer-events: none;
+    }
+    &:focus {
+      span {
+        visibility: hidden;
+      }
+    }
+  }
+  .fo-angle-left {
+    position: absolute;
+    left: 15px;
+    /* top: 50%; */
+    /* vertical-align: middle; */
+    font-size: 0.875rem;
+    margin-top: -2px;
+  }
+  .login-form {
+    max-width: 250px;
+    margin: 40px auto 20px;
+    input[type='Tel'],
+    input[type='email'],
+    input[type='password'],
+    input[type='tel'],
+    input[type='text'] {
+      // -webkit-appearance: none;
+      // -moz-appearance: none; //???
+      // appearance: none;
+      height: 45px;
+      font-size: 16px;
+      font-size: 1rem;
+      padding: 5px;
+      text-align: center;
+      direction: rtl;
+      background-color: #fff;
+      border: none;
+      border-bottom: 1px solid #ccc;
+      float: right;
+      width: 100%;
+      outline: none;
+    }
+    input[type='Tel'] {
+      font-size: 20px;
+      font-size: 1.25rem;
+    }
+    input[type='tel'],
+    input[type='email'] {
+      direction: ltr;
+    }
+  }
+}

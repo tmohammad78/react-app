@@ -1,0 +1,67 @@
+import React, { Component } from 'react';
+import axios from 'axios';
+import { restaurantInfo } from '../../services/util';
+import './style.scss';
+
+class InfoRes extends Component {
+  state = {
+    restaurantInfo: ''
+  };
+
+  componentDidMount() {
+    this.handleFetchInfo();
+  }
+
+  handleFetchInfo() {
+    return axios
+      .get(restaurantInfo)
+      .then(res => {
+        const resInfo = res.data;
+        this.setState({
+          restaurantInfo: resInfo
+        });
+      })
+      .catch(err => {
+        console.log(`Could not fetch products. Try again later. + ${err}`);
+      });
+  }
+
+  render() {
+    const dataInfo = this.state.restaurantInfo;
+    // const data = dataInfo.cuisine;
+    // console.log(dataInfo);
+    if (dataInfo) {
+      return (
+        <div className='rest-info'>
+          <div className='left-box'>
+            <div className='address-box'>
+              <h2>آدرس شعبه</h2>
+              <section>
+                <address>{dataInfo.fullAddress}</address>
+                <div>تلفن:021-22180180</div>
+              </section>
+              <div className='map-holder'>
+                <div
+                  className='map'
+                  style={{
+                    backgroundImage:
+                      'https://api.cedarmaps.com/v1/static/light/35.80741619412945,51.40486836433411,15/400x400@2x?access_token=7901df5912f7f7339cf23c3bf371a20fb84910aa&markers=marker-default|35.80741619412945,51.40486836433411'
+                  }}
+                />
+              </div>
+            </div>
+          </div>
+          <div className='right-box'>
+            <h2>نوع غذا</h2>
+            <section>
+              <ul className='food-type' />
+            </section>
+          </div>
+        </div>
+      );
+    }
+    return '';
+  }
+}
+
+export default InfoRes;
