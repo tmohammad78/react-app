@@ -1,6 +1,8 @@
-import { UPDATE_SORT } from './actionType';
+import UPDATE_SORT from './actionType';
 
-export const updateSort = sort => ({
+const updateSort = sort => ({
   type: UPDATE_SORT,
   payload: sort
 });
+
+export default updateSort;

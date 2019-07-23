@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
 import { connect } from 'react-redux';
-import { updateSort } from '../../../services/sort/action';
+import updateSort from '../../../services/sort/action';
 import Selectbox from '../../Selectbox/index';
 
 const sortBy = [
@@ -13,8 +13,7 @@ const sortBy = [
 
 class Sort extends Component {
   static propTypes = {
-    updateSort: PropTypes.func.isRequired,
-    sort: PropTypes.string.isRequired
+    updateSort: PropTypes.func.isRequired
   };
 
   handleSort = value => {
@@ -22,12 +21,7 @@ class Sort extends Component {
   };
 
   render() {
-    return (
-      <div className="sort">
-        Order by
-        <Selectbox options={sortBy} handleOnChange={this.handleSort} />
-      </div>
-    );
+    return <Selectbox options={sortBy} handleOnChange={this.handleSort} />;
   }
 }
 

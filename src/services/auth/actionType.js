@@ -1,2 +1,2 @@
-export default AUTH_LOGIN="AUTH_LOGIN";
-export default AUTH_LOGUOT="AUTH_LOGUOT";
+export const AUTH_LOGIN = 'AUTH_LOGIN';
+export const AUTH_ERROR = 'AUTH_ERROR';

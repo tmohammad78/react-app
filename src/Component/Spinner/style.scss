@@ -8,19 +8,17 @@
   height: 64px;
   z-index: 10;
   border-radius: 5px;
-  background-color: #000;
-
   div {
     box-sizing: border-box;
     display: block;
     position: absolute;
-    width: 51px;
+    // width: 51px;
     height: 51px;
     margin: 6px;
-    border: 6px solid #fff;
+    border: 6px solid #be901e;
     border-radius: 50%;
-    animation: lds-ring 1.2s cubic-bezier(0.5, 0, 0.5, 1) infinite;
-    border-color: #fff transparent transparent transparent;
+    animation: lds-ring 1.4s cubic-bezier(0.5, 0, 0.5, 1) infinite;
+    border-color: #be901e transparent transparent transparent;
     &:nth-child(1) {
       animation-delay: -0.45s;
     }

@@ -1,2 +1,3 @@
 export const FETCH_MENU = 'FETCH_MENU';
-export const UPDATE_PRODUCT='UPDATE_PRODUCT';
+export const UPDATE_PRODUCT = 'UPDATE_PRODUCT';
+export const CATEGORY_LIST = 'CATEGORY_LIST';

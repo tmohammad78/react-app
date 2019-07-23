@@ -22,6 +22,14 @@ img {
 a {
 	text-decoration: none;
 }
+span{
+	font-family: "IRANSans", Tahoma;
+}
+ul{
+	padding: 0;
+    margin: 0;
+    list-style: none;
+}
 .lds-dual-ring {
 	position: absolute;
 	display: inline-block;
@@ -59,13 +67,15 @@ h3 {
 	margin-top: 1.28205em;
 	margin-bottom: 1.28205em;
 }
+small {
+	font-size: 80%;
+}
 
 ul {
 	padding: 0;
 	margin: 0;
 	list-style: none;
 }
-
 @keyframes lds-dual-ring {
 	0% {
 		transform: rotate(0deg);

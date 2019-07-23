@@ -1,19 +1,25 @@
-import { AUTH_LOGIN, AUTH_LOGUOT } from "./actionType";
+import { AUTH_LOGIN, AUTH_ERROR } from './actionType';
 
 const initialState = {
-	username: ""
+  authenticated: '',
+  errorMessage: '',
+  user: ''
 };
 
 export default function(state = initialState, action) {
-	switch (action.type) {
-		case AUTH_LOGIN:
-			return {
-				...state,
-				username: action.payload
-			};
-		case AUTH_LOGUOT:
-			return initialState;
-		default:
-			return state;
-	}
+  switch (action.type) {
+    case AUTH_LOGIN:
+      return {
+        ...state,
+        user: action.payload.user,
+        authenticated: action.payload.authenticated
+      };
+    case AUTH_ERROR:
+      return {
+        ...state,
+        errorMessage: action.payload
+      };
+    default:
+      return state;
+  }
 }

@@ -1,89 +1,56 @@
-import React, { Component } from "react";
-import PropTypes from "prop-types";
-import { connect } from "react-redux";
-import { fetchMenu } from "../../services/menu/actions";
-import Spinner from "../Spinner";
-import FoodList from "./FoodList";
-import "../Menu/style.scss";
-import Category from '../Category/index';
+import React, { Fragment, useState, useEffect, memo } from 'react';
+import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
+import { fetchMenu } from '../../services/menu/actions';
 
-class Menu extends Component {
-	static propTypes = {
-		fetchMenu: PropTypes.func.isRequired,
-		categoryList: PropTypes.array.isRequired,
-		sort: PropTypes.string
-	};
+import Sort from './sort/index';
+import Spinner from '../Spinner';
+import FoodListTable from './FoodListTable';
 
-	state = {
-		isLoading: true,
-		sort: this.props.sort
-	};
+// import Category from '../Category/index';
+import './style.scss';
 
-	componentWillUnmount() {
-		this.willUnmount = true;
-	}
+const Menu = props => {
+  const sort = props.sort;
+  const [loading, setLoading] = useState();
+  let willUnmount = false;
 
-	componentDidMount() {
-		this.handleFetchMenu();
-	}
+  useEffect(() => {
+    setLoading(true);
+    props.fetchMenu(sort, () => {
+      if (!willUnmount) {
+        setLoading(false);
+      }
+    });
 
-	static getDerivedStateFromProps(nextProps, prevState) {
-		const { sort: nextSort } = nextProps;
-		if (nextSort !== prevState.sort) {
-			return { sort: nextSort, isLoading: true };
-		}
-		return null;
-	}
-	componentDidUpdate(prevProps, prevState) {
-		const { sort: prevSort } = prevProps;
-		if (prevSort !== this.props.sort) {
-			this.handleFetchMenu();
-		}
-	}
+    return () => {
+      willUnmount = true;
+    };
+  }, [sort]);
 
-	handleFetchMenu() {
-		const { sort } = this.state;
-		console.log('sort'+sort);
-		this.props.fetchMenu(sort, () => {
-			if (!this.willUnmount) {
-				this.setState({ isLoading: false });
-			}
-		});
-	}
-	// renderCategory(data) {
-	// 	if (data) {
-	// 		console.log(data);
-	// 		return data.map((category, i) => {
-	// 			console.log(category);
-	// 			return <Category item={data} key={i} />;
-	// 		});
-	// 	} else {
-	// 		return " ";
-	// 	}
-	// }
+  return (
+    <Fragment>
+      {loading && <Spinner />}
+      {/* <Category item={props.categoryList} /> */}
+      <Sort />
+      <FoodListTable />
+    </Fragment>
+  );
+};
 
-	render() {
-		const { isLoading } = this.state;
-		const { categoryList } = this.props;
-		return (
-			<React.Fragment>
-				{isLoading && <Spinner />}
-				<div>
-					<Category item={categoryList} />
-					<div className="food_menu clearfix">
-						<FoodList products={categoryList} />
-					</div>
-				</div>
-			</React.Fragment>
-		);
-	}
-}
+Menu.propTypes = {
+  fetchMenu: PropTypes.func,
+  sort: PropTypes.string
+  // categoryList: PropTypes.object
+};
+
 const mapStateToProps = state => ({
-	categoryList: state.menu.categoryList,
-	sort: state.sort.type
+  foodList: state.menu.foodList,
+  categoryList: state.menu.categoryList,
+  sort: state.sort.type
 });
 
 export default connect(
-	mapStateToProps,
-	{ fetchMenu }
-)(Menu);
+  mapStateToProps,
+  { fetchMenu }
+)(memo(Menu));

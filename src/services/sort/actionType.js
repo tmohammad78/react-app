@@ -1,1 +1,3 @@
-export const UPDATE_SORT='UPDATE_SORT';
+const UPDATE_SORT = 'UPDATE_SORT';
+
+export default UPDATE_SORT;

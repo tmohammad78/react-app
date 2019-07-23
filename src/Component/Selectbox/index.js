@@ -1,32 +1,38 @@
-import React, { Component } from "react";
-import PropTypes from "prop-types";
+import React, { Component } from 'react';
+import PropTypes from 'prop-types';
+
 class Selectbox extends Component {
-	static propTypes = {
-		options: PropTypes.array.isRequired,
-		classes: PropTypes.string,
-		handleOnChange: PropTypes.func.isRequired
-	};
-	state = {
-		selected: ""
-	};
-	createOptions = options =>
-		options.map(item => (
-			<option value={item.value} key={item.value}>
-				{item.label}
-			</option>
-		));
+  static propTypes = {
+    options: PropTypes.array.isRequired,
+    classes: PropTypes.string,
+    handleOnChange: PropTypes.func.isRequired
+  };
 
-	onChange = e => {
-		this.props.handleOnChange(e.target.value);
-	};
+  state = {};
 
-	render() {
-		const { classes, options } = this.props;
-		return (
-			<select onChange={e => this.onChange(e)} className={classes}>
-				{this.createOptions(options)}
-			</select>
-		);
-	}
+  createOptions = options =>
+    options.map(item => {
+      return (
+        <option value={item.value} key={item.value}>
+          {item.label}
+        </option>
+      );
+    });
+
+  onChange = e => {
+    this.props.handleOnChange(e.target.value);
+  };
+
+  render() {
+    const { classes, options } = this.props;
+    return (
+      <div className='sort'>
+        Order by
+        <select onChange={e => this.onChange(e)} className={classes}>
+          {this.createOptions(options)}
+        </select>
+      </div>
+    );
+  }
 }
 export default Selectbox;

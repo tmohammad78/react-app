@@ -1,15 +1,16 @@
-import { FETCH_DATA } from "./actionType";
+import FETCH_DATA from './actionType';
+
 const initialState = {
-	resInfo: []
+  resInfo: []
 };
 export default function(state = initialState, action) {
-	switch (action.type) {
-		case FETCH_DATA:
-			return {
-				...state,
-				resInfo: action.payload
-			};
-		default:
-			return state;
-	}
+  switch (action.type) {
+    case FETCH_DATA:
+      return {
+        ...state,
+        resInfo: action.payload
+      };
+    default:
+      return state;
+  }
 }

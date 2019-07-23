@@ -1,23 +1,25 @@
-import { UPDATE_CART } from "./actionTypes";
+import UPDATE_CART from './actionTypes';
 
-export const updateCart = cartProducts => dispatch => {
-	let productQuantity = cartProducts.reduce((sum, p) => {
-		sum += p.quantity;
-		return sum;
-	}, 0);
+const updateCart = cartProducts => dispatch => {
+  const productQuantity = cartProducts.reduce((sum, p) => {
+    sum += p.quantity;
+    return sum;
+  }, 0);
 
-	let totalPrice = cartProducts.reduce((sum, p) => {
-		sum += p.price * p.quantity;
-		return sum;
-	}, 0);
+  const totalPrice = cartProducts.reduce((sum, p) => {
+    sum += p.price * p.quantity;
+    return sum;
+  }, 0);
 
-	let cartTotal = {
-		productQuantity,
-		totalPrice
-	};
+  const cartTotal = {
+    productQuantity,
+    totalPrice
+  };
 
-	dispatch({
-		type: UPDATE_CART,
-		payload: cartTotal
-	});
+  dispatch({
+    type: UPDATE_CART,
+    payload: cartTotal
+  });
 };
+
+export default updateCart;

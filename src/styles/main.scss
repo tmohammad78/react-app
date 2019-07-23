@@ -1,27 +1,23 @@
 //Base
-@import "./base/base.scss";
-@import "./base/typography.scss";
-@import "./base/variable.scss";
+@import './base/base.scss';
+@import './base/typography.scss';
+@import './base/variable.scss';
 
-@import "./_menu/menu";
+@import '../component/Buttons/style.scss'; // its Temporary
+@import '../component/Input/Input.js';
 
-@import "./font-icon/font.scss";
-@import "./font-icon/variables.scss";
+@import '../component/Buttons/anchor.scss';
+//@import "./_menu/menu";
+
+@import '../component/Buttons/variable.scss';
+
+@import './font-icon/font.scss';
+@import './font-icon/variables.scss';
 
 //general
-@import "./layout/grid.scss";
-@import "./layout/header.scss";
-@import "./layout/cover.scss";
-@import "./layout/home.scss";
+@import './layout/grid.scss';
 
 //component
-@import "./components/button.scss";
-@import "./components/card.scss";
-@import "./components/cart.scss";
-@import "./components/category.scss";
-@import "./components/modal.scss";
-@import "./components/foodMenu.scss";
-@import "../component/Footer/footer.scss";
-@import "../component/Menu/style.scss";
-@import "../component/Menu/FoodList/food/food.scss";
-@import "../component/FloatCart/style.scss";
+@import './components/button.scss';
+@import './components/category.scss';
+@import './components/modal.scss';
