@@ -1,7 +1,15 @@
 import React from 'react';
 import Button from '../Buttons/Button';
+import axios from 'axios';
 
 const LoginModal = () => {
+	const checkToken = ()=>{
+		axios.post('https://restaurant.delino.com/user/register')
+		.then(res =>{
+			console.log(res);
+		})
+	}
+	
   return (
     <div className='login-content'>
       <div className='new-user'>
@@ -22,7 +30,8 @@ const LoginModal = () => {
                 }}
                 onKeyPress={() => {
                   alert('fff');
-                }}
+				}}
+				onClick={checkToken}
               >
                 <i className='fo fo-angle-left' />
                 <span>ادامه</span>
