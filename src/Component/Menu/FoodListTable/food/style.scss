@@ -163,12 +163,12 @@
   }
   .active-box {
     border: 1px solid #be901e;
-    .qty-badge {
+    .quantity-badge {
       opacity: 1;
       -webkit-opacity: 1;
     }
   }
-  .qty-badge {
+  .quantity-badge {
     position: absolute;
     right: 0;
     top: 0;
@@ -189,7 +189,7 @@
       z-index: 2;
     }
   }
-  .qty-badge:before {
+  .quantity-badge:before {
     position: absolute;
     top: 0;
     right: 0;
@@ -230,13 +230,40 @@
       }
     }
   }
-}
-.food-item:hover {
-  .ingredient {
-    opacity: 1;
-    visibility: visible;
+  .addButton,
+  .removeButton {
+    background: none;
+    border-radius: 999px;
+    cursor: pointer;
+    width: 25px;
+    border: 1px solid #be901e;
+    font-size: 0.9rem;
+    height: 25px;
+    color: #be901e;
+    text-align: center;
+    padding: 0;
+    -webkit-transition: all 0.4s cubic-bezier(0.19, 1, 0.22, 1);
+    transition: all 0.4s cubic-bezier(0.19, 1, 0.22, 1);
+    &:focus {
+      outline: none;
+    }
+    &.activeAddBtn {
+      color: white;
+      background-color: #be901e;
+    }
+    &:active {
+      -webkit-transform: scale(0.98);
+      transform: scale(0.9);
+    }
+  }
+  &:hover {
+    .ingredient {
+      opacity: 1;
+      visibility: visible;
+    }
   }
 }
+
 .has_sub {
   .details-holder {
     i {

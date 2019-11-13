@@ -79,12 +79,14 @@
     "memoize-one": "^5.0.5",
     "node-sass": "^4.12.0",
     "nodemon": "^1.19.1",
+    "polished": "^3.4.2",
     "postcss-cli": "^6.1.2",
     "prop-types": "^15.7.2",
     "pure-react-carousel": "^1.21.1",
     "react": "^16.8.6",
     "react-alice-carousel": "^1.15.2",
     "react-dom": "^16.8.6",
+    "react-elastic-carousel": "^0.3.0",
     "react-hot-loader": "^4.12.0",
     "react-redux": "^7.1.0",
     "react-router-dom": "^5.0.1",
@@ -93,6 +95,8 @@
     "redux": "^4.0.1",
     "redux-thunk": "^2.3.0",
     "regenerator-runtime": "^0.13.2",
+    "styled-components": "^4.4.1",
+    "styled-props": "^1.1.2",
     "underscore": "^1.9.1"
   },
   "browserslist": [

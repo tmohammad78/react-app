@@ -1,7 +1,14 @@
 .sort {
-  padding: 5px 40px;
   direction: rtl;
-  span {
-    
+  padding: 10px 40px;
+  ul {
+    padding: 0;
+    margin: 0;
+    list-style: none;
+    align-items: center;
+    display: inline-block;
+      li {
+        display: inline;
+      }
   }
 }

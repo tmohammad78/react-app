@@ -1,38 +1,37 @@
-import React, { Component } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
+import Button from '../Buttons/Button';
+import './style.scss';
 
-class Selectbox extends Component {
-  static propTypes = {
-    options: PropTypes.array.isRequired,
-    classes: PropTypes.string,
-    handleOnChange: PropTypes.func.isRequired
-  };
-
-  state = {};
-
-  createOptions = options =>
-    options.map(item => {
+const Selectbox = props => {
+  const { classes, options } = props;
+  // const [active, setActive] = useState('');
+  const createOptions = option =>
+    option.map(item => {
       return (
-        <option value={item.value} key={item.value}>
-          {item.label}
-        </option>
+        <li>
+          <Button onClick={onClicked} value={item.value} size='sm' outline={false}>
+            {item.label}
+          </Button>
+        </li>
       );
     });
 
-  onChange = e => {
-    this.props.handleOnChange(e.target.value);
+  const onClicked = e => {
+    props.handleOnChange(e.target.value);
   };
 
-  render() {
-    const { classes, options } = this.props;
-    return (
-      <div className='sort'>
-        Order by
-        <select onChange={e => this.onChange(e)} className={classes}>
-          {this.createOptions(options)}
-        </select>
-      </div>
-    );
-  }
-}
+  return (
+    <div className='sort'>
+      <span>مرتب سازی براساس :</span>
+      <ul className={classes}>{createOptions(options)}</ul>
+    </div>
+  );
+};
+Selectbox.propTypes = {
+  options: PropTypes.array.isRequired,
+  classes: PropTypes.string,
+  handleOnChange: PropTypes.func.isRequired
+};
+
 export default Selectbox;

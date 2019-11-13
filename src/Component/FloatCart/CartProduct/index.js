@@ -1,10 +1,18 @@
 import React from 'react';
+import { useDispatch } from 'react-redux';
+import { addFood, removeFood } from '../../../services/cart/actions';
 import PropTypes from 'prop-types';
+import './style.scss';
 
-const CartProduct = ({ product, removeFood, addFood }) => {
+const CartProduct = ({ product }) => {
+  const dispatch = useDispatch();
   return (
     <div className='item'>
-      <button type='button' className='anc anc-rmv' onClick={() => removeFood(product, true)}>
+      <button
+        type='button'
+        className='anc anc-rmv'
+        onClick={() => dispatch(removeFood(product, true))}
+      >
         x
       </button>
       <div className='item-holder'>
@@ -18,17 +26,17 @@ const CartProduct = ({ product, removeFood, addFood }) => {
           <div className='food-qty'>
             <button
               type='button'
-              className='btn addButton'
+              className='addButton'
               style={{ position: 'absolute', left: '0' }}
-              onClick={() => addFood(product, 1)}
+              onClick={() => dispatch(addFood(product, 1))}
             >
               +
             </button>
             <span>{product.quantity}</span>
             <button
               type='button'
-              className='btn btn-transparent removeButton'
-              onClick={() => removeFood(product)}
+              className='removeButton'
+              onClick={() => dispatch(removeFood(product))}
             >
               -
             </button>

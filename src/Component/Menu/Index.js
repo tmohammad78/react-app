@@ -1,56 +1,44 @@
-import React, { Fragment, useState, useEffect, memo } from 'react';
+import React, { Fragment, useState, useEffect, Suspense, lazy } from 'react';
 import PropTypes from 'prop-types';
-import { connect } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { fetchMenu } from '../../services/menu/actions';
+import './style.scss';
 
 import Sort from './sort/index';
 import Spinner from '../Spinner';
-import FoodListTable from './FoodListTable';
-
+// import FoodListTable from './FoodListTable';
+const Category = lazy(()=> import('../Category/index'));
+const FoodListTable = lazy(()=> import('./FoodListTable'))
 // import Category from '../Category/index';
-import './style.scss';
 
-const Menu = props => {
-  const sort = props.sort;
-  const [loading, setLoading] = useState();
-  let willUnmount = false;
+const Menu = () => {
+  const dispatch = useDispatch();
+  const foodList = useSelector(state => state.menu.foodList);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    setLoading(true);
-    props.fetchMenu(sort, () => {
-      if (!willUnmount) {
+    dispatch(
+      fetchMenu(() => {
         setLoading(false);
-      }
-    });
-
-    return () => {
-      willUnmount = true;
-    };
-  }, [sort]);
+      })
+    );
+  }, []);
 
   return (
     <Fragment>
-      {loading && <Spinner />}
-      {/* <Category item={props.categoryList} /> */}
-      <Sort />
-      <FoodListTable />
+      {/* <Sort /> */}
+      <Suspense fallback={<Spinner />}>
+        <Category />
+        {foodList && <FoodListTable items={foodList} />}
+      </Suspense>
     </Fragment>
   );
 };
 
 Menu.propTypes = {
   fetchMenu: PropTypes.func,
-  sort: PropTypes.string
-  // categoryList: PropTypes.object
+  sort: PropTypes.string,
+  categoryList: PropTypes.object.isRequired
 };
 
-const mapStateToProps = state => ({
-  foodList: state.menu.foodList,
-  categoryList: state.menu.categoryList,
-  sort: state.sort.type
-});
-
-export default connect(
-  mapStateToProps,
-  { fetchMenu }
-)(memo(Menu));
+export default Menu;

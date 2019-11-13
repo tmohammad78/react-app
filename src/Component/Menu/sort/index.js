@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 
 import { connect } from 'react-redux';
@@ -7,23 +7,20 @@ import Selectbox from '../../Selectbox/index';
 
 const sortBy = [
   { value: '', label: 'Select' },
-  { value: 'lowestprice', label: 'Lowest to highest' },
-  { value: 'highestprice', label: 'Highest to lowest' }
+  { value: 'lowestprice', label: 'ارزان ترین' },
+  { value: 'highestprice', label: 'گران ترین' }
 ];
 
-class Sort extends Component {
-  static propTypes = {
-    updateSort: PropTypes.func.isRequired
+const Sort = props => {
+  const handleSort = value => {
+    props.updateSort(value);
   };
 
-  handleSort = value => {
-    this.props.updateSort(value);
-  };
-
-  render() {
-    return <Selectbox options={sortBy} handleOnChange={this.handleSort} />;
-  }
-}
+  return <Selectbox options={sortBy} handleOnChange={handleSort} />;
+};
+Sort.propTypes = {
+  updateSort: PropTypes.func.isRequired
+};
 
 const mapStateToProps = state => ({
   sort: state.sort.type

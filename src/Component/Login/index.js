@@ -1,15 +1,12 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Button from '../Buttons/Button';
-import axios from 'axios';
+import Input from '../Input';
 
 const LoginModal = () => {
-	const checkToken = ()=>{
-		axios.post('https://restaurant.delino.com/user/register')
-		.then(res =>{
-			console.log(res);
-		})
-	}
-	
+  const [mobile, setMobile] = useState('');
+  const handleChange = e => {
+    setMobile(e.target.value);
+  };
   return (
     <div className='login-content'>
       <div className='new-user'>
@@ -17,8 +14,13 @@ const LoginModal = () => {
           <h4>برای ورود یا عضویت شماره موبایلت رو وارد کن</h4>
           <form className='login-form'>
             <div className='field-group'>
-              <input type='Tel' autoComplete='off' />
-              <span>شماره موبایل</span>
+              <Input
+                value={mobile}
+                onChange={handleChange}
+                label='شماره موبایل'
+                type='Tel'
+                autoComplete='off'
+              />
             </div>
             <div className='button-holder' style={{ textAlign: 'center' }}>
               <Button
@@ -30,8 +32,7 @@ const LoginModal = () => {
                 }}
                 onKeyPress={() => {
                   alert('fff');
-				}}
-				onClick={checkToken}
+                }}
               >
                 <i className='fo fo-angle-left' />
                 <span>ادامه</span>

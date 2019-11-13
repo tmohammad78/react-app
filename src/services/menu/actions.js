@@ -12,7 +12,7 @@ export const updateProduct = product => ({
   payload: product
 });
 
-export const fetchMenu = (sortBy, callback) => (dispatch, getState) => {
+export const fetchMenu = callback => (dispatch, getState) => {
   const cart = getState().cart.products;
   const productLoaded = (data, sort) => {
     const menu = parseMenu(data, sort);
@@ -36,15 +36,12 @@ export const fetchMenu = (sortBy, callback) => (dispatch, getState) => {
       }
     });
   };
-  // if (Data.foodList !== null) {
-  // 	return productLoaded([...Data.foodList]);
-  // }
   return axios
     .get(restaurantMenu)
     .then(response => {
       const { data } = response;
       Data.foodList = data;
-      return productLoaded(data, sortBy);
+      return productLoaded(data);
     })
     .catch(err => {
       console.log(err, 'Could not fetch foodList. Try again later.');

@@ -4,11 +4,6 @@ import Food from '../FoodListTable/food/index';
 
 const SubFood = props => {
   const { addFood, removeFood, item } = props;
-
-  // useEffect(() => {
-  //   console.log(item.subFoods);
-  // }, [item]);
-
   return (
     <div className='subFood'>
       <h4>{item.title}</h4>

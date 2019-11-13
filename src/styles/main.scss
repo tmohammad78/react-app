@@ -3,13 +3,10 @@
 @import './base/typography.scss';
 @import './base/variable.scss';
 
-@import '../component/Buttons/style.scss'; // its Temporary
-@import '../component/Input/Input.js';
+@import '../component/Input/style.scss';
 
 @import '../component/Buttons/anchor.scss';
 //@import "./_menu/menu";
-
-@import '../component/Buttons/variable.scss';
 
 @import './font-icon/font.scss';
 @import './font-icon/variables.scss';

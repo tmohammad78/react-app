@@ -1,0 +1,183 @@
+$color-gray-light: #eeee;
+$border-raduis: 5px;
+$box-shadow: 0px 0px 1px 1px rgba(0, 0, 0, 0.35);
+$box-show-focuse: 0px 0px 4px 1px rgba(0, 0, 0, 0.75);
+$color-black: #000;
+@mixin input-base() {
+  border: none;
+  border-radius: $border-raduis;
+  font-size: 17px;
+  padding: 10px;
+  &:focus {
+    outline: none;
+  }
+}
+@mixin parent-input-base {
+  border-radius: 5px;
+}
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+input:-webkit-autofill:active {
+  -webkit-box-shadow: 0 0 0 30px white inset !important;
+}
+
+.input-test {
+  position: absolute;
+  top: 50%;
+  user-select: none;
+  transform: translateY(-50%);
+  right: 10px;
+  color: #888;
+  transition: all 0.3s ease-out;
+}
+
+[type='date'] {
+  background: #fff
+    url(https://cdn1.iconfinder.com/data/icons/cc_mono_icon_set/blacks/16x16/calendar_2.png) 97% 50%
+    no-repeat;
+  &::-webkit-inner-spin-button,
+  &::-webkit-outer-spin-button {
+    display: none;
+    -webkit-appearance: none;
+  }
+  &::-webkit-calendar-picker-indicator {
+    opacity: 0;
+  }
+}
+
+.input {
+  @include input-base();
+  -webkit-box-shadow: $box-shadow;
+  -moz-box-shadow: $box-shadow;
+  box-shadow: $box-shadow;
+}
+
+.inputParent {
+  position: relative;
+  display: inline-block;
+
+  &.focus {
+    .input {
+      border: 1px solid #23282da3;
+      &.input-search {
+        border: none !important ;
+        box-shadow: none;
+      }
+      &:hover {
+        border: 1px solid #23282d;
+      }
+    }
+
+    .input-test {
+      top: 0px;
+      right: 9px;
+      padding: 0px 4px;
+      background-color: white;
+      font-size: 14px;
+      color: #23282d;
+      transition: all 0.6;
+    }
+  }
+}
+
+[class^='input-'],
+[class*='input-'],
+.inputMain {
+  .image {
+    width: 20px;
+    position: relative;
+    display: inline-block;
+    top: 50%;
+    transform: translateY(20%);
+    right: 5px;
+    img {
+      width: 100%;
+    }
+  }
+}
+
+.inputMain {
+  padding: 10px;
+  @include input-base();
+}
+.input-search {
+  @include parent-input-base();
+  display: inline-block;
+  &:focus-within {
+    -webkit-box-shadow: $box-show-focuse;
+    -moz-box-shadow: $box-show-focuse;
+    box-shadow: $box-show-focuse;
+  }
+  .inputMain {
+    background: none;
+    border: none;
+  }
+}
+.input-file {
+  display: inline-block;
+  width: 100px;
+}
+.input-text {
+  width: 130px;
+}
+.inputMain {
+  &.uploadfile {
+    &::-webkit-file-upload-button {
+      visibility: hidden;
+    }
+
+    &::before {
+      display: inline-block;
+      cursor: pointer;
+      background-color: rgba(0, 0, 0, 0.12);
+    }
+    display: inline-block;
+    width: 40px;
+    height: 40px;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+}
+
+.custom-checkbox {
+  cursor: pointer;
+  position: relative;
+  padding: 0;
+  user-select: none;
+  &.disabled {
+    color: #b8b8b8;
+    cursor: default;
+    span {
+      box-shadow: none;
+      background: #ddd;
+    }
+  }
+
+  .test2 {
+    position: absolute;
+    opacity: 0;
+    &:focus + span {
+      box-shadow: 0 0 0 3px rgba(0, 0, 0, 0.12);
+    }
+
+    &:checked + span {
+      background: red;
+    }
+    $size: 2px;
+    $color: white;
+    &:checked + span:after {
+      content: '';
+      position: absolute;
+      left: 30%;
+      top: 50%;
+      width: $size;
+      height: $size;
+      background: $color;
+      box-shadow: $size 0 0 $color, $size * 2 0 0 $color, $size * 2 #{-$size} 0 $color,
+        $size * 2 #{-$size * 2} 0 $color, $size * 2 #{-$size * 3} 0 $color,
+        $size * 2 #{-$size * 4} 0 $color;
+      transform: rotate(45deg) translate(-50%, -50%);
+    }
+  }
+}

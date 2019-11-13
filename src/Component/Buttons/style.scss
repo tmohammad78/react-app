@@ -1,8 +1,10 @@
+@import '../../styles/base/variable.scss';
+
 @mixin btn-base() {
   display: inline-block;
   text-align: center;
   text-decoration: none;
-  font-family: 'IRANSans', Tahoma;
+  font-family: $font-family-delino;
   direction: rtl;
   background: none;
   border: none;
@@ -11,53 +13,159 @@
   white-space: nowrap;
   overflow: hidden;
   cursor: pointer;
-  color: #fff;
+  color: $color-white;
+  transition: $transition;
+  padding: 8px 20px;
+
+  &[disabled] {
+    cursor: default;
+  }
 }
 
 @mixin btn() {
   @include btn-base();
   border-radius: 5px;
+
+  &:active {
+    transform: scale(0.98);
+  }
 }
 
-[class^='btn'],
-[class*='btn'] {
+[class^='btn-'],
+[class*='btn-'] {
   @include btn();
 }
 
-.food-item {
-  .addButton {
-    @include btn-base();
-    border-radius: 999px;
-    cursor: pointer;
-    width: 25px;
-    border: 1px solid #be901e;
-    font-size: 0.9rem;
-    height: 25px;
-    color: #be901e;
-    text-align: center;
-    // &:focus{
-    // 	color: white;
-    // 	background-color: #be901e;
-    // }
-    &.activeAddBtn {
-      color: white;
-      background-color: #be901e;
+@mixin btn-outline($border-color: $color-white, $text-color: $color-white) {
+  // background: none;
+  border: 1px solid $border-color;
+  color: $border-color;
+  background: none;
+  // &:hover {
+  //   background-color: $border-color;
+  //   // Research
+  //   // color: white or black based on border-color;
+  // }
+
+  &[disabled] {
+    border-color: $color-gray-dlight;
+    color: $color-gray-medium;
+
+    &:hover {
+      background: none;
     }
   }
-  .removeButton {
-    @include btn-base();
-    border-radius: 999px;
-    cursor: pointer;
-    width: 25px;
-    border: 1px solid #be901e;
-    font-size: 0.9rem;
-    height: 25px;
-    background-color: #be901e;
-    color: #fff;
-    text-align: center;
+}
+@mixin btn-bgcolor($bg: $color-primary) {
+  background-color: $bg;
+
+  &:hover {
+    background-color: darken($bg, 10%);
+    // @debug lightness();
+    //  color: white or black based on border-color;
+    // Research
+  }
+
+  &[disabled] {
+    background-color: $color-gray-light;
   }
 }
-.anchor-cart {
+
+.btn-primary {
+  @include btn-bgcolor();
+}
+
+.btn-white {
+  @include btn-bgcolor($color-white);
+  color: black;
+}
+
+.btn-outline-primary {
+  @include btn-outline($color-gray-light);
+}
+
+.btn-outline-black {
+  @include btn-outline($color-black);
+}
+
+// [class^='qty-'],
+// [class*=' qty-']
+.qty-add,
+.qty-remove {
+  width: 26px;
+  height: 26px;
+  line-height: 24px;
+  text-align: center;
+  color: $color-primary;
+  border: 1px solid $color-primary;
+  background: none;
+  border-radius: 50%;
+  outline: 0;
+  cursor: pointer;
+  transition: $transition;
+
+  &:hover,
+  &.active {
+    background: $color-primary;
+    color: $color-white;
+  }
+  &:active {
+    -webkit-transform: scale(0.95);
+    transform: scale(0.95);
+  }
+}
+
+.anc-cart {
+  h3 {
+    float: right;
+    margin: 0;
+    direction: rtl;
+    white-space: nowrap;
+    font-weight: 400;
+  }
+  b {
+    font-weight: 400;
+    font-size: 16px;
+    font-size: 1rem;
+    &:before {
+      content: '(';
+    }
+    &:after {
+      content: ')';
+    }
+  }
+  .total-price {
+    position: absolute;
+    left: 15px;
+    top: 50%;
+    min-width: 30px;
+    height: 30px;
+    line-height: 32px;
+    padding: 0 10px;
+    text-align: center;
+    font-weight: 400;
+    background-color: rgba(0, 0, 0, 0.2);
+    -webkit-border-radius: 999px;
+    -moz-border-radius: 999px;
+    border-radius: 999px;
+    -webkit-transform: translateY(-50%);
+    -moz-transform: translateY(-50%);
+    -ms-transform: translateY(-50%);
+    -o-transform: translateY(-50%);
+    transform: translateY(-50%);
+    direction: rtl;
+  }
+  i {
+    font-size: 1.5rem;
+  }
+}
+
+.anc-carousle {
+  background: none;
+  padding: 0px 16px;
+}
+
+.anc-cart {
   font-family: 'IRANSans', Tahoma;
   font-size: 17px;
   position: fixed;
@@ -74,111 +182,42 @@
   transform: translateY(100%);
   z-index: 1190;
 }
-.homePage {
-  .anchor-Link {
-    font-size: 16px;
-    position: absolute;
-    text-decoration: none;
-    color: black;
-    padding: 2px 10px;
-    border: 1px solid #333;
-    border-radius: 5px;
-    line-height: 30px;
-    top: 40px;
-    left: 10%;
-    right: 10%;
-  }
-}
 
+// .main-header {
+//   .submit {
+//     width: 100%;
+//     height: 45px;
+//   }
+// }
 
-.btn-default {
-  background-color: #be901e;
-  &:hover {
-    // background-color: #a87f1b;
-  }
-  &:active {
-    background: #be901e;
-    -webkit-transform: scale(0.95);
-    -moz-transform: scale(0.95);
-    -ms-transform: scale(0.95);
-    -o-transform: scale(0.95);
-    transform: scale(0.95);
-  }
-}
-.btn {
-  .btn-white {
-    padding: 2px 10px;
-    border: 1px solid #333;
-    border-radius: 5px;
-    line-height: 30px;
-  }
-}
-.main-header {
+// .disabled {
+//   cursor: default;
+//   background-color: #bebebe;
+// }
+// @media only screen and (min-width: 767px) {
+//   .submit {
+//     max-width: 280px;
+//   }
+// }
+// @media only screen and (min-width: 992px) {
+//   .food-item {
+//     .addButton {
+//       &:hover,
+//       &:focus,
+//       &:visited {
+//         // background-color: #be901e;
+//         // color: #fff;
+//       }
+//     }
+//   }
+// }
 
-  .submit {
-    width: 100%;
-    height: 45px;
+@media only screen and (max-width: 991px) {
+  .anc-cart {
+    /* -webkit-transform: translateY(0); */
+    -moz-transform: translateY(0);
+    -ms-transform: translateY(0);
+    -o-transform: translateY(0);
+    transform: translateY(0);
   }
-}
-
-.disabled {
-  cursor: default;
-  background-color: #bebebe;
-}
-@media only screen and (min-width: 767px) {
-  .submit {
-    max-width: 280px;
-  }
-}
-@media only screen and (min-width: 992px) {
-  .food-item {
-    .addButton {
-      &:hover,
-      &:focus,
-      &:visited {
-        // background-color: #be901e;
-        // color: #fff;
-      }
-    }
-  }
-}
-
-@mixin btn-outline($border-color: #fff, $text-color: #fff) {
-  // background: none;
-  border: 1px solid $border-color;
-  color: $text-color;
-}
-@mixin btn-bgcolor($bg-color) {
-  background-color: $bg-color;
-}
-
-.btn-outline {
-  @include btn-outline(#ccc, #333);
-}
-.btn-checkout {
-	width: 100%;
-	padding: 10px 0;
-	height: 45px;
-}
-.btn-white {
-  @include btn-bgcolor(#fff);
-  color: #333;
-  border-color: #333;
-}
-.btn-transparent {
-  @include btn-bgcolor(rgba(255, 255, 255, 0));
-  color: #333;
-  border-color: #333;
-}
-.btn-lg {
-  padding: 30px 45px;
-  font-size: 22px;
-}
-.btn-md {
-  padding: 5px 10px;
-  font-size: 15px;
-}
-.btn-sm {
-  padding: 12px 20px;
-  font-size: 14px;
 }

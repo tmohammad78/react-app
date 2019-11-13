@@ -1,44 +1,24 @@
-import React from 'react';
+import React, { useState } from 'react';
 import PropTypes from 'prop-types';
+import { ButtonStyle } from './style';
 
-const Button = params => {
-  const { outline, children, color, size, disabled, ...props } = params;
-  let OutLine;
-  if (!outline) {
-    OutLine = '';
-  } else {
-    OutLine = 'btn-outline';
-  }
-  let Disable;
-  if (disabled) {
-    Disable = 'disabled';
-  } else {
-    Disable = '';
-  }
-  return (
-    <button
-      type='button'
-      className={`btn  ${OutLine} btn-${color} btn-${size} ${Disable}  `}
-      {...props}
-    >
-      {children}
-    </button>
-  );
+import './style.scss';
+
+const Button = ({ children, color, ...props }) => {
+  return <ButtonStyle {...props}>{children}</ButtonStyle>;
 };
 
 Button.defaultProps = {
-  color: 'default',
-  outline: true,
-  disabled: false
+  primary: true,
 };
 
-Button.propTypes = {
-  outline: PropTypes.bool,
-  children: PropTypes.string,
-  color: PropTypes.string,
-  size: PropTypes.string,
-  disabled: PropTypes.bool
-  // onClick: PropTypes.func
-};
+// Button.propTypes = {
+//   outline: PropTypes.bool,
+//   children: PropTypes.string,
+//   color: PropTypes.string,
+//   size: PropTypes.string,
+//   action: PropTypes.bool,
+//   name: PropTypes.string
+// };
 
 export default Button;
