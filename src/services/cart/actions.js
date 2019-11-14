@@ -1,4 +1,4 @@
-import { LOAD_CART, ADD_FOOD, REMOVE_FOOD, UPDATE_CART } from './actionTypes';
+import { LOAD_CART, ADD_FOOD, ADD_FOOD_CART, REMOVE_FOOD, UPDATE_CART } from './actionTypes';
 import { updateProduct } from '../menu/actions';
 import { objectToArray } from '../../helper/index';
 export const loadCart = (products) => ({
@@ -7,11 +7,13 @@ export const loadCart = (products) => ({
 });
 
 export const addFood = (product, quantity = 1) => (dispatch, getState) => {
-  const cartProducts = getState().cart.products;
+  const cartProducts = getState().cart.items;
   console.log(cartProducts);
   let productInCart = false;
   let totalQuantity = quantity;
-  cartProducts.forEach((item) => {
+  console.log(objectToArray(cartProducts));
+  objectToArray(cartProducts).forEach((item) => {
+    debugger;
     console.log('item', item, item.id);
     if (item.id == product.id) {
       item.quantity += quantity;
@@ -20,13 +22,17 @@ export const addFood = (product, quantity = 1) => (dispatch, getState) => {
       productInCart = true;
     }
   });
-
   if (!productInCart) {
+    debugger;
     product.quantity = quantity;
-    // cartProducts[product.id] = product;
+    cartProducts[product.id] = product;
   }
   dispatch(updateProduct(product));
-  dispatch(updateCart(product));
+  dispatch(updateCart(objectToArray(cartProducts)));
+  return dispatch({
+    type: ADD_FOOD_CART,
+    payload: { product, quantity }
+  });
 };
 //   type: ADD_FOOD,
 //   payload: { product, quantity }
