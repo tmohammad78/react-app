@@ -10,8 +10,8 @@ import FoodListTitle from './FoodListTitle';
 import './style.scss';
 
 const FoodListTable = ({ items }) => {
-  const originalItems = [...items];
-  const [foodList, setFoodList] = useState(items);
+  //   const originalItems = [...items];
+  //   const [foodList, setFoodList] = useState(items);
   const [searchKey, setSearchKey] = useState('');
   const [inStock, setInStock] = useState(false);
   const [subFood, setSubFood] = useState(null);
@@ -23,7 +23,7 @@ const FoodListTable = ({ items }) => {
   const search = (stock, list = items) => {
     let newlist = list;
     if (stock) {
-      newlist = newlist.filter(x => x.available);
+      newlist = newlist.filter((x) => x.available);
     }
     // if (query) {
     //   newList = newList.filter(x => x.subFoods.length === 0);
@@ -31,7 +31,7 @@ const FoodListTable = ({ items }) => {
     // } else {
     //   newList = newList.filter(x => x.parent === 0);
     // }
-    setFoodList(newlist);
+    // setFoodList(newlist);
   };
 
   const searchHandler = () => {
@@ -39,7 +39,7 @@ const FoodListTable = ({ items }) => {
     setSearchKey(text);
   };
 
-  const stockHandler = value => {
+  const stockHandler = (value) => {
     search(searchKey, value);
     setInStock(value);
   };
@@ -48,11 +48,11 @@ const FoodListTable = ({ items }) => {
   let lastCategory = null;
 
   if (items) {
-    items.forEach(food => {
+    items.forEach((food) => {
       if (food.categoryTitle !== lastCategory) {
         row.push(<FoodListTitle category={food.categoryTitle} id={food.categoryId} />);
       }
-      row.push(<Food food={food} onShowsubFoodModal={foodItem => setSubFood(foodItem)} />);
+      row.push(<Food food={food} onShowsubFoodModal={(foodItem) => setSubFood(foodItem)} />);
       lastCategory = food.categoryTitle;
     });
   }

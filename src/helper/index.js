@@ -45,3 +45,13 @@ export const toPersianNum = (value, dontTrim = false) => {
 
   return res;
 };
+
+export const objectToArray = (objectList) => {
+  const list = [];
+
+  Object.values(objectList).forEach((item) => {
+    list[item.index] = item;
+  });
+
+  return list;
+};

@@ -7,13 +7,13 @@ import './style.scss';
 import Sort from './sort/index';
 import Spinner from '../Spinner';
 // import FoodListTable from './FoodListTable';
-const Category = lazy(()=> import('../Category/index'));
-const FoodListTable = lazy(()=> import('./FoodListTable'))
+const Category = lazy(() => import('../Category/index'));
+const FoodListTable = lazy(() => import('./FoodListTable'));
 // import Category from '../Category/index';
 
 const Menu = () => {
   const dispatch = useDispatch();
-  const foodList = useSelector(state => state.menu.foodList);
+  const foodList = useSelector((state) => state.menu.foodList);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {

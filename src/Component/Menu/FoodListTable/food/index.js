@@ -13,14 +13,13 @@ const Food = ({ food, onShowsubFoodModal }) => {
   if (food.quantity > 0) {
     className.push('active-box');
   }
-  if (food.subFoods.length > 0) {
-    className.push('has_sub');
-  }
+  //   if (food.subFoods.length > 0) {
+  //     className.push('has_sub');
+  //   }
   const addClicked = () => {
     if (food.subFoods.length > 0) {
       onShowsubFoodModal(food);
     } else {
-		debugger
       dispatch(addFood(food, 1));
     }
   };
@@ -28,7 +27,7 @@ const Food = ({ food, onShowsubFoodModal }) => {
   return (
     <div className='food-item'>
       <section
-        className={className.map(item => {
+        className={className.map((item) => {
           return item;
         })}
       >
