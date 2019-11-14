@@ -5,10 +5,12 @@ export const loadCart = products => ({
   payload: products
 });
 
-export const addFood = (product, quantity = 1) => ({
-  type: ADD_FOOD,
-  payload: { product, quantity }
-});
+export const addFood = (product, quantity = 1) => (dispatch,getState) => {
+   dispatch(updateCart());
+}
+//   type: ADD_FOOD,
+//   payload: { product, quantity }
+// });
 
 export const removeFood = (product, fullRemove = false) => dispatch => {
   return dispatch({

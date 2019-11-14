@@ -20,6 +20,7 @@ const Food = ({ food, onShowsubFoodModal }) => {
     if (food.subFoods.length > 0) {
       onShowsubFoodModal(food);
     } else {
+		debugger
       dispatch(addFood(food, 1));
     }
   };
