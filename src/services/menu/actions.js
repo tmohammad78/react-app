@@ -1,19 +1,20 @@
 import axios from 'axios';
 import { FETCH_MENU, UPDATE_PRODUCT } from './actionTypes';
 import { restaurantMenu } from '../util';
+import { objectToArray } from '../../helper/index';
 import parseMenu from './util/menu';
 
 const Data = {
   foodList: null
 };
 
-export const updateProduct = product => ({
+export const updateProduct = (product) => ({
   type: UPDATE_PRODUCT,
   payload: product
 });
 
-export const fetchMenu = callback => (dispatch, getState) => {
-  const cart = getState().cart.products;
+export const fetchMenu = (callback) => (dispatch, getState) => {
+  const cart = getState().cart.items;
   const productLoaded = (data, sort) => {
     const menu = parseMenu(data, sort);
     const foodList = menu.foodList;
@@ -21,8 +22,8 @@ export const fetchMenu = callback => (dispatch, getState) => {
     if (callback) {
       callback();
     }
-    cart.forEach(c => {
-      const product = foodList.find(x => x.id === c.id);
+    objectToArray(cart).forEach((c) => {
+      const product = foodList.find((x) => x.id === c.id);
       if (product) {
         product.quantity = c.quantity;
       }
@@ -38,12 +39,12 @@ export const fetchMenu = callback => (dispatch, getState) => {
   };
   return axios
     .get(restaurantMenu)
-    .then(response => {
+    .then((response) => {
       const { data } = response;
       Data.foodList = data;
       return productLoaded(data);
     })
-    .catch(err => {
+    .catch((err) => {
       console.log(err, 'Could not fetch foodList. Try again later.');
     });
 };

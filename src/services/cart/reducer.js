@@ -1,9 +1,10 @@
-import { LOAD_CART, ADD_FOOD, REMOVE_FOOD, ADD_FOOD_CART } from './actionTypes';
+import { LOAD_CART, ADD_FOOD, REMOVE_FOOD, ADD_FOOD_CART, UPDATE_CART } from './actionTypes';
 
 const initialState = {
   products: [],
   items: {},
-  foodToAdd: {}
+  foodToAdd: {},
+  cartTotal: {}
 };
 
 export default function(state = initialState, action) {
@@ -13,6 +14,11 @@ export default function(state = initialState, action) {
         ...state,
         products: action.payload
       };
+    case UPDATE_CART:
+      return {
+		  ...state,
+		  cartTotal:{...action.payload}
+	  };
     case ADD_FOOD_CART:
       return {
         ...state,

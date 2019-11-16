@@ -5,6 +5,7 @@ import PropTypes from 'prop-types';
 import './style.scss';
 
 const CartProduct = ({ product }) => {
+  console.log(product);
   const dispatch = useDispatch();
   return (
     <div className='item'>

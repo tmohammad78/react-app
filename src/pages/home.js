@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 
 function Home() {
   const currentPath = window.location.pathname;
-  console.log(currentPath);
+//   console.log(currentPath);
   return (
     <div className='homePage'>
       <div className='inner'>

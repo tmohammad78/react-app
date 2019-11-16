@@ -3,18 +3,18 @@ import PropTypes from 'prop-types';
 import { useSelector } from 'react-redux';
 import CartProduct from './CartProduct';
 import Button from '../Buttons/Button';
+import { objectToArray } from '../../helper/index';
 import './style.scss';
 
 const FloatCart = () => {
   let offForm;
   const [isForm, setIsForm] = useState(false);
-  
-  const cartProducts = useSelector(state => state.cart.products);
-  const cartInfo = useSelector(state => state.total.data);
 
-  const { totalPrice, productQuantity } = cartInfo;
+  const cartProducts = useSelector((state) => state.cart.items);
+  const cartInfo = useSelector((state) => state.cart.cartTotal);
+  const { totalPrice, totalProduct } = cartInfo;
 
-  const products = cartProducts.map(item => {
+  const products = objectToArray(cartProducts).map((item) => {
     return <CartProduct product={item} />;
   });
   if (isForm) {
@@ -41,7 +41,7 @@ const FloatCart = () => {
     <React.Fragment>
       <div className='left-side-holder clearfix'>
         <div className='rest-cart'>
-          {!productQuantity ? (
+          {!totalProduct ? (
             <div className='empty-cart'>
               <i className='fo fo-empty-bag' />
               <span>سبد خالی است</span>
@@ -52,7 +52,7 @@ const FloatCart = () => {
                 <h3>سبد خرید</h3>
                 <div className='cart-quantity'>
                   <i className='fo fo-cart' />
-                  <span className='cart-size round-full'>{productQuantity}</span>
+                  <span className='cart-size round-full'>{totalProduct}</span>
                 </div>
               </header>
               <div className='cart-holder-inner clearfix'>
