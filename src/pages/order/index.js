@@ -1,64 +1,58 @@
-import React, { Component } from 'react';
+import React, { Fragment, lazy, Suspense } from 'react';
 import { Switch, Route, NavLink } from 'react-router-dom';
 import PropTypes from 'prop-types';
+// import Menu from 'component/Menu';
+import Cover from 'component/Cover';
+import Cart from 'component/FloatCart';
+import InfoRest from 'component/infoRes';
 
-import Menu from '../../component/Menu';
-import Cover from '../../component/Cover/index';
-import Cart from '../../component/FloatCart/index';
-import InfoRest from '../../component/infoRes/index';
 import './style.scss';
 
-class Order extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {};
-  }
+const Menu = lazy(() => import('component/Menu'));
 
-  render() {
-    const path = this.props.match.url;
-    return (
-      <React.Fragment>
-        {/* <Link to='/' className='anchor-Link'>
-          home
-        </Link> */}
-        <Cover />
-        <div className='rest-menu-holder clearfix'>
-          <div className='wrapper full-style clearfix '>
-            <div className='right-side-holder'>
-              <div className='rest-profile-container'>
-                <nav className='menu-tab'>
-                  <NavLink
-                    exact
-                    to={{
-                      pathname: `${path}`
-                    }}
-                    activeClassName='active'
-                  >
-                    منوی غذا
-                  </NavLink>
-                  <NavLink
-                    to={{
-                      pathname: `${path}/info`
-                    }}
-                  >
-                    اطلاعات رستوران
-                  </NavLink>
-                </nav>
-                <div className='tab-content-holder white-box clearfix'>
+const Order = (props) => {
+  const path = props.match.url;
+  return (
+    <React.Fragment>
+      <Cover />
+      <div className='rest-menu-holder clearfix'>
+        <div className='wrapper full-style clearfix '>
+          <div className='right-side-holder'>
+            <div className='rest-profile-container'>
+              <nav className='menu-tab'>
+                <NavLink
+                  exact
+                  to={{
+                    pathname: `${path}`
+                  }}
+                  activeClassName='active'
+                >
+                  منوی غذا
+                </NavLink>
+                <NavLink
+                  to={{
+                    pathname: `${path}/info`
+                  }}
+                >
+                  اطلاعات رستوران
+                </NavLink>
+              </nav>
+              <div className='tab-content-holder white-box clearfix'>
+                <Suspense fallback={() => <div>...loading</div>}>
                   <Switch>
                     <Route exact path={`${path}`} component={Menu} />
                     <Route path={`${path}/info`} component={InfoRest} />
                   </Switch>
-                </div>
+                </Suspense>
               </div>
             </div>
-            <Cart />
           </div>
         </div>
-      </React.Fragment>
-    );
-  }
-}
+        <Cart />
+      </div>
+    </React.Fragment>
+  );
+};
 
 Order.propTypes = {
   match: PropTypes.object

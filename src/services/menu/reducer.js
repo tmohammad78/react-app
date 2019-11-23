@@ -1,16 +1,18 @@
 import { FETCH_MENU, UPDATE_PRODUCT } from './actionTypes';
 
 const initialState = {
-  foodList: [],
+  foodListItem: {},
+  foodList: null,
   categoryList: []
 };
 
 export default function(state = initialState, action) {
   switch (action.type) {
     case FETCH_MENU: {
-      const { foodList, categoryList } = action.payload;
+      const { foodList, categoryList, foodListItem } = action.payload;
       return {
         ...state,
+        foodListItem,
         foodList,
         categoryList
       };
@@ -18,7 +20,13 @@ export default function(state = initialState, action) {
     case UPDATE_PRODUCT:
       return {
         ...state,
-        foodList: [...state.foodList]
+        foodListItem: {
+          ...state.foodListItem,
+          [action.payload.id]: {
+            ...state.foodListItem[action.payload.id],
+            quantity: action.payload.quantity
+          }
+        }
       };
     default:
       return state;

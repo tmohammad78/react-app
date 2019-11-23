@@ -1,67 +1,54 @@
 .modal-inner {
   position: fixed;
   top: 0;
-  width: 100%;
-  height: 100vh;
   bottom: 0;
   right: 0;
   left: 0;
+  width: 100%;
+  height: 100vh;
   z-index: 2000;
   .lightBox {
     position: fixed;
     top: 0;
-    z-index: 1000;
     width: 100%;
     height: 100vh;
+    z-index: 1000;
     background-color: rgba(0, 0, 0, 0.7);
   }
 }
 .food-item {
-  float: right;
-  width: 100%;
-  padding-bottom: 15px;
   position: relative;
+  width: 100%;
+  float: right;
+  padding-bottom: 15px;
   transition: all 0.2s cubic-bezier(0, 0.5, 0.5, 1);
-  .qty-holder {
-    position: absolute;
-    left: 7px;
-    span {
-      width: 22px;
-      text-align: center;
-      display: inline-block;
-      line-height: 28px;
-      vertical-align: middle;
-      font-size: 14px;
-      font-size: 0.875rem;
+  figure {
+    width: 65px;
+    height: 65px;
+    float: right;
+    overflow: hidden;
+    border-radius: 10px;
+    background-size: 100%;
+    background-position: center;
+    background: url(https://www.delino.com/img/general/food-default.jpg) no-repeat 50% #eff2f6;
+
+    img {
+      width: 100%;
+      height: 100%;
     }
   }
   section {
-    background-color: #fff;
-    border: 1px solid #e4e4e4;
-    width: 100%;
-    display: inline-block;
-    direction: rtl;
     position: relative;
-    will-change: height;
-    -webkit-transition: height 0.4s cubic-bezier(0.19, 1, 0.22, 1);
-    -moz-transition: height 0.4s cubic-bezier(0.19, 1, 0.22, 1);
-    -o-transition: height 0.4s cubic-bezier(0.19, 1, 0.22, 1);
-    transition: height 0.4s cubic-bezier(0.19, 1, 0.22, 1);
+    width: 100%;
+    padding: 8px;
+    display: inline-block;
+    border: 1px solid #e4e4e4;
+    border-radius: 10px;
+    overflow: hidden;
+    background-color: #fff;
   }
   figure {
-    position: relative;
-    float: right;
-    width: 100%;
-    background: url(https://www.delino.com/img/general/food-default.jpg) no-repeat 50% #eff2f6;
-    display: block;
-    height: 0;
-    padding-bottom: 63%;
-    background-size: 100%;
     cursor: default;
-    img {
-      width: 100%;
-      display: block;
-    }
     .ingredient {
       position: absolute;
       top: 0;
@@ -89,11 +76,9 @@
         rgba(255, 255, 255, 0.9) 0%,
         rgba(255, 255, 255, 0.7) 100%
       );
-      filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#e6ffffff', endColorstr='#b3ffffff',GradientType=1 );
       overflow: hidden;
       text-align: center;
       opacity: 0;
-      filter: alpha(opacity=0);
       z-index: 5;
       span {
         position: absolute;
@@ -112,13 +97,13 @@
         font-size: 0.875rem;
       }
       b {
+        position: relative;
+        top: 50%;
         width: 100%;
         float: right;
         font-weight: bold;
         direction: rtl;
         font-size: 12px;
-        position: relative;
-        top: 50%;
         -webkit-transform: translateY(-50%);
         -moz-transform: translateY(-50%);
         -ms-transform: translateY(-50%);
@@ -127,42 +112,9 @@
       }
     }
   }
-  .details-holder {
-    position: relative;
-    float: right;
-    padding: 5px;
-    width: 100%;
-    height: 90px;
-    line-height: 80px;
-  }
-  header {
-    text-align: right;
-    padding-left: 79px;
-    display: inline-block;
-    vertical-align: middle;
-    line-height: normal;
-    position: absolute;
-    span {
-      font-size: 13px;
-      font-size: 0.8125rem;
-      direction: rtl;
-      white-space: nowrap;
-    }
-    small {
-      font-size: 13px;
-      font-size: 0.8125rem;
-      color: #888;
-    }
-    h3 {
-      margin: 10px 0 0;
-      font-size: 20px;
-      font-size: 0.875rem;
-      font-weight: 700;
-      line-height: 22px;
-    }
-  }
+
   .active-box {
-    border: 1px solid #be901e;
+    border: 1.5px solid #ffbd41;
     .quantity-badge {
       opacity: 1;
       -webkit-opacity: 1;
@@ -172,14 +124,13 @@
     position: absolute;
     right: 0;
     top: 0;
-    z-index: 10;
+    width: 24px;
     text-align: center;
     color: #fff;
-    width: 24px;
     line-height: 28px;
-    font-size: 13px;
     font-size: 0.8125rem;
     opacity: 0;
+    z-index: 10;
     -webkit-opacity: 0;
     filter: alpha(opacity=0);
     -webkit-backface-visibility: hidden;
@@ -190,16 +141,16 @@
     }
   }
   .quantity-badge:before {
+    content: ' ';
     position: absolute;
     top: 0;
     right: 0;
-    border: solid transparent;
-    content: ' ';
     height: 0;
     width: 0;
+    border: solid transparent;
     pointer-events: none;
     border-color: rgba(190, 144, 30, 0);
-    border-bottom-color: #be901e;
+    border-bottom-color: #ffbd41;
     border-width: 28px;
     margin-top: -28px;
     margin-right: -28px;
@@ -210,38 +161,18 @@
     transform: rotate(45deg);
     z-index: 1;
   }
-  .checkAvailable {
-    position: absolute;
-    left: 9px;
-    .meal-badge {
-      padding: 6px 9px;
-      color: #888;
-      border-radius: 20px;
-      border: 1px solid #e4e4e4;
-      -webkit-border-radius: 20px;
-      background-color: #fff;
-      font-size: 0.75rem;
-      min-height: 35px;
-      max-width: 100px;
-      span {
-        // display: inline-block;
-        vertical-align: middle;
-        line-height: 18px;
-      }
-    }
-  }
-  .addButton,
+  .addBfutton,
   .removeButton {
-    background: none;
-    border-radius: 999px;
     cursor: pointer;
     width: 25px;
-    border: 1px solid #be901e;
-    font-size: 0.9rem;
     height: 25px;
-    color: #be901e;
-    text-align: center;
     padding: 0;
+    color: #be901e;
+    font-size: 0.9rem;
+    border: 1px solid #be901e;
+    background: none;
+    border-radius: 999px;
+    text-align: center;
     -webkit-transition: all 0.4s cubic-bezier(0.19, 1, 0.22, 1);
     transition: all 0.4s cubic-bezier(0.19, 1, 0.22, 1);
     &:focus {
@@ -264,74 +195,23 @@
   }
 }
 
-.has_sub {
-  .details-holder {
-    i {
-      position: absolute;
-      width: 25px;
-      height: 15px;
-      border-radius: 4px 0 0 0;
-      left: 15px;
-      top: 45px;
-      margin-left: 15px;
-      margin-top: -20.33333px;
-      border-left: 2px solid #ccc;
-      border-top: 2px solid #ccc;
-      padding: -49px;
-      opacity: 0.8;
-      -webkit-opacity: 0.8;
-      &:after,
-      &:before {
-        content: '';
-        width: 25px;
-        height: 15px;
-        left: 0;
-        top: 0;
-      }
-      &:before {
-        position: absolute;
-        -webkit-border-radius: 3px;
-        -moz-border-radius: 3px;
-        border-radius: 3px;
-        background-color: #ccc;
-        -webkit-transform: translate(6px, 6px);
-        -moz-transform: translate(6px, 6px);
-        -ms-transform: translate(6px, 6px);
-        -o-transform: translate(6px, 6px);
-        transform: translate(6px, 6px);
-      }
-      &:after {
-        position: absolute;
-        border-left: 2px solid #ccc;
-        border-top: 2px solid #ccc;
-        -webkit-border-radius: 4px 0 0 0;
-        -moz-border-radius: 4px 0 0 0;
-        border-radius: 4px 0 0 0;
-        -webkit-transform: translate(2px, 2px);
-        -moz-transform: translate(2px, 2px);
-        -ms-transform: translate(2px, 2px);
-        -o-transform: translate(2px, 2px);
-        transform: translate(2px, 2px);
-      }
-    }
-  }
-}
 @media only screen and (min-width: 992px) {
   .food-list {
     padding: 0;
     .food-item {
-      width: 33.3%;
+      width: 50%;
+      section {
+        transition: all 0.25s cubic-bezier(0.19, 1, 0.22, 1.06);
+        &:hover {
+          box-shadow: 0px 14px 20px rgba(56, 60, 71, 0.1);
+          transform: translateY(-2px);
+        }
+      }
     }
   }
 }
 @media only screen and (min-width: 650px) {
   .food-item {
     padding: 10px;
-    .details-holder {
-      float: right;
-      width: 100%;
-      height: 90px;
-      min-width: 90px;
-    }
   }
 }

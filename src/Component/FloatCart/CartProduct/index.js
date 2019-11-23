@@ -1,57 +1,49 @@
 import React from 'react';
 import { useDispatch } from 'react-redux';
-import { addFood, removeFood } from '../../../services/cart/actions';
 import PropTypes from 'prop-types';
+
+import { removeFood } from 'services/cart/actions';
+import { Button } from 'component/Buttons/Button';
+import QtyHolder from 'component/Menu/FoodListTable/food/foodDetails/qty-holder';
+import Tittle from 'component/Menu/FoodListTable/food/foodDetails/Tittle';
+
 import './style.scss';
+import Price from 'component/Menu/FoodListTable/food/foodDetails/price';
 
 const CartProduct = ({ product }) => {
-  console.log(product);
   const dispatch = useDispatch();
-  return (
-    <div className='item'>
-      <button
-        type='button'
-        className='anc anc-rmv'
-        onClick={() => dispatch(removeFood(product, true))}
-      >
-        x
-      </button>
-      <div className='item-holder'>
-        <aside>
-          <h3>
-            {product.title}
-            <small>{product.price}</small>
-          </h3>
-        </aside>
-        <div className='qty-holder'>
-          <div className='food-qty'>
-            <button
-              type='button'
-              className='addButton'
-              style={{ position: 'absolute', left: '0' }}
-              onClick={() => dispatch(addFood(product, 1))}
+
+  if (product.quantity > 0) {
+    return (
+      <div className='item'>
+        <div className='item-holder clearfix'>
+          <aside className='item-aside'>
+            <Button
+              ptb='4'
+              prl='4'
+              className='ancFullRemove'
+              color='red'
+              bgcolor='transparent'
+              onClick={() => dispatch(removeFood(product, true))}
             >
-              +
-            </button>
-            <span>{product.quantity}</span>
-            <button
-              type='button'
-              className='removeButton'
-              onClick={() => dispatch(removeFood(product))}
-            >
-              -
-            </button>
-          </div>
+              x
+            </Button>
+            <div className='cartInfoFood'>
+              <Tittle tittle={product.title} />
+              <Price price={product.price} />
+            </div>
+          </aside>
+          <QtyHolder food={product} />
         </div>
       </div>
-    </div>
-  );
+    );
+  } else {
+    return null;
+  }
 };
 
 CartProduct.propTypes = {
-  product: PropTypes.object.isRequired,
-  removeFood: PropTypes.func.isRequired,
-  addFood: PropTypes.func.isRequired
+  product: PropTypes.object.isRequired
 };
 
 export default CartProduct;

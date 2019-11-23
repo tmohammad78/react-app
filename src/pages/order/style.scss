@@ -46,20 +46,17 @@
       outline: 0;
     }
     &:hover {
-      color: #be901e;
+      color: #ffbd41;
     }
   }
 }
 @media only screen and (min-width: 992px) {
-  .right-side-holder {
-    float: right;
-    width: 70%;
-    min-height: 600px;
-  }
-  .left-side-holder {
-    width: 30%;
-    padding-right: 20px;
-    display: block;
+  .rest-menu-holder {
+    .right-side-holder {
+      width: 95%;
+      margin: 0 auto;
+      min-height: 600px;
+    }
   }
   .tab-content-holder {
     .rest-info {

@@ -1,19 +1,24 @@
 .wrapper {
-	margin: 0 5%;
-	width: 90%;
+  margin: 0 5%;
+  width: 90%;
 }
 .row {
-	float: right;
-	width: 100%;
+  float: right;
+  width: 100%;
 }
 @media only screen and (min-width: 767px) {
-	.wrapper {
-		padding: 0;
-	}
+  .wrapper {
+    &.modal {
+      width: 95%;
+      margin: 0 auto;
+    }
+    width: 95%;
+    margin: 0 auto;
+  }
 }
 @media only screen and (min-width: 1400px) {
-	.wrapper {
-		margin: 0 auto;
-		max-width: 1400px;
-	}
+  .wrapper {
+    margin: 0 auto;
+    max-width: 1400px;
+  }
 }

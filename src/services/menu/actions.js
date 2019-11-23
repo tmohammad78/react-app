@@ -3,7 +3,7 @@ import { FETCH_MENU, UPDATE_PRODUCT } from './actionTypes';
 import { restaurantMenu } from '../util';
 import { objectToArray } from '../../helper/index';
 import parseMenu from './util/menu';
-
+import { arrayToObject } from 'helper/index';
 const Data = {
   foodList: null
 };
@@ -18,7 +18,16 @@ export const fetchMenu = (callback) => (dispatch, getState) => {
   const productLoaded = (data, sort) => {
     const menu = parseMenu(data, sort);
     const foodList = menu.foodList;
+    const foodListItem = arrayToObject(menu.foodList);
     const categoryList = menu.categoryList;
+    Object.keys(cart).forEach((key) => {
+      console.log(key);
+      const cartItem = cart[key];
+      console.log(cartItem);
+      const food = foodListItem[`${cartItem.id}`];
+      console.log(food);
+      if (food) food.quantity = cartItem.quantity;
+    });
     if (callback) {
       callback();
     }
@@ -32,6 +41,7 @@ export const fetchMenu = (callback) => (dispatch, getState) => {
     return dispatch({
       type: FETCH_MENU,
       payload: {
+        foodListItem,
         foodList,
         categoryList
       }

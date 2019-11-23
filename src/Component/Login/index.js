@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import axios from 'axios';
-import Button from '../Buttons/Button';
+import {Button} from '../Buttons/Button';
 import Input from '../Input';
 
 const LoginModal = () => {

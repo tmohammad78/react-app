@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import { connect } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import updateSort from '../../../services/sort/action';
 import Selectbox from '../../Selectbox/index';
 
@@ -11,9 +11,12 @@ const sortBy = [
   { value: 'highestprice', label: 'گران ترین' }
 ];
 
-const Sort = props => {
-  const handleSort = value => {
-    props.updateSort(value);
+const Sort = (props) => {
+  const sort = useSelector((state) => state.sort.type);
+  const dispatch = useDispatch();
+  
+  const handleSort = (value) => {
+    dispatch(updateSort(value));
   };
 
   return <Selectbox options={sortBy} handleOnChange={handleSort} />;
@@ -22,11 +25,4 @@ Sort.propTypes = {
   updateSort: PropTypes.func.isRequired
 };
 
-const mapStateToProps = state => ({
-  sort: state.sort.type
-});
-
-export default connect(
-  mapStateToProps,
-  { updateSort }
-)(Sort);
+export default Sort;

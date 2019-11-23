@@ -1,15 +1,16 @@
 import React, { useState } from 'react';
-import PropTypes from 'prop-types';
 import { useSelector } from 'react-redux';
+
 import CartProduct from './CartProduct';
-import Button from '../Buttons/Button';
-import { objectToArray } from '../../helper/index';
+import { Button } from 'component/Buttons/Button';
+import { objectToArray } from 'helper';
+
 import './style.scss';
 
 const FloatCart = () => {
   let offForm;
   const [isForm, setIsForm] = useState(false);
-
+  const [showCart, SetShowCart] = useState(false);
   const cartProducts = useSelector((state) => state.cart.items);
   const cartInfo = useSelector((state) => state.cart.cartTotal);
   const { totalPrice, totalProduct } = cartInfo;
@@ -17,6 +18,11 @@ const FloatCart = () => {
   const products = objectToArray(cartProducts).map((item) => {
     return <CartProduct product={item} />;
   });
+
+  const toggleShowCart = () => {
+    SetShowCart((prevState) => !prevState);
+  };
+
   if (isForm) {
     offForm = (
       <div>
@@ -37,10 +43,14 @@ const FloatCart = () => {
       </div>
     );
   }
+
   return (
     <React.Fragment>
-      <div className='left-side-holder clearfix'>
+      <div className={`left-side-holder clearfix ${showCart ? 'show-cart' : 'hide-cart'} `}>
         <div className='rest-cart'>
+          <div className='cross-icon' onClick={toggleShowCart}>
+            <div className='fo fo-cross'></div>
+          </div>
           {!totalProduct ? (
             <div className='empty-cart'>
               <i className='fo fo-empty-bag' />
@@ -48,12 +58,10 @@ const FloatCart = () => {
             </div>
           ) : (
             <React.Fragment>
-              <header>
-                <h3>سبد خرید</h3>
-                <div className='cart-quantity'>
-                  <i className='fo fo-cart' />
-                  <span className='cart-size round-full'>{totalProduct}</span>
-                </div>
+              <header className='header-cart'>
+                <h3>
+                  سبد خرید<span className='cart-size'>{totalProduct}</span>
+                </h3>
               </header>
               <div className='cart-holder-inner clearfix'>
                 <div className='cart-list-holder'>
@@ -79,13 +87,9 @@ const FloatCart = () => {
                     </span>
                   </div>
                   <div className='row add-coupon-holder'>
-                    <button
-                      type='button'
-                      className='anc anc-coupon'
-                      onClick={() => setIsForm(false)}
-                    >
+                    <Button color='#FFBD41' bgcolor='transparent' onClick={() => setIsForm(false)}>
                       کد تخفیف دارید؟
-                    </button>
+                    </Button>
                     {offForm}
                   </div>
                   <div className='row button-holder'>
@@ -106,18 +110,14 @@ const FloatCart = () => {
           <div className='total-price'>{totalPrice}</div>
         </Button>
       </div>
+      <div className='cartshowMobile' onClick={toggleShowCart}>
+        <div className='content'>
+          <span>سبد خرید </span>
+          <span className='totalProduct'>{totalProduct > 0 ? totalProduct : null}</span>
+        </div>
+      </div>
     </React.Fragment>
   );
-};
-FloatCart.propTypes = {
-  updateCart: PropTypes.func.isRequired,
-  cartProducts: PropTypes.array.isRequired,
-  updateProduct: PropTypes.object,
-  foodToAdd: PropTypes.object,
-  foodToRemove: PropTypes.object,
-  removeFood: PropTypes.func,
-  addFood: PropTypes.func,
-  cartTotal: PropTypes.object
 };
 
 export default FloatCart;

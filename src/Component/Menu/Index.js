@@ -4,12 +4,10 @@ import { useDispatch, useSelector } from 'react-redux';
 import { fetchMenu } from '../../services/menu/actions';
 import './style.scss';
 
-import Sort from './sort/index';
+import Sort from './sort';
 import Spinner from '../Spinner';
-// import FoodListTable from './FoodListTable';
 const Category = lazy(() => import('../Category/index'));
 const FoodListTable = lazy(() => import('./FoodListTable'));
-// import Category from '../Category/index';
 
 const Menu = () => {
   const dispatch = useDispatch();
@@ -26,19 +24,13 @@ const Menu = () => {
 
   return (
     <Fragment>
-      {/* <Sort /> */}
+      <Sort />
       <Suspense fallback={<Spinner />}>
         <Category />
         {foodList && <FoodListTable items={foodList} />}
       </Suspense>
     </Fragment>
   );
-};
-
-Menu.propTypes = {
-  fetchMenu: PropTypes.func,
-  sort: PropTypes.string,
-  categoryList: PropTypes.object.isRequired
 };
 
 export default Menu;

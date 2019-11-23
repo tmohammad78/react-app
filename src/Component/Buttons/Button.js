@@ -1,15 +1,15 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
-import { ButtonStyle } from './style';
+import { ButtonStyle, ButtonAnc } from './style';
 
 import './style.scss';
 
-const Button = ({ children, color, ...props }) => {
+export const Button = ({ children, ...props }) => {
   return <ButtonStyle {...props}>{children}</ButtonStyle>;
 };
 
 Button.defaultProps = {
-  primary: true,
+  primary: true
 };
 
 // Button.propTypes = {
@@ -21,4 +21,5 @@ Button.defaultProps = {
 //   name: PropTypes.string
 // };
 
-export default Button;
+// export const Button;
+// export const AncButton;

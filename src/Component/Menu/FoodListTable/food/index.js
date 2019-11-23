@@ -1,39 +1,54 @@
-import React from 'react';
+import React, { useState } from 'react';
 import PropTypes from 'prop-types';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
+import FoodDetails from './details-holder/index';
+import DetailModal from './foodModal';
+import Modal from 'component/Modal';
+import FoodImage from './foodDetails/foodImage';
+import FoodBadge from './foodDetails/FoodBadge/index';
+import Portal from 'component/Portal';
+import { SubFoodModal } from 'services/subFood/action';
 import './style.scss';
-import { addFood, removeFood } from '../../../../services/cart/actions';
-import Details from './details-holder/index';
-import FoodImage from './foodImage';
-import FoodBadge from './FoodBadge/index';
 
 const Food = ({ food, onShowsubFoodModal }) => {
   const className = [];
+  const newItem = useSelector((state) => state.menu.foodListItem[food.id]);
   const dispatch = useDispatch();
+  const [showModal, SetShowModal] = useState(false);
+
   if (food.quantity > 0) {
     className.push('active-box');
   }
-  //   if (food.subFoods.length > 0) {
-  //     className.push('has_sub');
-  //   }
-  const addClicked = () => {
+
+  const handleshowModal = () => {
     if (food.subFoods.length > 0) {
-      onShowsubFoodModal(food);
-    } else {
-      dispatch(addFood(food, 1));
+      dispatch(SubFoodModal(food));
+      return;
     }
+    SetShowModal(() => !showModal);
   };
 
   return (
     <div className='food-item'>
       <section
-        className={className.map((item) => {
-          return item;
-        })}
+        className={
+          className.map((item) => {
+            return item;
+          }) || ''
+        }
       >
-        <FoodBadge food={food} />
-        <FoodImage food={food} />
-        <Details food={food} addClicked={addClicked} removeFood={() => removeFood(food)} />
+        <FoodBadge quantity={newItem.quantity} />
+        <div onClick={handleshowModal}>
+          <FoodImage image={food.img} />
+        </div>
+        <FoodDetails food={newItem} />
+        {showModal ? (
+          <Portal>
+            <Modal open={showModal} onClose={handleshowModal}>
+              <DetailModal defaultDetail={food} food={newItem} />
+            </Modal>
+          </Portal>
+        ) : null}
       </section>
     </div>
   );
@@ -41,8 +56,6 @@ const Food = ({ food, onShowsubFoodModal }) => {
 
 Food.propTypes = {
   food: PropTypes.object.isRequired,
-  addFood: PropTypes.func.isRequired,
-  removeFood: PropTypes.func.isRequired,
   onShowsubFoodModal: PropTypes.func
 };
 

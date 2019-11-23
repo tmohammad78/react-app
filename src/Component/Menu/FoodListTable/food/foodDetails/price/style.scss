@@ -1,0 +1,22 @@
+.price {
+  color: #ff6a00;
+}
+.cartInfoFood {
+  .price {
+    display: block;
+    small {
+      font-size: 17px;
+      font-weight: 400;
+    }
+  }
+}
+
+@media only screen and (min-width:700px) {
+	.cartInfoFood { 
+		.price{
+			small{
+				font-size: 14px;
+			}
+		}
+	}
+}

@@ -1,14 +1,14 @@
 import React, { useState, Suspense, lazy } from 'react';
 import './style.scss';
-import Button from '../Buttons/Button';
+import { Button } from '../Buttons/Button';
 import Login from '../Login';
 const Modal = lazy(() => import('../Modal'));
 
 const Header = () => {
   const [showModal, setShowModal] = useState(false);
 
-  const toggleLoginShow = (show = true) => {
-    setShowModal(prevState => !prevState);
+  const toggleLoginShow = () => {
+    setShowModal((prevState) => !prevState);
   };
 
   return (

@@ -1,13 +1,11 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import Button from '../Buttons/Button';
+import { Button } from '../Buttons/Button';
 import './style.scss';
 
-const Selectbox = props => {
-  const { classes, options } = props;
-  // const [active, setActive] = useState('');
-  const createOptions = option =>
-    option.map(item => {
+const Selectbox = ({ handleOnChange, classes, options }) => {
+  const createOptions = (option) =>
+    option.map((item) => {
       return (
         <li>
           <Button onClick={onClicked} value={item.value} size='sm' outline={false}>
@@ -17,8 +15,8 @@ const Selectbox = props => {
       );
     });
 
-  const onClicked = e => {
-    props.handleOnChange(e.target.value);
+  const onClicked = (e) => {
+    handleOnChange(e.target.value);
   };
 
   return (
@@ -28,9 +26,8 @@ const Selectbox = props => {
     </div>
   );
 };
+
 Selectbox.propTypes = {
-  options: PropTypes.array.isRequired,
-  classes: PropTypes.string,
   handleOnChange: PropTypes.func.isRequired
 };
 

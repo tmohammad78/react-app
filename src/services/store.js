@@ -17,7 +17,7 @@ export default (initialState) => {
   const store = createStore(rootReducer, initialState, enhancer);
   store.subscribe(() => {
     const state = store.getState();
-    console.log(state);
+    // console.log(state);
     const persist = {
       cart: state.cart,
       total: state.total

@@ -43,12 +43,13 @@ const size = {
 };
 
 export const ButtonStyle = styled(ButtonBase)`
-  background-color: ${props => props.bgcolor};
-  color: ${props => props.color};
-  border-radius: ${props => props.borderRadius}px;
-  border: ${props => props.borderSize || 0}px solid ${props => props.color};
+  background-color: ${(props) => props.bgcolor};
+  color: ${(props) => props.color};
+  padding: ${(props) => props.ptb}px ${(props) => props.prl}px;
+  border-radius: ${(props) => props.borderRadius}px;
+  border: ${(props) => props.borderSize || 0}px solid ${(props) => props.color};
   &:hover {
-    background-color: ${props => darken(0.2, props.bgcolor)};
+    background-color: ${(props) => darken(0.2, props.bgcolor)};
     &[disabled] {
       background-color: #eeee;
     }
@@ -70,5 +71,7 @@ ButtonStyle.defaultProps = {
   bgcolor: '#FFBD41',
   color: '#fff',
   borderSize: 0,
-  borderRadius: 10
+  borderRadius: 10,
+  ptb: '8px',
+  prl: '20px'
 };
