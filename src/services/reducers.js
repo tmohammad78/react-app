@@ -5,6 +5,7 @@ import totalReducer from './total/reducer';
 import coverReducer from './cover/reducer';
 import sortReducer from './sort/reducer';
 import subFoodReducer from './subFood/reducer';
+import likeFoodReducer from './likeFood/reducer';
 
 export default combineReducers({
   menu: menuReducer,
@@ -12,5 +13,6 @@ export default combineReducers({
   resInfo: coverReducer,
   total: totalReducer,
   sort: sortReducer,
-  subFood: subFoodReducer
+  subFood: subFoodReducer,
+  likeFood: likeFoodReducer
 });

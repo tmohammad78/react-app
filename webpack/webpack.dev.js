@@ -51,6 +51,24 @@ module.exports = Object.keys(commonVariables.languages).map(function(language) {
               }
             }
           ]
+        },
+        {
+          test: /\.(png|woff|woff2|eot|ttf|jpe?g|gif)$/,
+          loader: 'url-loader?limit=8000&name=images/[name].[ext]'
+        },
+        {
+          test: /\.svg$/,
+          use: [
+            {
+              loader: 'babel-loader'
+            },
+            {
+              loader: 'react-svg-loader',
+              options: {
+                jsx: true // true outputs JSX tags
+              }
+            }
+          ]
         }
       ]
     },

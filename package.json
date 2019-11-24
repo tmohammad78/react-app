@@ -85,13 +85,15 @@
     "react-redux": "^7.1.0",
     "react-router-dom": "^5.0.1",
     "react-scroll": "^1.7.14",
+    "react-svg-loader": "^3.0.3",
     "react-transition-group": "^4.2.1",
     "redux": "^4.0.1",
     "redux-thunk": "^2.3.0",
     "regenerator-runtime": "^0.13.2",
     "styled-components": "^4.4.1",
     "styled-props": "^1.1.2",
-    "underscore": "^1.9.1"
+    "underscore": "^1.9.1",
+    "url-loader": "^2.3.0"
   },
   "browserslist": [
     ">0.2%",
