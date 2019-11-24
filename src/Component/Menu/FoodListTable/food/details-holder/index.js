@@ -5,6 +5,7 @@ import Ingredient from '../foodDetails/ingredient';
 import Price from '../foodDetails/price';
 import QtyHolder from '../foodDetails/qty-holder';
 import Tittle from '../foodDetails/Tittle';
+import LikeFood from '../foodDetails/likeFood';
 import './style.scss';
 
 const Details = ({ food }) => {
@@ -14,6 +15,7 @@ const Details = ({ food }) => {
         <Tittle tittle={food.title} />
         <Ingredient ingredient={food.ingredient} />
         <Price price={food.price} />
+        <LikeFood />
       </React.Fragment>
     );
   };
