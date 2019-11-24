@@ -1,0 +1,23 @@
+.food-item {
+  .like-food {
+    position: absolute;
+    right: 15px;
+    width: 17px;
+    bottom: 15px;
+    height: 17px;
+    display: none;
+    cursor: pointer;
+    transition: all 0.25s cubic-bezier(0.19, 1, 0.22, 1.06);
+    svg {
+      width: 100%;
+      height: 100%;
+    }
+  }
+  > section {
+    &:hover {
+      .like-food {
+        display: inline-block;
+      }
+    }
+  }
+}
