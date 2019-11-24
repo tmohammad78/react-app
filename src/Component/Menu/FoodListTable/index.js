@@ -4,6 +4,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import { closeSubFoodModal } from 'services/subFood/action';
 import Modal from 'component/Modal';
 import Food from './food/index';
+import Sort from '../sort';
 import { objectToArray } from 'helper';
 import SearchBar from './searchBar/searchBar';
 import SubFood from '../subFoodModal/subFood';
@@ -12,12 +13,16 @@ import FoodListTitle from './FoodListTitle';
 
 import './style.scss';
 
+const sortBy = {
+  lowestprice: { field: 'price', asc: true },
+  highestprice: { field: 'price', asc: false }
+};
 const FoodListTable = ({ items }) => {
-  //   const originalItems = [...items];
+  const originalItems = [...items];
   const row = [];
   let lastCategory = null;
 
-  const subFood = useSelector((state) => state.subFood);
+  const subFood = useSelector(state => state.subFood);
   const [foodList, setFoodList] = useState(items);
   const [searchKey, setSearchKey] = useState('');
   const [inStock, setInStock] = useState(false);
@@ -28,60 +33,78 @@ const FoodListTable = ({ items }) => {
     search(searchKey, inStock);
   }, []);
 
+  const NotFound = () => {
+    return <div className='not-found'>نتیجه ای پیدا نشد.</div>;
+  };
+
   const search = (text, stock, list = items) => {
     let newList = list;
-    const result = [];
+    let result = [];
     let searchIngredient = list;
     if (stock) {
-      newList = newList.filter((item) => item.available);
+      newList = newList.filter(item => item.available);
     }
     if (text) {
       //   newList = newList.filter((x) => !x.subFoods);
-      newList = newList.filter((item) => item.title.indexOf(text) > -1);
-      searchIngredient = searchIngredient.filter((item) => item.ingredient.indexOf(text) > -1);
-      //   result.push(newList, searchIngredient);   concat two array in newList  // ES8
-      //   console.log(result);
-      console.log('before', newList);
-      newList.push(searchIngredient);
-      console.log('after', newList);
+      newList = newList.filter(item => item.title.indexOf(text) > -1);
+      searchIngredient = searchIngredient.filter(item => item.ingredient.indexOf(text) > -1);
+      result = newList.concat(searchIngredient);
     } else {
-      //   newList = newList.filter((item) => item.parent === 0);
+      newList ? (result = newList) : (result = items);
+      //   result = items;
     }
-    setFoodList(newList);
+    setFoodList(result);
   };
 
-  const searchHandler = (text) => {
+  const searchHandler = text => {
     search(text, inStock);
     setSearchKey(text);
   };
 
-  const stockHandler = (value) => {
+  const stockHandler = value => {
     search(searchKey, value);
     setInStock(value);
   };
 
-  if (items) {
-    let arr;
-    foodList.length > 0 ? (arr = foodList) : (arr = items);
-    arr.forEach((food) => {
+  const sortHandler = value => {
+    let newItem;
+    const sortItem = sortBy[value];
+    if (sortItem) {
+      const index = sortItem.asc ? 1 : -1;
+      newItem = originalItems.sort((a, b) => {
+        return (
+          //        a.catIndex - b.catIndex ||
+          //          a.catId - b.catId ||
+          a.categoryIndex - b.categoryIndex || (a[sortItem.field] - b[sortItem.field]) * index
+        );
+      });
+    } else {
+      newItem = originalItems;
+    }
+    search(searchKey, inStock, newItem);
+  };
+
+  if (foodList.length > 0) {
+    foodList.forEach(food => {
       if (food.categoryTitle !== lastCategory) {
-        row.push(<FoodListTitle category={food.categoryTitle} id={food.categoryId} />);
+        row.push(<FoodListTitle category={food.categoryTitle} id={food.catId} />);
       }
       row.push(<Food food={food} />);
       lastCategory = food.categoryTitle;
     });
+  } else {
+    row.push(<NotFound />);
   }
 
-  console.log(subFood);
   return (
     <div className='food_menu clearfix'>
+      <Sort onChange={sortHandler} />
       <SearchBar
         filterText={searchKey}
         onfilterText={searchHandler}
         inStock={inStock}
         onChangeStock={stockHandler}
       />
-      {/* <ShowContext.Provider value={{ showSubFood: showSubFood(), subFood: subFood }}> */}
       <Modal
         open={subFood.show}
         onClose={() => dispatch(closeSubFoodModal(true))}

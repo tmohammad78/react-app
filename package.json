@@ -84,7 +84,7 @@
     "react-hot-loader": "^4.12.0",
     "react-redux": "^7.1.0",
     "react-router-dom": "^5.0.1",
-    "react-scroll": "^1.7.12",
+    "react-scroll": "^1.7.14",
     "react-transition-group": "^4.2.1",
     "redux": "^4.0.1",
     "redux-thunk": "^2.3.0",

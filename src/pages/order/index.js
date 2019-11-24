@@ -1,4 +1,4 @@
-import React, { Fragment, lazy, Suspense } from 'react';
+import React, { Fragment, lazy, Suspense , useMemo } from 'react';
 import { Switch, Route, NavLink } from 'react-router-dom';
 import PropTypes from 'prop-types';
 // import Menu from 'component/Menu';

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useMemo } from 'react';
 import PropTypes from 'prop-types';
 import { useDispatch, useSelector } from 'react-redux';
 import FoodDetails from './details-holder/index';
@@ -24,9 +24,17 @@ const Food = ({ food, onShowsubFoodModal }) => {
     if (food.subFoods.length > 0) {
       dispatch(SubFoodModal(food));
       return;
-    }
+	}
     SetShowModal(() => !showModal);
   };
+
+  const renderImage = useMemo(() => {
+    return (
+      <div onClick={handleshowModal}>
+        <FoodImage image={food.img} />
+      </div>
+    );
+  }, FoodImage);
 
   return (
     <div className='food-item'>
@@ -38,9 +46,7 @@ const Food = ({ food, onShowsubFoodModal }) => {
         }
       >
         <FoodBadge quantity={newItem.quantity} />
-        <div onClick={handleshowModal}>
-          <FoodImage image={food.img} />
-        </div>
+        {renderImage}
         <FoodDetails food={newItem} />
         {showModal ? (
           <Portal>

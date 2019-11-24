@@ -21,11 +21,10 @@ export const fetchMenu = (callback) => (dispatch, getState) => {
     const foodListItem = arrayToObject(menu.foodList);
     const categoryList = menu.categoryList;
     Object.keys(cart).forEach((key) => {
-      console.log(key);
       const cartItem = cart[key];
-      console.log(cartItem);
+    //   console.log(cartItem);
       const food = foodListItem[`${cartItem.id}`];
-      console.log(food);
+    //   console.log(food);
       if (food) food.quantity = cartItem.quantity;
     });
     if (callback) {

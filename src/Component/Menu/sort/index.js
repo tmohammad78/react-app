@@ -6,16 +6,17 @@ import updateSort from '../../../services/sort/action';
 import Selectbox from '../../Selectbox/index';
 
 const sortBy = [
-  { value: '', label: 'Select' },
-  { value: 'lowestprice', label: 'ارزان ترین' },
-  { value: 'highestprice', label: 'گران ترین' }
+  { value: '', label: 'Select', index: 1 },
+  { value: 'lowestprice', label: 'ارزان ترین', index: 2 },
+  { value: 'highestprice', label: 'گران ترین', index: 3 }
 ];
 
-const Sort = (props) => {
-  const sort = useSelector((state) => state.sort.type);
+const Sort = ({ onChange }) => {
+  const sort = useSelector(state => state.sort.type);
   const dispatch = useDispatch();
-  
-  const handleSort = (value) => {
+
+  const handleSort = value => {
+    onChange(value);
     dispatch(updateSort(value));
   };
 

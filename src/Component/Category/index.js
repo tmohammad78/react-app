@@ -1,20 +1,62 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import { useSelector } from 'react-redux';
-import Carousel from 'react-elastic-carousel';
+import { Link } from 'react-scroll';
+import Carousel, { consts } from 'react-elastic-carousel';
+
+import { Button } from 'component/Buttons/Button';
+
 const Category = () => {
-	const item = useSelector(state => state.menu.categoryList);
+  const item = useSelector(state => state.menu.categoryList);
+
+  const breakPoints = [
+    { width: 1, itemsToShow: 3 },
+    { width: 550, itemsToShow: 5 },
+    { width: 768, itemsToShow: 6 },
+    { width: 1200, itemsToShow: 6 }
+  ];
+
+  const arrow = attr => {
+    const { type, onClick } = attr;
+    const pointer =
+      type === consts.PREV ? (
+        <i className='fo fo-angle-right' />
+      ) : (
+        <i className='fo fo-angle-left' />
+      );
+    return (
+      <Button color='black' bgcolor='transparent' ptb='0' prl='5' onClick={onClick} name='carousle'>
+        {pointer}
+      </Button>
+    );
+  };
+
   return (
     <div className='parent'>
       <div className='categories'>
         <div className='owl-item'>
-          <Carousel isRTL itemsToShow={5} pagination={false}>
+          <Carousel
+            isRTL
+            focusOnSelect={true}
+            breakPoints={breakPoints}
+            pagination={false}
+            renderArrow={arrow}
+          >
             {item.map(food => {
               return (
-                <div className='i-w'>
-                  <i className={`ic-c c-${food.catLogo}`} />
-                  <p>{food.catTitle}</p>
-                </div>
+                <Link
+                  key={food.catId}
+                  className=' indexbox'
+                //   activeClass='activecategory'
+                  to={food.catId}
+                  spy
+                  smooth
+                  offset={-100}
+                >
+                  <div className='i-w'>
+                    <i className={`ic-c c-${food.catLogo}`} />
+                    <p>{food.catTitle}</p>
+                  </div>
+                </Link>
               );
             })}
           </Carousel>
@@ -22,10 +64,6 @@ const Category = () => {
       </div>
     </div>
   );
-};
-
-Category.propTypes = {
-  item: PropTypes.object.isRequired
 };
 
 export default Category;

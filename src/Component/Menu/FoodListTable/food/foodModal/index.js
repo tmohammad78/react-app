@@ -7,6 +7,7 @@ import Price from '../foodDetails/price';
 import './style.scss';
 
 const DetailModal = ({ defaultDetail: items, food }) => {
+  
   return (
     <div className='modal-food'>
       <FoodImge image={items.img} />

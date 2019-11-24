@@ -2,7 +2,7 @@ const webpack = require('webpack');
 const autoprefixer = require('autoprefixer');
 const commonVariables = require('./commonVariables');
 
-const PORT = process.env.PORT || 3000;
+const PORT = process.env.PORT || 8080;
 module.exports = Object.keys(commonVariables.languages).map(function(language) {
   return {
     mode: 'development',
@@ -56,7 +56,7 @@ module.exports = Object.keys(commonVariables.languages).map(function(language) {
     },
     plugins: [new webpack.NamedModulesPlugin(), new webpack.HotModuleReplacementPlugin()],
     devServer: {
-      host: 'localhost',
+      host: '192.168.1.105',
       port: PORT,
       historyApiFallback: true,
       // hot: true,
