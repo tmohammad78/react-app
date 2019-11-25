@@ -11,16 +11,16 @@ const FloatCart = () => {
   let offForm;
   const [isForm, setIsForm] = useState(false);
   const [showCart, SetShowCart] = useState(false);
-  const cartProducts = useSelector((state) => state.cart.items);
-  const cartInfo = useSelector((state) => state.cart.cartTotal);
+  const cartProducts = useSelector(state => state.cart.items);
+  const cartInfo = useSelector(state => state.cart.cartTotal);
   const { totalPrice, totalProduct } = cartInfo;
 
-  const products = objectToArray(cartProducts).map((item) => {
+  const products = objectToArray(cartProducts).map(item => {
     return <CartProduct product={item} />;
   });
 
   const toggleShowCart = () => {
-    SetShowCart((prevState) => !prevState);
+    SetShowCart(prevState => !prevState);
   };
 
   if (isForm) {
@@ -102,13 +102,13 @@ const FloatCart = () => {
             </React.Fragment>
           )}
         </div>
-        <Button>
+        {/* <Button>
           <h3>
             <i className='fo fo-cart' />
             <span>سبد خرید</span>
           </h3>
           <div className='total-price'>{totalPrice}</div>
-        </Button>
+        </Button> */}
       </div>
       <div className='cartshowMobile' onClick={toggleShowCart}>
         <div className='content'>

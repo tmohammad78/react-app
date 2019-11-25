@@ -2,7 +2,7 @@ import { compose, createStore, applyMiddleware } from 'redux';
 import thunk from 'redux-thunk';
 import rootReducer from './reducers';
 
-export default (initialState) => {
+export default initialState => {
   initialState = JSON.parse(window.localStorage.getItem('state')) || initialState;
   const middleware = [thunk];
   let enhancer;
@@ -17,10 +17,10 @@ export default (initialState) => {
   const store = createStore(rootReducer, initialState, enhancer);
   store.subscribe(() => {
     const state = store.getState();
-    // console.log(state);
     const persist = {
       cart: state.cart,
-      total: state.total
+      total: state.total,
+      likeFood: state.likeFood
     };
 
     window.localStorage.setItem('state', JSON.stringify(persist));

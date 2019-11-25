@@ -1,4 +1,4 @@
-import { FETCH_MENU, UPDATE_PRODUCT } from './actionTypes';
+import { FETCH_MENU, UPDATE_PRODUCT, LIKED_PRODUCT ,DISLIKED_PRODUCT} from './actionTypes';
 
 const initialState = {
   foodListItem: {},
@@ -25,6 +25,29 @@ export default function(state = initialState, action) {
           [action.payload.id]: {
             ...state.foodListItem[action.payload.id],
             quantity: action.payload.quantity
+          }
+        }
+      };
+    case LIKED_PRODUCT:
+      return {
+        ...state,
+        foodListItem: {
+          ...state.foodListItem,
+          [action.payload.id]: {
+            ...state.foodListItem[action.payload.id],
+            like: true
+          }
+        }
+      };
+
+    case DISLIKED_PRODUCT:
+      return {
+        ...state,
+        foodListItem: {
+          ...state.foodListItem,
+          [action.payload.id]: {
+            ...state.foodListItem[action.payload.id],
+            like: false
           }
         }
       };

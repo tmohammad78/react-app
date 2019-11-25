@@ -171,6 +171,8 @@
   .cart-total {
     margin-bottom: 10px;
     text-align: right;
+    display: flex;
+    justify-content: space-between;
     font-size: 0.875rem;
     font-weight: 700;
     label {
@@ -178,8 +180,8 @@
       font-size: 0.8125rem;
     }
     span {
-      float: left;
       font-size: 1rem;
+      width: auto;
       text-align: left;
     }
     b {
@@ -207,11 +209,11 @@
 @media screen and (min-width: 767px) {
   .rest-menu-holder {
     .left-side-holder {
-      position: relative !important;
+      position: sticky !important;
       width: 28% !important;
       transform: translate3d(0, 0px, 0px) !important;
       .rest-cart {
-        height: 100%;
+        height: auto !important;
         position: -webkit-sticky;
         position: sticky;
         top: 20px;
