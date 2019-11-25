@@ -1,5 +1,5 @@
 .rest-menu-holder {
-  padding: 50px 0 50px;
+  padding: 40px 0 50px;
 }
 .right-side-holder {
   > div {
@@ -52,6 +52,7 @@
 }
 @media only screen and (min-width: 992px) {
   .rest-menu-holder {
+	padding: 160px 0 50px;
     .right-side-holder {
       width: 95%;
       margin: 0 auto;
