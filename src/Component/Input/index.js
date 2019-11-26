@@ -1,5 +1,5 @@
-import React, { useState } from "react";
-import "./style.scss";
+import React, { useState } from 'react';
+import './style.scss';
 
 const Input = ({
   type,
@@ -17,7 +17,7 @@ const Input = ({
   const handleFocus = () => {
     setFocus(true);
   };
-  const handleBlur = (e) => {
+  const handleBlur = e => {
     if (value) {
       setFocus(true);
     } else {
@@ -25,16 +25,16 @@ const Input = ({
     }
   };
   return (
-    <div className={`inputParent ${focus ? `focus` : ""}`}>
+    <div className={`inputParent ${focus ? `focus` : ''}`}>
       {icon ? (
-        <div className="image">
+        <div className='image'>
           <img alt={icon} src={`./image/${icon}.svg`} />
         </div>
       ) : null}
 
       <input
         className={`input ${className ? `input-${type}` : null}`}
-        value={value || ""}
+        value={value || ''}
         type={type}
         onChange={onChange}
         onFocus={handleFocus}
@@ -42,7 +42,7 @@ const Input = ({
         id={id}
         {...props}
       />
-      <label className="input-test" htmlFor={id}>
+      <label className='input-test' htmlFor={id}>
         {label}
       </label>
     </div>

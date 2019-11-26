@@ -1,7 +1,7 @@
-import React, { useEffect } from 'react';
+import { useEffect, useMemo } from 'react';
 import ReactDOM from 'react-dom';
 
-const Portal = (props) => {
+const Portal = props => {
   const modalRoot = document.getElementById('modal-root');
   const el = document.createElement('div');
 

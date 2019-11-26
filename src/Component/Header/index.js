@@ -1,14 +1,16 @@
 import React, { useState, Suspense, lazy } from 'react';
-import './style.scss';
+
 import { Button } from '../Buttons/Button';
 import Login from '../Login';
 const Modal = lazy(() => import('../Modal'));
 
+import './style.scss';
+
 const Header = () => {
   const [showModal, setShowModal] = useState(false);
-
+  const backgroundLogo = 'https://static.delino.com/Image/Default/logo/2yujoehm.rrz_180x180.png';
   const toggleLoginShow = () => {
-    setShowModal((prevState) => !prevState);
+    setShowModal(prevState => !prevState);
   };
 
   return (
@@ -29,10 +31,7 @@ const Header = () => {
         <div className='right'>
           <div className='rest-logo-holder'>
             <figure className='logo-holder'>
-              <img
-                alt=''
-                src='https://static.delino.com/Image/Default/logo/2yujoehm.rrz_180x180.png'
-              />
+              <img alt='logo' src={backgroundLogo} />
             </figure>
           </div>
         </div>

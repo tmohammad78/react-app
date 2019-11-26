@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useMemo } from 'react';
 import './style.scss';
 
 const Modal = ({ Route, open, onClose, closeOnEsc, history, style, children, ...props }) => {
@@ -11,13 +11,13 @@ const Modal = ({ Route, open, onClose, closeOnEsc, history, style, children, ...
     };
   });
 
-  const handleEscKeyDown = (e) => {
+  const handleEscKeyDown = e => {
     if (onClose && closeOnEsc && e.keyCode === 27) {
       clodeModal();
     }
   };
 
-  let mainTemplate = (
+  const mainTemplate = (
     <div className='parent-modal'>
       <div className='modalBox' style={style}>
         <div className='wrapper modal'>

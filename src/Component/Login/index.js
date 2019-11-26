@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import axios from 'axios';
-import {Button} from '../Buttons/Button';
+
+import { Button } from 'component/Buttons/Button';
 import Input from '../Input';
 
 const LoginModal = () => {
@@ -13,8 +14,8 @@ const LoginModal = () => {
       email: 'mohammad@gmail.com',
       password: '222222',
       returnSecureToken: true
-	};
-	debugger
+    };
+    debugger;
     axios
       .post(
         'https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=AIzaSyCxCVewTWdrVCFbeLFyz2pKuSYAl0u2L3I',

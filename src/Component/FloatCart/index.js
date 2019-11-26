@@ -102,13 +102,6 @@ const FloatCart = () => {
             </React.Fragment>
           )}
         </div>
-        {/* <Button>
-          <h3>
-            <i className='fo fo-cart' />
-            <span>سبد خرید</span>
-          </h3>
-          <div className='total-price'>{totalPrice}</div>
-        </Button> */}
       </div>
       <div className='cartshowMobile' onClick={toggleShowCart}>
         <div className='content'>

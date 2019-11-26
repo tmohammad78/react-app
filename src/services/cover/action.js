@@ -1,5 +1,5 @@
 import axios from 'axios';
-import FETCH_DATA from './actionType';
+import { FETCH_DATA } from './actionType';
 import { resturantData } from '../util';
 
 const fetchData = () => dispatch => {

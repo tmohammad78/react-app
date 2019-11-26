@@ -15,7 +15,7 @@ const Category = () => {
     { width: 1200, itemsToShow: 6 }
   ];
 
-  const arrow = attr => {
+  const actionArrow = attr => {
     const { type, onClick } = attr;
     const pointer =
       type === consts.PREV ? (
@@ -39,14 +39,14 @@ const Category = () => {
             focusOnSelect={true}
             breakPoints={breakPoints}
             pagination={false}
-            renderArrow={arrow}
+            renderArrow={actionArrow}
           >
             {item.map(food => {
               return (
                 <Link
                   key={food.catId}
                   className=' indexbox'
-                //   activeClass='activecategory'
+                  //   activeClass='activecategory'
                   to={food.catId}
                   spy
                   smooth

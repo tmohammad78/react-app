@@ -1,5 +1,6 @@
 import React, { Fragment } from 'react';
 import PropTypes from 'prop-types';
+
 import './style.scss';
 
 const SearchBar = ({ filterText, onfilterText, onChangeStock, inStock }) => {

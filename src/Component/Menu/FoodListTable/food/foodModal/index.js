@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useMemo } from 'react';
 import FoodImge from '../foodDetails/foodImage';
 import Tittle from '../foodDetails/Tittle';
 import Ingredient from '../foodDetails/ingredient';
@@ -7,12 +7,20 @@ import Price from '../foodDetails/price';
 import './style.scss';
 
 const DetailModal = ({ defaultDetail: items, food }) => {
-  
-  return (
-    <div className='modal-food'>
+  const Test = () => (
+    <React.Fragment>
       <FoodImge image={items.img} />
       <Tittle tittle={items.title} />
       <Ingredient ingredient={items.ingredient} checkTruncate={false} />
+    </React.Fragment>
+  );
+  const renderDefault = useMemo(() => {
+    return <Test />;
+  }, Test);
+
+  return (
+    <div className='modal-food'>
+      {renderDefault}
       <div className='block'>
         <Price price={items.price} />
         <QtyHolder food={food} />

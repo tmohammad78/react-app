@@ -26,7 +26,6 @@ const QtyHolder = ({ food }) => {
 
     dispatch(removeFood(food));
     if (!(food.quantity > 0)) {
-      //   setWidth('hide-detail');
     }
   };
 

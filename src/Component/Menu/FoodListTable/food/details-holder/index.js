@@ -1,6 +1,5 @@
 import React, { useMemo } from 'react';
 import PropTypes from 'prop-types';
-import { useDispatch } from 'react-redux';
 
 import Ingredient from '../foodDetails/ingredient';
 import Price from '../foodDetails/price';
@@ -11,9 +10,7 @@ import LikeFood from '../foodDetails/likeFood';
 import './style.scss';
 
 const Details = ({ food }) => {
-  const dispatch = useDispatch();
-
- 
+	
   const Detail = () => {
     return (
       <React.Fragment>

@@ -25,8 +25,9 @@ export const dislikeProduct = product => ({
 export const fetchMenu = callback => (dispatch, getState) => {
   const cart = getState().cart.items;
   const likedFood = getState().likeFood.likeFood;
-//   console.log(cart);
-//   console.log(likedFood);
+
+  const foodList = getState().menu.foodList;
+
   const productLoaded = (data, sort) => {
     const menu = parseMenu(data, sort);
     const foodList = menu.foodList;
@@ -51,19 +52,13 @@ export const fetchMenu = callback => (dispatch, getState) => {
     if (callback) {
       callback();
     }
+
     objectToArray(cart).forEach(c => {
       const product = foodList.find(x => x.id === c.id);
       if (product) {
         product.quantity = c.quantity;
       }
     });
-
-    // objectToArray(likedFood).forEach(c => {
-    //   const product = foodList.find(x => x.id === c.id);
-    //   if (product) {
-    //     product.like = c.like;
-    //   }
-    // });
 
     return dispatch({
       type: FETCH_MENU,
@@ -74,14 +69,17 @@ export const fetchMenu = callback => (dispatch, getState) => {
       }
     });
   };
-  return axios
-    .get(restaurantMenu)
-    .then(response => {
-      const { data } = response;
-      Data.foodList = data;
-      return productLoaded(data);
-    })
-    .catch(err => {
-      console.log(err, 'Could not fetch foodList. Try again later.');
-    });
+  if (!foodList) {
+    axios
+      .get(restaurantMenu)
+      .then(response => {
+        const { data } = response;
+        Data.foodList = data;
+        return productLoaded(data);
+      })
+      .catch(err => {
+        console.log(err, 'Could not fetch foodList. Try again later.');
+      });
+  }
+  return;
 };

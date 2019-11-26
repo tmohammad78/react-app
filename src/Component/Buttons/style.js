@@ -1,5 +1,4 @@
 import styled from 'styled-components';
-import styledProps from 'styled-props';
 import { darken } from 'polished';
 
 const ButtonBase = styled.button`
@@ -43,13 +42,13 @@ const size = {
 };
 
 export const ButtonStyle = styled(ButtonBase)`
-  background-color: ${(props) => props.bgcolor};
-  color: ${(props) => props.color};
-  padding: ${(props) => props.ptb}px ${(props) => props.prl}px;
-  border-radius: ${(props) => props.borderRadius}px;
-  border: ${(props) => props.borderSize || 0}px solid ${(props) => props.color};
+  background-color: ${props => props.bgcolor};
+  color: ${props => props.color};
+  padding: ${props => props.ptb}px ${props => props.prl}px;
+  border-radius: ${props => props.borderRadius}px;
+  border: ${props => props.borderSize || 0}px solid ${props => props.color};
   &:hover {
-    background-color: ${(props) => darken(0.2, props.bgcolor)};
+    background-color: ${props => darken(0.2, props.bgcolor)};
     &[disabled] {
       background-color: #eeee;
     }

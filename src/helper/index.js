@@ -22,12 +22,12 @@ export const discountPrice = (number, discountPercentage) => {
   const final = price.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,');
   return `${toPersianNum(final)} تومان`;
 };
+
 export const truncate = (str, num = 5) => {
   const arrStr = str.split(' ');
   if (str.length > num) {
     return `${arrStr.slice(0, num).join(' ')} ...`;
   }
-
   return str;
 };
 
@@ -50,7 +50,6 @@ export const toPersianNum = (value, dontTrim = false) => {
 
 export const objectToArray = (objectList) => {
   const list = [];
-
   Object.values(objectList).forEach((item) => {
     list[item.index] = item;
   });

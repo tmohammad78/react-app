@@ -6,9 +6,9 @@ import { removeFood } from 'services/cart/actions';
 import { Button } from 'component/Buttons/Button';
 import QtyHolder from 'component/Menu/FoodListTable/food/foodDetails/qty-holder';
 import Tittle from 'component/Menu/FoodListTable/food/foodDetails/Tittle';
+import Price from 'component/Menu/FoodListTable/food/foodDetails/price';
 
 import './style.scss';
-import Price from 'component/Menu/FoodListTable/food/foodDetails/price';
 
 const CartProduct = ({ product }) => {
   const dispatch = useDispatch();

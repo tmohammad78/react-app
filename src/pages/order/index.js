@@ -1,7 +1,7 @@
-import React, { Fragment, lazy, Suspense , useMemo } from 'react';
+import React, { lazy, Suspense } from 'react';
 import { Switch, Route, NavLink } from 'react-router-dom';
 import PropTypes from 'prop-types';
-// import Menu from 'component/Menu';
+
 import Cover from 'component/Cover';
 import Cart from 'component/FloatCart';
 import InfoRest from 'component/infoRes';
@@ -10,8 +10,9 @@ import './style.scss';
 
 const Menu = lazy(() => import('component/Menu'));
 
-const Order = (props) => {
+const Order = props => {
   const path = props.match.url;
+  
   return (
     <React.Fragment>
       <Cover />

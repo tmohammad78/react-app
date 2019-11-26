@@ -1,15 +1,14 @@
 import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { useSelector, useDispatch } from 'react-redux';
+
 import { closeSubFoodModal } from 'services/subFood/action';
 import Modal from 'component/Modal';
 import Food from './food/index';
 import Sort from '../sort';
-import { objectToArray } from 'helper';
 import SearchBar from './searchBar/searchBar';
 import SubFood from '../subFoodModal/subFood';
 import FoodListTitle from './FoodListTitle';
-// import ShowContext from './contex';
 
 import './style.scss';
 
@@ -17,6 +16,7 @@ const sortBy = {
   lowestprice: { field: 'price', asc: true },
   highestprice: { field: 'price', asc: false }
 };
+
 const FoodListTable = ({ items }) => {
   const originalItems = [...items];
   const row = [];
@@ -45,13 +45,11 @@ const FoodListTable = ({ items }) => {
       newList = newList.filter(item => item.available);
     }
     if (text) {
-      //   newList = newList.filter((x) => !x.subFoods);
       newList = newList.filter(item => item.title.indexOf(text) > -1);
       searchIngredient = searchIngredient.filter(item => item.ingredient.indexOf(text) > -1);
       result = newList.concat(searchIngredient);
     } else {
       newList ? (result = newList) : (result = items);
-      //   result = items;
     }
     setFoodList(result);
   };

@@ -1,13 +1,16 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import { useSelector } from 'react-redux';
-import { resturantData } from '../../services/util';
+import { resturantData } from 'services/util';
 import './style.scss';
 
 const Cover = () => {
   const [data, setData] = useState('');
   const item = useSelector(state => state.menu.categoryList);
-  console.log(item);
+  const backgroundCover =
+    'url(https://static.delino.com/Image/Restaurant/Cover/st5xrnas.i4s_big.jpg)';
+  const backgroundLogo = 'https://static.delino.com/Image/Default/logo/2yujoehm.rrz_180x180.png';
+
   useEffect(() => {
     handleFetchInfo();
   }, []);
@@ -30,17 +33,14 @@ const Cover = () => {
         <div
           className='rest-cover'
           style={{
-            backgroundImage: `url(https://static.delino.com/Image/Restaurant/Cover/st5xrnas.i4s_big.jpg)`
+            backgroundImage: `${backgroundCover}`
           }}
         />
 
         <div className='wrapper clearfix'>
           <div className='rest-logo-holder'>
             <figure className='logo-holder'>
-              <img
-                alt=''
-                src='https://static.delino.com/Image/Default/logo/2yujoehm.rrz_180x180.png'
-              />
+              <img alt='logo' src={`${backgroundLogo}`} />
             </figure>
 
             <aside>

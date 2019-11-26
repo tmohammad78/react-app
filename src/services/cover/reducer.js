@@ -1,4 +1,4 @@
-import FETCH_DATA from './actionType';
+import { FETCH_DATA } from './actionType';
 
 const initialState = {
   resInfo: []

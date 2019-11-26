@@ -8,6 +8,7 @@ export const addFoodLike = food => dispatch => {
     food
   });
 };
+
 export const removeFoodLike = food => (dispatch, getState) => {
   const likeFood = getState().likeFood.likeFood;
   delete likeFood[food.id];
