@@ -43,9 +43,27 @@
   }
 }
 @media only screen and (min-width: 767px) {
+  .food_menu {
+    .parent-modal {
+      //   overflow-y: scroll;
+      .lightInner {
+        width: 100%;
+        z-index: 6000;
+        height: 100%;
+        position: relative;
+        overflow-y: scroll;
+      }
+
+      .modalBox {
+        height: auto;
+        top: 10%;
+        margin-bottom: 20px;
+        transform: translate(-50%, 0%);
+      }
+    }
+  }
   .parent-modal {
     .modalBox {
-		&.modal{}
       width: 500px;
       height: auto;
     }

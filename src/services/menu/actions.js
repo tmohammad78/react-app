@@ -38,7 +38,7 @@ export const fetchMenu = callback => (dispatch, getState) => {
       const cartItem = cart[key];
       //   console.log(cartItem);
       const food = foodListItem[`${cartItem.id}`];
-      //   console.log(food);
+      console.log(food);
       if (food) food.quantity = cartItem.quantity;
     });
 

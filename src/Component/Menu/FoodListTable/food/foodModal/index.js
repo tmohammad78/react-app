@@ -6,7 +6,7 @@ import QtyHolder from '../foodDetails/qty-holder';
 import Price from '../foodDetails/price';
 import './style.scss';
 
-const DetailModal = ({ defaultDetail: items, food }) => {
+const DetailModal = ({ subfood = false, defaultDetail: items, food }) => {
   const Test = () => (
     <React.Fragment>
       <FoodImge image={items.img} />
@@ -22,8 +22,8 @@ const DetailModal = ({ defaultDetail: items, food }) => {
     <div className='modal-food'>
       {renderDefault}
       <div className='block'>
-        <Price price={items.price} />
-        <QtyHolder food={food} />
+        <Price price={items.price || ''} />
+        {subfood ? null : <QtyHolder food={food} />}
       </div>
     </div>
   );

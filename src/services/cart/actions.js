@@ -21,6 +21,7 @@ export const addFood = (product, quantity = 1) => (dispatch, getState) => {
 
   if (!productInCart) {
     product.quantity = quantity;
+    // debugger;
     cartProducts[product.id] = product;
   }
   dispatch(updateProduct({ id: product.id, quantity: totalQuantity }));
@@ -40,6 +41,7 @@ export const updateCart = cartProducts => dispatch => {
     sum += p.price * p.quantity;
     return sum;
   }, 0);
+//   debugger;
 
   const cartTotal = {
     totalPrice,
