@@ -18,3 +18,6 @@ SubFood.propTypes = {
 };
 
 export default SubFood;
+{
+  /* <FoodImage image={food.img}  /> */
+}

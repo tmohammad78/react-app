@@ -1,7 +1,7 @@
 import React, { useEffect, useMemo } from 'react';
 import './style.scss';
 
-const Modal = ({ Route, open, onClose, closeOnEsc, history, style, children, ...props }) => {
+const Modal = ({ Route, show, onClose, closeOnEsc, history, style, children, ...props }) => {
   useEffect(() => {
     if (closeOnEsc) {
       document.addEventListener('keydown', handleEscKeyDown);
@@ -12,8 +12,8 @@ const Modal = ({ Route, open, onClose, closeOnEsc, history, style, children, ...
   });
 
   const handleEscKeyDown = e => {
-    if (onClose && closeOnEsc && e.keyCode === 27) {
-      clodeModal();
+    if (onClose || closeOnEsc || e.keyCode === 27) {
+      onClose();
     }
   };
 
@@ -22,16 +22,16 @@ const Modal = ({ Route, open, onClose, closeOnEsc, history, style, children, ...
       <div className='modalBox' style={style}>
         <div className='wrapper modal'>
           <div className='ancBox'>
-            <div className='img' onClick={onClose}>
+            <div className='img' onClick={handleEscKeyDown}>
               <div className='fo fo-cross' />
             </div>
           </div>
           <div className='operation'>{children}</div>
         </div>
       </div>
-      <div className='lightBox' onClick={onClose}></div>
+      <div className='lightBox' onClick={handleEscKeyDown}></div>
     </div>
   );
-  return <div>{open ? mainTemplate : null}</div>;
+  return <div>{show ? mainTemplate : null}</div>;
 };
 export default Modal;

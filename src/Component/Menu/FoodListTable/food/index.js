@@ -25,10 +25,9 @@ const Food = ({ food }) => {
   const handleshowModal = () => {
     if (food.subFoods.length > 0) {
       dispatch(SubFoodModal(food));
-      return;
+    } else {
+      SetShowModal(() => !showModal);
     }
-
-    SetShowModal(() => !showModal);
   };
 
   const renderImage = useMemo(() => {
@@ -52,11 +51,11 @@ const Food = ({ food }) => {
         {renderImage}
         <FoodDetails food={newItem} />
         {showModal ? (
-        <Portal>
-          <Modal open={showModal} onClose={handleshowModal}>
-            <DetailModal defaultDetail={food} food={newItem} />
-          </Modal>
-        </Portal>
+          <Portal>
+            <Modal show={showModal} onClose={handleshowModal}>
+              <DetailModal defaultDetail={food} food={newItem} />
+            </Modal>
+          </Portal>
         ) : null}
       </section>
     </div>

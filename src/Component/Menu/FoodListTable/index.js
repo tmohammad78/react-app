@@ -104,8 +104,9 @@ const FoodListTable = ({ items }) => {
         onChangeStock={stockHandler}
       />
       <Modal
-        open={subFood.show}
+        show={subFood.show}
         onClose={() => dispatch(closeSubFoodModal(true))}
+        closeOnEsc
         className='subFoodModal'
       >
         <SubFood itemFood={subFood.food} />
