@@ -18,14 +18,7 @@ const Food = ({ food }) => {
   const dispatch = useDispatch();
   const [showModal, SetShowModal] = useState(false);
 
-  useEffect(() => {
-    showModal
-      ? ((document.body.style.overflow = 'hidden'), (document.body.style.paddingRight = '17px'))
-      : null;
-    return () => (
-      (document.body.style.overflow = 'unset'), (document.body.style.paddingRight = '0px')
-    );
-  }, [showModal]);
+
 
   if (food.quantity > 0) {
     className.push('active-box');

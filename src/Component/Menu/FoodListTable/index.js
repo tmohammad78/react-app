@@ -33,15 +33,6 @@ const FoodListTable = ({ items }) => {
     search(searchKey, inStock);
   }, []);
 
-  useEffect(() => {
-    subFood.show
-      ? ((document.body.style.overflow = 'hidden'), (document.body.style.paddingRight = '17px'))
-      : null;
-    return () => (
-      (document.body.style.overflow = 'unset'), (document.body.style.paddingRight = '0px')
-    );
-  }, [subFood.show]);
-
   const NotFound = () => {
     return <div className='not-found'>نتیجه ای پیدا نشد.</div>;
   };
@@ -116,6 +107,7 @@ const FoodListTable = ({ items }) => {
         show={subFood.show}
         onClose={() => dispatch(closeSubFoodModal(true))}
         className='subFoodModal'
+        subFood
       >
         <SubFood subfood={subFood.food} />
       </Modal>

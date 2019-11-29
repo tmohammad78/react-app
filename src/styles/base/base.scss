@@ -5,6 +5,9 @@
   padding: 0;
   box-sizing: border-box;
 }
+body {
+  background-color: #f8f8f8;
+}
 
 .clearfix::after {
   content: '';

@@ -17,7 +17,7 @@ const Header = () => {
     <div className='main-header clearfix'>
       <Suspense fallback={<div>...loading</div>}>
         <Modal
-          open={showModal}
+          show={showModal}
           onClose={toggleLoginShow}
           style={{
             height: 300

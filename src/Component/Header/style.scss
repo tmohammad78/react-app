@@ -1,5 +1,11 @@
 .main-header {
+  position: fixed;
+  right: 0;
+  left: 0;
+  top: 0;
   background-color: white;
+  z-index: 1000;
+  border-bottom: 1px solid #e4e4e4;
   .wrapper {
     padding: 5px 0;
   }
@@ -47,6 +53,7 @@
 }
 @media only screen and (min-width: 767px) {
   .main-header {
+    z-index: 2000;
     [class*='fo-'],
     [class^='fo-'] {
       font-size: 22px;
