@@ -1,14 +1,24 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import Food from '../FoodListTable/food/index';
+import DetailModal from '../FoodListTable/food/foodModal';
+import FoodDetails from '../FoodListTable/food/details-holder';
 
-const SubFood = ({ itemFood }) => {
+const SubFood = ({ subfood }) => {
   return (
     <div className='subFood clearfix'>
-      {itemFood.map(food => {
-        return <Food food={food} />;
-      })}
+      <DetailModal subfood={true} defaultDetail={subfood} food={subfood} />
+      <div>
+        {subfood.subFoods.map(food => {
+          return (
+            <div className='food-item'>
+              <section>
+                <FoodDetails food={food} />
+              </section>
+            </div>
+          );
+        })}
+      </div>
     </div>
   );
 };

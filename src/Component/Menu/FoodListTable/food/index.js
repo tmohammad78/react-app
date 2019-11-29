@@ -1,4 +1,4 @@
-import React, { useState, useMemo } from 'react';
+import React, { useState, useMemo, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { useDispatch, useSelector } from 'react-redux';
 
@@ -17,6 +17,8 @@ const Food = ({ food }) => {
   const newItem = useSelector(state => state.menu.foodListItem[food.id]);
   const dispatch = useDispatch();
   const [showModal, SetShowModal] = useState(false);
+
+
 
   if (food.quantity > 0) {
     className.push('active-box');

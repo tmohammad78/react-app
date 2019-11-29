@@ -106,10 +106,10 @@ const FoodListTable = ({ items }) => {
       <Modal
         show={subFood.show}
         onClose={() => dispatch(closeSubFoodModal(true))}
-        closeOnEsc
         className='subFoodModal'
+        subFood
       >
-        <SubFood itemFood={subFood.food} />
+        <SubFood subfood={subFood.food} />
       </Modal>
 
       <div className='food-list'>{row}</div>

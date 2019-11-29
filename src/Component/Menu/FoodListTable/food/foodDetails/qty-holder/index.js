@@ -21,7 +21,7 @@ const QtyHolder = ({ food }) => {
     );
   }
 
-  const handleRemove = (e) => {
+  const handleRemove = e => {
     e.preventDefault();
 
     dispatch(removeFood(food));
@@ -33,11 +33,12 @@ const QtyHolder = ({ food }) => {
     if (food.subFoods.length > 0) {
       dispatch(SubFoodModal(food));
     } else {
+    //   debugger;
       dispatch(addFood(food, 1));
     }
   };
 
-  const handleClick = (e) => {
+  const handleClick = e => {
     e.preventDefault();
     addClicked();
     // setWidth('show-detail');
