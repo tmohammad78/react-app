@@ -10,6 +10,7 @@ import FoodBadge from './foodDetails/FoodBadge/index';
 import Portal from 'component/Portal';
 import { SubFoodModal } from 'services/subFood/action';
 
+import { FoodItem } from './style.js';
 import './style.scss';
 
 const Food = ({ food }) => {
@@ -17,8 +18,6 @@ const Food = ({ food }) => {
   const newItem = useSelector(state => state.menu.foodListItem[food.id]);
   const dispatch = useDispatch();
   const [showModal, SetShowModal] = useState(false);
-
-
 
   if (food.quantity > 0) {
     className.push('active-box');
@@ -41,7 +40,7 @@ const Food = ({ food }) => {
   }, FoodImage);
 
   return (
-    <div className='food-item'>
+    <FoodItem>
       <section
         className={
           className.map(item => {
@@ -60,7 +59,7 @@ const Food = ({ food }) => {
           </Portal>
         ) : null}
       </section>
-    </div>
+    </FoodItem>
   );
 };
 
