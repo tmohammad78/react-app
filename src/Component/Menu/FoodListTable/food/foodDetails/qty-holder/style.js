@@ -1,5 +1,36 @@
 import styled from 'styled-components';
-
-const Qtyholder = styled.div`
-
+const Parent = ({ className, children }) => <div className={className}>{children}</div>;
+export const QtyStyle = styled(Parent).attrs({
+  className: ''
+})`
+  position: absolute;
+  left: 7px;
+  bottom: 7px;
+  .anc-box {
+    border-radius: 50px;
+    text-align: center;
+    background-color: transparent;
+    button {
+      width: 25px;
+      height: 25px;
+      padding: 0;
+      color: #ff7714;
+      border: 1px solid #ff7714;
+    }
+  }
+  &.show-detail {
+    .anc-box {
+      background-color: #ff7714;
+      button {
+        color: white;
+        border: 0px solid #ff7714;
+      }
+    }
+  }
+  &.hide-detail {
+    .anc-box {
+      width: 30px;
+      height: 25px;
+    }
+  }
 `;

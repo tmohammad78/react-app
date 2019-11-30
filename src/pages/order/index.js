@@ -5,20 +5,22 @@ import PropTypes from 'prop-types';
 import Cover from 'component/Cover';
 import Cart from 'component/FloatCart';
 import InfoRest from 'component/infoRes';
-
+import { RestMenuHolder, RightSideHolder } from './style.js';
 import './style.scss';
 
 const Menu = lazy(() => import('component/Menu'));
 
 const Order = props => {
   const path = props.match.url;
-  
+
   return (
     <React.Fragment>
       <Cover />
-      <div className='rest-menu-holder clearfix'>
-        <div className='wrapper full-style clearfix '>
-          <div className='right-side-holder'>
+      {/* <div className='rest-menu-holder clearfix'> */}
+      <RestMenuHolder>
+        <div className='wrapper clearfix '>
+          {/* <div className='right-side-holder'> */}
+          <RightSideHolder>
             <div className='rest-profile-container'>
               <nav className='menu-tab'>
                 <NavLink
@@ -47,10 +49,10 @@ const Order = props => {
                 </Suspense>
               </div>
             </div>
-          </div>
+          </RightSideHolder>
         </div>
         <Cart />
-      </div>
+      </RestMenuHolder>
     </React.Fragment>
   );
 };

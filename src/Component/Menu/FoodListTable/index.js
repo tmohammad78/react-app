@@ -9,7 +9,7 @@ import Sort from '../sort';
 import SearchBar from './searchBar/searchBar';
 import SubFood from '../subFoodModal/subFood';
 import FoodListTitle from './FoodListTitle';
-
+import { FoodList } from './style.js';
 import './style.scss';
 
 const sortBy = {
@@ -112,7 +112,7 @@ const FoodListTable = ({ items }) => {
         <SubFood subfood={subFood.food} />
       </Modal>
 
-      <div className='food-list'>{row}</div>
+      <FoodList>{row}</FoodList>
     </div>
   );
 };
