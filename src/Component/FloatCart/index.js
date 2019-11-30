@@ -4,7 +4,7 @@ import { useSelector } from 'react-redux';
 import CartProduct from './CartProduct';
 import { Button } from 'component/Buttons/Button';
 import { objectToArray } from 'helper';
-
+import { RestCart } from './style';
 import './style.scss';
 
 const FloatCart = () => {

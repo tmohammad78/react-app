@@ -41,23 +41,4 @@
       }
     }
   }
-  .qty-holder {
-    position: absolute;
-    left: 15px;
-    top: 50%;
-    overflow: hidden;
-    -webkit-transform: translateY(-50%);
-    -moz-transform: translateY(-50%);
-    -ms-transform: translateY(-50%);
-    -o-transform: translateY(-50%);
-    transform: translateY(-50%);
-    button {
-      width: 25px;
-    }
-    span {
-      display: inline-block;
-      width: 15px;
-      color: white;
-    }
-  }
 }

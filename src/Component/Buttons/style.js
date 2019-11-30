@@ -43,10 +43,9 @@ const size = {
     default: 2
   }
 };
-// color: ${props => props.color};
 export const ButtonStyle = styled(ButtonBase)`
   background-color: ${({ bgcolor, theme }) => (bgcolor ? bgcolor : theme.btnbg)};
-  color: ${props => props.theme.color};
+  color: ${({ theme, color }) => (color ? color : theme.color)};
   padding: ${props => props.ptb}px ${props => props.prl}px;
   border-radius: ${props => props.borderRadius}px;
   border: ${props => props.borderSize || 0}px solid ${props => props.color};

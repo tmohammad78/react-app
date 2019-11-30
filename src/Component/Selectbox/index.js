@@ -23,8 +23,8 @@ const Selectbox = ({ handleOnChange }) => {
       return (
         <li>
           <Button
-            bgcolor={checkactive[parseInt(item.index)] ? '#FFBD41' : 'transparent'}
-            color={checkactive[parseInt(item.index)] ? 'white' : 'black'}
+            bgcolor={checkactive[parseInt(item.index)] ? '#FF7714' : 'transparent'}
+            color={checkactive[parseInt(item.index)] ? '#FFF' : '#333'}
             onClick={onClicked}
             value={item.value}
             name={item.index}

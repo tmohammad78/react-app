@@ -6,7 +6,8 @@ export const lightTheme = {
   gradient: 'linear-gradient(#39598A, #79D7ED)',
   foodItem_bgcolor: '#fff',
   whitebg: '#fff',
-  btnbg: '#FF7714'
+  btnbg: '#FF7714',
+  bgCart: '#FFF'
 };
 
 export const darkTheme = {
@@ -17,5 +18,6 @@ export const darkTheme = {
   gradient: 'linear-gradient(#091236, #1E215D)',
   foodItem_bgcolor: '#1D1C2A',
   whitebg: '#373737',
-  btnbg: '#FF7714'
+  btnbg: '#FF7714',
+  bgCart: '#373737'
 };
