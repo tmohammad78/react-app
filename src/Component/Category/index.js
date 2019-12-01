@@ -2,7 +2,7 @@ import React from 'react';
 import { useSelector } from 'react-redux';
 import { Link } from 'react-scroll';
 import Carousel, { consts } from 'react-elastic-carousel';
-
+import { Iw, TextIw } from './style';
 import { Button } from 'component/Buttons/Button';
 
 const Category = () => {
@@ -52,10 +52,10 @@ const Category = () => {
                   smooth
                   offset={-100}
                 >
-                  <div className='i-w'>
+                  <Iw>
                     <i className={`ic-c c-${food.catLogo}`} />
-                    <p>{food.catTitle}</p>
-                  </div>
+                    <TextIw>{food.catTitle}</TextIw>
+                  </Iw>
                 </Link>
               );
             })}

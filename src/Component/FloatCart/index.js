@@ -47,9 +47,7 @@ const FloatCart = () => {
 
   return (
     <React.Fragment>
-      {/* <div className={`left-side-holder clearfix ${showCart ? 'show-cart' : 'hide-cart'} `}> */}
       <LeftSideHolder className={`clearfix ${showCart ? 'show-cart' : 'hide-cart'}`}>
-        {/* <div className='rest-cart'> */}
         <RestCart>
           <div className='cross-icon' onClick={toggleShowCart}>
             <div className='fo fo-cross'></div>

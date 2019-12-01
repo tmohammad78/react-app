@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 import { FoodItem } from './food/style';
-
+// export const NotFound = styled.div``;
 export const FoodList = styled.div`
   direction: rtl;
   float: right;
@@ -9,6 +9,12 @@ export const FoodList = styled.div`
   min-height: 550px;
   overflow: hidden;
   position: relative;
+  .not-found {
+    position: absolute;
+    top: 30px;
+    font-size: 20px;
+    color: #b1b1b1;
+  }
 
   @media (min-width: 992px) {
     padding: 0;

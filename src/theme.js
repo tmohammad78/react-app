@@ -7,7 +7,9 @@ export const lightTheme = {
   foodItem_bgcolor: '#fff',
   whitebg: '#fff',
   btnbg: '#FF7714',
-  bgCart: '#FFF'
+  categoryColor: '#333',
+  bgCart: '#FFF',
+  foodItemTextSpan: '#FFF'
 };
 
 export const darkTheme = {
@@ -19,5 +21,6 @@ export const darkTheme = {
   foodItem_bgcolor: '#1D1C2A',
   whitebg: '#373737',
   btnbg: '#FF7714',
+  categoryColor: '#FF7714',
   bgCart: '#373737'
 };

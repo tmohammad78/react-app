@@ -1,5 +1,7 @@
 import styled from 'styled-components';
 import { QtyStyle } from 'component/Menu/FoodListTable/food/foodDetails/qty-holder/style';
+import { QtySpan } from 'component/Menu/FoodListTable/food/foodDetails/qty-holder/span/style';
+
 export const RestCart = styled.div`
   position: sticky;
   float: right;
@@ -74,7 +76,7 @@ export const CartListHolder = styled.div`
     width: 3px;
   }
 
-  //just element that background in display
+  /* //just element that background in display */
   &::-webkit-scrollbar-thumb {
     background: #ffbd41;
     border-radius: 5px;
@@ -138,10 +140,9 @@ export const CartListHolder = styled.div`
           border: 1px solid #ff7714;
         }
       }
-      span {
-        //   display: inline-block;
+      ${QtySpan} {
         width: 15px;
-        color: #333;
+        color: ${({ theme }) => theme.text};
       }
     }
   }
@@ -159,7 +160,7 @@ export const LeftSideHolder = styled(Parent).attrs({
   transform: translate3d(-500px, 0, 0px);
   transition: all ease-out 0.5s;
   z-index: 2000;
-  .rest-cart {
+  ${RestCart} {
     height: 100%;
   }
 
@@ -206,13 +207,12 @@ export const LeftSideHolder = styled(Parent).attrs({
     position: sticky !important;
     width: 28% !important;
     transform: translate3d(0, 0px, 0px) !important;
-    .rest-cart {
+    ${RestCart} {
       height: auto !important;
       position: -webkit-sticky;
       position: sticky;
       top: 70px;
       width: 85%;
-      background-color: white;
       margin: 0 auto;
       .cross-icon {
         display: none;
