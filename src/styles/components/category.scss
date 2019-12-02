@@ -16,26 +16,6 @@
     z-index: 1100;
     background-color: hsla(0, 0%, 100%, 0.95);
     border-bottom: 1px solid #e4e4e4;
-    .i-w {
-      overflow: hidden;
-      text-align: center;
-      cursor: pointer;
-      background-color: transparent;
-      width: 95px;
-      display: inline-block;
-      margin: 0 5px;
-      transition: all 0.5s;
-
-      .inner {
-        background: transparent;
-        .caption {
-          color: white;
-        }
-      }
-      .activecategory {
-        border-bottom: 5px soild #be901e !important  ;
-      }
-    }
   }
 }
 .ic-c {

@@ -3,11 +3,14 @@ export const lightTheme = {
   text: '#333',
   color: '#fff',
   toggleBorder: '#fff',
-  gradient: 'linear-gradient(#39598A, #79D7ED)',
   foodItem_bgcolor: '#fff',
   whitebg: '#fff',
   btnbg: '#FF7714',
-  bgCart: '#FFF'
+  categoryColor: '#333',
+  bgCart: '#FFF',
+  foodItemTextSpan: '#FFF',
+  AvailableBox: '#FFF',
+  AvailableBoxText:"#888"
 };
 
 export const darkTheme = {
@@ -15,9 +18,11 @@ export const darkTheme = {
   text: '#FFF',
   color: '#FFF',
   toggleBorder: '#6B8096',
-  gradient: 'linear-gradient(#091236, #1E215D)',
   foodItem_bgcolor: '#1D1C2A',
   whitebg: '#373737',
   btnbg: '#FF7714',
-  bgCart: '#373737'
+  categoryColor: '#FF7714',
+  bgCart: '#373737',
+  AvailableBox: '#373737',
+  AvailableBoxText:"#FFF"
 };

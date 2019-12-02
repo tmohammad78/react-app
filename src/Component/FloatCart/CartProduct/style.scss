@@ -1,44 +1,44 @@
 .cart-list-holder {
-  .item {
-    position: relative;
-    display: table; //??
-    width: 100%;
-    padding: 10px 15px;
-    border-bottom: 1px solid #ddd;
-    direction: rtl;
-    font-size: 13px;
-    font-size: 0.8125rem;
-    -webkit-touch-callout: none;
-    -webkit-user-select: none;
-    -khtml-user-select: none;
-    -moz-user-select: none;
-    -ms-user-select: none;
-    user-select: none;
-    .item-aside {
-      position: relative;
-      float: right;
-      width: 60%;
-      .ancFullRemove {
-        position: absolute;
-        top: 50%;
-        transform: translate(0px, -50%) scale(0);
-        transition: all 0.2s ease-out;
-      }
-      &:hover {
-        .ancFullRemove {
-          transform: translate(0px, -50%) scale(1.5);
-        }
-        .cartInfoFood {
-          padding-right: 18px;
-        }
-      }
-      .cartInfoFood {
-        margin: 0;
-        font-weight: 700;
-        font-size: 14px;
-        font-size: 0.875rem;
-        transition: all 0.2s ease-out;
-      }
-    }
-  }
+//   .item {
+//     position: relative;
+//     display: table; //??
+//     width: 100%;
+//     padding: 10px 15px;
+//     border-bottom: 1px solid #ddd;
+//     direction: rtl;
+//     font-size: 13px;
+//     font-size: 0.8125rem;
+//     -webkit-touch-callout: none;
+//     -webkit-user-select: none;
+//     -khtml-user-select: none;
+//     -moz-user-select: none;
+//     -ms-user-select: none;
+//     user-select: none;
+//     .item-aside {
+//       position: relative;
+//       float: right;
+//       width: 60%;
+//       .ancFullRemove {
+//         position: absolute;
+//         top: 50%;
+//         transform: translate(0px, -50%) scale(0);
+//         transition: all 0.2s ease-out;
+//       }
+//       &:hover {
+//         .ancFullRemove {
+//           transform: translate(0px, -50%) scale(1.5);
+//         }
+//         .cartInfoFood {
+//           padding-right: 18px;
+//         }
+//       }
+//       .cartInfoFood {
+//         margin: 0;
+//         font-weight: 700;
+//         font-size: 14px;
+//         font-size: 0.875rem;
+//         transition: all 0.2s ease-out;
+//       }
+//     }
+//   }
 }

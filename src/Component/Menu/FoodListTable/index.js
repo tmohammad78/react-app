@@ -9,7 +9,7 @@ import Sort from '../sort';
 import SearchBar from './searchBar/searchBar';
 import SubFood from '../subFoodModal/subFood';
 import FoodListTitle from './FoodListTitle';
-
+import { FoodList, NotFound } from './style.js';
 import './style.scss';
 
 const sortBy = {
@@ -34,7 +34,7 @@ const FoodListTable = ({ items }) => {
   }, []);
 
   const NotFound = () => {
-    return <div className='not-found'>نتیجه ای پیدا نشد.</div>;
+    return <NotFound>نتیجه ای پیدا نشد.</NotFound>;
   };
 
   const search = (text, stock, list = items) => {
@@ -112,7 +112,7 @@ const FoodListTable = ({ items }) => {
         <SubFood subfood={subFood.food} />
       </Modal>
 
-      <div className='food-list'>{row}</div>
+      <FoodList>{row}</FoodList>
     </div>
   );
 };

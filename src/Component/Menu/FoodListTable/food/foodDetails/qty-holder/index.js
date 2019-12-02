@@ -4,6 +4,7 @@ import { addFood, removeFood } from 'services/cart/actions';
 import { SubFoodModal } from 'services/subFood/action';
 import { Button } from 'component/Buttons/Button.js';
 import { Span } from './span';
+import { QtyStyle ,AvailableBox } from './style';
 import './style.scss';
 
 const QtyHolder = ({ food }) => {
@@ -59,7 +60,8 @@ const QtyHolder = ({ food }) => {
     );
   }
   return food.available ? (
-    <div className={`qty-holder ${width}`}>
+    // <div className={`qty-holder ${width}`}>
+    <QtyStyle className={`${width}`}>
       <div className='anc-box'>
         {removeBtn}
         {food.quantity ? <Span qty={food.quantity} /> : null}
@@ -68,13 +70,13 @@ const QtyHolder = ({ food }) => {
         </Button>
       </div>
       {subfoodIcon}
-    </div>
+    </QtyStyle>
   ) : (
-    <div className='checkAvailable'>
+    <AvailableBox>
       <span className='meal-badge'>
         <span>{food.unavailableText}</span>
       </span>
-    </div>
+    </AvailableBox>
   );
 };
 

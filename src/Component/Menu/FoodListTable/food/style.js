@@ -1,11 +1,18 @@
 import styled from 'styled-components';
-
+import { LikeFoodStyle } from './foodDetails/likeFood/style';
 export const FoodItem = styled.div`
   position: relative;
   width: 100%;
   float: right;
   padding-bottom: 15px;
   transition: all 0.2s cubic-bezier(0, 0.5, 0.5, 1);
+  > section {
+    &:hover {
+      ${LikeFoodStyle} {
+        display: inline-block;
+      }
+    }
+  }
   figure {
     width: 65px;
     height: 65px;
