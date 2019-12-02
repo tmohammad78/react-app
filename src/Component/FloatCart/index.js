@@ -5,7 +5,7 @@ import CartProduct from './CartProduct';
 import { Button } from 'component/Buttons/Button';
 import { objectToArray } from 'helper';
 import { RestCart, LeftSideHolder } from './style';
-import { CartListHolder } from './style.js';
+import { CartListHolder, CartShowMobile } from './style.js';
 import './style.scss';
 
 const FloatCart = () => {
@@ -105,12 +105,13 @@ const FloatCart = () => {
           )}
         </RestCart>
       </LeftSideHolder>
-      <div className='cartshowMobile' onClick={toggleShowCart}>
+
+      <CartShowMobile onClick={toggleShowCart}>
         <div className='content'>
           <span>سبد خرید </span>
           <span className='totalProduct'>{totalProduct > 0 ? totalProduct : null}</span>
         </div>
-      </div>
+      </CartShowMobile>
     </React.Fragment>
   );
 };

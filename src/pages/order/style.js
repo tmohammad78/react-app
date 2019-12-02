@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { LeftSideHolder } from 'component/FloatCart/style';
+import { LeftSideHolder, CartShowMobile } from 'component/FloatCart/style';
 import { RestInfo, LeftBox, RightBox } from 'component/infoRes/style';
 const Clear = ({ className, children }) => <div className={className}>{children}</div>;
 
@@ -18,10 +18,34 @@ export const RestMenuHolder = styled(Clear).attrs({
   className: 'clearfix'
 })`
   padding: 40px 0 50px;
+
+  ${CartShowMobile} {
+    position: fixed;
+    bottom: 0;
+    height: 50px;
+    width: 100%;
+    color: white;
+    direction: rtl;
+    background-color: #ff7714;
+    .content {
+      padding: 10px;
+      .totalProduct {
+        &::before {
+          content: '(';
+        }
+        &::after {
+          content: ')';
+        }
+      }
+    }
+  }
   @media (min-width: 992px) {
     padding: 160px 0 50px;
   }
   @media (min-width: 767px) {
+    ${CartShowMobile} {
+      display: none;
+    }
     .wrapper {
       width: 71%;
       float: right;

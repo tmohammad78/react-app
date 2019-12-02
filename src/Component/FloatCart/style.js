@@ -35,7 +35,6 @@ export const RestCart = styled.div`
     }
   }
   .cart-holder-inner {
-    direction: rtl;
     width: 100%;
     float: right;
   }
@@ -220,3 +219,5 @@ export const LeftSideHolder = styled(Parent).attrs({
     }
   }
 `;
+
+export const CartShowMobile = styled.div``;

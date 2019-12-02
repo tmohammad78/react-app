@@ -34,3 +34,23 @@ export const QtyStyle = styled(Parent).attrs({
     }
   }
 `;
+
+export const AvailableBox = styled.div`
+  position: absolute;
+  left: 9px;
+  .meal-badge {
+    padding: 6px 9px;
+    color: ${({ theme }) => theme.AvailableBoxText};
+    border-radius: 20px;
+    border: 1px solid #e4e4e4;
+    -webkit-border-radius: 20px;
+    background-color: ${({ theme }) => theme.AvailableBox};
+    font-size: 0.75rem;
+    min-height: 35px;
+    max-width: 100px;
+    span {
+      vertical-align: middle;
+      line-height: 18px;
+    }
+  }
+`;

@@ -9,7 +9,7 @@ import Sort from '../sort';
 import SearchBar from './searchBar/searchBar';
 import SubFood from '../subFoodModal/subFood';
 import FoodListTitle from './FoodListTitle';
-import { FoodList ,NotFound } from './style.js';
+import { FoodList, NotFound } from './style.js';
 import './style.scss';
 
 const sortBy = {

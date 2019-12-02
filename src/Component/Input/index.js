@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import './style.scss';
+import { InputStyle, ParentInput, IconName } from './style';
 
 const Input = ({
   type,
@@ -25,15 +25,14 @@ const Input = ({
     }
   };
   return (
-    <div className={`inputParent ${focus ? `focus` : ''}`}>
+    <ParentInput className={`${focus ? 'focus' : null}`}>
       {icon ? (
-        <div className='image'>
-          <img alt={icon} src={`./image/${icon}.svg`} />
-        </div>
+        <IconName>
+          <i className={`fo fo-${icon}`} />
+        </IconName>
       ) : null}
 
-      <input
-        className={`input ${className ? `input-${type}` : null}`}
+      <InputStyle
         value={value || ''}
         type={type}
         onChange={onChange}
@@ -45,7 +44,7 @@ const Input = ({
       <label className='input-test' htmlFor={id}>
         {label}
       </label>
-    </div>
+    </ParentInput>
   );
 };
 export default Input;
