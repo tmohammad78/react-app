@@ -24,9 +24,11 @@ const LikeFood = ({ food }) => {
   };
 
   return (
-    <LikeFoodStyle className={`${food.like ? 'show' : 'hide'}`} onClick={handleLikeFood}>
-      {food.like ? <Svg1 /> : <Svg />}
-      <div className='icon-heart'></div>
+    <LikeFoodStyle className={`${food.like ? 'show' : 'hide'}`}>
+      <div onClick={handleLikeFood}>
+        {food.like ? <Svg1 /> : <Svg />}
+        <div className='icon-heart'></div>
+      </div>
     </LikeFoodStyle>
   );
 };

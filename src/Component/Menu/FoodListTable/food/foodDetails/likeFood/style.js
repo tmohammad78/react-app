@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-const Parent = ({ className, children }) => <div className={className}>{children}</div>;
+const Parent = ({ className, children , onClick }) => <div className={className}>{children}</div>;
 export const LikeFoodStyle = styled(Parent).attrs({
   className: ''
 })`
