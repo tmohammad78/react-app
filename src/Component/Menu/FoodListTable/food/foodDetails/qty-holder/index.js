@@ -1,10 +1,10 @@
-import React, { useState, useContext } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import { addFood, removeFood } from 'services/cart/actions';
 import { SubFoodModal } from 'services/subFood/action';
-import { currency } from 'helper';
 import { Button } from 'component/Buttons/Button.js';
-
+import { Span } from './span';
+import { QtyStyle ,AvailableBox } from './style';
 import './style.scss';
 
 const QtyHolder = ({ food }) => {
@@ -12,6 +12,14 @@ const QtyHolder = ({ food }) => {
   let subfoodIcon;
   const [width, setWidth] = useState('');
   const dispatch = useDispatch();
+
+  useEffect(() => {
+    if (food.quantity > 0) {
+      setWidth('show-detail');
+    } else {
+      setWidth('');
+    }
+  });
 
   if (food.subFoods) {
     subfoodIcon = (
@@ -33,15 +41,15 @@ const QtyHolder = ({ food }) => {
     if (food.subFoods.length > 0) {
       dispatch(SubFoodModal(food));
     } else {
-    //   debugger;
+      //   debugger;
       dispatch(addFood(food, 1));
     }
   };
 
   const handleClick = e => {
+    setWidth('show-detail');
     e.preventDefault();
     addClicked();
-    // setWidth('show-detail');
   };
 
   if (food.quantity > 0) {
@@ -52,24 +60,23 @@ const QtyHolder = ({ food }) => {
     );
   }
   return food.available ? (
-    <div className={`qty-holder ${width}`}>
+    // <div className={`qty-holder ${width}`}>
+    <QtyStyle className={`${width}`}>
       <div className='anc-box'>
         {removeBtn}
-        {food.quantity ? (
-          <span style={{ color: 'white' }}>{currency(food.quantity, false)}</span>
-        ) : null}
+        {food.quantity ? <Span qty={food.quantity} /> : null}
         <Button bgcolor='transparent' borderRadius='50' ptb='5' prl='6' onClick={handleClick}>
           <i className='fo fo-plus' />
         </Button>
       </div>
       {subfoodIcon}
-    </div>
+    </QtyStyle>
   ) : (
-    <div className='checkAvailable'>
+    <AvailableBox>
       <span className='meal-badge'>
         <span>{food.unavailableText}</span>
       </span>
-    </div>
+    </AvailableBox>
   );
 };
 

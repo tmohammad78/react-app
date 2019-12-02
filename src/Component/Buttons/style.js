@@ -23,9 +23,12 @@ const ButtonBase = styled.button`
     background-color: #eeee;
   }
 `;
-const theme = {
-  main: '#FFBD41'
-};
+// const theme = {
+//   main: '#FFBD41'
+// };
+// const theme = {
+//   main: '#FFBD41'
+// };
 
 const color = {
   primary: '#fff',
@@ -40,10 +43,9 @@ const size = {
     default: 2
   }
 };
-
 export const ButtonStyle = styled(ButtonBase)`
-  background-color: ${props => props.bgcolor};
-  color: ${props => props.color};
+  background-color: ${({ bgcolor, theme }) => (bgcolor ? bgcolor : theme.btnbg)};
+  color: ${({ theme, color }) => (color ? color : theme.color)};
   padding: ${props => props.ptb}px ${props => props.prl}px;
   border-radius: ${props => props.borderRadius}px;
   border: ${props => props.borderSize || 0}px solid ${props => props.color};
@@ -67,7 +69,7 @@ export const AncStyle = styled(ButtonBase)`
 `;
 
 ButtonStyle.defaultProps = {
-  bgcolor: '#FFBD41',
+  bgcolor: '#FF7714',
   color: '#fff',
   borderSize: 0,
   borderRadius: 10,

@@ -5,22 +5,28 @@ import PropTypes from 'prop-types';
 import Cover from 'component/Cover';
 import Cart from 'component/FloatCart';
 import InfoRest from 'component/infoRes';
-
-import './style.scss';
+import {
+  RestMenuHolder,
+  RightSideHolder,
+  TabContentHolder,
+  RestProfileContainer,
+  MenuTab
+} from './style.js';
 
 const Menu = lazy(() => import('component/Menu'));
 
 const Order = props => {
   const path = props.match.url;
-  
+
   return (
     <React.Fragment>
       <Cover />
-      <div className='rest-menu-holder clearfix'>
-        <div className='wrapper full-style clearfix '>
-          <div className='right-side-holder'>
-            <div className='rest-profile-container'>
-              <nav className='menu-tab'>
+      <RestMenuHolder>
+        <div className='wrapper clearfix '>
+          <RightSideHolder>
+            <RestProfileContainer>
+              {/* <nav className='menu-tab'> */}
+              <MenuTab>
                 <NavLink
                   exact
                   to={{
@@ -37,20 +43,22 @@ const Order = props => {
                 >
                   اطلاعات رستوران
                 </NavLink>
-              </nav>
-              <div className='tab-content-holder white-box clearfix'>
+              </MenuTab>
+              {/* <div className='tab-content-holder white-box clearfix'> */}
+              <TabContentHolder>
                 <Suspense fallback={() => <div>...loading</div>}>
                   <Switch>
                     <Route exact path={`${path}`} component={Menu} />
                     <Route path={`${path}/info`} component={InfoRest} />
                   </Switch>
                 </Suspense>
-              </div>
-            </div>
-          </div>
+              </TabContentHolder>
+              {/* </div> */}
+            </RestProfileContainer>
+          </RightSideHolder>
         </div>
         <Cart />
-      </div>
+      </RestMenuHolder>
     </React.Fragment>
   );
 };

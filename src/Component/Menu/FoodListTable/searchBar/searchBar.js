@@ -1,27 +1,28 @@
 import React, { Fragment } from 'react';
 import PropTypes from 'prop-types';
-
+import Input from 'component/Input';
 import './style.scss';
 
 const SearchBar = ({ filterText, onfilterText, onChangeStock, inStock }) => {
-  const handleTextChange = (e) => {
+  const handleTextChange = e => {
     onfilterText(e.target.value);
   };
 
-  const handleInStockChange = (e) => {
+  const handleInStockChange = e => {
     onChangeStock(e.target.checked);
   };
 
   return (
     <Fragment>
       <div className='filter-box clearfix'>
-        <div className='filter-search'>
-          <input type='text' value={filterText} onChange={handleTextChange} />
+        {/* <div className='filter-search'> */}
+        {/* <input type='text' value={filterText} onChange={handleTextChange} />
           <span className='placeholder'>جستجوی غذا</span>
           <span className='search-icon'>
             <i className='fo fo-search' />
-          </span>
-        </div>
+          </span> */}
+        <Input icon='search' value={filterText} onChange={handleTextChange} label='جستجوی غذا' />
+        {/* </div> */}
         <div className='filter-check'>
           <label htmlFor='checkbox' className='custom-checkbox'>
             <input

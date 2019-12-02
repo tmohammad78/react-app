@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { restaurantInfo } from '../../services/util';
-import './style.scss';
+import { RestInfo, LeftBox, RightBox } from './style';
 
 const InfoRes = () => {
   const [restInfo, setRestInfo] = useState('');
@@ -22,8 +22,10 @@ const InfoRes = () => {
   };
   if (restInfo) {
     return (
-      <div className='rest-info'>
-        <div className='left-box'>
+      //   <div className='rest-info'>
+      <RestInfo>
+        {/* <div className='left-box'> */}
+        <LeftBox>
           <div className='address-box'>
             <h2>آدرس شعبه</h2>
             <section>
@@ -40,14 +42,15 @@ const InfoRes = () => {
               />
             </div>
           </div>
-        </div>
-        <div className='right-box'>
+        </LeftBox>
+        {/* <div className='right-box'> */}
+        <RightBox>
           <h2>نوع غذا</h2>
           <section>
             <ul className='food-type' />
           </section>
-        </div>
-      </div>
+        </RightBox>
+      </RestInfo>
     );
   }
   return '';

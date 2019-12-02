@@ -4,7 +4,7 @@ import Svg1 from './heart2.svg';
 
 import { useDispatch } from 'react-redux';
 import { addFoodLike, removeFoodLike } from 'services/likeFood/action';
-import './style.scss';
+import { LikeFoodStyle } from './style.js';
 
 const LikeFood = ({ food }) => {
   const dispatch = useDispatch();
@@ -24,10 +24,12 @@ const LikeFood = ({ food }) => {
   };
 
   return (
-    <div className={`like-food ${food.like ? 'show' : 'hide'}`} onClick={handleLikeFood}>
-      {food.like ? <Svg1 /> : <Svg />}
-      <div className='icon-heart'></div>
-    </div>
+    <LikeFoodStyle className={`${food.like ? 'show' : 'hide'}`}>
+      <div onClick={handleLikeFood}>
+        {food.like ? <Svg1 /> : <Svg />}
+        <div className='icon-heart'></div>
+      </div>
+    </LikeFoodStyle>
   );
 };
 export default LikeFood;

@@ -1,4 +1,8 @@
-.like-food {
+import styled from 'styled-components';
+const Parent = ({ className, children , onClick }) => <div className={className}>{children}</div>;
+export const LikeFoodStyle = styled(Parent).attrs({
+  className: ''
+})`
   position: absolute;
   right: 15px;
   width: 17px;
@@ -14,13 +18,4 @@
   &.show {
     display: inline-block;
   }
-}
-.food-item {
-  > section {
-    &:hover {
-      .like-food {
-        display: inline-block;
-      }
-    }
-  }
-}
+`;

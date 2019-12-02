@@ -4,7 +4,8 @@ import { useSelector } from 'react-redux';
 import CartProduct from './CartProduct';
 import { Button } from 'component/Buttons/Button';
 import { objectToArray } from 'helper';
-
+import { RestCart, LeftSideHolder } from './style';
+import { CartListHolder, CartShowMobile } from './style.js';
 import './style.scss';
 
 const FloatCart = () => {
@@ -46,8 +47,8 @@ const FloatCart = () => {
 
   return (
     <React.Fragment>
-      <div className={`left-side-holder clearfix ${showCart ? 'show-cart' : 'hide-cart'} `}>
-        <div className='rest-cart'>
+      <LeftSideHolder className={`clearfix ${showCart ? 'show-cart' : 'hide-cart'}`}>
+        <RestCart>
           <div className='cross-icon' onClick={toggleShowCart}>
             <div className='fo fo-cross'></div>
           </div>
@@ -64,7 +65,8 @@ const FloatCart = () => {
                 </h3>
               </header>
               <div className='cart-holder-inner clearfix'>
-                <div className='cart-list-holder'>
+                {/* <div className='cart-list-holder'> */}
+                <CartListHolder>
                   <div className='cart-list'>
                     <div>
                       <section className='has-items'>
@@ -74,7 +76,7 @@ const FloatCart = () => {
                       </section>
                     </div>
                   </div>
-                </div>
+                </CartListHolder>
                 <div className='cart-bottom'>
                   {/* <div className="row cart-discount" />
 										<div className="row coupon-row" />
@@ -101,14 +103,15 @@ const FloatCart = () => {
               </div>
             </React.Fragment>
           )}
-        </div>
-      </div>
-      <div className='cartshowMobile' onClick={toggleShowCart}>
+        </RestCart>
+      </LeftSideHolder>
+
+      <CartShowMobile onClick={toggleShowCart}>
         <div className='content'>
           <span>سبد خرید </span>
           <span className='totalProduct'>{totalProduct > 0 ? totalProduct : null}</span>
         </div>
-      </div>
+      </CartShowMobile>
     </React.Fragment>
   );
 };
