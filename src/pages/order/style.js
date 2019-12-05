@@ -18,7 +18,7 @@ export const RestMenuHolder = styled(Clear).attrs({
   className: 'clearfix'
 })`
   padding: 40px 0 50px;
-
+  z-index: 1500px;
   ${CartShowMobile} {
     position: fixed;
     bottom: 0;

@@ -10,7 +10,6 @@ import LikeFood from '../foodDetails/likeFood';
 import './style.scss';
 
 const Details = ({ food }) => {
-	
   const Detail = () => {
     return (
       <React.Fragment>
@@ -21,12 +20,14 @@ const Details = ({ food }) => {
       </React.Fragment>
     );
   };
-  const renderDefault = useMemo(() => {
+
+  const renderMemoDetail = useMemo(() => {
     return <Detail />;
   }, Detail);
+
   return (
     <div className='details-holder clearfix'>
-      {renderDefault}
+      {renderMemoDetail}
       <QtyHolder food={food} />
     </div>
   );

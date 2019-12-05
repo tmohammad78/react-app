@@ -22,16 +22,8 @@ function App() {
     <React.Fragment>
       <ThemeProvider theme={themeMode}>
         <GlobalStyles />
-        <button
-          style={{
-            position: 'absolute',
-            zIndex: '10000'
-          }}
-          onClick={toggleTheme}
-        >
-          toggle
-        </button>
-        <Header />
+
+        <Header toggleTheme={toggleTheme} />
         <Router>
           <Switch>
             <Route path='/order' component={Order} />

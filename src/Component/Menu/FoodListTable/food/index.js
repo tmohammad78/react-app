@@ -11,7 +11,7 @@ import Portal from 'component/Portal';
 import { SubFoodModal } from 'services/subFood/action';
 
 import { FoodItem } from './style.js';
-import './style.scss';
+
 
 const Food = ({ food }) => {
   const className = [];

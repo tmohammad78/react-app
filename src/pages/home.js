@@ -7,9 +7,16 @@ function Home() {
     <div className='homePage'>
       <div className='inner'>
         <p className='title'>خوش آمدید</p>
-        <Link to='/order' className='anchor-Link'>
-          سفارش گیری
-        </Link>
+        <div
+          style={{
+            position: 'absolute',
+            top: '50%'
+          }}
+        >
+          <Link to='/order' className='anchor-Link'>
+            سفارش گیری
+          </Link>
+        </div>
       </div>
     </div>
   );

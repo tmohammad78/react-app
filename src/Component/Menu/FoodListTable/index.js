@@ -9,8 +9,8 @@ import Sort from '../sort';
 import SearchBar from './searchBar/searchBar';
 import SubFood from '../subFoodModal/subFood';
 import FoodListTitle from './FoodListTitle';
-import { FoodList, NotFound } from './style.js';
-import './style.scss';
+import { FoodList, NotFoundStyle, FoodMenu } from './style.js';
+
 
 const sortBy = {
   lowestprice: { field: 'price', asc: true },
@@ -34,7 +34,7 @@ const FoodListTable = ({ items }) => {
   }, []);
 
   const NotFound = () => {
-    return <NotFound>نتیجه ای پیدا نشد.</NotFound>;
+    return <NotFoundStyle>نتیجه ای پیدا نشد.</NotFoundStyle>;
   };
 
   const search = (text, stock, list = items) => {
@@ -95,7 +95,7 @@ const FoodListTable = ({ items }) => {
   }
 
   return (
-    <div className='food_menu clearfix'>
+    <FoodMenu>
       <Sort onChange={sortHandler} />
       <SearchBar
         filterText={searchKey}
@@ -113,7 +113,7 @@ const FoodListTable = ({ items }) => {
       </Modal>
 
       <FoodList>{row}</FoodList>
-    </div>
+    </FoodMenu>
   );
 };
 

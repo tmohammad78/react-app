@@ -15,14 +15,7 @@ const SearchBar = ({ filterText, onfilterText, onChangeStock, inStock }) => {
   return (
     <Fragment>
       <div className='filter-box clearfix'>
-        {/* <div className='filter-search'> */}
-        {/* <input type='text' value={filterText} onChange={handleTextChange} />
-          <span className='placeholder'>جستجوی غذا</span>
-          <span className='search-icon'>
-            <i className='fo fo-search' />
-          </span> */}
         <Input icon='search' value={filterText} onChange={handleTextChange} label='جستجوی غذا' />
-        {/* </div> */}
         <div className='filter-check'>
           <label htmlFor='checkbox' className='custom-checkbox'>
             <input

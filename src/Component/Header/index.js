@@ -6,7 +6,7 @@ const Modal = lazy(() => import('../Modal'));
 
 import './style.scss';
 
-const Header = () => {
+const Header = ({ toggleTheme }) => {
   const [showModal, setShowModal] = useState(false);
   const backgroundLogo = 'https://static.delino.com/Image/Default/logo/2yujoehm.rrz_180x180.png';
   const toggleLoginShow = () => {
@@ -38,6 +38,16 @@ const Header = () => {
         <div className='left'>
           <div className='user-login-holder'>
             <div className='user-holder'>
+              <Button
+                bgcolor='black'
+                style={{
+                  marginLeft: '20px',
+                  marginRight: '20px'
+                }}
+                onClick={toggleTheme}
+              >
+                darkModa
+              </Button>
               <Button onClick={toggleLoginShow} type='submit'>
                 ورود / عضویت
                 <i className='fo fo-user' />

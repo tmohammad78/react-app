@@ -4,8 +4,6 @@ import { useDispatch, useSelector } from 'react-redux';
 import { fetchMenu } from '../../services/menu/actions';
 import Spinner from '../Spinner';
 
-import './style.scss';
-
 const Category = lazy(() => import('../Category/index'));
 const FoodListTable = lazy(() => import('./FoodListTable'));
 
