@@ -1,0 +1,138 @@
+.add-coupon {
+  aside {
+    position: relative;
+    height: 42px;
+    border: 1px solid #e4e4e4;
+    border-radius: 5px;
+    margin-bottom: 10px;
+    background-color: #fff;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    overflow: hidden;
+  }
+  input {
+    position: absolute;
+    right: 0;
+    top: 0;
+    background: none;
+    width: 100%;
+    height: 40px;
+    padding: 0 10px;
+    font-family: Arial;
+    text-align: right;
+    font-size: 16px;
+    font-size: 1rem;
+    text-transform: uppercase;
+    border: none;
+    border-radius: 5px;
+    background-color: #fff;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    -webkit-transition: border-color 0.25s;
+    -moz-transition: border-color 0.25s;
+    -o-transition: border-color 0.25s;
+    transition: border-color 0.25s;
+  }
+  button {
+    position: absolute;
+    left: 0;
+    top: 0;
+    height: 40px;
+    width: 85px;
+    padding: 6px 15px;
+    margin: 0;
+    background-color: #231f20;
+    border-radius: 5px 0 0 5px;
+    -moz-border-radius: 5px 0 0 5px;
+    -webkit-border-radius: 5px 0 0 5px;
+  }
+}
+
+@media only screen and (min-width: 415px) {
+  .empty-cart {
+    max-width: 350px;
+  }
+}
+
+@media only screen and (min-width: 992px) {
+  .cart-quantity {
+    float: left;
+    direction: ltr;
+    .fo {
+      font-size: 24px;
+      font-size: 1.5rem;
+      display: inline-block;
+      vertical-align: middle;
+    }
+  }
+}
+
+.add-coupon-holder .anc-coupon-form {
+  margin-top: 10px;
+  display: inline-block;
+  color: #be901e;
+  font-weight: 700;
+  font-size: 16px;
+  font-size: 1rem;
+}
+.cart-bottom {
+  float: left;
+  width: 100%;
+  padding: 15px;
+  direction: rtl;
+  font-size: 13px;
+  font-size: 0.8125rem;
+  .row {
+    width: 100%;
+    margin-bottom: 10px;
+    label {
+      width: 50%;
+      float: right;
+    }
+    span {
+      width: 40%;
+      text-align: left;
+      font-weight: 400;
+      font-family: 'IRANSans', Tahoma;
+      b {
+        position: relative;
+        font-weight: 400;
+        white-space: nowrap;
+      }
+    }
+  }
+  .cart-total {
+    margin-bottom: 10px;
+    text-align: right;
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.875rem;
+    font-weight: 700;
+    label {
+      float: right;
+      font-size: 0.8125rem;
+    }
+    span {
+      font-size: 1rem;
+      width: auto;
+      text-align: left;
+    }
+    b {
+      font-weight: 700;
+    }
+  }
+}
+.add-coupon-holder {
+  height: 47px;
+  text-align: center;
+}
+
+
+@media screen and (min-width: 767px) {
+  .rest-menu-holder {
+    .wrapper {
+      width: 71%;
+      float: right;
+    }
+  }
+}

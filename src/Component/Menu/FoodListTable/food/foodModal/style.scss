@@ -1,0 +1,30 @@
+.modal-food {
+  direction: rtl;
+  figure {
+    img {
+      border-radius: 10px;
+      width: 100%;
+    }
+  }
+  .ingredient {
+    height: auto;
+    font-size: 16px;
+    white-space: unset;
+    text-overflow: unset;
+    overflow: unset;
+  }
+  .block {
+    position: relative;
+    .price {
+      font-size: 25px;
+    }
+  }
+}
+
+@media only screen and (min-width: 767px) {
+  .modal-food {
+    .block {
+      padding: 25px 0px;
+    }
+  }
+}

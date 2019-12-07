@@ -1,0 +1,63 @@
+.main-header {
+  position: fixed;
+  right: 0;
+  left: 0;
+  top: 0;
+  background-color: white;
+  z-index: 1000;
+  border-bottom: 1px solid #e4e4e4;
+  .wrapper {
+    padding: 5px 0;
+  }
+  .right {
+    float: right;
+  }
+  .left {
+    line-height: 60px;
+    float: left;
+  }
+  .user-login-holder {
+    float: left;
+    span {
+      font-family: 'IRANSans', Tahoma;
+      font-weight: 500;
+      line-height: 1.7;
+    }
+  }
+  .user-holder {
+    direction: rtl;
+  }
+  .rest-logo-holder {
+    display: inline-block;
+    direction: rtl;
+    position: relative;
+    cursor: pointer;
+    figure {
+      border-radius: 10px;
+      vertical-align: middle;
+      display: inline-block;
+      overflow: hidden;
+    }
+  }
+  .logo-holder {
+    width: 60px;
+    height: 60px;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
+    img {
+      display: block;
+      height: 100%;
+    }
+  }
+}
+@media only screen and (min-width: 767px) {
+  .main-header {
+    z-index: 2500;
+    [class*='fo-'],
+    [class^='fo-'] {
+      font-size: 22px;
+      font-size: 1.375rem;
+    }
+  }
+}

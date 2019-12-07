@@ -1,0 +1,470 @@
+@import "./variables";
+
+@import "../fonts/delino-icon_v1.2.3.svg.scss";
+@import "../fonts/delino-icon_v1.2.3.woff.scss";
+@import "../fonts/delino-icon_v1.2.3.woff2.scss";
+
+.fo-style, [class^="fo-"], [class*=" fo-"] {
+  /* use !important to prevent issues with browser extensions that change fonts */
+  font-family: 'DelinoIcon' !important;
+  speak: none;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+  vertical-align: middle;
+  padding-top: 1px;
+
+  /* Better Font Rendering =========== */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.fo-add-restaurant {
+  &:before {
+    content: $fo-add-restaurant;
+  }
+}
+.fo-alert {
+  &:before {
+    content: $fo-alert;
+  }
+}
+.fo-area {
+  &:before {
+    content: $fo-area;
+  }
+}
+.fo-angle-down {
+  &:before {
+    content: $fo-angle-down;
+  }
+}
+.fo-angle-left {
+  &:before {
+    content: $fo-angle-left;
+  }
+}
+.fo-angle-right {
+  &:before {
+    content: $fo-angle-right;
+  }
+}
+.fo-angle-up {
+  &:before {
+    content: $fo-angle-up;
+  }
+}
+.fo-bell {
+  &:before {
+    content: $fo-bell;
+  }
+}
+.fo-bookmark {
+  &:before {
+    content: $fo-bookmark;
+  }
+}
+.fo-bookmark-filled {
+  &:before {
+    content: $fo-bookmark-filled;
+  }
+}
+.fo-building {
+  &:before {
+    content: $fo-building;
+  }
+}
+.fo-camera {
+  &:before {
+    content: $fo-camera;
+  }
+}
+.fo-cart {
+  &:before {
+    content: $fo-cart;
+  }
+}
+.fo-cash {
+  &:before {
+    content: $fo-cash;
+  }
+}
+.fo-clock {
+  &:before {
+    content: $fo-clock;
+  }
+}
+.fo-comment {
+  &:before {
+    content: $fo-comment;
+  }
+}
+.fo-credit {
+  &:before {
+    content: $fo-credit;
+  }
+}
+.fo-cross {
+  &:before {
+    content: $fo-cross;
+  }
+}
+.fo-delivery {
+  &:before {
+    content: $fo-delivery;
+  }
+}
+.fo-disconnect {
+  &:before {
+    content: $fo-disconnect;
+  }
+}
+.fo-discount {
+  &:before {
+    content: $fo-discount;
+  }
+}
+.fo-dish {
+  &:before {
+    content: $fo-dish;
+  }
+}
+.fo-edit {
+  &:before {
+    content: $fo-edit;
+  }
+}
+.fo-empty-bag {
+  &:before {
+    content: $fo-empty-bag;
+  }
+}
+.fo-failed {
+  &:before {
+    content: $fo-failed;
+  }
+}
+.fo-filter {
+  &:before {
+    content: $fo-filter;
+  }
+}
+.fo-foodiran {
+  &:before {
+    content: $fo-foodiran;
+  }
+}
+.fo-gallery {
+  &:before {
+    content: $fo-gallery;
+  }
+}
+.fo-gps {
+  &:before {
+    content: $fo-gps;
+  }
+}
+.fo-guid {
+  &:before {
+    content: $fo-guid;
+  }
+}
+.fo-headset {
+  &:before {
+    content: $fo-headset;
+  }
+}
+.fo-home {
+  &:before {
+    content: $fo-home;
+  }
+}
+.fo-info {
+  &:before {
+    content: $fo-info;
+  }
+}
+.fo-lock {
+  &:before {
+    content: $fo-lock;
+  }
+}
+.fo-bag {
+  &:before {
+    content: $fo-bag;
+  }
+}
+.fo-settings {
+  &:before {
+    content: $fo-settings;
+  }
+}
+.fo-popup {
+  &:before {
+    content: $fo-popup;
+  }
+}
+.fo-mail {
+  &:before {
+    content: $fo-mail;
+  }
+}
+.fo-map {
+  &:before {
+    content: $fo-map;
+  }
+}
+.fo-megaphone {
+  &:before {
+    content: $fo-megaphone;
+  }
+}
+.fo-minus {
+  &:before {
+    content: $fo-minus;
+  }
+}
+.fo-mobile {
+  &:before {
+    content: $fo-mobile;
+  }
+}
+.fo-more {
+  &:before {
+    content: $fo-more;
+  }
+}
+.fo-note {
+  &:before {
+    content: $fo-note;
+  }
+}
+.fo-online {
+  &:before {
+    content: $fo-online;
+  }
+}
+.fo-orders {
+  &:before {
+    content: $fo-orders;
+  }
+}
+.fo-packaging {
+  &:before {
+    content: $fo-packaging;
+  }
+}
+.fo-pickup {
+  &:before {
+    content: $fo-pickup;
+  }
+}
+.fo-pin {
+  &:before {
+    content: $fo-pin;
+  }
+}
+.fo-plus {
+  &:before {
+    content: $fo-plus;
+  }
+}
+.fo-plus-bold {
+  &:before {
+    content: $fo-plus-bold;
+  }
+}
+.fo-pos {
+  &:before {
+    content: $fo-pos;
+  }
+}
+.fo-refresh {
+  &:before {
+    content: $fo-refresh;
+  }
+}
+.fo-restaurant {
+  &:before {
+    content: $fo-restaurant;
+  }
+}
+.fo-search {
+  &:before {
+    content: $fo-search;
+  }
+}
+.fo-stop {
+  &:before {
+    content: $fo-stop;
+  }
+}
+.fo-stopwatch {
+  &:before {
+    content: $fo-stopwatch;
+  }
+}
+.fo-tag {
+  &:before {
+    content: $fo-tag;
+  }
+}
+.fo-telephone {
+  &:before {
+    content: $fo-telephone;
+  }
+}
+.fo-terms {
+  &:before {
+    content: $fo-terms;
+  }
+}
+.fo-tick {
+  &:before {
+    content: $fo-tick;
+  }
+}
+.fo-trash {
+  &:before {
+    content: $fo-trash;
+  }
+}
+.fo-user {
+  &:before {
+    content: $fo-user;
+  }
+}
+.fo-facebook {
+  &:before {
+    content: $fo-facebook;
+  }
+}
+.fo-gplus {
+  &:before {
+    content: $fo-gplus;
+  }
+}
+.fo-instagram {
+  &:before {
+    content: $fo-instagram;
+  }
+}
+.fo-linkedin {
+  &:before {
+    content: $fo-linkedin;
+  }
+}
+.fo-telegram {
+  &:before {
+    content: $fo-telegram;
+  }
+}
+.fo-twitter {
+  &:before {
+    content: $fo-twitter;
+  }
+}
+.fo-addtobasket {
+  &:before {
+    content: $fo-addtobasket;
+  }
+}
+.fo-menu {
+  &:before {
+    content: $fo-menu;
+  }
+}
+.fo-logout {
+  &:before {
+    content: $fo-logout;
+  }
+}
+.fo-maximize {
+  &:before {
+    content: $fo-maximize;
+  }
+}
+.fo-arrow-left {
+  &:before {
+    content: $fo-arrow-left;
+  }
+}
+.fo-share {
+  &:before {
+    content: $fo-share;
+  }
+}
+.fo-group {
+  &:before {
+    content: $fo-group;
+  }
+}
+
+.fo-zoom {
+  &:before {
+    content: $fo-zoom;
+  }
+}
+.fo-aparat {
+  &:before {
+    content: $fo-aparat;
+  }
+}
+.fo-mail-filled {
+  &:before {
+    content: $fo-mail-filled;
+  }
+}
+
+.fo-alert-filled {
+  &:before {
+    content: $fo-alert-filled;
+  }
+}
+.fo-coupon {
+  &:before {
+    content: $fo-coupon;
+  }
+}
+.fo-copy {
+  &:before {
+    content: $fo-copy;
+  }
+}
+.fo-building-f {
+  &:before {
+    content: $fo-building-f;
+  }
+}
+.fo-home-f {
+  &:before {
+    content: $fo-home-f;
+  }
+}
+.fo-city {
+  &:before {
+    content: $fo-city;
+  }
+}
+.fo-compass-f {
+  &:before {
+    content: $fo-compass-f;
+  }
+}
+.fo-flag {
+  &:before {
+    content: $fo-flag;
+  }
+}
+.fo-grid-f {
+  &:before {
+    content: $fo-grid-f;
+  }
+}
+.fo-list-f {
+  &:before {
+    content: $fo-list-f;
+  }
+}

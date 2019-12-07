@@ -1,0 +1,16 @@
+.modal-section {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 2000;
+  color: #333;
+  .login-box {
+    position: relative;
+    top: 50%;
+    width: 400px;
+    height: 350px;
+    background: #ffffff;
+  }
+}

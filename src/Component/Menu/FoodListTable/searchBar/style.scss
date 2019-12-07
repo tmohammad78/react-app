@@ -1,0 +1,125 @@
+.filter-box {
+	position: relative;
+    padding: 0px 15px;
+    clear: both;
+  .filter-search {
+    height: 35px;
+    position: relative;
+    border-radius: 5px;
+    border: 1px solid #e4e4e4;
+    padding: 5px;
+    .placeholder {
+      -webkit-user-select: none;
+      -moz-user-select: none;
+      -ms-user-select: none;
+      user-select: none;
+      visibility: visible;
+      position: absolute;
+      right: 30px;
+      direction: rtl;
+      color: #bbb;
+    }
+    &:focus-within {
+      .placeholder {
+        visibility: hidden;
+      }
+      -webkit-box-shadow: 0px 0px 4px 2px #f3eded;
+      -moz-box-shadow: 0px 0px 4px 2px #f3eded;
+      box-shadow: 0px 0px 4px 2px #f3eded;
+    }
+    input {
+      direction: rtl;
+      position: absolute;
+      right: 30px;
+      width: 85%;
+      top: 50%;
+      -webkit-transform: translateY(-50%);
+      transform: translateY(-50%);
+      border: none;
+      font-size: 19px;
+      &:focus {
+        outline: none;
+      }
+    }
+    .search-icon {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      right: 7px;
+    }
+  }
+  .filter-check {
+    cursor: pointer;
+    position: relative;
+    direction: rtl;
+    float: right;
+    vertical-align: middle;
+    padding: 5px 10px;
+    span {
+      padding: 0px 5px;
+    }
+  }
+}
+
+.custom-checkbox {
+  position: relative;
+  cursor: pointer;
+  padding: 0;
+  user-select: none;
+  &.disabled {
+    color: #b8b8b8;
+    cursor: default;
+    span {
+      box-shadow: none;
+      background: #ddd;
+    }
+  }
+
+  span {
+    position: relative;
+    display: inline-block;
+    margin-left: 9px;
+    width: 20px;
+    height: 20px;
+    border-radius: 5px;
+    background: #d4d4d4;
+    vertical-align: middle;
+  }
+
+  input {
+    position: absolute;
+    opacity: 0;
+    &:focus + span {
+      box-shadow: 0 0 0 3px rgba(0, 0, 0, 0.12);
+    }
+
+    &:checked + span {
+      background: #be901e;
+    }
+    $size: 2px;
+    $color: white;
+    &:checked + span:after {
+      content: '';
+      position: absolute;
+      left: 30%;
+      top: 50%;
+      background: $color;
+      width: $size;
+      height: $size;
+      box-shadow: $size 0 0 $color, $size * 2 0 0 $color, $size * 2 #{-$size} 0 $color,
+        $size * 2 #{-$size * 2} 0 $color, $size * 2 #{-$size * 3} 0 $color,
+        $size * 2 #{-$size * 4} 0 $color;
+      transform: rotate(45deg) translate(-50%, -50%);
+    }
+  }
+}
+
+@media only screen and (min-width: 650px) {
+  .filter-box {
+    .filter-search {
+      width: 100%;
+      float: right;
+      max-width: 300px;
+    }
+  }
+}

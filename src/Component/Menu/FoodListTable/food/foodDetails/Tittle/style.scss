@@ -1,0 +1,26 @@
+.details-holder {
+  .tittle-food {
+    .tittle {
+      margin: 10px 0 0;
+      font-size: 0.975rem;
+      font-weight: 700;
+    }
+  }
+}
+.cartInfoFood {
+  .tittle-food {
+    .tittle {
+      margin: 10px 0px;
+    }
+  }
+}
+
+@media only screen and (min-width: 700px) {
+  .cartInfoFood {
+    .tittle-food {
+      .tittle {
+        font-size: 14px;
+      }
+    }
+  }
+}

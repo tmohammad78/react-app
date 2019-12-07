@@ -1,0 +1,71 @@
+.parent-modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  color: #333;
+  z-index: 2740;
+  .modalBox {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 100%;
+    height: 100%;
+    border-radius: 5px;
+    transform: translate(-50%, -50%);
+    background-color: white;
+    z-index: 2000;
+    .ancBox {
+      padding: 15px 0px 2px;
+      .img {
+        cursor: pointer;
+        font-weight: 300;
+        width: 15px;
+        display: inline-block;
+        transition: all 0.4s cubic-bezier(0.19, 1, 0.22, 1);
+        -webkit-transition: all 0.4s cubic-bezier(0.19, 1, 0.22, 1);
+        &:active {
+          transform: scale(0.9);
+        }
+      }
+    }
+  }
+
+  .lightBox {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    background-color: rgba(0, 0, 0, 0.3);
+    z-index: 1000;
+  }
+}
+@media only screen and (min-width: 767px) {
+  .food_menu {
+    .parent-modal {
+      //   overflow-y: scroll;
+      .lightInner {
+        width: 100%;
+        z-index: 6000;
+        height: 100%;
+        position: relative;
+        overflow-y: scroll;
+      }
+
+      .modalBox {
+        height: auto;
+        top: 10%;
+        margin-bottom: 20px;
+        transform: translate(-50%, 0%);
+      }
+    }
+  }
+  .parent-modal {
+    .modalBox {
+      width: 500px;
+      height: auto;
+    }
+  }
+}

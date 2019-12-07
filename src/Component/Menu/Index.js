@@ -1,38 +1,33 @@
-import React, { Component } from "react";
-import CategoryList from "./category/CategoryList";
-import FoodList from "./FoodList";
+import React, { Fragment, useState, useEffect, Suspense, lazy } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 
-class Menu extends Component {
-  state = {
-    categories: [],
-    cart: [],
-    cartData: []
-  };
-  render() {
-    return (
-      <div className="main-wrapper">
-        {/* <div className="cartSection">
-        
-        </div>    */}
-        <div className="header-wrapper"></div>
-        
-        <CategoryList items={this.state.categories} />
-        {/* <Cart
-          show={this.props.show}
-          testing={this.props.testing}
-          onPress={this.props.onPress}
-        /> */}
-        <FoodList
-          reloadCart={cartData => {}}
-          ready={categories =>
-            this.setState({
-              categories
-              //vaghti meghdare vorodi ba esme state yeki bashad lazem nist sample:sample benevisim
-            })
-          }
-        />
-      </div>
+import { fetchMenu } from '../../services/menu/actions';
+import Spinner from '../Spinner';
+
+const Category = lazy(() => import('../Category/index'));
+const FoodListTable = lazy(() => import('./FoodListTable'));
+
+const Menu = () => {
+  const dispatch = useDispatch();
+  const foodList = useSelector(state => state.menu.foodList);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    dispatch(
+      fetchMenu(() => {
+        setLoading(false);
+      })
     );
-  }
-}
+  }, []);
+
+  return (
+    <Fragment>
+      <Suspense fallback={<Spinner />}>
+        <Category />
+        {foodList && <FoodListTable items={foodList} />}
+      </Suspense>
+    </Fragment>
+  );
+};
+
 export default Menu;

@@ -1,0 +1,140 @@
+.cover-container {
+  position: relative;
+  background-color: #111;
+  color: #fff;
+  margin-top: 68px;
+  .rest-cover {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0.5;
+    background-repeat: no-repeat;
+    background-position: 50%;
+    background-size: cover;
+    filter: blur(4px);
+    z-index: 1;
+  }
+  .wrapper {
+    position: relative;
+    height: 100%;
+    padding: 41px 0;
+    z-index: 3;
+  }
+  .rest-logo-holder {
+    text-align: center;
+    margin-bottom: 20px;
+    figure {
+      display: none;
+    }
+    aside {
+      direction: rtl;
+      .categoryList {
+        padding: 8px 0px;
+        span {
+          padding: 0px 2px;
+          font-size: 15px;
+          font-weight: 600;
+        }
+      }
+    }
+    h1 {
+      margin: 10px 0;
+      line-height: 1;
+      font-size: 24px;
+      font-size: 1.5rem;
+      white-space: nowrap;
+    }
+    h2 {
+      margin: 0 0 10px;
+      font-size: 14px;
+      font-size: 0.875rem;
+    }
+  }
+  .online-status {
+    margin-bottom: 20px;
+    direction: rtl;
+    font-size: 13px;
+    font-size: 0.8125rem;
+    white-space: nowrap;
+    span {
+      display: inline-block;
+      vertical-align: middle;
+      line-height: normal;
+      text-align: center;
+    }
+    label {
+      display: block;
+      font-size: 12px;
+      font-size: 0.75rem;
+    }
+  }
+  .online-status.offline {
+    line-height: normal;
+    label {
+      margin-top: 4px;
+    }
+  }
+  footer {
+    direction: rtl;
+    text-align: center;
+  }
+}
+@media only screen and (min-width: 767px) {
+  .cover-container {
+    height: 355px;
+    .online-status {
+      float: right;
+      margin-bottom: 0;
+    }
+    .rest-logo-holder {
+      float: right;
+      width: 100%;
+      height: 100%;
+      padding: 0px 15px;
+      color: black;
+      background-color: white;
+      border-radius: 10px;
+      box-shadow: 0px 14px 20px rgba(56, 60, 71, 0.1);
+      aside {
+        margin: -40px 0px;
+        padding: 10px 0px;
+        .categoryList {
+          padding: 15px 5px;
+        }
+        h2 {
+          color: rgb(170, 170, 170);
+        }
+      }
+      .logo-holder {
+        position: relative;
+        display: inline-block;
+        top: -50px;
+        width: 100px;
+        img {
+          width: 100%;
+          border-radius: 10px;
+        }
+      }
+    }
+    footer {
+      position: absolute;
+      bottom: 20px;
+      left: 0;
+      right: 0;
+      text-align: right;
+      color: black;
+    }
+    .wrapper {
+      position: relative;
+      top: 46%;
+      right: -50%;
+      margin: 0;
+      padding: 0;
+      width: 580px;
+      height: 325px;
+      transform: translate(-50%, 0%);
+    }
+  }
+}

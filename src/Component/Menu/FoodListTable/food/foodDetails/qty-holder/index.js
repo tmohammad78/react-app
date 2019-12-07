@@ -1,0 +1,83 @@
+import React, { useState, useEffect } from 'react';
+import { useDispatch } from 'react-redux';
+import { addFood, removeFood } from 'services/cart/actions';
+import { SubFoodModal } from 'services/subFood/action';
+import { Button } from 'component/Buttons/Button.js';
+import { Span } from './span';
+import { QtyStyle ,AvailableBox } from './style';
+import './style.scss';
+
+const QtyHolder = ({ food }) => {
+  let removeBtn;
+  let subfoodIcon;
+  const [width, setWidth] = useState('');
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    if (food.quantity > 0) {
+      setWidth('show-detail');
+    } else {
+      setWidth('');
+    }
+  });
+
+  if (food.subFoods) {
+    subfoodIcon = (
+      <div>
+        <i className='fo fo-arrow-left' />
+      </div>
+    );
+  }
+
+  const handleRemove = e => {
+    e.preventDefault();
+
+    dispatch(removeFood(food));
+    if (!(food.quantity > 0)) {
+    }
+  };
+
+  const addClicked = () => {
+    if (food.subFoods.length > 0) {
+      dispatch(SubFoodModal(food));
+    } else {
+      //   debugger;
+      dispatch(addFood(food, 1));
+    }
+  };
+
+  const handleClick = e => {
+    setWidth('show-detail');
+    e.preventDefault();
+    addClicked();
+  };
+
+  if (food.quantity > 0) {
+    removeBtn = (
+      <Button bgcolor='transparent' borderRadius='50' ptb='5' prl='6' onClick={handleRemove}>
+        <i className='fo fo-minus' />
+      </Button>
+    );
+  }
+  return food.available ? (
+    // <div className={`qty-holder ${width}`}>
+    <QtyStyle className={`${width}`}>
+      <div className='anc-box'>
+        {removeBtn}
+        {food.quantity ? <Span qty={food.quantity} /> : null}
+        <Button bgcolor='transparent' borderRadius='50' ptb='5' prl='6' onClick={handleClick}>
+          <i className='fo fo-plus' />
+        </Button>
+      </div>
+      {subfoodIcon}
+    </QtyStyle>
+  ) : (
+    <AvailableBox>
+      <span className='meal-badge'>
+        <span>{food.unavailableText}</span>
+      </span>
+    </AvailableBox>
+  );
+};
+
+export default QtyHolder;

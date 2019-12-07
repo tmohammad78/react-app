@@ -1,39 +1,62 @@
-import React, { Component } from "react";
-import "../../sass/layout/header.scss";
-import "../../sass/components/button.scss";
-class Header extends Component {
-  constructor(props) {
-    super(props);
-    this.showCart = this.showCart.bind(this);
-  }
+import React, { useState, Suspense, lazy } from 'react';
 
-  inputChangeHeader = event => {
-    // console.log(event.target.value);
-    this.setState({
-      keywords: event.target.value
-    });
+import { Button } from '../Buttons/Button';
+import Login from '../Login';
+const Modal = lazy(() => import('../Modal'));
+
+import './style.scss';
+
+const Header = ({ toggleTheme }) => {
+  const [showModal, setShowModal] = useState(false);
+  const backgroundLogo = 'https://static.delino.com/Image/Default/logo/2yujoehm.rrz_180x180.png';
+  const toggleLoginShow = () => {
+    setShowModal(prevState => !prevState);
   };
 
-  showCart(e) {
-    this.props.ready(true);
-  }
+  return (
+    <div className='main-header clearfix'>
+      <Suspense fallback={<div>...loading</div>}>
+        <Modal
+          show={showModal}
+          onClose={toggleLoginShow}
+          style={{
+            height: 300
+          }}
+        >
+          <Login />
+        </Modal>
+      </Suspense>
 
-  render() {
-    const { show } = this.props;
-    console.log(show);
-    return (
-      <div className="header-section">
-        <button className="btn btn-showCount " onClick={this.showCart}>
-          <i className="icon-shopping-cart shopping-cart-img" />
-          <span className="header-number" id="cart-count" />
-        </button>
-
-        <button className="btn btn-profile">
-          <i className="icon-user" />
-        </button>
+      <div className='wrapper clearfix'>
+        <div className='right'>
+          <div className='rest-logo-holder'>
+            <figure className='logo-holder'>
+              <img alt='logo' src={backgroundLogo} />
+            </figure>
+          </div>
+        </div>
+        <div className='left'>
+          <div className='user-login-holder'>
+            <div className='user-holder'>
+              <Button
+                bgcolor='black'
+                style={{
+                  marginLeft: '20px',
+                  marginRight: '20px'
+                }}
+                onClick={toggleTheme}
+              >
+                darkModa
+              </Button>
+              <Button onClick={toggleLoginShow} type='submit'>
+                ورود / عضویت
+                <i className='fo fo-user' />
+              </Button>
+            </div>
+          </div>
+        </div>
       </div>
-    );
-  }
-}
-
+    </div>
+  );
+};
 export default Header;

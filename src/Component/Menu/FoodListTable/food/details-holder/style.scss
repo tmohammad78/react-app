@@ -1,0 +1,57 @@
+.details-holder {
+  padding: 0px 5px 0px 0px;
+  overflow: hidden;
+}
+
+.has_sub {
+  .details-holder {
+    i {
+      position: absolute;
+      top: 45px;
+      left: 15px;
+      width: 25px;
+      height: 15px;
+      padding: -49px;
+      border-radius: 4px 0 0 0;
+      margin-left: 15px;
+      margin-top: -20.33333px;
+      border-left: 2px solid #ccc;
+      border-top: 2px solid #ccc;
+      opacity: 0.8;
+      -webkit-opacity: 0.8;
+      &:after,
+      &:before {
+        content: '';
+        left: 0;
+        top: 0;
+        width: 25px;
+        height: 15px;
+      }
+      &:before {
+        position: absolute;
+        -webkit-border-radius: 3px;
+        -moz-border-radius: 3px;
+        border-radius: 3px;
+        background-color: #ccc;
+        -webkit-transform: translate(6px, 6px);
+        -moz-transform: translate(6px, 6px);
+        -ms-transform: translate(6px, 6px);
+        -o-transform: translate(6px, 6px);
+        transform: translate(6px, 6px);
+      }
+      &:after {
+        position: absolute;
+        border-left: 2px solid #ccc;
+        border-top: 2px solid #ccc;
+        -webkit-border-radius: 4px 0 0 0;
+        -moz-border-radius: 4px 0 0 0;
+        border-radius: 4px 0 0 0;
+        -webkit-transform: translate(2px, 2px);
+        -moz-transform: translate(2px, 2px);
+        -ms-transform: translate(2px, 2px);
+        -o-transform: translate(2px, 2px);
+        transform: translate(2px, 2px);
+      }
+    }
+  }
+}
