@@ -69,6 +69,25 @@ export const FoodMenu = styled.div`
     font-size: 1.25rem;
     direction: rtl;
   }
+  @media only screen and (min-width: 767px) {
+    .parent-modal {
+      //   overflow-y: scroll;
+      .lightInner {
+        width: 100%;
+        z-index: 6000;
+        height: 100%;
+        position: relative;
+        overflow-y: scroll;
+      }
+
+      .modalBox {
+        height: auto;
+        top: 10%;
+        margin-bottom: 20px;
+        transform: translate(-50%, 0%);
+      }
+    }
+  }
   @media only screen and (min-width: 992px) {
     padding: 0 25px 35px;
   }

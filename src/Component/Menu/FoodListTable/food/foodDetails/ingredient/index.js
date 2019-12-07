@@ -4,7 +4,9 @@ import { truncate } from 'helper';
 import './style.scss';
 
 const Ingredient = ({ ingredient, checkTruncate = true }) => {
-  return <div className='ingredient'>{checkTruncate ? truncate(ingredient, 8) : ingredient}</div>;
+  return ingredient ? (
+    <div className='ingredient'>{checkTruncate ? truncate(ingredient, 8) : ingredient}</div>
+  ) : null;
 };
 
 Ingredient.propTypes = {

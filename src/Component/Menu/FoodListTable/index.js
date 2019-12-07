@@ -23,6 +23,7 @@ const FoodListTable = ({ items }) => {
   let lastCategory = null;
 
   const subFood = useSelector(state => state.subFood);
+  console.log(subFood);
   const [foodList, setFoodList] = useState(items);
   const [searchKey, setSearchKey] = useState('');
   const [inStock, setInStock] = useState(false);

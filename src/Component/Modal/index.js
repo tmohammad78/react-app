@@ -29,9 +29,9 @@ const Modal = ({
     };
   });
   const closeDown = () => {
-    if (subFood) {
-      onClose();
-    }
+    // if (subFood) {
+    //   onClose();
+    // }
   };
   const handleEscKeyDown = e => {
     if (onClose) {
