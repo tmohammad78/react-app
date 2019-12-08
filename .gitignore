@@ -3,7 +3,7 @@ logs
 npm-debug.log*
 .DS_Store
 __MACOSX
-src/styles/fonts
+./src/styles/fonts
 coverage
 node_modules
 build
@@ -14,8 +14,10 @@ yarn-error.log
 .env.test.local
 .env.production.local
 .vs_code
-
-
+./lastApi.text
+./src/services/config.js
+src/services/config.js
+lastApi.text
 package-lock.json
 
 *.lock

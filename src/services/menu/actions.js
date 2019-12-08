@@ -74,6 +74,7 @@ export const fetchMenu = callback => (dispatch, getState) => {
       .get(restaurantMenu)
       .then(response => {
         const { data } = response;
+
         Data.foodList = data;
         return productLoaded(data);
       })
