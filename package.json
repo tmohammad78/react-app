@@ -1,8 +1,8 @@
 {
   "name": "custom-web",
   "version": "0.0.1",
-  "description": "Delino custom web restaurant",
-  "author": "Delino Tech team <info@delino.com>",
+  "description": "Food Delivery",
+  "author": "",
   "license": "MIT",
   "private": true,
   "scripts": {

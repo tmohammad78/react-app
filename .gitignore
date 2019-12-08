@@ -3,7 +3,7 @@ logs
 npm-debug.log*
 .DS_Store
 __MACOSX
-
+src/styles/fonts
 coverage
 node_modules
 build
