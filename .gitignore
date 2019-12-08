@@ -4,6 +4,9 @@ npm-debug.log*
 .DS_Store
 __MACOSX
 ./src/styles/fonts
+./src/styles/fonts/delino-icon_v1.2.3.svg.scss	
+./src/styles/fonts/delino-icon_v1.2.3.woff.scss
+./src/styles/fonts/delino-icon_v1.2.3.woff2.scss
 coverage
 node_modules
 build
