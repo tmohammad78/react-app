@@ -16,6 +16,7 @@ export const QtyStyle = styled(Parent).attrs({
       padding: 0;
       color: #ff7714;
       border: 1px solid #ff7714;
+
     }
   }
   &.show-detail {

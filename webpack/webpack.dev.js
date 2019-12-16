@@ -74,7 +74,7 @@ module.exports = Object.keys(commonVariables.languages).map(function(language) {
     },
     plugins: [new webpack.NamedModulesPlugin(), new webpack.HotModuleReplacementPlugin()],
     devServer: {
-      host: '192.168.1.105',
+      host: 'localhost',
       port: PORT,
       historyApiFallback: true,
       // hot: true,

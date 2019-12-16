@@ -1,6 +1,6 @@
 import { compose, createStore, applyMiddleware } from 'redux';
 import thunk from 'redux-thunk';
-import rootReducer from './reducers';
+import newRootReducer from './reducers';
 
 export default initialState => {
   initialState = JSON.parse(window.localStorage.getItem('state')) || initialState;
@@ -14,7 +14,8 @@ export default initialState => {
       window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
     );
   }
-  const store = createStore(rootReducer, initialState, enhancer);
+  const store = createStore(newRootReducer, initialState, enhancer);
+  store.replaceReducer(newRootReducer); // for performance
   store.subscribe(() => {
     const state = store.getState();
     const persist = {

@@ -7,7 +7,7 @@ import sortReducer from './sort/reducer';
 import subFoodReducer from './subFood/reducer';
 import likeFoodReducer from './likeFood/reducer';
 
-export default combineReducers({
+const newRootReducer = combineReducers({
   menu: menuReducer,
   cart: cartReducer,
   resInfo: coverReducer,
@@ -16,3 +16,6 @@ export default combineReducers({
   subFood: subFoodReducer,
   likeFood: likeFoodReducer
 });
+
+
+export default newRootReducer;

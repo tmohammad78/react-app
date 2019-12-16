@@ -4,7 +4,7 @@ import { addFood, removeFood } from 'services/cart/actions';
 import { SubFoodModal } from 'services/subFood/action';
 import { Button } from 'component/Buttons/Button.js';
 import { Span } from './span';
-import { QtyStyle ,AvailableBox } from './style';
+import { QtyStyle, AvailableBox } from './style';
 import './style.scss';
 
 const QtyHolder = ({ food }) => {
@@ -67,6 +67,7 @@ const QtyHolder = ({ food }) => {
         {food.quantity ? <Span qty={food.quantity} /> : null}
         <Button bgcolor='transparent' borderRadius='50' ptb='5' prl='6' onClick={handleClick}>
           <i className='fo fo-plus' />
+          <span className='testing'/>
         </Button>
       </div>
       {subfoodIcon}

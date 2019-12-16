@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { Switch, Route, BrowserRouter as Router } from 'react-router-dom';
 
 import { ThemeProvider } from 'styled-components';
-import { useDarkMode } from './useDarkMode';
+import { useDarkMode } from './hooks/useDarkMode';
 import { lightTheme, darkTheme } from './theme';
 import { GlobalStyles } from './global';
 
