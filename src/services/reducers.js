@@ -6,6 +6,7 @@ import coverReducer from './cover/reducer';
 import sortReducer from './sort/reducer';
 import subFoodReducer from './subFood/reducer';
 import likeFoodReducer from './likeFood/reducer';
+import authReducer from './auth/reducer';
 
 const newRootReducer = combineReducers({
   menu: menuReducer,
@@ -14,8 +15,8 @@ const newRootReducer = combineReducers({
   total: totalReducer,
   sort: sortReducer,
   subFood: subFoodReducer,
-  likeFood: likeFoodReducer
+  likeFood: likeFoodReducer,
+  auth: authReducer
 });
-
 
 export default newRootReducer;

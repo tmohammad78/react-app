@@ -5,10 +5,11 @@ import { ThemeProvider } from 'styled-components';
 import { useDarkMode } from './hooks/useDarkMode';
 import { lightTheme, darkTheme } from './theme';
 import { GlobalStyles } from './global';
-
+import PrivateRoute from './route/private';
 import Order from './pages/order';
 import Header from './component/Header';
 import Footer from './component/Footer';
+import AuthPage from 'pages/auth';
 import Home from './pages/home';
 
 function App() {
@@ -26,8 +27,8 @@ function App() {
         <Header toggleTheme={toggleTheme} />
         <Router>
           <Switch>
-            <Route path='/order' component={Order} />
-            <Route exact path='/' component={Home} />
+            <PrivateRoute exact path='/' component={Order} />
+            <Route path='/auth' component={AuthPage} />
           </Switch>
         </Router>
         <Footer />
