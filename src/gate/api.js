@@ -24,6 +24,7 @@ instance.interceptors.request.use(
 
 instance.interceptors.response.use(
   response => {
+	  debugger
     return response;
   },
   error => {

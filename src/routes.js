@@ -10,6 +10,7 @@ import Order from './pages/order';
 import Header from './component/Header';
 import Footer from './component/Footer';
 import AuthPage from 'pages/auth';
+import browserHistory from './route/history';
 import Home from './pages/home';
 
 function App() {
@@ -25,7 +26,7 @@ function App() {
         <GlobalStyles />
 
         <Header toggleTheme={toggleTheme} />
-        <Router>
+        <Router history={browserHistory}>
           <Switch>
             <PrivateRoute exact path='/' component={Order} />
             <Route path='/auth' component={AuthPage} />

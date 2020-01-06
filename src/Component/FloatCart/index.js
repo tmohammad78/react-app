@@ -3,7 +3,7 @@ import { useSelector } from 'react-redux';
 
 import CartProduct from './CartProduct';
 import { Button } from 'component/Buttons/Button';
-import { objectToArray } from 'helper';
+import { objectToArray, currency } from 'helper';
 import { RestCart, LeftSideHolder } from './style';
 import { CartListHolder, CartShowMobile } from './style.js';
 import './style.scss';
@@ -61,7 +61,7 @@ const FloatCart = () => {
             <React.Fragment>
               <header className='header-cart'>
                 <h3>
-                  سبد خرید<span className='cart-size'>{totalProduct}</span>
+                  سبد خرید<span className='cart-size'>{currency(totalProduct,false)}</span>
                 </h3>
               </header>
               <div className='cart-holder-inner clearfix'>
@@ -78,14 +78,10 @@ const FloatCart = () => {
                   </div>
                 </CartListHolder>
                 <div className='cart-bottom'>
-                  {/* <div className="row cart-discount" />
-										<div className="row coupon-row" />
-										<div className="row cart-delivery" />
-										<div className="row cart-tax" /> */}
                   <div className='row cart-total'>
                     <span>هزینه ی کل</span>
                     <span>
-                      <b className='total-price'>{totalPrice}</b>
+                      <b className='total-price'>{currency(totalPrice)}</b>
                     </span>
                   </div>
                   <div className='row add-coupon-holder'>

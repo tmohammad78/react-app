@@ -95,6 +95,7 @@
     "express": "^4.17.1",
     "firebase": "^7.5.2",
     "formik": "^2.0.8",
+    "history": "^4.10.1",
     "lazysizes": "^5.1.0",
     "memoize-one": "^5.0.5",
     "node-sass": "^4.12.0",

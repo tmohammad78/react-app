@@ -1,5 +1,6 @@
 import { AUTH_LOGIN, AUTH_ERROR, AUTH_REGISTER, CHECK_LOGIN } from './actionType';
 import axios from '../../gate/api';
+import browserHistory from '../../route/history';
 export const checkLogin = () => (dispatch, getState) => {
   const auth = getState().auth;
   console.log(auth);

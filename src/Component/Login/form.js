@@ -1,13 +1,20 @@
-import React, { Fragment } from 'react';
+import React, { Fragment, useEffect } from 'react';
 import { Formik, Form, Field } from 'formik';
-import { useDispatch } from 'react-redux';
+import { Redirect, withRouter } from 'react-router-dom';
+import { useDispatch, useSelector } from 'react-redux';
 import { validation } from '../../helper/validation';
 import { Button } from '../Buttons/Button';
 import { register } from 'services/auth/action';
 import Input from '../Input';
 
-const FormLogin = () => {
+const FormLogin = props => {
   const dispatch = useDispatch();
+  const logged = useSelector(state => state.auth.logged);
+  useEffect(() => {
+    debugger;
+    console.log(logged);
+    logged ? <Redirect to='/' /> : '';
+  }, [logged]);
   const InputForm = ({ field, className, meta, form: { touched, errors }, ...props }) => {
     return (
       <Fragment>
