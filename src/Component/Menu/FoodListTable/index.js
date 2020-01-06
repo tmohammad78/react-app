@@ -11,7 +11,6 @@ import SubFood from '../subFoodModal/subFood';
 import FoodListTitle from './FoodListTitle';
 import { FoodList, NotFoundStyle, FoodMenu } from './style.js';
 
-
 const sortBy = {
   lowestprice: { field: 'price', asc: true },
   highestprice: { field: 'price', asc: false }

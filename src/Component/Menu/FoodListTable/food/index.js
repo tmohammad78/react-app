@@ -12,7 +12,6 @@ import { SubFoodModal } from 'services/subFood/action';
 
 import { FoodItem } from './style.js';
 
-
 const Food = ({ food }) => {
   const className = [];
   const newItem = useSelector(state => state.menu.foodListItem[food.id]);

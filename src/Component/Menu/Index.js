@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 
 import { fetchMenu } from '../../services/menu/actions';
 import Spinner from '../Spinner';
+import Skeleton from 'component/skeleton';
 
 const Category = lazy(() => import('../Category/index'));
 const FoodListTable = lazy(() => import('./FoodListTable'));
@@ -24,7 +25,7 @@ const Menu = () => {
     <Fragment>
       <Suspense fallback={<Spinner />}>
         <Category />
-        {foodList && <FoodListTable items={foodList} />}
+        {!loading ? <FoodListTable items={foodList} /> : <Spinner/>}
       </Suspense>
     </Fragment>
   );

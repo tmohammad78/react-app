@@ -27,45 +27,46 @@ const Cover = () => {
       });
   };
 
-  if (data) {
-    return (
-      <div className='cover-container clearfix'>
-        <div
-          className='rest-cover'
-          style={{
-            backgroundImage: `${backgroundCover}`
-          }}
-        />
+  return (
+    <div
+      className='cover-container clearfix'
+      style={{
+        backgroundImage: 'url(' + Image + ')'
+      }}
+    >
+      <div
+        className='rest-cover'
+        style={{
+          backgroundImage: `${backgroundCover}`
+        }}
+      />
 
-        <div className='wrapper clearfix'>
-          <div className='rest-logo-holder'>
-            <figure className='logo-holder'>
-              <img alt='logo' src={`${backgroundLogo}`} />
-            </figure>
+      <div className='wrapper clearfix'>
+        <div className='rest-logo-holder'>
+          <figure className='logo-holder'>
+            <img alt='logo' src={`${backgroundLogo}`} />
+          </figure>
 
-            <aside>
-              <h1>{data.name}</h1>
-              <div className='categoryList'>
-                {item.map(item => {
-                  return <span> {item.catTitle}.</span>;
-                })}
-              </div>
-              <h2>{data.fullAddress}</h2>
-            </aside>
-          </div>
-          <footer>
-            <div className='online-status offline'>
-              <span>
-                <span>{data.offlineText}</span>
-                {data.mealTime}
-              </span>
+          <aside>
+            <h1>{data.name}</h1>
+            <div className='categoryList'>
+              {item.map(item => {
+                return <span> {item.catTitle}.</span>;
+              })}
             </div>
-          </footer>
+            <h2>{data.fullAddress}</h2>
+          </aside>
         </div>
+        <footer>
+          <div className='online-status offline'>
+            <span>
+              <span>{data.offlineText}</span>
+              {data.mealTime}
+            </span>
+          </div>
+        </footer>
       </div>
-    );
-  } else {
-    return '';
-  }
+    </div>
+  );
 };
 export default Cover;
