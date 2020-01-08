@@ -66,7 +66,10 @@ module.exports = Object.keys(commonVariables.languages).map(function(language) {
         chunkFilename: "[id]." + language + ".css"
         // filename: `static/css/[name].[contenthash].css`,
         // chunkFilename: `static/css/[id].[contenthash].css`,
-      })
+	  }),
+	  new HtmlWebpackPlugin({
+		minify:true // minify html files
+	})
     ]
   };
 });
