@@ -12,13 +12,17 @@ module.exports = Object.keys(commonVariables.languages).map(function(language) {
     output: {
       path: commonVariables.outputPath,
       filename: `[name].${language}.js`
+      //publicPath: commonVariables.publicPath
     },
     module: {
       rules: [
         {
           test: /\.(js|jsx)$/,
           exclude: /node_modules/,
-          use: [{ loader: 'babel-loader' }]
+          use: [
+            { loader: 'babel-loader' }
+            // { loader: "eslint-loader" }
+          ]
         }
       ]
     },
@@ -44,16 +48,15 @@ module.exports = Object.keys(commonVariables.languages).map(function(language) {
     plugins: [
       new I18nPlugin(commonVariables.languages[language]),
       new HtmlWebpackPlugin({
-        // it use for add meta tag in index.html
         // 'meta': {
         //   'viewport': 'width=device-width, initial-scale=1, shrink-to-fit=no',
         //   'theme-color': '#4285f4'
         // },
-        chunks: ['app'], //To include only certain chunks you can limit the chunks being used
+        // chunks: ['app'],
         title: 'Food Delivery',
         template: 'assets/index.html',
-        favicon: 'assets/favicon.ico', //icon,
-        cache: true // using caching
+        favicon: 'assets/favicon.ico',
+        cache: true //using cache
       })
     ]
   };
