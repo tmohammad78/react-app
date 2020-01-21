@@ -4,6 +4,7 @@ import newRootReducer from './reducers';
 
 export default initialState => {
   initialState = JSON.parse(window.localStorage.getItem('state')) || initialState;
+  console.log(initialState);
   const middleware = [thunk];
   let enhancer;
   if (process.env.NODE_ENV !== 'development') {
@@ -21,7 +22,11 @@ export default initialState => {
     const persist = {
       cart: state.cart,
       total: state.total,
-      likeFood: state.likeFood
+      likeFood: state.likeFood,
+      auth: {
+        token: state.auth.token,
+        refreshToken: state.auth.refreshToken
+      }
     };
 
     window.localStorage.setItem('state', JSON.stringify(persist));

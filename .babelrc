@@ -14,6 +14,7 @@
         }
       }
     ],
+    ["babel-plugin-styled-components"],
     ["@babel/plugin-transform-modules-commonjs"],
     "transform-react-remove-prop-types",
     "@babel/plugin-transform-react-constant-elements",

@@ -11,6 +11,7 @@ const Input = ({
   onBlur,
   onFocus,
   className,
+  name,
   ...props
 }) => {
   const [focus, setFocus] = useState(false);
@@ -38,6 +39,7 @@ const Input = ({
         onChange={onChange}
         onFocus={handleFocus}
         onBlur={handleBlur}
+        name={name ? name : ''}
         id={id}
         {...props}
       />

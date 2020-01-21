@@ -2,30 +2,32 @@ import React, { useState, Suspense, lazy } from 'react';
 
 import { Button } from '../Buttons/Button';
 import Login from '../Login';
-const Modal = lazy(() => import('../Modal'));
-
+import Modal from '../Modal';
 import './style.scss';
+import Portal from 'component/Portal';
 
 const Header = ({ toggleTheme }) => {
   const [showModal, setShowModal] = useState(false);
-  const backgroundLogo = 'https://static.delino.com/Image/Default/logo/2yujoehm.rrz_180x180.png';
-  const toggleLoginShow = () => {
+  const backgroundLogo = 'https://static.snapp-food.com/media/cache/vendor_logo/uploads/images/vendors/logos/5807123d25da1.jpg';
+  const toggleLoginShow = e => {
     setShowModal(prevState => !prevState);
   };
 
   return (
     <div className='main-header clearfix'>
-      <Suspense fallback={<div>...loading</div>}>
-        <Modal
-          show={showModal}
-          onClose={toggleLoginShow}
-          style={{
-            height: 300
-          }}
-        >
-          <Login />
-        </Modal>
-      </Suspense>
+      {showModal ? (
+        <Portal>
+          <Modal
+            show={showModal}
+            onClose={toggleLoginShow}
+            style={{
+              height: 300
+            }}
+          >
+            <Login />
+          </Modal>
+        </Portal>
+      ) : null}
 
       <div className='wrapper clearfix'>
         <div className='right'>

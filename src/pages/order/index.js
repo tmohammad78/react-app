@@ -15,9 +15,7 @@ import {
 
 const Menu = lazy(() => import('component/Menu'));
 
-const Order = props => {
-  const path = props.match.url;
-
+const Order = () => {
   return (
     <React.Fragment>
       <Cover />
@@ -30,7 +28,7 @@ const Order = props => {
                 <NavLink
                   exact
                   to={{
-                    pathname: `${path}`
+                    pathname: `/`
                   }}
                   activeClassName='active'
                 >
@@ -38,7 +36,7 @@ const Order = props => {
                 </NavLink>
                 <NavLink
                   to={{
-                    pathname: `${path}/info`
+                    pathname: `/info`
                   }}
                 >
                   اطلاعات رستوران
@@ -48,8 +46,8 @@ const Order = props => {
               <TabContentHolder>
                 <Suspense fallback={() => <div>...loading</div>}>
                   <Switch>
-                    <Route exact path={`${path}`} component={Menu} />
-                    <Route path={`${path}/info`} component={InfoRest} />
+                    <Route exact path={`/`} component={Menu} />
+                    <Route path={`/info`} component={InfoRest} />
                   </Switch>
                 </Suspense>
               </TabContentHolder>
