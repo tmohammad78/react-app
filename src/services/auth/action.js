@@ -18,7 +18,6 @@ export const register = ({ email, password }) => (dispatch, getState) => {
       returnSecureToken: true
     })
     .then(Response => {
-      console.log(Response.data);
       const data = Response.data;
       return dispatch({
         type: AUTH_REGISTER,

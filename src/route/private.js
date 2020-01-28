@@ -9,7 +9,6 @@ const PrivateRoute = ({ component: Component, ...props }) => {
   useEffect(() => {
     dispatch(checkLogin());
   }, []);
-  console.log(auth);
   return (
     <Route
       {...props}

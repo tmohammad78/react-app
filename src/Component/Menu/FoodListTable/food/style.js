@@ -7,6 +7,7 @@ export const FoodItem = styled.div`
   padding-bottom: 15px;
   transition: all 0.2s cubic-bezier(0, 0.5, 0.5, 1);
   > section {
+    user-select: none;
     &:hover {
       ${LikeFoodStyle} {
         display: inline-block;
