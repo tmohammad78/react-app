@@ -7,7 +7,7 @@ const fetchData = () => dispatch => {
     .get(resturantData)
     .then(res => {
       const resInfo = res.data;
-      return dispatch({
+      return dispatch({	
         type: FETCH_DATA,
         payload: resInfo
       });
