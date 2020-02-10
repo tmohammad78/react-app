@@ -1,5 +1,5 @@
 import React, { lazy, Suspense } from 'react';
-import { Switch, Route, NavLink } from 'react-router-dom';
+import { Switch, Route, NavLink, withRouter } from 'react-router-dom';
 import PropTypes from 'prop-types';
 
 import Cover from 'component/Cover';
@@ -13,9 +13,10 @@ import {
   MenuTab
 } from './style.js';
 
+const Favorite = lazy(() => import('component/Favorite'));
 const Menu = lazy(() => import('component/Menu'));
 
-const Order = () => {
+const Order = props => {
   return (
     <React.Fragment>
       <Cover />
@@ -25,29 +26,23 @@ const Order = () => {
             <RestProfileContainer>
               {/* <nav className='menu-tab'> */}
               <MenuTab>
-                <NavLink
-                  exact
-                  to={{
-                    pathname: `/`
-                  }}
-                  activeClassName='active'
-                >
+                <NavLink to={`${props.match.url}`} activeClassName='active'>
                   منوی غذا
                 </NavLink>
-                <NavLink
-                  to={{
-                    pathname: `/info`
-                  }}
-                >
+                <NavLink to='/info' activeClassName='active'>
                   اطلاعات رستوران
+                </NavLink>
+                <NavLink to='/favorite' activeClassName='active'>
+                  علاقه مندی
                 </NavLink>
               </MenuTab>
               {/* <div className='tab-content-holder white-box clearfix'> */}
               <TabContentHolder>
                 <Suspense fallback={() => <div>...loading</div>}>
                   <Switch>
-                    <Route exact path={`/`} component={Menu} />
-                    <Route path={`/info`} component={InfoRest} />
+                    <Route exact path={`${props.match.path}`} component={Menu} />
+                    <Route path='/info' component={InfoRest} />
+                    <Route path='/favorite' component={Favorite} />
                   </Switch>
                 </Suspense>
               </TabContentHolder>
