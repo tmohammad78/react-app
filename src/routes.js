@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Switch, Route, BrowserRouter as Router } from 'react-router-dom';
+import { Switch, Route, BrowserRouter as Router, withRouter } from 'react-router-dom';
 
 import { ThemeProvider } from 'styled-components';
 import { useDarkMode } from './hooks/useDarkMode';
@@ -28,7 +28,7 @@ function App() {
         <Header toggleTheme={toggleTheme} />
         <Router history={browserHistory}>
           <Switch>
-            <PrivateRoute exact path='/' component={Order} />
+            <PrivateRoute path='/' component={withRouter(Order)} />
             <Route path='/auth' component={AuthPage} />
           </Switch>
         </Router>
