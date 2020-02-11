@@ -14,18 +14,23 @@ const Menu = () => {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    dispatch(
-      fetchMenu(() => {
-        setLoading(false);
-      })
-    );
+    console.log(foodList , loading);
+    if (!foodList) {
+      dispatch(
+        fetchMenu(() => {
+          setLoading(false);
+        })
+      );
+    } else {
+      setLoading(false);
+    }
   }, []);
 
   return (
     <Fragment>
       <Suspense fallback={<Spinner />}>
         <Category />
-        {!loading ? <FoodListTable items={foodList} /> : <Spinner/>}
+        {!loading ? <FoodListTable items={foodList} /> : <Spinner />}
       </Suspense>
     </Fragment>
   );

@@ -25,7 +25,6 @@ export const dislikeProduct = product => ({
 export const fetchMenu = callback => (dispatch, getState) => {
   const cart = getState().cart.items;
   const likedFood = getState().likeFood.likeFood;
-
   const foodList = getState().menu.foodList;
 
   const productLoaded = (data, sort) => {
