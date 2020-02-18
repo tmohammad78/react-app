@@ -3,7 +3,6 @@ import { useDispatch, useSelector } from 'react-redux';
 
 import { fetchMenu } from '../../services/menu/actions';
 import Spinner from '../Spinner';
-import Skeleton from 'component/skeleton';
 
 const Category = lazy(() => import('../Category/index'));
 const FoodListTable = lazy(() => import('./FoodListTable'));
@@ -14,7 +13,7 @@ const Menu = () => {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    console.log(foodList , loading);
+    // console.log(foodList , loading);
     if (!foodList) {
       dispatch(
         fetchMenu(() => {

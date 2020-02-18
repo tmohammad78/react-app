@@ -17,7 +17,7 @@ const FloatCart = () => {
   const { totalPrice, totalProduct } = cartInfo;
 
   const products = objectToArray(cartProducts).map(item => {
-    return <CartProduct product={item} />;
+    return <CartProduct key={item.id} product={item} />;
   });
 
   const toggleShowCart = () => {

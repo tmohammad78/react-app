@@ -12,7 +12,7 @@ const SubFood = ({ subfood }) => {
       <div>
         {subfood.subFoods.map(food => {
           return (
-            <FoodItem>
+            <FoodItem key={food.id}>
               <section>
                 <FoodDetails food={food} />
               </section>

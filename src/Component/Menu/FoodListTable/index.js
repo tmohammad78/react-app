@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect , useCallback } from 'react';
 import PropTypes from 'prop-types';
 import { useSelector, useDispatch } from 'react-redux';
 
@@ -22,7 +22,6 @@ const FoodListTable = ({ items }) => {
   let lastCategory = null;
 
   const subFood = useSelector(state => state.subFood);
-  console.log(subFood);
   const [foodList, setFoodList] = useState(items);
   const [searchKey, setSearchKey] = useState('');
   const [inStock, setInStock] = useState(false);
@@ -59,6 +58,7 @@ const FoodListTable = ({ items }) => {
     setSearchKey(text);
   };
 
+  
   const stockHandler = value => {
     search(searchKey, value);
     setInStock(value);

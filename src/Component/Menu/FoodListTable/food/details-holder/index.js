@@ -1,4 +1,4 @@
-import React, { useMemo } from 'react';
+import React, { useMemo , useEffect } from 'react';
 import PropTypes from 'prop-types';
 
 import Ingredient from '../foodDetails/ingredient';
@@ -10,6 +10,7 @@ import LikeFood from '../foodDetails/likeFood';
 import './style.scss';
 
 const Details = ({ food }) => {
+	
   const Detail = () => {
     return (
       <React.Fragment>
@@ -23,11 +24,12 @@ const Details = ({ food }) => {
 
   const renderMemoDetail = useMemo(() => {
     return <Detail />;
-  }, Detail);
+  });
 
   return (
     <div className='details-holder clearfix'>
-      {renderMemoDetail}
+      {/* {renderMemoDetail} */}
+      <Detail />
       <QtyHolder food={food} />
     </div>
   );

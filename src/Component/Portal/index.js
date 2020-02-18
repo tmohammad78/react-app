@@ -1,4 +1,4 @@
-import { useEffect, useMemo } from 'react';
+import { useEffect } from 'react';
 import ReactDOM from 'react-dom';
 
 const Portal = props => {

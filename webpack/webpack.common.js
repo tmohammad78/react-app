@@ -1,6 +1,7 @@
 const commonVariables = require('./commonVariables');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const I18nPlugin = require('i18n-webpack-plugin');
+
 const VENDORS_LIB = ['react', 'react-dom', 'react-router-dom'];
 
 module.exports = Object.keys(commonVariables.languages).map(function(language) {
@@ -53,6 +54,7 @@ module.exports = Object.keys(commonVariables.languages).map(function(language) {
         //   'theme-color': '#4285f4'
         // },
         // chunks: ['app'],
+
         title: 'Food Delivery',
         template: 'assets/index.html',
         favicon: 'assets/favicon.ico',

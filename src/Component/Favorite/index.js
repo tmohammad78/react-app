@@ -7,9 +7,18 @@ const Favorite = () => {
   let favoriteFood = useSelector(state => state.likeFood.likeFood);
   favoriteFood = objectToArray(favoriteFood);
   return (
-    <div>
+    <div
+      className=''
+      style={{
+        direction: 'rtl'
+      }}
+    >
+      <div>
+        <span>علاقه مندی ها</span>
+      </div>
       {favoriteFood.map(item => {
-        return <Food food={item} />;
+		  console.log(item)
+        return <Food food={item} key={item.id} />;
       })}
     </div>
   );

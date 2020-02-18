@@ -1,4 +1,4 @@
-import React, { useState, useMemo, useEffect } from 'react';
+import React, { useState, useMemo, useCallback } from 'react';
 import PropTypes from 'prop-types';
 import { useDispatch, useSelector } from 'react-redux';
 
@@ -22,13 +22,21 @@ const Food = ({ food }) => {
     className.push('active-box');
   }
 
-  const handleshowModal = () => {
-    if (food.subFoods.length > 0) {
-      dispatch(SubFoodModal(food));
-    } else {
-      SetShowModal(() => !showModal);
-    }
-  };
+    const handleshowModal = () => {
+      if (food.subFoods.length > 0) {
+        dispatch(SubFoodModal(food));
+      } else {
+        SetShowModal(() => !showModal);
+      }
+    };
+
+//   const handleshowModal = useCallback(() => {
+//     if (food.subFoods.length > 0) {
+//       dispatch(SubFoodModal(food));
+//     } else {
+//       SetShowModal(() => !showModal);
+//     }
+//   }, [showModal, food.subFoods]);
 
   const renderImage = useMemo(() => {
     return (
@@ -36,8 +44,10 @@ const Food = ({ food }) => {
         <FoodImage image={food.img} />
       </div>
     );
-  }, FoodImage);
-
+  }, [FoodImage]);
+  const renderTest = useMemo(() => {
+    return <FoodDetails food={newItem} />;
+  }, [newItem]);
   return (
     <FoodItem>
       <section
@@ -49,7 +59,8 @@ const Food = ({ food }) => {
       >
         <FoodBadge quantity={newItem.quantity} />
         {renderImage}
-        <FoodDetails food={newItem} />
+        {/* <FoodDetails food={newItem} /> */}
+        {renderTest}
         {showModal ? (
           <Portal>
             <Modal show={showModal} onClose={handleshowModal}>

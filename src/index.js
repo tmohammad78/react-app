@@ -1,11 +1,13 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import Root from './Root';
-import Routs from './routes';
+import App from './app';
+
 import './styles/main.scss';
-ReactDOM.hydrate(
-  <Root>
-    <Routs />
-  </Root>,
-  document.getElementById('root')
-);
+
+// ReactDOM.hydrate(
+//   <App />,
+//   document.getElementById('root')
+// );
+
+const renderMethod = module.hot ? ReactDOM.render : ReactDOM.hydrate;
+renderMethod(<App />, document.getElementById('root'));

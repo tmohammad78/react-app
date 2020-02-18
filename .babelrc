@@ -2,6 +2,7 @@
   "presets": [["@babel/preset-env", { "modules": false }], "@babel/preset-react"],
   "plugins": [
     "react-hot-loader/babel",
+    // "transform-react-jsx",
     "@babel/plugin-proposal-class-properties",
     ["@babel/plugin-proposal-decorators", { "legacy": true }],
     [
@@ -14,7 +15,14 @@
         }
       }
     ],
-    ["babel-plugin-styled-components"],
+
+    [
+      "babel-plugin-styled-components",
+      {
+        "minify": true,
+        "transpileTemplateLiterals": true
+      }
+    ],
     ["@babel/plugin-transform-modules-commonjs"],
     "transform-react-remove-prop-types",
     "@babel/plugin-transform-react-constant-elements",

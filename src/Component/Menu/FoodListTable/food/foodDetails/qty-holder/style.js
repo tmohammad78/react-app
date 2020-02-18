@@ -16,7 +16,6 @@ export const QtyStyle = styled(Parent).attrs({
       padding: 0;
       color: #ff7714;
       border: 1px solid #ff7714;
-
     }
   }
   &.show-detail {
@@ -39,6 +38,7 @@ export const QtyStyle = styled(Parent).attrs({
 export const AvailableBox = styled.div`
   position: absolute;
   left: 9px;
+  bottom: 9px;
   .meal-badge {
     padding: 6px 9px;
     color: ${({ theme }) => theme.AvailableBoxText};

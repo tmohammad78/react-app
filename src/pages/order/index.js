@@ -5,6 +5,7 @@ import PropTypes from 'prop-types';
 import Cover from 'component/Cover';
 import Cart from 'component/FloatCart';
 import InfoRest from 'component/infoRes';
+
 import {
   RestMenuHolder,
   RightSideHolder,
@@ -26,7 +27,7 @@ const Order = props => {
             <RestProfileContainer>
               {/* <nav className='menu-tab'> */}
               <MenuTab>
-                <NavLink to={`${props.match.url}`} activeClassName='active'>
+                <NavLink to={`${props.match.url}`}  >
                   منوی غذا
                 </NavLink>
                 <NavLink to='/info' activeClassName='active'>

@@ -4,7 +4,7 @@ import { Link } from 'react-scroll';
 import Carousel, { consts } from 'react-elastic-carousel';
 import { Iw, TextIw } from './style';
 import { Button } from 'component/Buttons/Button';
-import Skeleton from 'react-skeleton-loader';
+
 
 const Category = () => {
   const item = useSelector(state => state.menu.categoryList);

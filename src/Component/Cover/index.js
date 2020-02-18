@@ -3,7 +3,6 @@ import axios from 'axios';
 import { useSelector } from 'react-redux';
 import { resturantData } from 'services/util';
 import './style.scss';
-import Skeleton from 'react-skeleton-loader';
 
 const Cover = () => {
   const [data, setData] = useState('');
@@ -49,13 +48,13 @@ const Cover = () => {
           </figure>
 
           <aside>
-            <h1>{data.name || <Skeleton width='250px' />}</h1>
+            <h1>{data.name}</h1>
             <div className='categoryList'>
               {item.map(item => {
-                return <span> {item.catTitle}.</span>;
-              }) || <Skeleton width='250px' />}
+                return <span key={item.catId}> {item.catTitle}.</span>;
+              })}
             </div>
-            <h2>{data.fullAddress || <Skeleton width='250px' />}</h2>
+            <h2>{data.fullAddress}</h2>
           </aside>
         </div>
         <footer>
