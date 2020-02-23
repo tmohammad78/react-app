@@ -1,5 +1,5 @@
 {
-  "presets": [["@babel/preset-env", { "modules": false }], "@babel/preset-react"],
+  "presets": [["@babel/preset-env"], "@babel/preset-react"],
   "plugins": [
     "react-hot-loader/babel",
     // "transform-react-jsx",
@@ -24,11 +24,10 @@
       }
     ],
     ["@babel/plugin-transform-modules-commonjs"],
+    "@babel/plugin-transform-runtime",
     "transform-react-remove-prop-types",
     "@babel/plugin-transform-react-constant-elements",
     "@babel/plugin-transform-react-inline-elements",
-    "@babel/plugin-transform-runtime",
-
     "@babel/plugin-proposal-export-default-from",
     "@babel/plugin-proposal-logical-assignment-operators",
     "@babel/plugin-proposal-do-expressions"

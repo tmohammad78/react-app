@@ -1,13 +1,13 @@
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const autoprefixer = require('autoprefixer');
-const commonVariables = require('./commonVariables');
+const commonVariables = require('./commonV										ariables');
 const FriendlyErrorsWebpackPlugin = require('friendly-errors-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
 const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
 const MinifyPlugin = require('babel-minify-webpack-plugin');
+const TerserPlugin = require('terser-webpack-plugin');
 const CompressionPlugin = require('compression-webpack-plugin');
-
 
 module.exports = Object.keys(commonVariables.languages).map(function(language) {
   return {
@@ -16,7 +16,7 @@ module.exports = Object.keys(commonVariables.languages).map(function(language) {
       app: ['core-js/stable', 'regenerator-runtime/runtime', `${commonVariables.appEntry}/index.js`]
     },
     output: {
-      chunkFilename: `[name].[chunkhash:8].js`
+      chunkFilename: `static/js/[name].[chunkhash:8].js`
     },
     module: {
       rules: [
@@ -77,15 +77,14 @@ module.exports = Object.keys(commonVariables.languages).map(function(language) {
     },
     optimization: {
       concatenateModules: true,
-      minimizer: [
-        new UglifyJsPlugin()
-      ]
+      minimize: true,
+      minimizer: [new UglifyJsPlugin(), new TerserPlugin()]
     },
 
     plugins: [
       new BundleAnalyzerPlugin(),
-	  new FriendlyErrorsWebpackPlugin(),
-	//   new CompressionPlugin(),
+      new FriendlyErrorsWebpackPlugin(),
+      //   new CompressionPlugin(),
       new MinifyPlugin(),
       new MiniCssExtractPlugin({
         filename: '[name].' + language + '.css',
@@ -95,12 +94,25 @@ module.exports = Object.keys(commonVariables.languages).map(function(language) {
       }),
       //   webpack.optimize.DedupePlugin
 
-      new HtmlWebpackPlugin({
-        // minify: true, // minify html files
-        minify: {
-          collapseWhitespace: true
-        }
-      })
+      new HtmlWebpackPlugin(
+        Object.assign(
+          {},
+          {
+            minify: {
+              removeComments: true,
+              collapseWhitespace: true,
+              removeRedundantAttributes: true,
+              useShortDoctype: true,
+              removeEmptyAttributes: true,
+              removeStyleLinkTypeAttributes: true,
+              keepClosingSlash: true,
+              minifyJS: true,
+              minifyCSS: true,
+              minifyURLs: true
+            }
+          }
+        )
+      )
     ]
   };
 });

@@ -1,6 +1,6 @@
 const path = require('path');
 
-const APP_BUILD_VERSION = "d-1";
+const APP_BUILD_VERSION = "v-1";
 
 const PROJECT_ROOT = path.resolve(__dirname, '../');
 

@@ -12,7 +12,7 @@ module.exports = Object.keys(commonVariables.languages).map(function(language) {
     },
     output: {
       path: commonVariables.outputPath,
-      filename: `[name].${language}.js`
+      filename: `static/js/[name].${language}.js`
       //publicPath: commonVariables.publicPath
     },
     module: {

@@ -22,7 +22,7 @@ module.exports = env => {
 
   const mergedConfig = webpackMerge(commonConfig[0], envConfig[0]); //merge file of webpack
 
-  //console.log(chalk.blue(JSON.stringify(mergedConfig)));
+  console.log(chalk.blue(JSON.stringify(mergedConfig)));
 
   return mergedConfig;
 };
