@@ -4,7 +4,6 @@ import newRootReducer from './reducers';
 
 export default initialState => {
   initialState = JSON.parse(window.localStorage.getItem('state')) || initialState;
-  console.log(initialState);
   const middleware = [thunk];
   let enhancer;
   if (process.env.NODE_ENV !== 'development') {

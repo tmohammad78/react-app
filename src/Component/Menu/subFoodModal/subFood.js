@@ -10,9 +10,9 @@ const SubFood = ({ subfood }) => {
     <SubFoodStyle>
       <DetailModal subfood={true} defaultDetail={subfood} food={subfood} />
       <div>
-        {subfood.subFoods.map(food => {
+        {subfood.subFoods.map((food, i) => {
           return (
-            <FoodItem key={food.id}>
+            <FoodItem key={food.catId}>
               <section>
                 <FoodDetails food={food} />
               </section>

@@ -97,12 +97,12 @@ const FoodListTable = ({ items }) => {
   return (
     <FoodMenu>
       <Sort onChange={sortHandler} />
-      <SearchBar
+      {/* <SearchBar
         filterText={searchKey}
         onfilterText={searchHandler}
         inStock={inStock}
         onChangeStock={stockHandler}
-      />
+      /> */}
       <Modal
         show={subFood.show}
         onClose={() => dispatch(closeSubFoodModal(true))}

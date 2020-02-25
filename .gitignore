@@ -16,6 +16,7 @@ build
 dist
 yarn-error.log
 .env.local
+./.firebase
 .env.development.local
 .env.test.local
 .env.production.local

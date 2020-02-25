@@ -24,12 +24,12 @@ function App() {
     <React.Fragment>
       <ThemeProvider theme={themeMode}>
         <GlobalStyles />
-
         <Header toggleTheme={toggleTheme} />
         <Router history={browserHistory}>
           <Switch>
-            <PrivateRoute path='/' component={withRouter(Order)} />
-            <Route path='/auth' component={AuthPage} />
+            {/* <PrivateRoute exact path='/' component={withRouter(Order)} /> */}
+			<Route path='/' component={Order} />
+		    <Route path='/auth' component={AuthPage} />
           </Switch>
         </Router>
         <Footer />

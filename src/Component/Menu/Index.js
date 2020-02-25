@@ -13,7 +13,6 @@ const Menu = () => {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    // console.log(foodList , loading);
     if (!foodList) {
       dispatch(
         fetchMenu(() => {

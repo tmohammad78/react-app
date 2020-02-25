@@ -9,8 +9,8 @@ const Cover = () => {
   const item = useSelector(state => state.menu.categoryList);
   const backgroundCover =
     'url(https://static.delino.com/Image/Restaurant/Cover/st5xrnas.i4s_big.jpg)';
-  const backgroundLogo = 'https://static.delino.com/Image/Default/logo/2yujoehm.rrz_180x180.png';
-
+  const backgroundLogo = '';
+  //https://static.delino.com/Image/Default/logo/2yujoehm.rrz_180x180.png
   useEffect(() => {
     handleFetchInfo();
   }, []);
@@ -52,7 +52,7 @@ const Cover = () => {
             <div className='categoryList'>
               {item.map(item => {
                 return <span key={item.catId}> {item.catTitle}.</span>;
-              })}
+              }) || <Skeleton width='250px' />}
             </div>
             <h2>{data.fullAddress}</h2>
           </aside>

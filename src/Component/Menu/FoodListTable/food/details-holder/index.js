@@ -24,7 +24,7 @@ const Details = ({ food }) => {
 
   const renderMemoDetail = useMemo(() => {
     return <Detail />;
-  });
+  }, [Detail]);
 
   return (
     <div className='details-holder clearfix'>

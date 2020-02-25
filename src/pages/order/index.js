@@ -13,6 +13,7 @@ import {
   RestProfileContainer,
   MenuTab
 } from './style.js';
+import Spinner from 'component/Spinner/index.js';
 
 const Favorite = lazy(() => import('component/Favorite'));
 const Menu = lazy(() => import('component/Menu'));
@@ -25,7 +26,6 @@ const Order = props => {
         <div className='wrapper clearfix '>
           <RightSideHolder>
             <RestProfileContainer>
-              {/* <nav className='menu-tab'> */}
               <MenuTab>
                 <NavLink to={`${props.match.url}`}  >
                   منوی غذا
@@ -37,9 +37,8 @@ const Order = props => {
                   علاقه مندی
                 </NavLink>
               </MenuTab>
-              {/* <div className='tab-content-holder white-box clearfix'> */}
               <TabContentHolder>
-                <Suspense fallback={() => <div>...loading</div>}>
+                <Suspense fallback={<Spinner />}>
                   <Switch>
                     <Route exact path={`${props.match.path}`} component={Menu} />
                     <Route path='/info' component={InfoRest} />
@@ -47,7 +46,6 @@ const Order = props => {
                   </Switch>
                 </Suspense>
               </TabContentHolder>
-              {/* </div> */}
             </RestProfileContainer>
           </RightSideHolder>
         </div>

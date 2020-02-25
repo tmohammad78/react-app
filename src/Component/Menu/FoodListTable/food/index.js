@@ -45,9 +45,7 @@ const Food = ({ food }) => {
       </div>
     );
   }, [FoodImage]);
-  const renderTest = useMemo(() => {
-    return <FoodDetails food={newItem} />;
-  }, [newItem]);
+
   return (
     <FoodItem>
       <section

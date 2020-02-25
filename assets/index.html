@@ -6,10 +6,12 @@
 		<meta http-equiv="content-type" content="text/html; charset=UTF-8" />
 		<link href="favicon.ico" rel="shortcut icon" type="image/x-icon" />
 		<link rel="sitemap" type="application/xml" title="Sitemap" href="sitemap.xml" />
+		<link rel="manifest" href="./manifest.json" />
 		<!-- its for google verification google webmaster tool by verfiying you can see details performance data and good security -->
 		<meta name="google-site-verification" content=""/>
-		
-		
+
+		<link rel="apple-touch-icon" href="https://cdn.glitch.com/49d34dc6-8fbd-46bb-8221-b99ffd36f1af%2Ftouchicon-180.png?v=1566411949736">
+		<meta name="theme-color" content="#FF7714"   />
 		<meta name="keywords" content="" />
 		<!-- Open Graph Protocol : its useful for sharing our website in social media and how we want to be showed to user in facebook or twiter and ...  -->
 		<meta name="og:title" property="og:title" content="Food Delivery" />
@@ -17,12 +19,69 @@
 		<meta property="og:description" content="" />
 		<meta property="og:image" content="" />
 		<title><%= htmlWebpackPlugin.options.title %></title>
+		<style type="text/css">
+			body {
+			  margin: 0;
+			  padding: 0;
+			  font-family: sans-serif;
+			}
+			.navbar {
+			  background-color: #4169e1;
+			}
+			.navbar h3 {
+			  display: inline-block;
+			  text-align: left;
+			  padding: 10px;
+			  color: black;
+			  text-decoration: none;
+			}
+			.navbar a {
+			  display: inline-block;
+			  padding: 10px;
+			  color: #fff;
+			  text-decoration: none;
+			}
+			.page-info {
+			  padding: 10px;
+			}
+			.Current {
+			  color: #2e8b57;
+			}
+			.Completed {
+			  color: #ff6347;
+			  text-decoration: line-through;
+			}
+		  </style>
 	</head>
 	<body>
 		<noscript>
 			You need to enable JavaScript to run this app.
 		</noscript>
-		<div id="root"></div>
+		<div id="root">
+			<div class="navbar">
+				<h3>Task Manager</h3>
+				<a href="/">Current Tasks</a>
+				<a href="/completed">Completed Tasks</a>
+			  </div>
+			  <p class="page-info">
+				Loading...
+			  </p>
+		</div>
 		<div id="modal-root" ></div>
+		<script>
+      if ('serviceWorker' in navigator) {
+        window.addEventListener('load', function() {
+          navigator.serviceWorker.register('./serviceWorker.js').then(function(registration) {
+            console.log('Worker registration successful', registration.scope);
+          }, function(err) {
+            console.log('Worker registration failed', err);
+          }).catch(function(err) {
+            console.log(err);
+          });
+        });
+      } else {
+        console.log('Service Worker is not supported by browser.');
+      }
+		  </script>
 	</body>
 </html>

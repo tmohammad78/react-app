@@ -1,10 +1,6 @@
 import { SET_SUBFOOD, CLOSE_MODAL } from './actionType';
 
 export const SubFoodModal = (food, open = true) => dispatch => {
-  let arrayFood = [];
-  //   food.subFoods.map((item, i) => {
-  //     return arrayFood.push(item);
-  //   });
   dispatch({
     type: SET_SUBFOOD,
     payload: {

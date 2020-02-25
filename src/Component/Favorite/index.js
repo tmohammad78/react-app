@@ -17,8 +17,7 @@ const Favorite = () => {
         <span>علاقه مندی ها</span>
       </div>
       {favoriteFood.map(item => {
-		  console.log(item)
-        return <Food food={item} key={item.id} />;
+        return <Food food={item} key={item.catId} />;
       })}
     </div>
   );
