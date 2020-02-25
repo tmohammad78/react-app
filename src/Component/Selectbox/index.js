@@ -21,7 +21,7 @@ const Selectbox = ({ handleOnChange }) => {
   const createOptions = option =>
     option.map(item => {
       return (
-        <li>
+        <li key={item.index}>
           <Button
             bgcolor={checkactive[parseInt(item.index)] ? '#FF7714' : 'transparent'}
             color={checkactive[parseInt(item.index)] ? '#FFF' : '#333'}

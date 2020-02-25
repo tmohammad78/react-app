@@ -17,15 +17,13 @@ const Category = () => {
 
   const actionArrow = attr => {
     const { type, onClick } = attr;
-    const pointer =
-      type === consts.PREV ? (
-        <i className='fo fo-angle-right' />
-      ) : (
-        <i className='fo fo-angle-left' />
-      );
     return (
       <Button color='black' bgcolor='transparent' ptb='0' prl='5' onClick={onClick} name='carousle'>
-        {pointer}
+        {type === consts.PREV ? (
+          <i className='fo fo-angle-right' />
+        ) : (
+          <i className='fo fo-angle-left' />
+        )}
       </Button>
     );
   };

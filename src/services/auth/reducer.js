@@ -1,4 +1,4 @@
-import { AUTH_LOGIN, AUTH_ERROR, AUTH_REGISTER ,CHECK_LOGIN} from './actionType';
+import { AUTH_LOGIN, AUTH_ERROR, AUTH_REGISTER, CHECK_LOGIN } from './actionType';
 
 const initialState = {
   authenticated: '',
@@ -12,13 +12,13 @@ const initialState = {
 export default function(state = initialState, action) {
   switch (action.type) {
     case AUTH_REGISTER:
-      const { idToken, refreshToken, expiresIn } = action.payload;
+      const { idToken, refreshToken, expiresIn, isLogin } = action.payload;
       return {
         ...state,
         token: idToken,
         refreshToken,
         expiresIn,
-        logged: true
+        logged: isLogin
       };
     case CHECK_LOGIN:
       return {

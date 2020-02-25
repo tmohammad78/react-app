@@ -11,8 +11,6 @@ const FormLogin = props => {
   const dispatch = useDispatch();
   const logged = useSelector(state => state.auth.logged);
   useEffect(() => {
-    debugger;
-    console.log(logged);
     logged ? <Redirect to='/' /> : '';
   }, [logged]);
   const InputForm = ({ field, className, meta, form: { touched, errors }, ...props }) => {

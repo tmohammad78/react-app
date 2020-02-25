@@ -15,9 +15,8 @@ const FloatCart = () => {
   const cartProducts = useSelector(state => state.cart.items);
   const cartInfo = useSelector(state => state.cart.cartTotal);
   const { totalPrice, totalProduct } = cartInfo;
-
-  const products = objectToArray(cartProducts).map(item => {
-    return <CartProduct product={item} />;
+  const products = objectToArray(cartProducts).map((item, i) => {
+    return <CartProduct key={i} product={item} />;
   });
 
   const toggleShowCart = () => {
@@ -61,7 +60,7 @@ const FloatCart = () => {
             <React.Fragment>
               <header className='header-cart'>
                 <h3>
-                  سبد خرید<span className='cart-size'>{currency(totalProduct,false)}</span>
+                  سبد خرید<span className='cart-size'>{currency(totalProduct, false)}</span>
                 </h3>
               </header>
               <div className='cart-holder-inner clearfix'>

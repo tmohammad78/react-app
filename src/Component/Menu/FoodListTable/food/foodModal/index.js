@@ -16,7 +16,7 @@ const DetailModal = ({ subfood = false, defaultDetail: items, food }) => {
   );
   const renderDefault = useMemo(() => {
     return <Test />;
-  }, Test);
+  }, [Test]);
 
   return (
     <div className='modal-food'>

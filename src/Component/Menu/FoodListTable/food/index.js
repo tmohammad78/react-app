@@ -36,7 +36,7 @@ const Food = ({ food }) => {
         <FoodImage image={food.img} />
       </div>
     );
-  }, FoodImage);
+  }, [FoodImage]);
 
   return (
     <FoodItem>

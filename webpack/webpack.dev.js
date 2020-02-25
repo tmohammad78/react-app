@@ -1,10 +1,11 @@
 const webpack = require('webpack');
 const autoprefixer = require('autoprefixer');
 const commonVariables = require('./commonVariables');
+const path = require('path');
 
 const PORT = process.env.PORT || 8080;
-module.exports = Object.keys(commonVariables.languages).map(function(language) {
-  return {
+module.exports = [
+  {
     mode: 'development',
     devtool: 'cheap-module-source-map',
     entry: {
@@ -17,7 +18,12 @@ module.exports = Object.keys(commonVariables.languages).map(function(language) {
       ]
     },
     output: {
-      chunkFilename: `[name].${language}.js`
+      // chunkFilename: `[name].${language}.js`
+      filename: 'main.js',
+      path: path.resolve(__dirname, 'dist')
+
+      //   path: `${commonVariables.publicPath}`,
+      //   filename: 'server.js'
     },
     module: {
       rules: [
@@ -46,7 +52,6 @@ module.exports = Object.keys(commonVariables.languages).map(function(language) {
             {
               loader: 'sass-loader',
               options: {
-                data: `$pageDirection: '${commonVariables.languages[language]['langDirection']}';`,
                 sourceMap: true
               }
             }
@@ -65,7 +70,7 @@ module.exports = Object.keys(commonVariables.languages).map(function(language) {
             {
               loader: 'react-svg-loader',
               options: {
-                jsx: true // true outputs JSX tags
+                jsx: true
               }
             }
           ]
@@ -80,5 +85,5 @@ module.exports = Object.keys(commonVariables.languages).map(function(language) {
       // hot: true,
       open: true
     }
-  };
-});
+  }
+];

@@ -3,7 +3,6 @@ import axios from '../../gate/api';
 import browserHistory from '../../route/history';
 export const checkLogin = () => (dispatch, getState) => {
   const auth = getState().auth;
-  console.log(auth);
   dispatch({
     type: CHECK_LOGIN,
     payload: auth
@@ -18,10 +17,10 @@ export const register = ({ email, password }) => (dispatch, getState) => {
       returnSecureToken: true
     })
     .then(Response => {
-      console.log(Response.data);
       const data = Response.data;
       return dispatch({
-        type: AUTH_REGISTER,
+		type: AUTH_REGISTER,
+		isLogin:true,
         payload: data
       });
     });

@@ -15,6 +15,7 @@ const Input = ({
   ...props
 }) => {
   const [focus, setFocus] = useState(false);
+
   const handleFocus = () => {
     setFocus(true);
   };
@@ -32,7 +33,6 @@ const Input = ({
           <i className={`fo fo-${icon}`} />
         </IconName>
       ) : null}
-
       <InputStyle
         value={value || ''}
         type={type}

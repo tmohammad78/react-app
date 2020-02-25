@@ -3,8 +3,7 @@ import axios from 'axios';
 // import { refreshToken } from '../store/Auth/action';
 
 const instance = axios.create({
-  baseURL:
-    'https://identitytoolkit.googleapis.com/v1'
+  baseURL: 'https://identitytoolkit.googleapis.com/v1'
 });
 
 instance.interceptors.request.use(
@@ -24,7 +23,7 @@ instance.interceptors.request.use(
 
 instance.interceptors.response.use(
   response => {
-	  debugger
+    console.log(response);
     return response;
   },
   error => {

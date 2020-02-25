@@ -22,9 +22,7 @@ const InfoRes = () => {
   };
   if (restInfo) {
     return (
-      //   <div className='rest-info'>
       <RestInfo>
-        {/* <div className='left-box'> */}
         <LeftBox>
           <div className='address-box'>
             <h2>آدرس شعبه</h2>
@@ -43,7 +41,6 @@ const InfoRes = () => {
             </div>
           </div>
         </LeftBox>
-        {/* <div className='right-box'> */}
         <RightBox>
           <h2>نوع غذا</h2>
           <section>

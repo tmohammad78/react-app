@@ -9,7 +9,7 @@ const Favorite = () => {
   return (
     <div>
       {favoriteFood.map(item => {
-        return <Food food={item} />;
+        return <Food food={item} key={item.catId} />;
       })}
     </div>
   );
