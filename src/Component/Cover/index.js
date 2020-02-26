@@ -9,8 +9,6 @@ const Cover = () => {
   const item = useSelector(state => state.menu.categoryList);
   const backgroundCover =
     'url(https://static.delino.com/Image/Restaurant/Cover/st5xrnas.i4s_big.jpg)';
-  const backgroundLogo = '';
-  //https://static.delino.com/Image/Default/logo/2yujoehm.rrz_180x180.png
   useEffect(() => {
     handleFetchInfo();
   }, []);
@@ -44,14 +42,17 @@ const Cover = () => {
       <div className='wrapper clearfix'>
         <div className='rest-logo-holder'>
           <figure className='logo-holder'>
-            <img alt='logo' src={`${backgroundLogo}`} />
+            <img
+              alt='logo'
+              src='https://static.delino.com/Image/Default/logo/lwqgwoqw.3jj_180x180.png'
+            />
           </figure>
 
           <aside>
             <h1>{data.name}</h1>
             <div className='categoryList'>
               {item.map(item => {
-                return <span key={item.catId}> {item.catTitle}.</span>;	
+                return <span key={item.catId}> {item.catTitle}.</span>;
               })}
             </div>
             <h2>{data.fullAddress}</h2>
