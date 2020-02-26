@@ -51,8 +51,8 @@ const Cover = () => {
             <h1>{data.name}</h1>
             <div className='categoryList'>
               {item.map(item => {
-                return <span key={item.catId}> {item.catTitle}.</span>;
-              }) || <Skeleton width='250px' />}
+                return <span key={item.catId}> {item.catTitle}.</span>;	
+              })}
             </div>
             <h2>{data.fullAddress}</h2>
           </aside>

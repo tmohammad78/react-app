@@ -22,21 +22,13 @@ const Food = ({ food }) => {
     className.push('active-box');
   }
 
-    const handleshowModal = () => {
-      if (food.subFoods.length > 0) {
-        dispatch(SubFoodModal(food));
-      } else {
-        SetShowModal(() => !showModal);
-      }
-    };
-
-//   const handleshowModal = useCallback(() => {
-//     if (food.subFoods.length > 0) {
-//       dispatch(SubFoodModal(food));
-//     } else {
-//       SetShowModal(() => !showModal);
-//     }
-//   }, [showModal, food.subFoods]);
+  const handleshowModal = useCallback(() => {
+    if (food.subFoods.length > 0) {
+      dispatch(SubFoodModal(food));
+    } else {
+      SetShowModal(() => !showModal);
+    }
+  }, [showModal, food.subFoods]);
 
   const renderImage = useMemo(() => {
     return (
@@ -57,8 +49,8 @@ const Food = ({ food }) => {
       >
         <FoodBadge quantity={newItem.quantity} />
         {renderImage}
-        {/* <FoodDetails food={newItem} /> */}
-        {renderTest}
+        <FoodDetails food={newItem} />
+
         {showModal ? (
           <Portal>
             <Modal show={showModal} onClose={handleshowModal}>
