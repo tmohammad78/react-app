@@ -97,6 +97,7 @@
     "workbox-webpack-plugin": "^5.0.0"
   },
   "dependencies": {
+    "@auth0/auth0-spa-js": "^1.6.4",
     "autoprefixer": "^9.7.3",
     "axios": "^0.19.1",
     "babel-plugin-transform-react-jsx": "^6.24.1",
