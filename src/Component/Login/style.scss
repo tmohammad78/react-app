@@ -1,0 +1,15 @@
+.form {
+  width: 100%;
+  text-align: center;
+  .inputPack {
+    width: 70%;
+    display: inline-block;
+  }
+  .registerBtn {
+    position: absolute;
+    width: 70%;
+    bottom: 5px;
+    right: 50%;
+    transform: translateX(50%);
+  }
+}

@@ -7,7 +7,8 @@ export const InputStyle = styled.input`
   padding: 13px 7px;
   font-size: 20px;
   border: none;
-  color: ${({ theme }) => theme.text};
+  width: 100%;
+  color: ${({ theme }) => theme.inputText};
   background-color: transparent;
   &:focus {
     outline: none;
@@ -24,9 +25,9 @@ export const InputStyle = styled.input`
 export const ParentInput = styled.div`
   position: relative;
   border-radius: 5px;
-  float: right;
-  margin:20px 0px;
+  /* float: right; */
   border-bottom:2px solid white;
+  margin: 20px auto;
   /* -webkit-box-shadow: ${BoxShadow};
   -moz-box-shadow: ${BoxShadow};
   box-shadow: ${BoxShadow}; */

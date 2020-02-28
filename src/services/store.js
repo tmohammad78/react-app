@@ -24,7 +24,8 @@ export default initialState => {
       likeFood: state.likeFood,
       auth: {
         token: state.auth.token,
-        refreshToken: state.auth.refreshToken
+        refreshToken: state.auth.refreshToken,
+        logged: state.auth.logged
       }
     };
 

@@ -1,18 +1,23 @@
-import React, { useState, useEffect, lazy, Suspense } from 'react';
-import LoginModal from 'component/Login/index';
-import './style.scss';
-import { Route } from 'react-router-dom';
-
+import React, { useState, useEffect } from 'react';
+import { useSelector } from 'react-redux';
+import { Route, useHistory, useLocation } from 'react-router-dom';
 import Test from './test';
-import Spinner from 'component/Spinner';
-
 import Register from 'component/Register';
+import './style.scss';
 
 const AuthPage = props => {
+  //   let history = useHistory();
+  //   let location = useLocation();
+  //   let { form } = location.state || { form: { pathname: '/' } };
   console.log(props);
-
+  console.log('render');
+  const logged = useSelector(state => state.auth);
   const [RegisterUi, setRegisterUi] = useState(false);
+
   useEffect(() => {
+    if (props.location.pathname == '/' && logged) {
+      props.redirect('/');
+    }
     if (props.location.pathname == '/auth/test') {
       setRegisterUi(true);
     } else {
@@ -23,14 +28,6 @@ const AuthPage = props => {
     setRegisterUi(false);
   };
   return (
-    // <div
-    //   style={{
-    //     margin: '20% 0px'
-    //   }}
-    // >
-    //   <LoginModal />
-    // </div>
-
     <div className={`image-background ${RegisterUi ? 'active' : ''}`}>
       <picture>
         <div className='my_img'></div>
@@ -40,7 +37,7 @@ const AuthPage = props => {
         path={'/auth'}
         component={() => <Test {...props} callBackChangeState={handleShow} />}
       />
-      <Route exact path='/auth/test' component={Register} />
+      <Route exact path='/auth/test' component={() => <Register logged={logged} />} />
     </div>
   );
 };

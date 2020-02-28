@@ -12,19 +12,20 @@ const initialState = {
 export default function(state = initialState, action) {
   switch (action.type) {
     case AUTH_REGISTER:
-      const { idToken, refreshToken, expiresIn, isLogin } = action.payload;
+      const { idToken, refreshToken, expiresIn } = action.payload;
       return {
         ...state,
+        ...state.logged,
         token: idToken,
         refreshToken,
         expiresIn,
-        logged: isLogin
+        logged: true
       };
     case CHECK_LOGIN:
       return {
         ...state,
         token: action.payload.token,
-        refreshToken: action.payload.refreshToken
+        refreshToken: action.payload.refreshToken,
       };
     case AUTH_LOGIN:
       return {
