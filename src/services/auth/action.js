@@ -1,6 +1,5 @@
-import { AUTH_LOGIN, AUTH_ERROR, AUTH_REGISTER, CHECK_LOGIN } from './actionType';
+import { AUTH_LOGIN, SKIPAUTH, AUTH_ERROR, AUTH_REGISTER, CHECK_LOGIN } from './actionType';
 import axios from '../../gate/api';
-import firebase from '../../../firebaseconfig';
 import { browserHistory } from '../../route/history';
 
 export const checkLogin = () => (dispatch, getState) => {
@@ -11,8 +10,13 @@ export const checkLogin = () => (dispatch, getState) => {
   });
 };
 
-export const registerAction = ({ email, password }) => (dispatch, getState) => {
+export const skipAuth = () => dispatch => {
+  return dispatch({
+    type: SKIPAUTH
+  });
+};
 
+export const registerAction = ({ email, password }) => (dispatch, getState) => {
   axios
     .post('/accounts:signUp?key=AIzaSyDa29GWAYmBAuPEE7gxgVepxYYr6JAyfMQ', {
       email: email,

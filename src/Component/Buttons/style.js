@@ -23,6 +23,11 @@ const ButtonBase = styled.button`
     cursor: default;
     background-color: #eeee;
   }
+  &:focus {
+    -webkit-appearance: none;
+    outline: 0px !important ;
+    -webkit-tap-highlight-color: transparent;
+  }
 `;
 
 const color = {
@@ -76,13 +81,13 @@ export const ButtonStyle = styled(ButtonBase)`
     z-index: 0;
   }
 
-  &:focus {
+  &:active {
     .testing {
       top: 0;
       left: 0;
       right: 0;
       bottom: 0;
-      animation: open-shadow .5s ;
+      animation: open-shadow 0.5s;
       background-color: rgba(0, 0, 0, 0.08);
     }
   }

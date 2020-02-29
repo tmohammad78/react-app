@@ -1,16 +1,15 @@
 import React, { useState, useEffect } from 'react';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import { Route, useHistory, useLocation } from 'react-router-dom';
-import Test from './test';
+import MainAuth from './Main';
 import Register from 'component/Register';
 import './style.scss';
+import { skipAuth } from 'services/auth/action';
 
 const AuthPage = props => {
-  //   let history = useHistory();
-  //   let location = useLocation();
-  //   let { form } = location.state || { form: { pathname: '/' } };
   console.log(props);
   console.log('render');
+  const dispatch = useDispatch();
   const logged = useSelector(state => state.auth);
   const [RegisterUi, setRegisterUi] = useState(false);
 
@@ -27,6 +26,11 @@ const AuthPage = props => {
   const handleShow = () => {
     setRegisterUi(false);
   };
+
+  const handleSkipAuth = () => {
+    dispatch(skipAuth());
+  };
+
   return (
     <div className={`image-background ${RegisterUi ? 'active' : ''}`}>
       <picture>
@@ -35,7 +39,9 @@ const AuthPage = props => {
       <Route
         exact
         path={'/auth'}
-        component={() => <Test {...props} callBackChangeState={handleShow} />}
+        component={() => (
+          <MainAuth {...props} callBackChangeState={handleShow} handleSkipAuth={handleSkipAuth} />
+        )}
       />
       <Route exact path='/auth/test' component={() => <Register logged={logged} />} />
     </div>

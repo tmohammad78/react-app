@@ -18,17 +18,14 @@ function App(props) {
   const [render, setRender] = useState(false);
   const themeMode = theme === 'light' ? lightTheme : darkTheme;
   const dispatch = useDispatch();
-  //   browserHistory.listen((location, action) => {
-  //     dispatch(alertActions.clear());
-  //   });
   console.log('redner inner');
-  useEffect(() => {
-    browserHistory.listen((location, action) => console.log('History changed!', location, action));
-    console.log(browserHistory);
-    if (browserHistory.location.pathname == '/' && logged) {
-      setRender(true);
-    }
-  }, [browserHistory]);
+//   useEffect(() => {
+//     browserHistory.listen((location, action) => console.log('History changed!', location, action));
+//     console.log(browserHistory);
+//     if (browserHistory.location.pathname == '/' && logged) {
+//       setRender(true);
+//     }
+//   }, [browserHistory]);
   if (!componentMounted) {
     return <div />;
   }

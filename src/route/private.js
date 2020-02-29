@@ -1,15 +1,15 @@
 import React from 'react';
-
 import { Route, Redirect } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 
 const PrivateRoute = ({ component: Component, ...props }) => {
   const auth = useSelector(state => state.auth);
+  console.log('private', props);
   return (
     <Route
       {...props}
       render={({ location }) => {
-        if (auth.logged) {
+        if (auth.logged || auth.logged == 'skiped') {
           return <Component />;
         } else {
           return (
@@ -17,8 +17,8 @@ const PrivateRoute = ({ component: Component, ...props }) => {
               to={{
                 pathname: '/auth',
                 state: {
-					from:location
-				}
+                  from: location
+                }
               }}
             />
           );

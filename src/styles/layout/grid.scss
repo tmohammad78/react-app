@@ -1,13 +1,22 @@
 .wrapper {
-  margin: 0 5%;
-  width: 90%;
+  margin: 0;
+  width: 100%;
 }
 .row {
   float: right;
   width: 100%;
 }
+button {
+  &:focus {
+    -webkit-appearance: none;
+    outline: 0px !important ;
+    -webkit-tap-highlight-color: transparent;
+  }
+}
 @media only screen and (min-width: 767px) {
   .wrapper {
+    margin: 0 5%;
+    width: 90%;
     &.modal {
       width: 95%;
       margin: 0 auto;

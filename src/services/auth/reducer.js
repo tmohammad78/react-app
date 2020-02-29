@@ -1,4 +1,4 @@
-import { AUTH_LOGIN, AUTH_ERROR, AUTH_REGISTER, CHECK_LOGIN } from './actionType';
+import { AUTH_LOGIN,SKIPAUTH, AUTH_ERROR, AUTH_REGISTER, CHECK_LOGIN } from './actionType';
 
 const initialState = {
   authenticated: '',
@@ -25,7 +25,11 @@ export default function(state = initialState, action) {
       return {
         ...state,
         token: action.payload.token,
-        refreshToken: action.payload.refreshToken,
+        refreshToken: action.payload.refreshToken
+      };
+    case SKIPAUTH:
+      return {
+        logged: 'skiped'
       };
     case AUTH_LOGIN:
       return {
