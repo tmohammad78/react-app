@@ -1,4 +1,4 @@
-import React, { useState, Suspense, lazy } from 'react';
+import React, { useState } from 'react';
 
 import { Button } from '../Buttons/Button';
 import Login from '../Login';
@@ -8,7 +8,8 @@ import Portal from 'component/Portal';
 
 const Header = ({ toggleTheme }) => {
   const [showModal, setShowModal] = useState(false);
-  const backgroundLogo = 'https://static.snapp-food.com/media/cache/vendor_logo/uploads/images/vendors/logos/5807123d25da1.jpg';
+  const backgroundLogo =
+    'https://static.snapp-food.com/media/cache/vendor_logo/uploads/images/vendors/logos/5807123d25da1.jpg';
   const toggleLoginShow = e => {
     setShowModal(prevState => !prevState);
   };

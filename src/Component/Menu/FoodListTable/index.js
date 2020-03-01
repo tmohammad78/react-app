@@ -1,4 +1,4 @@
-import React, { useState, useEffect , useCallback } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import PropTypes from 'prop-types';
 import { useSelector, useDispatch } from 'react-redux';
 
@@ -58,7 +58,6 @@ const FoodListTable = ({ items }) => {
     setSearchKey(text);
   };
 
-  
   const stockHandler = value => {
     search(searchKey, value);
     setInStock(value);
@@ -97,12 +96,12 @@ const FoodListTable = ({ items }) => {
   return (
     <FoodMenu>
       <Sort onChange={sortHandler} />
-      {/* <SearchBar
+      <SearchBar
         filterText={searchKey}
         onfilterText={searchHandler}
         inStock={inStock}
         onChangeStock={stockHandler}
-      /> */}
+      />
       <Modal
         show={subFood.show}
         onClose={() => dispatch(closeSubFoodModal(true))}

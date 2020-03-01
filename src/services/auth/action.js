@@ -16,9 +16,20 @@ export const skipAuth = () => dispatch => {
   });
 };
 
+export const checkVerfify = (response, values) => dispatch => {
+  console.log(response, values);
+
+  if (response.additionalUserInfo.isNewUser) {
+    return dispatch(registerAction(values));
+  } else {
+    return dispatch(loginAction(values));
+  }
+};
+
 export const loginAction = ({ email, password }) => (dispatch, getState) => {
+  debugger;
   axios
-    .post('/accounts:signInWithPassword?key=AIzaSyDa29GWAYmBAuPEE7gxgVepxYYr6JAyfMQ', {
+    .post('/accounts:signInWithCustomToken?key=AIzaSyDa29GWAYmBAuPEE7gxgVepxYYr6JAyfMQ', {
       email: email,
       password: password,
       returnSecureToken: true

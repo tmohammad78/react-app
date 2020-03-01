@@ -6,6 +6,7 @@ import { RestInfo, LeftBox, RightBox } from './style';
 const InfoRes = () => {
   const [restInfo, setRestInfo] = useState('');
   useEffect(() => {
+    debugger;
     handleFetchInfo();
   }, []);
 

@@ -1,7 +1,22 @@
 .filter-box {
-	position: relative;
-    padding: 0px 15px;
-    clear: both;
+  position: relative;
+  padding: 0px 15px;
+  clear: both;
+  width: 100%;
+
+
+  input {
+    text-align: right;
+    color: #656565;
+    width: 93%;
+  }
+  label {
+    color: black;
+    text-align: right;
+    right: 35px;
+  }
+
+  // #656565
   .filter-search {
     height: 35px;
     position: relative;

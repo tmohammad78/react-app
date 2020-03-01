@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useHistory } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import FormLogin from 'component/Login/form';
-import { registerAction, loginAction } from 'services/auth/action';
+import { registerAction, loginAction, checkVerfify } from 'services/auth/action';
 import firebase from '../../../firebaseconfig';
 import './style.scss';
 
@@ -16,14 +16,15 @@ const Register = () => {
       size: 'invisible'
     });
   }, []);
-  useEffect(() => {
-    if (!newUser) {
-      dispatch(loginAction(values));
-    }
-  }, [newUser]);
-  const getVerifyCode = phone => {
-    const phoneNumber = phone.replace('0', '+98');
+  //   useEffect(() => {
+  //     if (!newUser) {
+  //       dispatch(loginAction(values));
+  //     }
+  //   }, [newUser]);
+  const getVerifyCode = values => {
+    const phoneNumber = values.phonenumber.replace('0', '+98');
     console.log(phoneNumber);
+    console.log(values);
     const applicationVerifier = window.recaptchaVerifier;
     firebase
       .auth()
@@ -37,6 +38,7 @@ const Register = () => {
       .then(response => {
         console.log(response);
         setNewUser(response.additionalUserInfo.isNewUser);
+        dispatch(checkVerfify(response, values));
       })
       .catch(error => {
         return Promise.reject(error);
@@ -44,11 +46,15 @@ const Register = () => {
   };
   const handleAuth = async values => {
     setValues(values);
-    const result = await getVerifyCode(values.phonenumber);
-    if (result && newUser) {
-      dispatch(registerAction(values));
-      //   newUser ? dispatch(registerAction(values)) : dispatch(loginAction(values));
-    }
+    getVerifyCode(values);
+    // if (result && newUser) {
+    //   debugger;
+    //   dispatch(registerAction(values));
+    //   //   newUser ? dispatch(registerAction(values)) : dispatch(loginAction(values));
+    // } else if (result && !newUser) {
+    //   debugger;
+    //   dispatch(loginAction(values));
+    // }
     //  else {
     //   //   dispatch(loginAction(values));
     // }

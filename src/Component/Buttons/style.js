@@ -63,10 +63,6 @@ export const ButtonStyle = styled(ButtonBase)`
       transform: scale(0);
       box-shadow: 0 0 0 0px rgba(0, 0, 0, 0.8);
     }
-    /* 50% {
-      transform: scale(0.5);
-      box-shadow: 0 0 0 0px rgba(0, 0, 0, 0.6);
-    } */
     100% {
       transform: scale(1);
       box-shadow: 0 0 0 1px rgba(0, 0, 0, 0);
@@ -74,7 +70,6 @@ export const ButtonStyle = styled(ButtonBase)`
   }
   .testing {
     transform: scale(0);
-    /* overflow: hidden; */
     position: absolute;
     border-radius: inherit;
     pointer-events: none;

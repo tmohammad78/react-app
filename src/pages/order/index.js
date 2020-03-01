@@ -1,5 +1,5 @@
 import React, { lazy, Suspense } from 'react';
-import { Switch, Route, NavLink, withRouter } from 'react-router-dom';
+import { Switch, Route, NavLink } from 'react-router-dom';
 import PropTypes from 'prop-types';
 
 import Cover from 'component/Cover';
@@ -22,6 +22,7 @@ const Favorite = lazy(() => import('component/Favorite'));
 const Menu = lazy(() => import('component/Menu'));
 
 const Order = props => {
+  console.log(props);
   return (
     <React.Fragment>
       <Header toggleTheme={props.toggleTheme} />
@@ -31,8 +32,8 @@ const Order = props => {
           <RightSideHolder>
             <RestProfileContainer>
               <MenuTab>
-                <NavLink to={`${props.match.url}`}>منوی غذا</NavLink>
-                <NavLink to='/info' activeClassName='active'>
+                <NavLink to={`/`}>منوی غذا</NavLink>
+                <NavLink to={`/info`} activeClassName='active'>
                   اطلاعات رستوران
                 </NavLink>
                 <NavLink to='/favorite' activeClassName='active'>
@@ -42,7 +43,7 @@ const Order = props => {
               <TabContentHolder>
                 <Suspense fallback={<Spinner />}>
                   <Switch>
-                    <Route exact path={`${props.match.path}`} component={Menu} />
+                    <Route exact path={`/`} component={Menu} />
                     <Route path='/info' component={InfoRest} />
                     <Route path='/favorite' component={Favorite} />
                   </Switch>
