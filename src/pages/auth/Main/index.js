@@ -1,6 +1,7 @@
 import React from 'react';
 import { Button } from 'component/Buttons/Button';
 import { NavLink } from 'react-router-dom';
+
 const MainAuth = props => {
   return (
     <div className='inner_content'>
@@ -17,14 +18,7 @@ const MainAuth = props => {
         </div>
         <div></div>
         <div className='registerbtn'>
-          <NavLink
-            to={{
-              pathname: `${props.location.state.from.pathname}`
-              //   state: {
-              //     logged: 'skiped'
-              //   }
-            }}
-          >
+          <NavLink to={`${props.location.state.from.pathname}`}>
             <Button
               ptb='13'
               prl='100'

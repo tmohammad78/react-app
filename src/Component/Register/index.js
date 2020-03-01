@@ -16,11 +16,6 @@ const Register = () => {
       size: 'invisible'
     });
   }, []);
-  //   useEffect(() => {
-  //     if (!newUser) {
-  //       dispatch(loginAction(values));
-  //     }
-  //   }, [newUser]);
   const getVerifyCode = values => {
     const phoneNumber = values.phonenumber.replace('0', '+98');
     console.log(phoneNumber);
@@ -47,17 +42,6 @@ const Register = () => {
   const handleAuth = async values => {
     setValues(values);
     getVerifyCode(values);
-    // if (result && newUser) {
-    //   debugger;
-    //   dispatch(registerAction(values));
-    //   //   newUser ? dispatch(registerAction(values)) : dispatch(loginAction(values));
-    // } else if (result && !newUser) {
-    //   debugger;
-    //   dispatch(loginAction(values));
-    // }
-    //  else {
-    //   //   dispatch(loginAction(values));
-    // }
   };
   return (
     <div className='register_box'>

@@ -1,6 +1,4 @@
 import axios from 'axios';
-// import store from '../store/store';
-// import { refreshToken } from '../store/Auth/action';
 
 const instance = axios.create({
   baseURL: 'https://identitytoolkit.googleapis.com/v1'
@@ -30,7 +28,6 @@ instance.interceptors.response.use(
     debugger;
     if (error.response.status === 401) {
       console.log('401');
-      //   store.dispatch(refreshToken());
       return Promise.resolve();
     }
 

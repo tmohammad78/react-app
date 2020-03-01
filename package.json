@@ -97,7 +97,6 @@
     "workbox-webpack-plugin": "^5.0.0"
   },
   "dependencies": {
-    "@auth0/auth0-spa-js": "^1.6.4",
     "autoprefixer": "^9.7.3",
     "axios": "^0.19.1",
     "babel-plugin-transform-react-jsx": "^6.24.1",
@@ -110,8 +109,7 @@
     "formik": "^2.1.1",
     "history": "^4.10.1",
     "html-webpack-root-plugin": "^0.10.0",
-    "lazysizes": "^5.2.0",
-    "memoize-one": "^5.1.1",
+    "": "^5.2.0",
     "node-sass": "^4.13.1",
     "nodemon": "^1.19.4",
     "polished": "^3.4.2",

@@ -1,15 +1,20 @@
-import React, { useState, useEffect, useCallback } from 'react';
+import React, { useState, useEffect, lazy, Suspense } from 'react';
 import PropTypes from 'prop-types';
 import { useSelector, useDispatch } from 'react-redux';
 
 import { closeSubFoodModal } from 'services/subFood/action';
-import Modal from 'component/Modal';
+// import Modal from 'component/Modal';
 import Food from './food/index';
-import Sort from '../sort';
-import SearchBar from './searchBar/searchBar';
+// import Sort from '../sort';
+// import SearchBar from './searchBar/searchBar';
 import SubFood from '../subFoodModal/subFood';
 import FoodListTitle from './FoodListTitle';
 import { FoodList, NotFoundStyle, FoodMenu } from './style.js';
+import Spinner from 'component/Spinner';
+
+const Modal = lazy(() => import('component/Modal'));
+const SearchBar = lazy(() => import('./searchBar/searchBar'));
+const Sort = lazy(() => import('../sort'));
 
 const sortBy = {
   lowestprice: { field: 'price', asc: true },
@@ -95,23 +100,25 @@ const FoodListTable = ({ items }) => {
 
   return (
     <FoodMenu>
-      <Sort onChange={sortHandler} />
-      <SearchBar
-        filterText={searchKey}
-        onfilterText={searchHandler}
-        inStock={inStock}
-        onChangeStock={stockHandler}
-      />
-      <Modal
-        show={subFood.show}
-        onClose={() => dispatch(closeSubFoodModal(true))}
-        className='subFoodModal'
-        subFood
-      >
-        <SubFood subfood={subFood.food} />
-      </Modal>
+      <Suspense fallback={<Spinner />}>
+        <Sort onChange={sortHandler} />
+        <SearchBar
+          filterText={searchKey}
+          onfilterText={searchHandler}
+          inStock={inStock}
+          onChangeStock={stockHandler}
+        />
+        <Modal
+          show={subFood.show}
+          onClose={() => dispatch(closeSubFoodModal(true))}
+          className='subFoodModal'
+          subFood
+        >
+          <SubFood subfood={subFood.food} />
+        </Modal>
 
-      <FoodList>{row}</FoodList>
+        <FoodList>{row}</FoodList>
+      </Suspense>
     </FoodMenu>
   );
 };

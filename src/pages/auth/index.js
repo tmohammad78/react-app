@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { Route, useHistory, useLocation } from 'react-router-dom';
+import { Route } from 'react-router-dom';
+import { skipAuth } from 'services/auth/action';
+import './style.scss';
 import MainAuth from './Main';
 import Register from 'component/Register';
-import './style.scss';
-import { skipAuth } from 'services/auth/action';
 
 const AuthPage = props => {
   const dispatch = useDispatch();
@@ -30,19 +30,22 @@ const AuthPage = props => {
   };
 
   return (
-    <div className={`image-background ${RegisterUi ? 'active' : ''}`}>
-      <picture>
-        <div className='my_img'></div>
-      </picture>
-      <Route
-        exact
-        path={'/auth'}
-        component={() => (
-          <MainAuth {...props} callBackChangeState={handleShow} handleSkipAuth={handleSkipAuth} />
-        )}
-      />
-      <Route exact path='/auth/test' component={() => <Register logged={logged} />} />
+    <div>
+      <div className={`image-background ${RegisterUi ? 'active' : ''}`}>
+        <picture>
+          <div className='my_img'></div>
+        </picture>
+        <Route
+          exact
+          path={'/auth'}
+          component={() => (
+            <MainAuth {...props} callBackChangeState={handleShow} handleSkipAuth={handleSkipAuth} />
+          )}
+        />
+        <Route exact path='/auth/test' component={() => <Register logged={logged} />} />
+      </div>
     </div>
   );
 };
+
 export default AuthPage;

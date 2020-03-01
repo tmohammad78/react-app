@@ -41,7 +41,6 @@ const QtyHolder = ({ food }) => {
     if (food.subFoods.length > 0) {
       dispatch(SubFoodModal(food));
     } else {
-      //   debugger;
       dispatch(addFood(food, 1));
     }
   };
@@ -60,7 +59,6 @@ const QtyHolder = ({ food }) => {
     );
   }
   return food.available ? (
-    // <div className={`qty-holder ${width}`}>
     <QtyStyle className={`${width}`}>
       <div className='anc-box'>
         {removeBtn}

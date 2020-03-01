@@ -5,11 +5,6 @@ export const currency = (number, showToman = true) => {
 
     return `${toPersianNum(final)} تومان`;
   }
-  // else if ( showToman===false &&  number !== 0) {
-  //     const realPrice = number;
-  //     let final = realPrice.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1,");
-  //     return toPersianNum(final) + "%";
-  //   }
   if (showToman === false) {
     const realPrice = number;
     const final = realPrice.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,');
