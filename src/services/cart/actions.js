@@ -41,7 +41,6 @@ export const updateCart = cartProducts => dispatch => {
     sum += p.price * p.quantity;
     return sum;
   }, 0);
-//   debugger;
 
   const cartTotal = {
     totalPrice,

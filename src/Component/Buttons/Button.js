@@ -10,7 +10,6 @@ Button.defaultProps = {
   primary: true
 };
 
-//type checking
 Button.propTypes = {
   children: PropTypes.string
 };

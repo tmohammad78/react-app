@@ -23,6 +23,11 @@ const ButtonBase = styled.button`
     cursor: default;
     background-color: #eeee;
   }
+  &:focus {
+    -webkit-appearance: none;
+    outline: 0px !important ;
+    -webkit-tap-highlight-color: transparent;
+  }
 `;
 
 const color = {
@@ -58,10 +63,6 @@ export const ButtonStyle = styled(ButtonBase)`
       transform: scale(0);
       box-shadow: 0 0 0 0px rgba(0, 0, 0, 0.8);
     }
-    /* 50% {
-      transform: scale(0.5);
-      box-shadow: 0 0 0 0px rgba(0, 0, 0, 0.6);
-    } */
     100% {
       transform: scale(1);
       box-shadow: 0 0 0 1px rgba(0, 0, 0, 0);
@@ -69,20 +70,19 @@ export const ButtonStyle = styled(ButtonBase)`
   }
   .testing {
     transform: scale(0);
-    /* overflow: hidden; */
     position: absolute;
     border-radius: inherit;
     pointer-events: none;
     z-index: 0;
   }
 
-  &:focus {
+  &:active {
     .testing {
       top: 0;
       left: 0;
       right: 0;
       bottom: 0;
-      animation: open-shadow .5s ;
+      animation: open-shadow 0.5s;
       background-color: rgba(0, 0, 0, 0.08);
     }
   }

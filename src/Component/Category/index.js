@@ -5,7 +5,6 @@ import Carousel, { consts } from 'react-elastic-carousel';
 import { Iw, TextIw } from './style';
 import { Button } from 'component/Buttons/Button';
 
-
 const Category = () => {
   const item = useSelector(state => state.menu.categoryList);
 
@@ -45,7 +44,6 @@ const Category = () => {
                 <Link
                   key={food.catId}
                   className=' indexbox'
-                  //   activeClass='activecategory'
                   to={food.catId}
                   spy
                   smooth

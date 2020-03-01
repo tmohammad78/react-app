@@ -8,8 +8,6 @@ import QtyHolder from 'component/Menu/FoodListTable/food/foodDetails/qty-holder'
 import Tittle from 'component/Menu/FoodListTable/food/foodDetails/Tittle';
 import Price from 'component/Menu/FoodListTable/food/foodDetails/price';
 
-import './style.scss';
-
 const CartProduct = ({ product }) => {
   const dispatch = useDispatch();
 

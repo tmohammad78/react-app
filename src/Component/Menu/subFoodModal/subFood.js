@@ -5,6 +5,7 @@ import DetailModal from '../FoodListTable/food/foodModal';
 import FoodDetails from '../FoodListTable/food/details-holder';
 import { FoodItem } from '../FoodListTable/food/style';
 import { SubFoodStyle } from './style.js';
+
 const SubFood = ({ subfood }) => {
   return (
     <SubFoodStyle>
@@ -29,6 +30,3 @@ SubFood.propTypes = {
 };
 
 export default SubFood;
-{
-  /* <FoodImage image={food.img}  /> */
-}

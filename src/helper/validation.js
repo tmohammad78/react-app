@@ -8,7 +8,7 @@ export const validation = object().shape({
     .required('اجباری')
     .matches(nameRegex, 'اسم نادرست هست'),
   email: string()
-    .email("Email isn't valid")
+    .email('.ایمیل درست نمی باشد')
     .required('اجباری'),
   role: string().required('اجباری'),
   id: number().required('اجباری'),

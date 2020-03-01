@@ -16,6 +16,22 @@ figure {
 img {
   border: 0;
 }
+
+//recaptcha
+.rc-imageselect-instructions {
+  .rc-imageselect-desc-wrapper {
+    background-color: #ff7714 !important;
+  }
+}
+.rc-button-default,
+.rc-imageselect-desc-wrapper {
+  background-color: #ff7714 !important;
+}
+
+.errorMessage {
+  float: right;
+  color: #9d0909;
+}
 a {
   text-decoration: none;
 }
