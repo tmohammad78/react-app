@@ -51,7 +51,7 @@ const FormLogin = props => {
             disabled={isSubmitting}
           >
             <i className='fo fo-angle-left' />
-            <span>ثبت</span>
+            <span>دریافت کد</span>
           </Button>
         </Form>
       )}

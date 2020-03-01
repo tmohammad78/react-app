@@ -1,22 +1,29 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useHistory } from 'react-router-dom';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import FormLogin from 'component/Login/form';
-import { registerAction } from 'services/auth/action';
+import { registerAction, loginAction } from 'services/auth/action';
 import firebase from '../../../firebaseconfig';
 import './style.scss';
 
 const Register = () => {
   const history = useHistory();
   const dispatch = useDispatch();
+  const [newUser, setNewUser] = useState(true);
+  const [values, setValues] = useState();
   useEffect(() => {
-    debugger;
     window.recaptchaVerifier = new firebase.auth.RecaptchaVerifier('recaptcha-container', {
       size: 'invisible'
     });
   }, []);
-  const onClick = () => {
-    const phoneNumber = '+989375050156';
+  useEffect(() => {
+    if (!newUser) {
+      dispatch(loginAction(values));
+    }
+  }, [newUser]);
+  const getVerifyCode = phone => {
+    const phoneNumber = phone.replace('0', '+98');
+    console.log(phoneNumber);
     const applicationVerifier = window.recaptchaVerifier;
     firebase
       .auth()
@@ -27,15 +34,24 @@ const Register = () => {
         );
         return confirmationResult.confirm(verificationCode);
       })
+      .then(response => {
+        console.log(response);
+        setNewUser(response.additionalUserInfo.isNewUser);
+      })
       .catch(error => {
         return Promise.reject(error);
       });
   };
-  const handleAuth = values => {
-    // console.log(firebase);
-    // const applicationVerifier = new firebase.auth.RecaptchaVerifier('recaptcha-container');
-
-    dispatch(registerAction(values));
+  const handleAuth = async values => {
+    setValues(values);
+    const result = await getVerifyCode(values.phonenumber);
+    if (result && newUser) {
+      dispatch(registerAction(values));
+      //   newUser ? dispatch(registerAction(values)) : dispatch(loginAction(values));
+    }
+    //  else {
+    //   //   dispatch(loginAction(values));
+    // }
   };
   return (
     <div className='register_box'>
@@ -47,7 +63,13 @@ const Register = () => {
       />
       <div>
         <FormLogin submitAction={handleAuth} />
-        <input id='recaptcha-container' type='button' onClick={onClick} />
+        <input
+          type='button'
+          value='دریافت کد'
+          id='recaptcha-container'
+          type='button'
+          onClick={getVerifyCode}
+        />
         <div id='recaptcha-container' className='recaptcha' />
       </div>
     </div>

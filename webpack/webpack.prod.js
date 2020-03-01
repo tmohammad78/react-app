@@ -80,7 +80,15 @@ module.exports = Object.keys(commonVariables.languages).map(function(language) {
     },
     optimization: {
       concatenateModules: true,
-      minimizer: [new UglifyJsPlugin()]
+      minimizer: [
+        new UglifyJsPlugin({
+          uglifyOptions: {
+            output: {
+              comments: false
+            }
+          }
+        })
+      ]
     },
     devServer: {
       historyApiFallback: true
@@ -127,7 +135,7 @@ module.exports = Object.keys(commonVariables.languages).map(function(language) {
         dontCacheBustUrlsMatching: /\.\w{8}\./,
         filename: 'serviceWorker.js',
         minify: true,
-        navigateFallback: PUBLIC_PATH + 'index.html',
+        navigateFallback: PUBLIC_PATH,
         staticFileGlobsIgnorePatterns: [/\.map$/, /manifest\.json$/]
       }),
       new HtmlWebpackPlugin({

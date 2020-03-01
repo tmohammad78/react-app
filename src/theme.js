@@ -17,6 +17,7 @@ export const lightTheme = {
 export const darkTheme = {
   body: '#1D1C2A',
   text: '#FFF',
+  inputText: '#fff',
   color: '#FFF',
   toggleBorder: '#6B8096',
   foodItem_bgcolor: '#1D1C2A',

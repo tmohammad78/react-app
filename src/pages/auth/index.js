@@ -7,8 +7,6 @@ import './style.scss';
 import { skipAuth } from 'services/auth/action';
 
 const AuthPage = props => {
-  console.log(props);
-  console.log('render');
   const dispatch = useDispatch();
   const logged = useSelector(state => state.auth);
   const [RegisterUi, setRegisterUi] = useState(false);

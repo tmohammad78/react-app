@@ -1,4 +1,4 @@
-import { AUTH_LOGIN,SKIPAUTH, AUTH_ERROR, AUTH_REGISTER, CHECK_LOGIN } from './actionType';
+import { SKIPAUTH, AUTH_LOGIN, AUTH_REGISTER, CHECK_LOGIN } from './actionType';
 
 const initialState = {
   authenticated: '',
@@ -21,6 +21,16 @@ export default function(state = initialState, action) {
         expiresIn,
         logged: true
       };
+
+    case AUTH_LOGIN:
+      return {
+        ...state,
+        ...state.logged,
+        token: idToken,
+        refreshToken,
+        expiresIn,
+        logged: true
+      };
     case CHECK_LOGIN:
       return {
         ...state,
@@ -31,17 +41,17 @@ export default function(state = initialState, action) {
       return {
         logged: 'skiped'
       };
-    case AUTH_LOGIN:
-      return {
-        ...state,
-        user: action.payload.user,
-        authenticated: action.payload.authenticated
-      };
-    case AUTH_ERROR:
-      return {
-        ...state,
-        errorMessage: action.payload
-      };
+    // case AUTH_LOGIN:
+    //   return {
+    //     ...state,
+    //     user: action.payload.user,
+    //     authenticated: action.payload.authenticated
+    //   };
+    // case AUTH_ERROR:
+    //   return {
+    //     ...state,
+    //     errorMessage: action.payload
+    //   };
     default:
       return state;
   }

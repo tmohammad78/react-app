@@ -46,6 +46,10 @@ export const RestMenuHolder = styled(Clear).attrs({
     ${CartShowMobile} {
       display: none;
     }
+    .wrapper {
+      width: 71%;
+      float: right;
+    }
   }
 `;
 
