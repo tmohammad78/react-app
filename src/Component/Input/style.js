@@ -13,6 +13,11 @@ export const InputStyle = styled.input`
   &:focus {
     outline: none;
   }
+  &::placeholder {
+    /* Chrome, Firefox, Opera, Safari 10.1+ */
+    color: white;
+    opacity: 0.7; /* Firefox */
+  }
   &:-webkit-internal-autofill-selected {
     background-color: transparent !important;
   }

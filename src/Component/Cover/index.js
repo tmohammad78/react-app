@@ -6,6 +6,8 @@ import './style.scss';
 
 const Cover = () => {
   const [data, setData] = useState('');
+
+  console.log('render cover');
   const item = useSelector(state => state.menu.categoryList);
   const backgroundCover =
     'url(https://static.delino.com/Image/Restaurant/Cover/st5xrnas.i4s_big.jpg)';

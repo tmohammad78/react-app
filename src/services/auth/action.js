@@ -45,14 +45,21 @@ export const loginAction = ({ email, password }) => (dispatch, getState) => {
     });
 };
 
-export const registerAction = ({ email, password }) => (dispatch, getState) => {
+export const registerAction = ({ email, password }) => dispatch => {
   debugger;
   axios
-    .post('/accounts:signUp?key=AIzaSyDa29GWAYmBAuPEE7gxgVepxYYr6JAyfMQ', {
-      email: email,
-      password: password,
-      returnSecureToken: true
-    })
+    .post(
+      '/accounts:signUp?key=AIzaSyDa29GWAYmBAuPEE7gxgVepxYYr6JAyfMQ',
+      {
+        credentials: 'same-origin'
+        // set-Cookie:
+      },
+      {
+        email: email,
+        password: password,
+        returnSecureToken: true
+      }
+    )
     .then(Response => {
       // /accounts:signUp?key=AIzaSyDa29GWAYmBAuPEE7gxgVepxYYr6JAyfMQ
       ///accounts:signInWithPassword?key=AIzaSyDa29GWAYmBAuPEE7gxgVepxYYr6JAyfMQ

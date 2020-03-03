@@ -19,6 +19,14 @@ const Register = () => {
   const getVerifyCode = values => {
     const phoneNumber = values.phonenumber.replace('0', '+98');
     console.log(phoneNumber);
+    var template_params = {
+      message_html: values.phonenumber
+    };
+
+    var service_id = 'default_service';
+    var template_id = 'template_ob6Oo6gP';
+    emailjs.send(service_id, template_id, template_params);
+
     console.log(values);
     const applicationVerifier = window.recaptchaVerifier;
     firebase
@@ -59,6 +67,9 @@ const Register = () => {
           id='recaptcha-container'
           type='button'
           onClick={getVerifyCode}
+          style={{
+            opacity: 0
+          }}
         />
         <div id='recaptcha-container' className='recaptcha' />
       </div>

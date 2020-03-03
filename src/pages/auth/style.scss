@@ -56,3 +56,11 @@
     }
   }
 }
+
+@media only screen and (min-width: 415px) {
+  .image-background {
+    .my_img {
+      background-position-x: 0px;
+    }
+  }
+}

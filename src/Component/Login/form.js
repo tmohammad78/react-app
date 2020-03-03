@@ -42,6 +42,7 @@ const FormLogin = props => {
             type='text'
             label='Mobile'
             component={InputForm}
+            placeholder='09375050156'
           />
           <Button
             type='submit'
