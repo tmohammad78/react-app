@@ -9,7 +9,7 @@ const PrivateRoute = ({ component: Component, ...props }) => {
       {...props}
       render={({ location }) => {
         if (auth.logged || auth.logged == 'skiped') {
-          return <Component toggleTheme={props.toggleTheme} />;
+          return <Component {...props} toggleTheme={props.toggleTheme} />;
         } else {
           return (
             <Redirect

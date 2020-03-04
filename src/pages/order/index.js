@@ -15,6 +15,9 @@ import {
   MenuTab
 } from './style.js';
 
+import Test from './test.js';
+import Test2 from './test2.js';
+
 const Cart = lazy(() => import('component/FloatCart'));
 const InfoRest = lazy(() => import('component/infoRes'));
 const Favorite = lazy(() => import('component/Favorite'));
@@ -34,22 +37,14 @@ const Order = props => {
           <div className='wrapper clearfix '>
             <RightSideHolder>
               <RestProfileContainer>
-                <MenuTab>
-                  <NavLink to={`/`}>منوی غذا</NavLink>
-                  <NavLink to={`/info`} activeClassName='active'>
-                    اطلاعات رستوران
-                  </NavLink>
-                  <NavLink to='/favorite' activeClassName='active'>
-                    علاقه مندی
-                  </NavLink>
-                </MenuTab>
                 <TabContentHolder>
                   <Suspense fallback={<Spinner />}>
-                    <Switch>
-                      <Route exact path={`/`} component={Menu} />
-                      <Route path='/info' component={InfoRest} />
-                      <Route path='/favorite' component={Favorite} />
-                    </Switch>
+
+                    <Route path='/' component={Test} />
+                    <Route exact path='/' component={Menu} />
+                    <Route path='/:name' component={Test2} />
+                    {/* <Route path='/favorite' component={Favorite} /> */}
+                    {/* </Switch> */}
                   </Suspense>
                 </TabContentHolder>
               </RestProfileContainer>

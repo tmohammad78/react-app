@@ -10,7 +10,6 @@ import PrivateRoute from './route/private';
 // import AuthPage from 'pages/auth';
 import { browserHistory } from './route/history';
 import Spinner from 'component/Spinner';
-
 const AuthPage = lazy(() => import('pages/auth'));
 const Order = lazy(() => import('pages/order'));
 
@@ -37,8 +36,9 @@ const App = () => {
       <Suspense fallback={<Spinner />}>
         <Router history={browserHistory}>
           <Switch>
-            <PrivateRoute exact path='/' toggleTheme={toggleTheme} component={withRouter(Order)} />
-            <Route path='/auth' component={withRouter(AuthPage)} />
+            <PrivateRoute  path='/' toggleTheme={toggleTheme} component={Order} />
+         
+			<Route path='/auth' component={AuthPage} />
           </Switch>
         </Router>
       </Suspense>
