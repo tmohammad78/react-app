@@ -1,7 +1,7 @@
 import React, { lazy } from 'react';
-import { Switch, Route, NavLink } from 'react-router-dom';
-
-const Test2 = ({ match, location }) => {
+import { Route } from 'react-router-dom';
+import { TabContentHolder } from './style';
+const InnerRoute = ({ match, location }) => {
   const {
     params: { name }
   } = match;
@@ -9,12 +9,12 @@ const Test2 = ({ match, location }) => {
   const Favorite = lazy(() => import('component/Favorite'));
   const Menu = lazy(() => import('component/Menu'));
   return (
-    <div>
+    <TabContentHolder>
       <Route exact path='/' component={Menu} />
       <Route path='/info' component={InfoRest} />
       <Route path='/favorite' component={Favorite} />
-    </div>
+    </TabContentHolder>
   );
 };
 
-export default Test2;
+export default InnerRoute;

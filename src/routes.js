@@ -1,13 +1,11 @@
-import React, { useEffect, lazy, Suspense } from 'react';
-import { Switch, Route, Router, withRouter } from 'react-router-dom';
+import React, { lazy, Suspense } from 'react';
+import { Switch, Route, Router } from 'react-router-dom';
 
 import { ThemeProvider } from 'styled-components';
 import { useDarkMode } from './hooks/useDarkMode';
 import { lightTheme, darkTheme } from './theme/theme';
 import { GlobalStyles } from './theme/global';
 import PrivateRoute from './route/private';
-// import Order from './pages/order';
-// import AuthPage from 'pages/auth';
 import { browserHistory } from './route/history';
 import Spinner from 'component/Spinner';
 const AuthPage = lazy(() => import('pages/auth'));
@@ -15,18 +13,7 @@ const Order = lazy(() => import('pages/order'));
 
 const App = () => {
   const [theme, toggleTheme, componentMounted] = useDarkMode();
-  let themeMode;
-  useEffect(() => {
-    window.addEventListener('devicelight', checklight);
-    return function cleanup() {
-      window.removeEventListener('devicelight', checklight);
-    };
-  });
-  const checklight = e => {
-    console.log(e);
-    e.value < 50 ? window.alert('dark') : (themeMode = 'lightTheme');
-  };
-  themeMode = theme === 'light' ? lightTheme : darkTheme;
+  const themeMode = theme === 'light' ? lightTheme : darkTheme;
   if (!componentMounted) {
     return <div />;
   }
@@ -36,9 +23,8 @@ const App = () => {
       <Suspense fallback={<Spinner />}>
         <Router history={browserHistory}>
           <Switch>
-            <PrivateRoute  path='/' toggleTheme={toggleTheme} component={Order} />
-         
-			<Route path='/auth' component={AuthPage} />
+            <PrivateRoute path='/' toggleTheme={toggleTheme} component={Order} />
+            <Route path='/auth' component={AuthPage} />
           </Switch>
         </Router>
       </Suspense>
