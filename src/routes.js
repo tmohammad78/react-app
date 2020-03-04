@@ -8,9 +8,8 @@ import { GlobalStyles } from './theme/global';
 import PrivateRoute from './route/private';
 import { browserHistory } from './route/history';
 import Spinner from 'component/Spinner';
-const AuthPage = lazy(() => import('pages/auth'));
-const Order = lazy(() => import('pages/order'));
-
+import AuthPage from 'pages/auth';
+import Order from 'pages/order';
 const App = () => {
   const [theme, toggleTheme, componentMounted] = useDarkMode();
   const themeMode = theme === 'light' ? lightTheme : darkTheme;

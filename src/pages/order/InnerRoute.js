@@ -1,13 +1,13 @@
-import React, { lazy } from 'react';
+import React from 'react';
 import { Route } from 'react-router-dom';
+
+import InfoRest from 'component/infoRes';
+import Favorite from 'component/Favorite';
+import Menu from 'component/Menu';
+
 import { TabContentHolder } from './style';
-const InnerRoute = ({ match, location }) => {
-  const {
-    params: { name }
-  } = match;
-  const InfoRest = lazy(() => import('component/infoRes'));
-  const Favorite = lazy(() => import('component/Favorite'));
-  const Menu = lazy(() => import('component/Menu'));
+
+const InnerRoute = () => {
   return (
     <TabContentHolder>
       <Route exact path='/' component={Menu} />

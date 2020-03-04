@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 
 import { Button } from '../Buttons/Button';
 import Login from '../Login';
@@ -8,6 +8,7 @@ import Portal from 'component/Portal';
 
 const Header = React.memo(({ toggleTheme }) => {
   const [showModal, setShowModal] = useState(false);
+  console.log('header render');
   const backgroundLogo =
     'https://static.snapp-food.com/media/cache/vendor_logo/uploads/images/vendors/logos/5807123d25da1.jpg';
   const toggleLoginShow = e => {

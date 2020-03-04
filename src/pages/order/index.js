@@ -1,20 +1,16 @@
 import React, { lazy, Suspense } from 'react';
-import { Route } from 'react-router-dom';
 import PropTypes from 'prop-types';
 
 import Cover from 'component/Cover';
 import Header from 'component/Header';
 import Footer from 'component/Footer';
 import Spinner from 'component/Spinner/index.js';
-import TabBar from './TabBar';
-import InnerRoute from './InnerRoute';
-import Menu from 'component/Menu';
-
-import { RestMenuHolder, RightSideHolder, RestProfileContainer } from './style.js';
 import RightSide from './rightSide/rightSide';
+
+import { RestMenuHolder } from './style.js';
 const Cart = lazy(() => import('component/FloatCart'));
 
-const Order = props => {
+const Order = React.memo(props => {
   return (
     <React.Fragment>
       <Header toggleTheme={props.toggleTheme} />
@@ -30,7 +26,7 @@ const Order = props => {
       <Footer />
     </React.Fragment>
   );
-};
+});
 
 Order.propTypes = {
   match: PropTypes.object
