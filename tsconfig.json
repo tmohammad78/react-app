@@ -1,0 +1,25 @@
+{
+  "compilerOptions": {
+    "target": "es5",
+    "module": "es6",
+    "allowSyntheticDefaultImports": true,
+    "moduleResolution": "node",
+    "lib": ["es6", "dom"],
+    "sourceMap": true,
+    "jsx": "react",
+    "strict": true,
+    "noImplicitReturns": true,
+    "rootDir": "./",
+    "outDir": "dist",
+    "allowJs": true,
+    "baseUrl": "./",
+    "paths": {
+      "component/*": ["src/component/*"],
+      "services/*": ["src/services/*"],
+      "pages/*": ["src/pages/*"],
+      "helper/*": ["src/helper/*"]
+    },
+    "include": ["**/*.ts", "**/*.tsx"],
+    "exclude": ["node_modules"]
+  }
+}

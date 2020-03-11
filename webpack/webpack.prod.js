@@ -16,6 +16,7 @@ const PUBLIC_PATH = 'https://food-delivery-7d366.firebaseapp.com/';
 module.exports = Object.keys(commonVariables.languages).map(function(language) {
   return {
     mode: 'production',
+    devtool: 'source-map',
     entry: {
       app: ['core-js/stable', 'regenerator-runtime/runtime', `${commonVariables.appEntry}/index.js`]
     },

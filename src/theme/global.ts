@@ -1,5 +1,7 @@
 import { createGlobalStyle } from 'styled-components';
-
+interface props {
+	themes: string;
+}
 export const GlobalStyles = createGlobalStyle`
   *,
   *::after,
@@ -10,7 +12,7 @@ export const GlobalStyles = createGlobalStyle`
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    background-color: ${({ theme }) => theme.body};
+    background-color: ${ ({ theme }) => theme.body};
     color: ${({ theme }) => theme.text};
     padding: 0;
     margin: 0;
