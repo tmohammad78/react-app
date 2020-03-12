@@ -3,75 +3,74 @@ import axios from 'axios';
 import { useSelector } from 'react-redux';
 import { resturantData } from 'services/util';
 import './style.scss';
-interface Istate {
-	data:object
+interface IDataInfo {
+	name: string;
+	fullAddress: string;
+	offlineText: string;
+	mealTime: string
 }
-const Cover = () => {
-  const [data, setData] = useState('');
 
-  console.log('render cover');
-  const item = useSelector(state => state.menu.categoryList);
-  const backgroundCover =
-    'url(https://static.delino.com/Image/Restaurant/Cover/st5xrnas.i4s_big.jpg)';
-  useEffect(() => {
-    handleFetchInfo();
-  }, []);
+const initiaState: IDataInfo[] = [];
+const Cover: React.SFC = () => {
+	const [data, setData] = useState<IDataInfo | null>(initiaState);
+	console.log('render cover');
+	const item = useSelector(state => state.menu.categoryList);
+	const backgroundCover =
+		'url(https://static.delino.com/Image/Restaurant/Cover/st5xrnas.i4s_big.jpg)';
+	useEffect(() => {
+		axios
+			.get<IDataInfo[]>(resturantData)
+			.then(res => {
+				setData(res.data);
+			})
+			.catch(err => {
+				console.log(`Could not fetch products. Try again later. + ${err}`);
+			});
+	}, []);
 
-  const handleFetchInfo = () => {
-    return axios
-      .get(resturantData)
-      .then(res => {
-        const resInfo = res.data;
-        setData(resInfo);
-      })
-      .catch(err => {
-        console.log(`Could not fetch products. Try again later. + ${err}`);
-      });
-  };
+	return (
+		<div
+			className='cover-container clearfix'
+			style={{
+				backgroundImage: 'url(' + Image + ')'
+			}}
+		>
+			<div
+				className='rest-cover'
+				style={{
+					backgroundImage: `${backgroundCover}`
+				}}
+			/>
 
-  return (
-    <div
-      className='cover-container clearfix'
-      style={{
-        backgroundImage: 'url(' + Image + ')'
-      }}
-    >
-      <div
-        className='rest-cover'
-        style={{
-          backgroundImage: `${backgroundCover}`
-        }}
-      />
+			<div className='wrapper clearfix'>
+				<div className='rest-logo-holder'>
+					<figure className='logo-holder'>
+						<img
+							alt='logo'
+							src='https://static.delino.com/Image/Default/logo/lwqgwoqw.3jj_180x180.png'
+						/>
+					</figure>
 
-      <div className='wrapper clearfix'>
-        <div className='rest-logo-holder'>
-          <figure className='logo-holder'>
-            <img
-              alt='logo'
-              src='https://static.delino.com/Image/Default/logo/lwqgwoqw.3jj_180x180.png'
-            />
-          </figure>
-
-          <aside>
-            <h1>{data.name}</h1>
-            <div className='categoryList'>
-              {item.map(item => {
-                return <span key={item.catId}> {item.catTitle}.</span>;
-              })}
-            </div>
-            <h2>{data.fullAddress}</h2>
-          </aside>
-        </div>
-        <footer>
-          <div className='online-status offline'>
-            <span>
-              <span>{data.offlineText}</span>
-              {data.mealTime}
-            </span>
-          </div>
-        </footer>
-      </div>
-    </div>
-  );
+					<aside>
+						<h1>{data?.name}</h1>
+						<div className='categoryList'>
+							{item.map((item: any) => {
+								return <span key={item.catId}> {item.catTitle}.</span>;
+							})}
+						</div>
+						<h2>{data?.fullAddress}</h2>
+					</aside>
+				</div>
+				<footer>
+					<div className='online-status offline'>
+						<span>
+							<span>{data.offlineText}</span>
+							{data?.mealTime}
+						</span>
+					</div>
+				</footer>
+			</div>
+		</div>
+	);
 };
 export default Cover;

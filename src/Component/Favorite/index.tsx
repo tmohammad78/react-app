@@ -16,7 +16,7 @@ const Favorite = () => {
       <div>
         <span>علاقه مندی ها</span>
       </div>
-      {favoriteFood.map(item => {
+      {favoriteFood.map((item) => {
         return <Food food={item} key={item.catId} />;
       })}
     </div>
