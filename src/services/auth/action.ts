@@ -1,5 +1,6 @@
 import { IAuthRegisterAction, IAuthloginAction, authActionTypes, IAuthcheckLoginAction, IAuthSkipAction } from './actionType';
 import axios from '../../gate/api';
+import { AxiosResponse } from 'axios';
 import { Dispatch, ActionCreator, AnyAction } from 'redux';
 import { browserHistory } from '../../route/history';
 
@@ -67,10 +68,16 @@ export const loginAction = ({ email, password }: Props) => (dispatch: Dispatch, 
 		});
 };
 
+interface IPost {
+	email: string,
+	password: string,
+	returnSecureToken: boolean
+}
+
 export const registerAction = ({ email, password }: Props) => (dispatch: Dispatch) => {
 	debugger;
 	axios
-		.post(
+		.post<IPost>(
 			'/accounts:signUp?key=AIzaSyDa29GWAYmBAuPEE7gxgVepxYYr6JAyfMQ',
 			{
 				credentials: 'same-origin'
@@ -82,7 +89,7 @@ export const registerAction = ({ email, password }: Props) => (dispatch: Dispatc
 				returnSecureToken: true
 			}
 		)
-		.then((Response): any => {
+		.then((Response: AxiosResponse) => {
 			// /accounts:signUp?key=AIzaSyDa29GWAYmBAuPEE7gxgVepxYYr6JAyfMQ
 			///accounts:signInWithPassword?key=AIzaSyDa29GWAYmBAuPEE7gxgVepxYYr6JAyfMQ
 			const data = Response.data;

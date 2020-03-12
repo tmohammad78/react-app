@@ -3,7 +3,9 @@ import axios from 'axios';
 import { useSelector } from 'react-redux';
 import { resturantData } from 'services/util';
 import './style.scss';
-
+interface Istate {
+	data:object
+}
 const Cover = () => {
   const [data, setData] = useState('');
 

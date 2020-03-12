@@ -1,7 +1,7 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
 import Food from '../Menu/FoodListTable/food';
-import { objectToArray } from 'helper/';
+import { objectToArray } from 'helper/index';
 
 const Favorite = () => {
   let favoriteFood = useSelector(state => state.likeFood.likeFood);

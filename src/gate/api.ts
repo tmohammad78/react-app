@@ -1,37 +1,37 @@
-import axios , { AxiosResponse} from 'axios';
+import axios, { AxiosResponse } from 'axios';
 
 const instance = axios.create({
-  baseURL: 'https://identitytoolkit.googleapis.com/v1'
+	baseURL: 'https://identitytoolkit.googleapis.com/v1'
 });
 
 instance.interceptors.request.use(
-  request => {
-    const data = JSON.parse(localStorage.getItem('token'));
-    if (data) {
-      request.headers['Authorization'] = 'Bearer ' + data.auth.accessToken;
-    }
+	request => {
+		const data = JSON.parse(localStorage.getItem('token'));
+		if (data) {
+			request.headers['Authorization'] = 'Bearer ' + data.auth.accessToken;
+		}
 
-    return request;
-  },
-  error => {
-    debugger;
-    Promise.reject(error);
-  }
+		return request;
+	},
+	error => {
+		debugger;
+		Promise.reject(error);
+	}
 );
 
 instance.interceptors.response.use(
-  (response:AxiosResponse) => {
-    console.log(response);
-    return response;
-  },
-  error => {
-    debugger;
-    if (error.response.status === 401) {
-      console.log('401');
-      return Promise.resolve();
-    }
+	(response) => {
+		console.log(response);
+		return response;
+	},
+	error => {
+		debugger;
+		if (error.response.status === 401) {
+			console.log('401');
+			return Promise.resolve();
+		}
 
-    return Promise.reject(error);
-  }
+		return Promise.reject(error);
+	}
 );
 export default instance;
