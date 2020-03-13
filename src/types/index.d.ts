@@ -13,6 +13,11 @@ export interface CartState {
 	readonly cartTotal: IFoodList[];
 }
 
+export interface SubFoodState {
+	readonly food: ISubFood[],
+	readonly show: boolean
+}
+
 export interface MenuState {
 	foodListItem: {},
 	foodList: null,
@@ -92,4 +97,15 @@ export interface ICategoryResponse {
 	logo: string;
 	index: number;
 	sub: ISectionFood[]
+}
+
+/// modal
+export interface IModal {
+	subFood?: boolean;
+	show: boolean;
+	onClose: () => void;
+	closeOnEsc?: boolean;
+	style?: object;
+	children: React.ReactNode;
+
 }

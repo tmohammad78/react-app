@@ -29,11 +29,11 @@ export const checkLogin = () => (dispatch: Dispatch, getState: any) => {
 // 	payload: auth
 // });
 
-// export const skipAuth = () => (dispatch: Dispatch) => {
-// 	return dispatch({
-// 		type: authActionTypes.SKIPAUTH
-// 	});
-// };
+export const skipAuth = () => (dispatch: Dispatch) => {
+	return dispatch({
+		type: authActionTypes.SKIPAUTH
+	});
+};
 // export const skipAuth: ActionCreator<IAuthSkipAction> = () => ({
 // 	type: authActionTypes.SKIPAUTH
 // });

@@ -20,7 +20,7 @@ export default (initialState: any) => {
 		const state = store.getState();
 		const persist = {
 			cart: state.cart,
-			total: state.total,
+			// total: state.total,
 			likeFood: state.likeFood,
 			auth: {
 				token: state.auth.token,

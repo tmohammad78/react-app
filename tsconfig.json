@@ -18,8 +18,8 @@
       "services/*": ["src/services/*"],
       "pages/*": ["src/pages/*"],
       "helper/*": ["src/helper/*"]
-    },
-    "include": ["**/*.ts", "**/*.tsx"],
-    "exclude": ["node_modules"]
-  }
+    }
+  },
+  "include": ["**/*.ts", "**/*.tsx"],
+  "exclude": ["node_modules"]
 }
