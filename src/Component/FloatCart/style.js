@@ -146,7 +146,7 @@ export const CartListHolder = styled.div`
     }
   }
 `;
-const Parent = ({ className, children }) => <div className={className}>{children}</div>;
+const Parent = ({ className, children }) => <div className={className}> {children} </div>;
 export const LeftSideHolder = styled(Parent).attrs({
   className: ''
 })`

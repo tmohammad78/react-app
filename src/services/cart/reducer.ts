@@ -13,7 +13,7 @@ export const cartReducer: Reducer<CartState, CartSystemAction> = (state = initia
 		case cartActionTypes.LOAD_CART:
 			return {
 				...state,
-				products: action.payload
+				products: action.products
 			};
 		case cartActionTypes.UPDATE_CART:
 			return {

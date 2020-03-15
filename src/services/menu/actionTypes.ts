@@ -1,4 +1,4 @@
-import { ICategoryResponse, AuthState } from '../../types/index';
+import { ICategoryResponse, MenuState } from '../../types/index';
 
 export enum menuActionTypes {
 	FETCH_MENU = "FETCH_MENU",
@@ -17,30 +17,30 @@ export interface IDataMain {
 export interface IRestDataGet {
 	category: []
 }
-export interface IPropsForCallBack {
-	callback: () => void
-}
+// export interface IPropsForCallBack {
+// 	callback: () => void
+// }
 export interface IFetchMenuAction {
 	type: menuActionTypes.FETCH_MENU,
-	payload: AuthState
+	payload: MenuState
 }
 
 export interface IUpdateMenuAction {
 	type: menuActionTypes.UPDATE_PRODUCT,
-	payload: AuthState
+	payload: MenuState
 }
 
 export interface ICategoryAction {
 	type: menuActionTypes.CATEGORY_LIST,
-	payload: AuthState
+	payload: MenuState
 }
 export interface ILikeProductAction {
 	type: menuActionTypes.LIKED_PRODUCT,
-	payload: InfoRegister
+	payload: MenuState
 }
 export interface IDisLikeProductAction {
 	type: menuActionTypes.DISLIKED_PRODUCT,
-	payload: InfoRegister
+	payload: MenuState
 }
 
 export type MenuSystemAction = IDisLikeProductAction | ILikeProductAction | IFetchMenuAction | IUpdateMenuAction | ICategoryAction

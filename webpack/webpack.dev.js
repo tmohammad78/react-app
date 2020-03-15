@@ -14,7 +14,7 @@ module.exports = [
         'regenerator-runtime/runtime',
         // "webpack-hot-middleware/client",
         // "react-hot-loader/patch",
-        `${commonVariables.appEntry}/index.js`
+        `${commonVariables.appEntry}/index.tsx`
       ]
     },
     output: {

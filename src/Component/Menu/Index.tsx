@@ -8,30 +8,30 @@ const Category = lazy(() => import('../Category/index'));
 const FoodListTable = lazy(() => import('./FoodListTable'));
 
 const Menu = () => {
-  const dispatch = useDispatch();
-  const foodList = useSelector(state => state.menu.foodList);
-  const [loading, setLoading] = useState(true);
+	const dispatch = useDispatch();
+	const foodList = useSelector(state => state.menu.foodList);
+	const [loading, setLoading] = useState(true);
 
-  useEffect(() => {
-    if (!foodList) {
-      dispatch(
-        fetchMenu(() => {
-          setLoading(false);
-        })
-      );
-    } else {
-      setLoading(false);
-    }
-  }, []);
+	useEffect(() => {
+		if (!foodList) {
+			dispatch(
+				fetchMenu(() => {
+					setLoading(false);
+				})
+			);
+		} else {
+			setLoading(false);
+		}
+	}, []);
 
-  return (
-    <TabContentHolder>
-      <Suspense fallback={<Spinner />}>
-        <Category />
-        {!loading ? <FoodListTable items={foodList} /> : <Spinner />}
-      </Suspense>
-    </TabContentHolder>
-  );
+	return (
+		<TabContentHolder>
+			<Suspense fallback={<Spinner />}>
+				<Category />
+				{!loading ? <FoodListTable items={foodList} /> : <Spinner />}
+			</Suspense>
+		</TabContentHolder>
+	);
 };
 
 export default Menu;

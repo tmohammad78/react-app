@@ -1,8 +1,9 @@
 {
   "compilerOptions": {
     "target": "es5",
-    "module": "esnext",
+    "module": "CommonJS",
     "allowSyntheticDefaultImports": true,
+    "esModuleInterop": true,
     "moduleResolution": "node",
     "lib": ["es6", "dom"],
     "sourceMap": true,
@@ -20,6 +21,6 @@
       "helper/*": ["src/helper/*"]
     }
   },
-  "include": ["**/*.ts", "**/*.tsx"],
+  "include": ["**/*.ts", "**/*.tsx", "webpack/commonVariables.js"],
   "exclude": ["node_modules"]
 }

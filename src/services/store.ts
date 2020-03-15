@@ -1,9 +1,15 @@
-import { compose, createStore, applyMiddleware } from 'redux';
+import { compose, createStore, applyMiddleware, Store } from 'redux';
 import thunk from 'redux-thunk';
 import newRootReducer from './reducers';
+import { IApplicationState } from './reducers';
+declare global {
+	interface Window {
+		__REDUX_DEVTOOLS_EXTENSION_COMPOSE__?: typeof compose;
+	}
+}
 
-export default (initialState: any) => {
-	initialState = JSON.parse(window.localStorage.getItem('state')) || initialState;
+export default (initialState: any): Store<IApplicationState> => {
+	// initialState = JSON.parse(window.localStorage.getItem('state': string): string | null) || initialState;
 	const middleware = [thunk];
 	let enhancer;
 	if (process.env.NODE_ENV !== 'development') {
@@ -11,7 +17,8 @@ export default (initialState: any) => {
 	} else {
 		enhancer = compose(
 			applyMiddleware(...middleware),
-			window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
+			// window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ && window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__()
+			// window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
 		);
 	}
 	const store = createStore(newRootReducer, initialState, enhancer);

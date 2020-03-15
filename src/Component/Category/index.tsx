@@ -4,10 +4,11 @@ import { Link } from 'react-scroll';
 import Carousel, { consts } from 'react-elastic-carousel';
 import { Iw, TextIw } from './style';
 import { Button } from 'component/Buttons/Button';
+import { IApplicationState } from 'services/reducers';
+import { ICategory } from 'src/types/index';
 
 const Category = () => {
-	const item = useSelector(state => state.menu.categoryList);
-
+	const item = useSelector<IApplicationState, ICategory[]>(state => state.menu.categoryList);
 	const breakPoints = [
 		{ width: 1, itemsToShow: 3 },
 		{ width: 550, itemsToShow: 5 },
@@ -44,7 +45,7 @@ const Category = () => {
 								<Link
 									key={food.catId}
 									className=' indexbox'
-									to={food.catId}
+									to={food.catId.toString()}
 									spy
 									smooth
 									offset={-100}

@@ -1,14 +1,17 @@
-import { ILoadCartAction, IAddFoodCartAction, cartActionTypes, UPDATE_CART } from './actionTypes';
-import { updateProduct } from '../menu/actions';
-import { objectToArray } from '../../helper/index';
+import { ILoadCartAction, IUpdateCartAction, IRemoveFoodCartAction, IAddFoodCartAction, cartActionTypes } from './actionTypes';
+import { updateProduct } from 'services/menu/actions';
+import { objectToArray } from 'helper/index';
+import { Dispatch, ActionCreator, AnyAction } from 'redux';
+import { ThunkAction } from 'redux-thunk';
 import { IFoodList } from 'src/types';
-import { Dispatch, ActionCreator } from 'redux';
-export const loadCart: ActionCreator<ILoadCartAction> = (products: IFoodList) => ({
+import { IApplicationState } from '../reducers';
+
+export const loadCart: ActionCreator<ILoadCartAction> = (products) => ({
 	type: cartActionTypes.LOAD_CART,
-	payload: products
+	products
 });
 
-export const addFood = (product: IFoodList, quantity = 1) => (dispatch: Dispatch, getState: any) => {
+export const addFood: ActionCreator<ThunkAction<AnyAction, IApplicationState, undefined, IAddFoodCartAction>> = (product: IFoodList, quantity: number = 1) => (dispatch: Dispatch, getState: () => IApplicationState) => {
 	const cartProducts = getState().cart.items;
 	let productInCart = false;
 	let totalQuantity = quantity;
@@ -22,7 +25,6 @@ export const addFood = (product: IFoodList, quantity = 1) => (dispatch: Dispatch
 
 	if (!productInCart) {
 		product.quantity = quantity;
-		// debugger;
 		cartProducts[product.id] = product;
 	}
 	dispatch(updateProduct({ id: product.id, quantity: totalQuantity }));
@@ -33,28 +35,7 @@ export const addFood = (product: IFoodList, quantity = 1) => (dispatch: Dispatch
 	});
 };
 
-export const updateCart = (cartProducts: IFoodList) => (dispatch: Dispatch) => {
-	// const totalProduct = objectToArray(cartProducts).reduce((sum, p) => {
-	const totalProduct = objectToArray(cartProducts).reduce((sum, p) => {
-		sum += p.quantity;
-		return sum;
-	}, 0);
-	const totalPrice = objectToArray(cartProducts).reduce((sum, p) => {
-		sum += p.price * p.quantity;
-		return sum;
-	}, 0);
-
-	const cartTotal = {
-		totalPrice,
-		totalProduct
-	};
-	dispatch({
-		type: cartActionTypes.UPDATE_CART,
-		payload: cartTotal
-	});
-};
-
-export const removeFood = (product: IFoodList, fullRemove = false) => (dispatch: Dispatch, getState: any) => {
+export const removeFood: ActionCreator<ThunkAction<AnyAction, IApplicationState, undefined, IRemoveFoodCartAction>> = (product: IFoodList, fullRemove: boolean = false) => (dispatch: Dispatch<AnyAction>, getState: () => IApplicationState) => {
 	const cartProducts = getState().cart.items;
 
 	product.quantity = fullRemove ? 0 : product.quantity - 1;
@@ -68,3 +49,23 @@ export const removeFood = (product: IFoodList, fullRemove = false) => (dispatch:
 		payload: { product, fullRemove }
 	});
 };
+
+export const updateCart: ActionCreator<IUpdateCartAction> = (cartProducts) => {
+	// const totalProduct = objectToArray(cartProducts).reduce((sum, p) => {
+	const totalProduct = objectToArray(cartProducts).reduce((sum, p) => {
+		sum += p.quantity;
+		return sum;
+	}, 0);
+	const totalPrice = objectToArray(cartProducts).reduce((sum, p) => {
+		sum += p.price * p.quantity;
+		return sum;
+	}, 0);
+
+	return ({
+		type: cartActionTypes.UPDATE_CART,
+		payload: {
+			totalPrice,
+			totalProduct
+		}
+	});
+}

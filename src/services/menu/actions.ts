@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { IPropsForCallBack, IRestDataGet, IUpdateMenuAction, IDisLikeProductAction, ILikeProductAction, menuActionTypes } from './actionTypes';
+import { IRestDataGet, IUpdateMenuAction, IDisLikeProductAction, ILikeProductAction, menuActionTypes } from './actionTypes';
 import { restaurantMenu } from '../util';
 import { objectToArray } from '../../helper/index';
 import parseMenu from './util/menu';
@@ -27,7 +27,7 @@ export const dislikeProduct: ActionCreator<IDisLikeProductAction> = product => (
 
 
 
-export const fetchMenu = (callback: IPropsForCallBack) => (dispatch: Dispatch, getState: any) => {
+export const fetchMenu = (callback: () => void) => (dispatch: Dispatch, getState: any) => {
 	const cart = getState().cart.items;
 	const likedFood = getState().likeFood.likeFood;
 	const foodList = getState().menu.foodList;

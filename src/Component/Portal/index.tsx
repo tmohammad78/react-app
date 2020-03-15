@@ -1,18 +1,22 @@
 import { useEffect } from 'react';
 import ReactDOM from 'react-dom';
 
-const Portal = props => {
-  const modalRoot = document.getElementById('modal-root');
-  const el = document.createElement('div');
+interface Props {
+	children: React.ReactNode
+}
 
-  useEffect(() => {
-    modalRoot.appendChild(el);
-    return function cleanup() {
-      modalRoot.removeChild(el);
-    };
-  });
+const Portal = ({ children }: Props) => {
+	const modalRoot: (HTMLElement | null) = document.getElementById('modal-root');
+	const el = document.createElement('div');
 
-  return ReactDOM.createPortal(props.children, el);
+	useEffect(() => {
+		modalRoot.appendChild(el);
+		return function cleanup() {
+			modalRoot.removeChild(el);
+		};
+	});
+
+	return ReactDOM.createPortal(children, el);
 };
 
 export default Portal;

@@ -45,7 +45,7 @@ export const toPersianNum = (value: any, dontTrim = false) => {
 	return res;
 };
 
-export const objectToArray = (objectList: IFoodList) => {
+export const objectToArray = (objectList: IFoodList[]) => {
 	const list: IFoodList[] = [];
 	Object.values(objectList).forEach((item: IFoodList) => {
 		list[item.index] = item;

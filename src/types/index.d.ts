@@ -9,8 +9,8 @@ export interface AuthState {
 export interface CartState {
 	readonly products: IFoodList[];
 	readonly items: IFoodList[];
-	readonly foodToAdd: IFoodList[];
-	readonly cartTotal: IFoodList[];
+	readonly foodToAdd: IFoodList | object;
+	readonly cartTotal: object;
 }
 
 export interface SubFoodState {
@@ -19,17 +19,21 @@ export interface SubFoodState {
 }
 
 export interface MenuState {
-	foodListItem: {},
-	foodList: null,
+	foodListItem: IFoodList[] | object,
+	foodList: IFoodList[] | null,
 	categoryList: ICategory[]
 }
 
 export interface LikeFoodState {
-	likeFood: {}
+	likeFood: IFoodList[] | object
 }
 
 //  ------
-
+export interface MyFormValues {
+	email: string,
+	phonenumber: string,
+	password: string
+}
 
 export interface ICategory {
 	catId: number;
@@ -61,12 +65,12 @@ export interface ISubFood {
 
 export interface IFoodList {
 	id: number;
+	index: number;
 	title: string,
 	ingredient: string;
 	img: string;
 	archive: boolean | undefined;
 	price: number,
-	index: number;
 	discount: number;
 	discountPercentage: number;
 	foodTag: string | undefined;

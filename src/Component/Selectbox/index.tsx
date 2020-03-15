@@ -1,56 +1,66 @@
 import React, { useState } from 'react';
-import PropTypes from 'prop-types';
 
 import { Button } from 'component/Buttons/Button';
 
 import './style.scss';
+interface props {
+	handleOnChange: () => void
+}
 
-const Selectbox = ({ handleOnChange }) => {
-  const options = [
-    { value: '', label: 'Select', index: 1 },
-    { value: 'lowestprice', label: 'ارزان ترین', index: 2 },
-    { value: 'highestprice', label: 'گران ترین', index: 3 }
-  ];
+interface ISelectBox {
+	1: boolean,
+	2: boolean,
+	3: boolean
+}
 
-  const [checkactive, setActive] = useState({
-    1: true,
-    2: false,
-    3: false
-  });
+interface ISelectOption {
+	value: string | null,
+	label: string,
+	index: number
+}
+const Selectbox = ({ handleOnChange }: props) => {
+	const options = [
+		{ value: '', label: 'Select', index: 1 },
+		{ value: 'lowestprice', label: 'ارزان ترین', index: 2 },
+		{ value: 'highestprice', label: 'گران ترین', index: 3 }
+	];
 
-  const createOptions = option =>
-    option.map(item => {
-      return (
-        <li key={item.index}>
-          <Button
-            bgcolor={checkactive[parseInt(item.index)] ? '#FF7714' : 'transparent'}
-            color={checkactive[parseInt(item.index)] ? '#FFF' : '#333'}
-            onClick={onClicked}
-            value={item.value}
-            name={item.index}
-          >
-            {item.label}
-          </Button>
-        </li>
-      );
-    });
+	const [checkactive, setActive] = useState<ISelectBox>({
+		1: true,
+		2: false,
+		3: false
+	});
 
-  const onClicked = e => {
-    setActive({ [1]: false });
-    setActive({ [e.target.name]: true });
-    handleOnChange(e.target.value);
-  };
+	const createOptions = (option: ISelectOption[]) =>
+		option.map(item => {
+			return (
+				<li key={item.index}>
+					<Button
+						bgcolor={checkactive[parseInt(item.index)] ? '#FF7714' : 'transparent'}
+						color={checkactive[parseInt(item.index)] ? '#FFF' : '#333'}
+						onClick={onClicked}
+						value={item.value}
+						name={item.index}
+					>
+						{item.label}
+					</Button>
+				</li>
+			);
+		});
 
-  return (
-    <div className='sort'>
-      <span>مرتب سازی براساس :</span>
-      <ul>{createOptions(options)}</ul>
-    </div>
-  );
+	const onClicked = (e: React.ChangeEvent<HTMLInputElement>) => {
+		setActive({ [1]: false });
+		setActive({ [e.target.name]: true });
+		handleOnChange(e.target.value);
+	};
+
+	return (
+		<div className='sort'>
+			<span>مرتب سازی براساس :</span>
+			<ul>{createOptions(options)}</ul>
+		</div>
+	);
 };
 
-Selectbox.propTypes = {
-  handleOnChange: PropTypes.func.isRequired
-};
 
 export default Selectbox;

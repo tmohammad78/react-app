@@ -1,4 +1,5 @@
 const commonVariables = require('./commonVariables');
+// import commonVariables from './commonVariables';
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const VENDORS_LIB = ['react', 'react-dom', 'react-router-dom'];
 

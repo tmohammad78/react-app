@@ -1,4 +1,5 @@
-import { menuActionTypes, MenuState, MenuSystemAction } from './actionTypes';
+import { menuActionTypes, MenuSystemAction } from './actionTypes';
+import { MenuState } from '../../types/index';
 import { Reducer } from 'redux';
 
 const initialState: MenuState = {

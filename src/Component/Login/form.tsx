@@ -3,17 +3,28 @@ import { Formik, Form, Field } from 'formik';
 import { validation } from '../../helper/validation';
 import { Button } from '../Buttons/Button';
 import Input from '../Input';
+import { MyFormValues } from 'src/types';
 import './style.scss';
 
-interface MyFormValues {
-	email: string,
-	phonenumber: string,
-	password: string
+
+interface Props {
+	submitAction: (values: MyFormValues) => void
 }
-const FormLogin = props => {
+
+interface IInputForm {
+	[x: string]: any;
+	field: any;
+	className: string;
+	meta: string;
+	form: {
+		touched: boolean;
+		errors: string;
+	};
+}
+const FormLogin = ({ submitAction }: Props) => {
 	const initialValues: MyFormValues = { email: '', phonenumber: '', password: '' };
 
-	const InputForm = ({ field, className, meta, form: { touched, errors }, ...props }) => {
+	const InputForm = ({ field, className, meta, form: { touched, errors }, ...props }: IInputForm) => {
 		return (
 			<Fragment>
 				<div className='inputPack  clearfix'>
@@ -25,7 +36,7 @@ const FormLogin = props => {
 	};
 
 	const submitForm = (values: MyFormValues) => {
-		props.submitAction(values);
+		submitAction(values);
 	};
 
 
