@@ -14,12 +14,10 @@ export enum authActionTypes {
 
 export interface IAuthcheckLoginAction {
 	type: authActionTypes.CHECK_LOGIN,
-	payload: AuthState
 }
 
 export interface IAuthSkipAction {
-	type: authActionTypes.SKIPAUTH,
-	payload: AuthState
+	type: authActionTypes.SKIPAUTH
 }
 // interface checkVerfify {
 // 	type: typeof CHECK_LOGIN,
@@ -28,10 +26,10 @@ export interface IAuthSkipAction {
 
 export interface IAuthloginAction {
 	type: authActionTypes.AUTH_LOGIN,
-	payload: AuthState
+	payload: any
 }
 export interface IAuthRegisterAction {
 	type: authActionTypes.AUTH_REGISTER,
-	payload: InfoRegister
+	payload: any
 }
 export type AuthSystemAction = IAuthcheckLoginAction | IAuthSkipAction | IAuthloginAction | IAuthRegisterAction;

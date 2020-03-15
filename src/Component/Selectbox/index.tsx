@@ -4,13 +4,11 @@ import { Button } from 'component/Buttons/Button';
 
 import './style.scss';
 interface props {
-	handleOnChange: () => void
+	handleOnChange: (values: string) => void
 }
 
 interface ISelectBox {
-	1: boolean,
-	2: boolean,
-	3: boolean
+	[x: string]: boolean;
 }
 
 interface ISelectOption {
@@ -32,12 +30,12 @@ const Selectbox = ({ handleOnChange }: props) => {
 	});
 
 	const createOptions = (option: ISelectOption[]) =>
-		option.map(item => {
+		option.map((item: ISelectOption) => {
 			return (
 				<li key={item.index}>
 					<Button
-						bgcolor={checkactive[parseInt(item.index)] ? '#FF7714' : 'transparent'}
-						color={checkactive[parseInt(item.index)] ? '#FFF' : '#333'}
+						bgcolor={checkactive[item.index] ? '#FF7714' : 'transparent'}
+						color={checkactive[item.index] ? '#FFF' : '#333'}
 						onClick={onClicked}
 						value={item.value}
 						name={item.index}
@@ -48,10 +46,11 @@ const Selectbox = ({ handleOnChange }: props) => {
 			);
 		});
 
-	const onClicked = (e: React.ChangeEvent<HTMLInputElement>) => {
+	const onClicked = (e: React.FormEvent<EventTarget>) => {
+		let target = e.target as HTMLInputElement;
 		setActive({ [1]: false });
-		setActive({ [e.target.name]: true });
-		handleOnChange(e.target.value);
+		setActive({ [target.name]: true });
+		handleOnChange(target.value);
 	};
 
 	return (

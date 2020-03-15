@@ -7,7 +7,7 @@ const LoginModal = () => {
       <div className='new-user'>
         <div className='new-user-content'>
           <h4>برای ورود یا عضویت شماره موبایلت رو وارد کن</h4>
-          <FormLogin />
+          {/* <FormLogin /> */}
         </div>
       </div>
     </div>

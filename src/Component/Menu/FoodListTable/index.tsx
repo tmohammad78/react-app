@@ -1,12 +1,8 @@
 import React, { useState, useEffect, lazy, Suspense } from 'react';
-import PropTypes from 'prop-types';
 import { useSelector, useDispatch } from 'react-redux';
-
 import { closeSubFoodModal } from 'services/subFood/action';
-// import Modal from 'component/Modal';
+
 import Food from './food/index';
-// import Sort from '../sort';
-// import SearchBar from './searchBar/searchBar';
 import SubFood from '../subFoodModal/subFood';
 import FoodListTitle from './FoodListTitle';
 import { FoodList, NotFoundStyle, FoodMenu } from './style.js';
@@ -14,20 +10,31 @@ import Spinner from 'component/Spinner';
 
 const Modal = lazy(() => import('component/Modal/index'));
 const SearchBar = lazy(() => import('./searchBar/searchBar'));
+import { IApplicationState } from 'services/reducers';
+import { ISubFood, IFoodList } from 'src/types/index';
 const Sort = lazy(() => import('../sort'));
-
+interface ITest2 {
+	field: string,
+	asc: boolean
+}
+interface ITest {
+	lowestprice: ITest2[],
+	highestprice: ITest2[]
+}
 const sortBy = {
 	lowestprice: { field: 'price', asc: true },
 	highestprice: { field: 'price', asc: false }
 };
-
-const FoodListTable = ({ items }) => {
-	const originalItems = [...items];
+interface IProps {
+	itemFood: IFoodList[]
+}
+const FoodListTable: React.SFC<IProps> = ({ itemFood }: IProps) => {
+	const originalItems = [...itemFood];
 	const row = [];
-	let lastCategory = null;
+	let lastCategory: string | null = null;
 
-	const subFood = useSelector(state => state.subFood);
-	const [foodList, setFoodList] = useState(items);
+	const subFood = useSelector<IApplicationState, ISubFood[]>(state => state.subFood);
+	const [foodList, setFoodList] = useState(itemFood);
 	const [searchKey, setSearchKey] = useState('');
 	const [inStock, setInStock] = useState(false);
 
@@ -41,7 +48,7 @@ const FoodListTable = ({ items }) => {
 		return <NotFoundStyle>نتیجه ای پیدا نشد.</NotFoundStyle>;
 	};
 
-	const search = (text, stock, list = items) => {
+	const search = (text: string, stock: boolean, list = itemFood) => {
 		let newList = list;
 		let result = [];
 		let searchIngredient = list;
@@ -53,22 +60,22 @@ const FoodListTable = ({ items }) => {
 			searchIngredient = searchIngredient.filter(item => item.ingredient.indexOf(text) > -1);
 			result = newList.concat(searchIngredient);
 		} else {
-			newList ? (result = newList) : (result = items);
+			newList ? (result = newList) : (result = itemFood);
 		}
 		setFoodList(result);
 	};
 
-	const searchHandler = text => {
+	const searchHandler = (text: string) => {
 		search(text, inStock);
 		setSearchKey(text);
 	};
 
-	const stockHandler = value => {
+	const stockHandler = (value: string) => {
 		search(searchKey, value);
 		setInStock(value);
 	};
 
-	const sortHandler = value => {
+	const sortHandler = (value: string) => {
 		let newItem;
 		const sortItem = sortBy[value];
 		if (sortItem) {
@@ -87,7 +94,7 @@ const FoodListTable = ({ items }) => {
 	};
 
 	if (foodList.length > 0) {
-		foodList.forEach(food => {
+		foodList.forEach((food) => {
 			if (food.categoryTitle !== lastCategory) {
 				row.push(<FoodListTitle category={food.categoryTitle} id={food.catId} />);
 			}
@@ -123,8 +130,5 @@ const FoodListTable = ({ items }) => {
 	);
 };
 
-FoodListTable.propTypes = {
-	items: PropTypes.object
-};
 
 export default FoodListTable;

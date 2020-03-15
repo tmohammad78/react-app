@@ -65,11 +65,11 @@ function subFoodData(foods: ISubFood[]) {
 	};
 }
 
-const parseMenu = (data: IDataMain, sort) => {
+const parseMenu = (data: IDataMain, sort?: any) => {
 	const list: IFoodList[] = [];
 	const categoryList: ICategory[] = [];
 	if (data.categories) {
-		data.categories = _.sortBy(data.categories, c => c.index);
+		data.categories = _.sortBy(data.categories, (c: any) => c.index);
 		data.categories.forEach((category: ICategoryResponse) => {
 			const sectionList = category.sub;
 			if (sectionList && sectionList.length) {
@@ -87,7 +87,7 @@ const parseMenu = (data: IDataMain, sort) => {
 						} else {
 							let subFoods: ISubFood[] = [];
 							// if IFoodList be ISubFood we have 	packaging: number; saleOnRamadan: boolean; elements in subfood
-							const subQuantity = 0;
+							const subQuantity: number = 0;
 							let subAvailable = false;
 							let subUnavailableText = 'عدم موجودی';
 
@@ -109,22 +109,22 @@ const parseMenu = (data: IDataMain, sort) => {
 
 							if (subFoods.length > 0) {
 								const subData = subFoodData(subFoods);
+								const quantity: number = 0;
 								let priceLabel = section.priceLabel && section.priceLabel.trim();
 								if (!priceLabel) {
 									priceLabel = (subData.samePrice ? '' : ' از ') + subData.lowPrice;
 								}
 								const foodItemWithSub = makeFoodItem({
 									id: section.id,
-									title: section.title,
-									img: section.img,
 									index: section.index,
+									title: section.title,
 									ingredient: section.description || '', // || subData.ingredient || "",
+									img: section.img,
 									discountPercentage: subData.maxDiscount,
-									priceLabel,
-									// "discount": ,
-									// "price": ,
 									available: subAvailable,
 									unavailableText: subUnavailableText,
+									priceLabel,
+									quantity: quantity,
 									subFoods
 								});
 
@@ -140,9 +140,9 @@ const parseMenu = (data: IDataMain, sort) => {
 				if (foodList.length > 0) {
 					if (sort) {
 						const sortType = sort === 'lowestprice' ? 1 : -1;
-						foodList = _.sortBy(foodList, (food: IFoodList) => {
-							return food.price * sortType;
-						});
+						// foodList = _.sortBy(foodList, (food: IFoodList) => {
+						// 	return food.price * sortType;
+						// });
 					} else {
 						foodList = _.sortBy(foodList, (food: IFoodList) => {
 							return food.index;

@@ -1,16 +1,16 @@
 import React, { useState } from 'react';
 import { InputStyle, ParentInput, IconName } from './style';
 interface DefaultInput {
-	type: string | undefined;
-	label: string | undefined;
-	icon: string | undefined;
-	id: string | undefined;
-	value: string | null | undefined;
-	onChange: ((value: React.FormEvent<HTMLSelectElement>) => void) | undefined;
-	onBlur: () => void;
-	onFocus: () => void;
-	className: string | undefined;
-	name: string | undefined;
+	type?: string | undefined;
+	label?: string | undefined;
+	icon?: string | undefined;
+	id?: string | undefined;
+	value?: string | null | undefined;
+	onChange: ((e: React.FormEvent<EventTarget>) => void);
+	onBlur?: () => void;
+	onFocus?: () => void;
+	className?: string | undefined;
+	name?: string | undefined;
 }
 const Input = ({
 	type,

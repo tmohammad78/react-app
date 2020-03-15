@@ -1,31 +1,32 @@
 
 export interface AuthState {
-	readonly errorMessage: string,
-	readonly token: string,
-	readonly refreshToken: string,
-	readonly expiresIn: string,
-	readonly logged: boolean
+	errorMessage: string,
+	token: string,
+	refreshToken: string,
+	expiresIn: string,
+	logged: boolean
 }
 export interface CartState {
-	readonly products: IFoodList[];
-	readonly items: IFoodList[];
-	readonly foodToAdd: IFoodList | object;
-	readonly cartTotal: object;
+	products: IFoodList[];
+	items: IFoodList[];
+	foodToAdd: IFoodList | object;
+	cartTotal: object;
 }
 
 export interface SubFoodState {
-	readonly food: ISubFood[],
-	readonly show: boolean
+	food: IFoodList,
+	show: boolean
 }
 
 export interface MenuState {
 	foodListItem: IFoodList[] | object,
-	foodList: IFoodList[] | null,
+	foodList: IFoodList[],
+	// | null for foodlist
 	categoryList: ICategory[]
 }
 
 export interface LikeFoodState {
-	likeFood: IFoodList[] | object
+	likeFood: IFoodList
 }
 
 //  ------
@@ -44,12 +45,12 @@ export interface ICategory {
 
 export interface ISubFood {
 	id: number;
+	index: number;
 	title: string,
 	ingredient: string;
 	img: string;
 	archive: boolean | undefined;
 	price: number,
-	index: number;
 	discount: number;
 	discountPercentage: number;
 	foodTag: string | undefined;
@@ -69,20 +70,20 @@ export interface IFoodList {
 	title: string,
 	ingredient: string;
 	img: string;
-	archive: boolean | undefined;
-	price: number,
-	discount: number;
+	archive?: boolean | undefined;
+	price?: number,
+	discount?: number;
 	discountPercentage: number;
-	foodTag: string | undefined;
+	foodTag?: string | undefined;
 	available: boolean | undefined;
 	unavailableText: string;
-	subFoods: ISubFood | boolean;
 	priceLabel: string;
-	visible: boolean,
-	stock: undefined | boolean;
+	visible?: boolean,
+	stock?: undefined | boolean;
 	quantity: number
-	packaging: number;
-	saleOnRamadan: boolean;
+	packaging?: number;
+	saleOnRamadan?: boolean;
+	subFoods: ISubFood[] | boolean;
 }
 
 export interface ISectionFood {

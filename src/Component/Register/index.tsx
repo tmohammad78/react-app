@@ -6,12 +6,17 @@ import { registerAction, loginAction, checkVerfify } from 'services/auth/action'
 import firebase from '../../../firebaseconfig';
 import { MyFormValues } from 'src/types';
 import './style.scss';
-
+declare global {
+	interface Window {
+		recaptchaVerifier: any,
+		prompt: (message?: string, _default?: string) => string | null
+	}
+}
 const Register = () => {
 	const history = useHistory();
 	const dispatch = useDispatch();
 	const [newUser, setNewUser] = useState(true);
-	const [values, setValues] = useState();
+	const [values, setValues] = useState<MyFormValues>();
 	useEffect(() => {
 		window.recaptchaVerifier = new firebase.auth.RecaptchaVerifier('recaptcha-container', {
 			size: 'invisible'
@@ -26,7 +31,7 @@ const Register = () => {
 
 		var service_id = 'default_service';
 		var template_id = 'template_ob6Oo6gP';
-		emailjs.send(service_id, template_id, template_params);
+		// emailjs.send(service_id, template_id, template_params);
 
 		console.log(values);
 		const applicationVerifier = window.recaptchaVerifier;

@@ -1,4 +1,4 @@
-import { ISubFood } from "src/types";
+import { ISubFood, IFoodList } from "src/types";
 
 export const SET_SUBFOOD = 'SET_SUBFOOD';
 export const CLOSE_MODAL = 'CLOSE_MODAL';
@@ -11,7 +11,7 @@ export enum subFoodActionTypes {
 export interface ISubFoodModal {
 	type: subFoodActionTypes.SET_SUBFOOD,
 	payload: {
-		food: ISubFood[],
+		food: IFoodList[],
 		show: boolean
 	}
 }

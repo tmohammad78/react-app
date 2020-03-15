@@ -6,13 +6,13 @@ interface Props {
 }
 
 const Portal = ({ children }: Props) => {
-	const modalRoot: (HTMLElement | null) = document.getElementById('modal-root');
+	const modalRoot: HTMLElement | null = document.getElementById('modal-root');
 	const el = document.createElement('div');
 
 	useEffect(() => {
-		modalRoot.appendChild(el);
+		modalRoot ? modalRoot.appendChild(el) : null;
 		return function cleanup() {
-			modalRoot.removeChild(el);
+			modalRoot ? modalRoot.removeChild(el) : null;
 		};
 	});
 

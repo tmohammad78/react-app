@@ -19,7 +19,7 @@ const newRootReducer: Reducer<IApplicationState, AnyAction> = combineReducers<IA
 	cart: cartReducer,
 	// resInfo: coverReducer,
 	// total: totalReducer,
-	// subFood: subFoodReducer,
+	subFood: subFoodReducer,
 	likeFood: likeFoodReducer,
 	auth: authReducer
 });

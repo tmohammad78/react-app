@@ -1,18 +1,20 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { currency } from 'helper';
+import { currency } from 'src/helper/index';
 import './style.scss';
-
-const Price = ({ price }) => {
-  return (
-    <span className='price'>
-      <small>{price ? currency(price) : ''}</small>
-    </span>
-  );
+interface Props {
+	price: number | undefined
+}
+const Price = ({ price }: Props) => {
+	return (
+		<span className='price'>
+			<small>{price ? currency(price) : ''}</small>
+		</span>
+	);
 };
 
 Price.propTypes = {
-  price: PropTypes.string
+	price: PropTypes.string
 };
 
 export default Price;

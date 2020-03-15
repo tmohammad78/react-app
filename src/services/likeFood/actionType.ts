@@ -12,7 +12,7 @@ export interface IAddFoodLikeAction {
 
 export interface IRemoveFoodLikeAction {
 	type: likeFoodActionTypes.DELETE_TO_LIKE,
-	// likeFood: ILike
+	likeFood: IFoodList
 }
 
 export type LikeFoodSystem = IAddFoodLikeAction | IRemoveFoodLikeAction;

@@ -72,9 +72,9 @@ export const fetchMenu = (callback: () => void) => (dispatch: Dispatch, getState
 	};
 	if (!foodList) {
 		axios
-			.get<IRestDataGet[]>(restaurantMenu)
+			.get<IRestDataGet[]>(restaurantMenu, transformResponse: (r: ServerResponse) => r.data)
 			.then(response => {
-				const { data }: any = response;
+				const { data }: IDataMain[] = response;
 				Data.foodList = data.response;
 				return productLoaded(data);
 			})

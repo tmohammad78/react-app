@@ -3,15 +3,23 @@ import axios from '../../gate/api';
 import { AxiosResponse } from 'axios';
 import { Dispatch, ActionCreator, AnyAction } from 'redux';
 import { browserHistory } from '../../route/history';
+import { ThunkAction } from 'redux-thunk';
+import { IApplicationState } from 'services/reducers';
 
 interface Props {
 	email: string,
 	password: string
 }
 
-export const checkLogin = () => (dispatch: Dispatch, getState: any) => {
+interface IPost {
+	email: string,
+	password: string,
+	returnSecureToken: boolean
+}
+
+export const checkLogin: ActionCreator<ThunkAction<AnyAction, IApplicationState, undefined, IAuthcheckLoginAction>> = () => (dispatch: Dispatch, getState: () => IApplicationState) => {
 	const auth = getState().auth;
-	dispatch({
+	return dispatch({
 		type: authActionTypes.CHECK_LOGIN,
 		payload: auth
 	});
@@ -29,10 +37,10 @@ export const checkLogin = () => (dispatch: Dispatch, getState: any) => {
 // 	payload: auth
 // });
 
-export const skipAuth = () => (dispatch: Dispatch) => {
-	return dispatch({
+export const skipAuth: ActionCreator<IAuthSkipAction> = () => {
+	return {
 		type: authActionTypes.SKIPAUTH
-	});
+	}
 };
 // export const skipAuth: ActionCreator<IAuthSkipAction> = () => ({
 // 	type: authActionTypes.SKIPAUTH
@@ -47,11 +55,9 @@ export const checkVerfify = (response: any, values: any) => (dispatch: any) => {
 	}
 };
 
-
-
-export const loginAction = ({ email, password }: Props) => (dispatch: Dispatch, getState: any) => {
+export const loginAction: ActionCreator<ThunkAction<Promise<AnyAction>, IApplicationState, undefined, IAuthloginAction>> = ({ email, password }: Props) => (dispatch: Dispatch, getState: () => IApplicationState) => {
 	debugger;
-	axios
+	return axios
 		.post('/accounts:signInWithCustomToken?key=AIzaSyDa29GWAYmBAuPEE7gxgVepxYYr6JAyfMQ', {
 			email: email,
 			password: password,
@@ -68,15 +74,9 @@ export const loginAction = ({ email, password }: Props) => (dispatch: Dispatch, 
 		});
 };
 
-interface IPost {
-	email: string,
-	password: string,
-	returnSecureToken: boolean
-}
-
-export const registerAction = ({ email, password }: Props) => (dispatch: Dispatch) => {
+export const registerAction: ActionCreator<ThunkAction<Promise<AnyAction>, IApplicationState, undefined, IAuthRegisterAction>> = ({ email, password }: Props) => (dispatch: Dispatch) => {
 	debugger;
-	axios
+	return axios
 		.post<IPost>(
 			'/accounts:signUp?key=AIzaSyDa29GWAYmBAuPEE7gxgVepxYYr6JAyfMQ',
 			{

@@ -8,12 +8,14 @@ interface SearchProps {
 	inStock: boolean;
 }
 const SearchBar = ({ filterText, onfilterText, onChangeStock, inStock }: SearchProps) => {
-	const handleTextChange = (e: React.FormEvent<HTMLSelectElement>) => {
-		onfilterText(e.target.value);
+	const handleTextChange = (e: React.FormEvent<EventTarget>) => {
+		let target = e.target as HTMLInputElement;
+		onfilterText(target.value);
 	};
 
-	const handleInStockChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
-		onChangeStock(e.target.checked);
+	const handleInStockChange = (e: React.FormEvent<EventTarget>): void => {
+		let target = e.target as HTMLInputElement;
+		onChangeStock(target.checked);
 	};
 
 	return (
@@ -31,7 +33,7 @@ const SearchBar = ({ filterText, onfilterText, onChangeStock, inStock }: SearchP
 						/>
 						<span />
 						غذاهای موجود
-          </label>
+          		</label>
 				</div>
 			</div>
 		</Fragment>
