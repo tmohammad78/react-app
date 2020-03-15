@@ -38,8 +38,8 @@ export const authReducer: Reducer<AuthState, AuthSystemAction> = (
 		case authActionTypes.CHECK_LOGIN:
 			return {
 				...state,
-				token: action.payload.token,
-				refreshToken: action.payload.refreshToken
+				// token: action.payload.token,
+				// refreshToken: action.payload.refreshToken
 			};
 		case authActionTypes.SKIPAUTH:
 			return {

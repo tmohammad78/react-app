@@ -1,3 +1,4 @@
+import { string } from "yup"
 
 export interface AuthState {
 	errorMessage: string,
@@ -6,9 +7,12 @@ export interface AuthState {
 	expiresIn: string,
 	logged: boolean
 }
+export interface testingItems {
+	[key: number]: IFoodList[]
+}
 export interface CartState {
 	products: IFoodList[];
-	items: IFoodList[];
+	items: testingItems[];
 	foodToAdd: IFoodList | object;
 	cartTotal: object;
 }
@@ -18,15 +22,23 @@ export interface SubFoodState {
 	show: boolean
 }
 
+
+export interface testing {
+	[key: string]: IFoodList[] | object
+}
 export interface MenuState {
-	foodListItem: IFoodList[] | object,
-	foodList: IFoodList[],
+	foodListItem: testing,
+	foodList: IFoodList[] | null,
 	// | null for foodlist
 	categoryList: ICategory[]
 }
 
+
+export interface TestLikeState {
+	[key: number]: IFoodList
+}
 export interface LikeFoodState {
-	likeFood: IFoodList
+	likeFood: TestLikeState
 }
 
 //  ------

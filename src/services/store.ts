@@ -5,11 +5,12 @@ import { IApplicationState } from './reducers';
 declare global {
 	interface Window {
 		__REDUX_DEVTOOLS_EXTENSION_COMPOSE__?: typeof compose;
-	}
+		// Storage.getItem: string | null
+}
 }
 
 export default (initialState: any): Store<IApplicationState> => {
-	// initialState = JSON.parse(window.localStorage.getItem('state': string): string | null) || initialState;
+	// initialState = JSON.parse(window.localStorage.getItem('state')) || initialState;
 	const middleware = [thunk];
 	let enhancer;
 	if (process.env.NODE_ENV !== 'development') {

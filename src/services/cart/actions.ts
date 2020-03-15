@@ -15,7 +15,7 @@ export const addFood: ActionCreator<ThunkAction<AnyAction, IApplicationState, un
 	const cartProducts = getState().cart.items;
 	let productInCart = false;
 	let totalQuantity = quantity;
-	objectToArray(cartProducts).forEach(item => {
+	objectToArray(cartProducts).forEach((item: IFoodList) => {
 		if (item.id == product.id) {
 			item.quantity += quantity;
 			totalQuantity = item.quantity;

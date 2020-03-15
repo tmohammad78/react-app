@@ -1,12 +1,18 @@
 import axios from 'axios';
-import { IRestDataGet, IUpdateMenuAction, IDisLikeProductAction, ILikeProductAction, menuActionTypes } from './actionTypes';
+import { IRestDataGet, IUpdateMenuAction, IDisLikeProductAction, ILikeProductAction, menuActionTypes, IFetchMenuAction } from './actionTypes';
 import { restaurantMenu } from '../util';
 import { objectToArray } from '../../helper/index';
 import parseMenu from './util/menu';
 import { IDataMain } from './actionTypes';
+import { IApplicationState } from '../reducers';
+import { IFoodList } from '../../types/index';
 import { arrayToObject } from 'helper/index';
-import { Dispatch, ActionCreator } from 'redux';
-const Data = {
+import { ThunkAction } from 'redux-thunk';
+import { Dispatch, ActionCreator, AnyAction } from 'redux';
+interface ttt {
+	foodList: IFoodList[] | null | object
+}
+const Data: ttt = {
 	foodList: null
 };
 
@@ -27,12 +33,12 @@ export const dislikeProduct: ActionCreator<IDisLikeProductAction> = product => (
 
 
 
-export const fetchMenu = (callback: () => void) => (dispatch: Dispatch, getState: any) => {
+export const fetchMenu: ActionCreator<ThunkAction<Promise<AnyAction | null>, IApplicationState, undefined, IFetchMenuAction>> = (callback: () => void) => (dispatch: Dispatch, getState: () => IApplicationState) => {
 	const cart = getState().cart.items;
 	const likedFood = getState().likeFood.likeFood;
 	const foodList = getState().menu.foodList;
 
-	const productLoaded = (data: IDataMain, sort: string | null) => {
+	const productLoaded = (data: IDataMain, sort?: string | null) => {
 		const menu = parseMenu(data, sort);
 		const foodList = menu.foodList;
 		const foodListItem = arrayToObject(menu.foodList);
@@ -70,17 +76,17 @@ export const fetchMenu = (callback: () => void) => (dispatch: Dispatch, getState
 			}
 		});
 	};
-	if (!foodList) {
-		axios
-			.get<IRestDataGet[]>(restaurantMenu, transformResponse: (r: ServerResponse) => r.data)
+
+	return !foodList ?
+		axios.
+			get<IRestDataGet[]>(restaurantMenu)
 			.then(response => {
-				const { data }: IDataMain[] = response;
-				Data.foodList = data.response;
+				const { data } = response;
+				Data.foodList = data;
 				return productLoaded(data);
 			})
 			.catch(err => {
 				console.log(err, 'Could not fetch foodList. Try again later.');
-			});
-	}
-	return;
+			})
+		: null
 };

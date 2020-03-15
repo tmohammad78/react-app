@@ -1,7 +1,7 @@
 import { likeFoodActionTypes, LikeFoodSystem } from './actionType';
 import { Reducer } from 'redux';
 import { LikeFoodState } from '../../types/index';
-const initialState: LikeFoodState = {
+const initialState:  = {
 	likeFood: {}
 };
 

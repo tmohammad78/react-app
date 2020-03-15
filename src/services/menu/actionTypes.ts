@@ -1,4 +1,4 @@
-import { ICategoryResponse, MenuState } from '../../types/index';
+import { ICategoryResponse, MenuState, IFoodList } from '../../types/index';
 
 export enum menuActionTypes {
 	FETCH_MENU = "FETCH_MENU",
@@ -27,7 +27,7 @@ export interface IFetchMenuAction {
 
 export interface IUpdateMenuAction {
 	type: menuActionTypes.UPDATE_PRODUCT,
-	payload: MenuState
+	payload: IFoodList
 }
 
 export interface ICategoryAction {
@@ -36,11 +36,11 @@ export interface ICategoryAction {
 }
 export interface ILikeProductAction {
 	type: menuActionTypes.LIKED_PRODUCT,
-	payload: MenuState
+	payload: IFoodList
 }
 export interface IDisLikeProductAction {
 	type: menuActionTypes.DISLIKED_PRODUCT,
-	payload: MenuState
+	payload: IFoodList
 }
 
 export type MenuSystemAction = IDisLikeProductAction | ILikeProductAction | IFetchMenuAction | IUpdateMenuAction | ICategoryAction
