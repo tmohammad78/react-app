@@ -1,9 +1,14 @@
 import React, { useState } from 'react';
 import { useSelector } from 'react-redux';
 
-import CartProduct from './CartProduct';
 import { Button } from 'component/Buttons/Button';
+import CartProduct from './CartProduct';
+
 import { objectToArray, currency } from 'helper/index';
+
+import { ICartItemsObject } from 'src/types';
+import { IApplicationState } from 'src/services/reducers';
+
 import { RestCart, LeftSideHolder } from './style';
 import { CartListHolder, CartShowMobile } from './style.js';
 import './style.scss';
@@ -12,8 +17,8 @@ const FloatCart = () => {
 	let offForm;
 	const [isForm, setIsForm] = useState(false);
 	const [showCart, SetShowCart] = useState(false);
-	const cartProducts = useSelector(state => state.cart.items);
-	const cartInfo = useSelector(state => state.cart.cartTotal);
+	const cartProducts = useSelector<IApplicationState, ICartItemsObject>(state => state.cart.items);
+	const cartInfo = useSelector<IApplicationState,>(state => state.cart.cartTotal);
 	const { totalPrice, totalProduct } = cartInfo;
 	const products = objectToArray(cartProducts).map((item, i) => {
 		return <CartProduct key={i} product={item} />;

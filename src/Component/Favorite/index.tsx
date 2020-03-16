@@ -3,7 +3,7 @@ import { useSelector } from 'react-redux';
 import Food from '../Menu/FoodListTable/food';
 import { objectToArray } from 'helper/index';
 import { IApplicationState } from 'services/reducers';
-import { LikeFoodState } from 'src/types/index';
+import { LikeFoodState, IFoodList } from 'src/types/index';
 
 const Favorite = () => {
 	let favoriteFood = useSelector<IApplicationState, LikeFoodState[]>(state => state.likeFood.likeFood);
@@ -18,8 +18,8 @@ const Favorite = () => {
 			<div>
 				<span>علاقه مندی ها</span>
 			</div>
-			{favoriteFood.map((item) => {
-				return <Food food={item} key={item.catId} />;
+			{favoriteFood.map((item: IFoodList) => {
+				return <Food food={item} key={item.id} />;
 			})}
 		</div>
 	);

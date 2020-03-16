@@ -1,7 +1,7 @@
 import { combineReducers, Reducer, AnyAction } from 'redux';
 import { menuReducer } from './menu/reducer';
 import { cartReducer } from './cart/reducer';
-// import totalReducer from './total/reducer';
+// import { totalReducer } from './total/reducer';
 // import coverReducer from './cover/reducer';
 import { subFoodReducer } from './subFood/reducer';
 import { likeFoodReducer } from './likeFood/reducer';

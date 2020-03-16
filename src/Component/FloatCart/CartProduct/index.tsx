@@ -1,16 +1,19 @@
 import React from 'react';
 import { useDispatch } from 'react-redux';
-import PropTypes from 'prop-types';
 
-import { removeFood } from 'services/cart/actions';
 import { Button } from 'component/Buttons/Button';
 import QtyHolder from 'component/Menu/FoodListTable/food/foodDetails/qty-holder';
 import Tittle from 'component/Menu/FoodListTable/food/foodDetails/Tittle';
 import Price from 'component/Menu/FoodListTable/food/foodDetails/price';
-import { IProduct } from '';
+
+import { removeFood } from 'services/cart/actions';
+
+import { IFoodList } from 'src/types/index';
+
 interface IProps {
-	product: IProduct;
+	product: IFoodList;
 }
+
 const CartProduct: React.SFC<IProps> = ({ product }) => {
 	const dispatch = useDispatch();
 	if (product.quantity > 0) {
@@ -27,7 +30,7 @@ const CartProduct: React.SFC<IProps> = ({ product }) => {
 							onClick={() => dispatch(removeFood(product, true))}
 						>
 							x
-            </Button>
+            			</Button>
 						<div className='cartInfoFood'>
 							<Tittle tittle={product.title} />
 							<Price price={product.price} />
@@ -40,10 +43,6 @@ const CartProduct: React.SFC<IProps> = ({ product }) => {
 	} else {
 		return null;
 	}
-};
-
-CartProduct.propTypes = {
-	product: PropTypes.object.isRequired
 };
 
 export default CartProduct;

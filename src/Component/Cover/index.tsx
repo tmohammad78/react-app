@@ -4,23 +4,22 @@ import { useSelector } from 'react-redux';
 import { resturantData } from 'services/util';
 import { IApplicationState } from 'services/reducers';
 import './style.scss';
+import { ICategory } from 'src/types';
+
 interface IDataInfo {
-	name: string;
-	fullAddress: string;
-	offlineText: string;
-	mealTime: string
+	[key: string]: string
 }
 
-const initiaState: IDataInfo[] = [];
+const initiaState: IDataInfo = {};
 const Cover: React.SFC = () => {
-	const [data, setData] = useState<IDataInfo | null>(initiaState);
+	const [data, setData] = useState<IDataInfo>(initiaState);
 	console.log('render cover');
-	const item = useSelector<IApplicationState>(state => state.menu.categoryList);
+	const item = useSelector<IApplicationState, ICategory[]>(state => state.menu.categoryList);
 	const backgroundCover =
 		'url(https://static.delino.com/Image/Restaurant/Cover/st5xrnas.i4s_big.jpg)';
 	useEffect(() => {
 		axios
-			.get<IDataInfo[]>(resturantData)
+			.get<IDataInfo>(resturantData)
 			.then(res => {
 				setData(res.data);
 			})
@@ -55,7 +54,7 @@ const Cover: React.SFC = () => {
 					<aside>
 						<h1>{data?.name}</h1>
 						<div className='categoryList'>
-							{item.map((item: any) => {
+							{item.map((item: ICategory) => {
 								return <span key={item.catId}> {item.catTitle}.</span>;
 							})}
 						</div>

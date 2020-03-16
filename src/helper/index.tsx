@@ -1,4 +1,4 @@
-import { IFoodList } from "src/types";
+import { IFoodList, ICartItemsObject } from "src/types";
 
 export const currency = (number: number, showToman: boolean = true) => {
 	if (showToman && number !== 0) {
@@ -45,7 +45,7 @@ export const toPersianNum = (value: any, dontTrim = false) => {
 	return res;
 };
 
-export const objectToArray = (objectList: IFoodList[]) => {
+export const objectToArray = (objectList: ICartItemsObject) => {
 	const list: IFoodList[] = [];
 	Object.values(objectList).forEach((item: IFoodList) => {
 		list[item.index] = item;

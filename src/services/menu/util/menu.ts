@@ -10,7 +10,7 @@ function makeFoodItem(food: IFoodList) {
 			ingredient: food.ingredient || '',
 			img: food.img || '',
 			archive: typeof food.archive !== 'undefined' ? food.archive : false,
-			price: food.price || 0,
+			price: food.price ,
 			index: food.index || 0,
 			discount: food.discount || 0,
 			discountPercentage: food.discountPercentage || 0,
@@ -140,9 +140,9 @@ const parseMenu = (data: IDataMain, sort?: any) => {
 				if (foodList.length > 0) {
 					if (sort) {
 						const sortType = sort === 'lowestprice' ? 1 : -1;
-						// foodList = _.sortBy(foodList, (food: IFoodList) => {
-						// 	return food.price * sortType;
-						// });
+						foodList = _.sortBy(foodList, (food: IFoodList) => {
+							return food.price * sortType;
+						});
 					} else {
 						foodList = _.sortBy(foodList, (food: IFoodList) => {
 							return food.index;

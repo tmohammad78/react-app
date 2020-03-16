@@ -7,18 +7,26 @@ export interface AuthState {
 	expiresIn: string,
 	logged: boolean
 }
-export interface testingItems {
-	[key: number]: IFoodList[]
+export interface ICartItemsObject {
+	[key: number]: IFoodList
 }
 export interface CartState {
 	products: IFoodList[];
-	items: testingItems[];
+	items: ICartItemsObject;
 	foodToAdd: IFoodList | object;
 	cartTotal: object;
 }
 
+export interface ICartTotalStateObject {
+	productQuantity: number,
+	totalPrice: number
+}
+export interface ICartTotalState {
+	[type: string]: ICartTotalStateObject
+}
+
 export interface SubFoodState {
-	food: IFoodList,
+	food: IFoodList[],
 	show: boolean
 }
 
@@ -83,7 +91,7 @@ export interface IFoodList {
 	ingredient: string;
 	img: string;
 	archive?: boolean | undefined;
-	price?: number,
+	price: number,
 	discount?: number;
 	discountPercentage: number;
 	foodTag?: string | undefined;
