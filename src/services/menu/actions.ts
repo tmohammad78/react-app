@@ -46,7 +46,8 @@ export const fetchMenu: ActionCreator<ThunkAction<Promise<AnyAction | null>, IAp
 
 		Object.keys(cart).forEach(key => {
 			const cartItem = cart[key];
-			const food = foodListItem[`${cartItem.id}`];
+
+			const food = foodListItem[cartItem.id];
 			if (food) food.quantity = cartItem.quantity;
 		});
 

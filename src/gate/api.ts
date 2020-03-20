@@ -1,18 +1,35 @@
-import axios, { AxiosResponse } from 'axios';
+import axios, { AxiosResponse, AxiosRequestConfig } from 'axios';
 
 const instance = axios.create({
 	baseURL: 'https://identitytoolkit.googleapis.com/v1'
 });
+declare module 'axios' {
+	export interface AxiosRequestConfig {
+		baseURL?: string | undefined;
+		email?: string;
+		password?: string;
+		returnSecureToken?: boolean;
+	}
+}
+// const config: AxiosRequestConfig = {
+// 	baseURL: 'https://identitytoolkit.googleapis.com/v1',
+// 	headers: { 'X-FOO': 'bar' },
+// 	timeout: 10000,
+// 	auth: {
+// 		username: 'janedoe',
+// 		password: 's00pers3cret'
+// 	},
+// };
+
 
 instance.interceptors.request.use(
-	request => {
+	(config) => {
 		// const dataLocal: string = window.localStorage.getItem('token');
 		// const data = JSON.parse(dataLocal);
 		// if (data) {
 		// 	request.headers['Authorization'] = 'Bearer ' + data.auth.accessToken;
 		// }
-
-		return request;
+		return config;
 	},
 	error => {
 		debugger;

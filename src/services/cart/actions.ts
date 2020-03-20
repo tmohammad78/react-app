@@ -52,11 +52,11 @@ export const removeFood: ActionCreator<ThunkAction<AnyAction, IApplicationState,
 
 export const updateCart: ActionCreator<IUpdateCartAction> = (cartProducts: IFoodList[]) => {
 	// const totalProduct = objectToArray(cartProducts).reduce((sum, p) => {
-	const totalProduct = objectToArray(cartProducts).reduce((sum, p) => {
+	const totalProduct = cartProducts.reduce((sum, p) => {
 		sum += p.quantity;
 		return sum;
 	}, 0);
-	const totalPrice = objectToArray(cartProducts).reduce((sum, p) => {
+	const totalPrice = cartProducts.reduce((sum, p) => {
 		sum += p.price * p.quantity;
 		return sum;
 	}, 0);

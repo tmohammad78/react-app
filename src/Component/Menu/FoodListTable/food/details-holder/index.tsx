@@ -5,12 +5,12 @@ import Price from '../foodDetails/price';
 import QtyHolder from '../foodDetails/qty-holder';
 import Tittle from '../foodDetails/Tittle';
 import LikeFood from '../foodDetails/likeFood';
-import { IFoodList } from 'src/types';
+import { INewFoodList } from 'src/types';
 
 import './style.scss';
 
 interface Props {
-	food: IFoodList
+	food: INewFoodList
 }
 const Details = ({ food }: Props) => {
 

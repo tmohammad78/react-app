@@ -5,7 +5,7 @@ export interface AuthState {
 	token: string,
 	refreshToken: string,
 	expiresIn: string,
-	logged: boolean | string
+	logged?: boolean | string | undefined
 }
 export interface ICartItemsObject {
 	[key: string]: IFoodList
@@ -63,8 +63,8 @@ export interface ICategory {
 }
 
 export interface ISubFood {
-	id: number;
-	index: number;
+	id: string;
+	index: string;
 	title: string,
 	ingredient: string;
 	img: string;
@@ -84,8 +84,8 @@ export interface ISubFood {
 }
 
 export interface IFoodList {
-	id: number;
-	index: number;
+	id: string;
+	index: string;
 	title: string,
 	ingredient: string;
 	img: string;
@@ -113,7 +113,7 @@ export interface ISectionFood {
 	food: IFoodList[];
 	id: number;
 	img: string;
-	index: number;
+	index: string;
 	priceLabel: string;
 	title: string;
 }

@@ -11,13 +11,23 @@ export enum authActionTypes {
 	AUTH_REGISTER = "AUTH_REGISTER",
 	AUTH_ERROR = "AUTH_ERROR"
 }
+interface Data {
+	token: string;
+	refreshToken: string;
+	expiresIn: string;
+	idToken: string;
+	logged : boolean
+}
 
 export interface IAuthcheckLoginAction {
 	type: authActionTypes.CHECK_LOGIN,
 }
 
 export interface IAuthSkipAction {
-	type: authActionTypes.SKIPAUTH
+	type: authActionTypes.SKIPAUTH,
+	payload: {
+		logged: true
+	}
 }
 // interface checkVerfify {
 // 	type: typeof CHECK_LOGIN,
@@ -26,10 +36,10 @@ export interface IAuthSkipAction {
 
 export interface IAuthloginAction {
 	type: authActionTypes.AUTH_LOGIN,
-	payload: any
+	payload: Data
 }
 export interface IAuthRegisterAction {
 	type: authActionTypes.AUTH_REGISTER,
-	payload: any
+	payload: Data
 }
-export type AuthSystemAction = IAuthcheckLoginAction | IAuthSkipAction | IAuthloginAction | IAuthRegisterAction;
+export type AuthSystemAction =   IAuthSkipAction | IAuthloginAction | IAuthRegisterAction;

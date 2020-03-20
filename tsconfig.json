@@ -21,6 +21,6 @@
       "helper/*": ["src/helper/*"]
     }
   },
-  "include": ["**/*.ts", "**/*.tsx", "webpack/commonVariables.js", "src/component/Buttons/Button.js"],
+  "include": ["**/*.ts", "**/*.tsx", "webpack/commonVariables.js", "src/component/Buttons/Button.js", "src/component/Menu/FoodListTable/food/foodDetails/likeFood/style.js"],
   "exclude": ["node_modules"]
 }

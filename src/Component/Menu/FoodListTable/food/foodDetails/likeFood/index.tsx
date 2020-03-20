@@ -29,12 +29,13 @@ const LikeFood = ({ food }: IProps) => {
 	};
 
 	return (
-		<LikeFoodStyle className={`${food.like ? 'show' : 'hide'}`}>
+		<div className={`${food.like ? 'show' : 'hide'}`}>
 			<div onClick={handleLikeFood}>
 				{food.like ? <Svg1 /> : <Svg />}
 				<div className='icon-heart'></div>
 			</div>
-		</LikeFoodStyle>
+		</div>
 	);
 };
 export default LikeFood;
+//LikeFoodStyle
