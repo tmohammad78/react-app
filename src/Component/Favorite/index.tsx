@@ -5,8 +5,8 @@ import { objectToArray } from 'helper/index';
 import { IApplicationState } from 'services/reducers';
 import { LikeFoodState, IFoodList } from 'src/types/index';
 
-const Favorite = () => {
-	let favoriteFood = useSelector<IApplicationState, LikeFoodState[]>(state => state.likeFood.likeFood);
+const Favorite: React.SFC = () => {
+	let favoriteFood = useSelector<IApplicationState, LikeFoodState>(state => state.likeFood);
 	favoriteFood = objectToArray(favoriteFood);
 	return (
 		<div

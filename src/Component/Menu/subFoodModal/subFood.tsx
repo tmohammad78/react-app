@@ -6,7 +6,7 @@ import { FoodItem } from '../FoodListTable/food/style';
 import { SubFoodStyle } from './style.js';
 import { IFoodList } from 'src/types';
 
-const SubFood = ({ subfood }: IFoodList[]) => {
+const SubFood = ({ subfood }: ISubFood[]) => {
 	return (
 		<SubFoodStyle>
 			<DetailModal subfood={true} defaultDetail={subfood} food={subfood} />

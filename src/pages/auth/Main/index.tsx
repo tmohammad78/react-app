@@ -1,8 +1,14 @@
 import React from 'react';
 import { Button } from 'component/Buttons/Button';
-import { NavLink, RouteComponentProps } from 'react-router-dom';
+import { NavLink, RouteComponentProps, useLocation, useRouteMatch } from 'react-router-dom';
 
-const MainAuth: React.SFC<RouteComponentProps> = (props) => {
+
+interface IProps {
+	callBackChangeState: () => void;
+	handleSkipAuth: () => void
+}
+const MainAuth: React.SFC<IProps> = (props) => {
+	const location = useLocation();
 	return (
 		<div className='inner_content'>
 			<div className='title'>
@@ -10,15 +16,15 @@ const MainAuth: React.SFC<RouteComponentProps> = (props) => {
 			</div>
 			<div className='registerButton'>
 				<div className='registerbtn'>
-					<NavLink to={`${props.match.url}/test`}>
-						<Button ptb='16' prl='100' onClick={props.callBackChangeState}>
-							ثبت نام
+					{/* <NavLink to={`${props.match.url}/test`}> */}
+					<Button ptb='16' prl='100' onClick={props.callBackChangeState}>
+						ثبت نام
             </Button>
-					</NavLink>
+					{/* </NavLink> */}
 				</div>
 				<div></div>
 				<div className='registerbtn'>
-					<NavLink to={`${props.location.state.from.pathname}`}>
+					<NavLink to={`${location.state}`}>
 						<Button
 							ptb='13'
 							prl='100'

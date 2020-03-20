@@ -6,6 +6,7 @@ import Spinner from '../Spinner';
 import { TabContentHolder } from '../../pages/order/style';
 import { IApplicationState } from 'services/reducers';
 import { IFoodList } from 'src/types/index';
+
 const Category = lazy(() => import('../Category/index'));
 const FoodListTable = lazy(() => import('./FoodListTable'));
 

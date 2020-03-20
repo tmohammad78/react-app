@@ -6,10 +6,11 @@ const instance = axios.create({
 
 instance.interceptors.request.use(
 	request => {
-		const data = JSON.parse(localStorage.getItem('token'));
-		if (data) {
-			request.headers['Authorization'] = 'Bearer ' + data.auth.accessToken;
-		}
+		// const dataLocal: string = window.localStorage.getItem('token');
+		// const data = JSON.parse(dataLocal);
+		// if (data) {
+		// 	request.headers['Authorization'] = 'Bearer ' + data.auth.accessToken;
+		// }
 
 		return request;
 	},

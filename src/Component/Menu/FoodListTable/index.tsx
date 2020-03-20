@@ -5,14 +5,16 @@ import { closeSubFoodModal } from 'services/subFood/action';
 import Food from './food/index';
 import SubFood from '../subFoodModal/subFood';
 import FoodListTitle from './FoodListTitle';
-import { FoodList, NotFoundStyle, FoodMenu } from './style.js';
 import Spinner from 'component/Spinner';
-
 const Modal = lazy(() => import('component/Modal/index'));
 const SearchBar = lazy(() => import('./searchBar/searchBar'));
 import { IApplicationState } from 'services/reducers';
-import { ISubFood, IFoodList } from 'src/types/index';
+import { ISubFood, IFoodList, SubFoodState } from 'src/types/index';
+
+import { FoodList, NotFoundStyle, FoodMenu } from './style.js';
+
 const Sort = lazy(() => import('../sort'));
+
 interface ITest2 {
 	field: string,
 	asc: boolean
@@ -33,7 +35,7 @@ const FoodListTable: React.SFC<IProps> = ({ itemFood }: IProps) => {
 	const row = [];
 	let lastCategory: string | null = null;
 
-	const subFood = useSelector<IApplicationState, ISubFood[]>(state => state.subFood);
+	const subFood = useSelector<IApplicationState, SubFoodState[]>(state => state.subFood);
 	const [foodList, setFoodList] = useState(itemFood);
 	const [searchKey, setSearchKey] = useState('');
 	const [inStock, setInStock] = useState(false);
@@ -70,7 +72,7 @@ const FoodListTable: React.SFC<IProps> = ({ itemFood }: IProps) => {
 		setSearchKey(text);
 	};
 
-	const stockHandler = (value: string) => {
+	const stockHandler = (value: boolean) => {
 		search(searchKey, value);
 		setInStock(value);
 	};

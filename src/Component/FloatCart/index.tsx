@@ -5,21 +5,19 @@ import { Button } from 'component/Buttons/Button';
 import CartProduct from './CartProduct';
 
 import { objectToArray, currency } from 'helper/index';
-
-import { ICartItemsObject } from 'src/types';
+import { ICartItemsObject, ICartTotalState } from 'src/types';
 import { IApplicationState } from 'src/services/reducers';
 
-import { RestCart, LeftSideHolder } from './style';
-import { CartListHolder, CartShowMobile } from './style.js';
+import { CartListHolder, CartShowMobile, RestCart, LeftSideHolder } from './style.js';
 import './style.scss';
 
-const FloatCart = () => {
+const FloatCart: React.SFC = () => {
 	let offForm;
 	const [isForm, setIsForm] = useState(false);
 	const [showCart, SetShowCart] = useState(false);
 	const cartProducts = useSelector<IApplicationState, ICartItemsObject>(state => state.cart.items);
-	const cartInfo = useSelector<IApplicationState,>(state => state.cart.cartTotal);
-	const { totalPrice, totalProduct } = cartInfo;
+	const cartTotal = useSelector<IApplicationState, ICartTotalState>(state => state.cart.cartTotal);
+	const { totalPrice, totalProduct } = cartTotal;
 	const products = objectToArray(cartProducts).map((item, i) => {
 		return <CartProduct key={i} product={item} />;
 	});
@@ -91,7 +89,7 @@ const FloatCart = () => {
 										<div className='row add-coupon-holder'>
 											<Button color='#FFBD41' bgcolor='transparent' onClick={() => setIsForm(false)}>
 												کد تخفیف دارید؟
-                    </Button>
+                    						</Button>
 											{offForm}
 										</div>
 										<div className='row button-holder'>

@@ -9,7 +9,7 @@ export interface props {
 	initialState?: IApplicationState | object;
 }
 
-const Root = ({ children, initialState = {} }: props) => (
+const Root: React.SFC<props> = ({ children, initialState = {} }) => (
 	<Provider store={store(initialState)}>{children}</Provider>
 );
 

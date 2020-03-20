@@ -27,13 +27,15 @@ export const truncate = (str: string, num = 5) => {
 	}
 	return str;
 };
-
+interface IArray {
+	[key: string]: string
+}
 export const toPersianNum = (value: any, dontTrim = false) => {
 	let i = 0;
 	const num = dontTrim ? value.toString() : value.toString().trim(',');
 	const len = value.length;
 	let res = '';
-	let pos = [];
+	let pos: IArray[] = [];
 	const persianNumbers = ['۰', '۱', '۲', '۳', '۴', '۵', '۶', '۷', '۸', '۹'];
 
 	for (i = 0; i < len; i++) {
@@ -54,9 +56,9 @@ export const objectToArray = (objectList: ICartItemsObject) => {
 	return list;
 };
 
-export const arrayToObject = (list: array, keyField = 'id') => {
+export const arrayToObject = (list: IFoodList[], keyField = 'id'): IFoodList => {
 	return Object.assign(
 		{},
-		...list.map((item, index) => ({ [item[keyField]]: { ...item, index } }))
+		...list.map((item: IFoodList, index) => ({ [item['id']]: { ...item, index } }))
 	);
 };

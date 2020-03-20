@@ -1,10 +1,12 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import { useSelector } from 'react-redux';
+
 import { resturantData } from 'services/util';
 import { IApplicationState } from 'services/reducers';
-import './style.scss';
 import { ICategory } from 'src/types';
+
+import './style.scss';
 
 interface IDataInfo {
 	[key: string]: string

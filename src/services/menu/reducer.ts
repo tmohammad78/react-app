@@ -36,7 +36,7 @@ export const menuReducer: Reducer<MenuState, MenuSystemAction> = (state = initia
 				foodListItem: {
 					...state.foodListItem,
 					[action.payload.id]: {
-						...state.foodListItem[action.payload.id],
+						...state.foodListItem[action.payload.id.toString()],
 						like: true
 					}
 				}

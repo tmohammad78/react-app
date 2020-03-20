@@ -1,13 +1,13 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
 import { Link } from 'react-scroll';
-import Carousel, { consts } from 'react-elastic-carousel';
+// import Carousel, { consts } from 'react-elastic-carousel';
 import { Iw, TextIw } from './style';
 import { Button } from 'component/Buttons/Button';
 import { IApplicationState } from 'services/reducers';
 import { ICategory } from 'src/types/index';
 
-const Category = () => {
+const Category: React.SFC = () => {
 	const item = useSelector<IApplicationState, ICategory[]>(state => state.menu.categoryList);
 	const breakPoints = [
 		{ width: 1, itemsToShow: 3 },
@@ -16,24 +16,24 @@ const Category = () => {
 		{ width: 1200, itemsToShow: 6 }
 	];
 
-	const actionArrow = (attr: any) => {
-		const { type, onClick } = attr;
-		return (
-			<Button color='black' bgcolor='transparent' ptb='0' prl='5' onClick={onClick} name='carousle'>
-				{type === consts.PREV ? (
-					<i className='fo fo-angle-right' />
-				) : (
-						<i className='fo fo-angle-left' />
-					)}
-			</Button>
-		);
-	};
+	// const actionArrow = (attr: any) => {
+	// 	const { type, onClick } = attr;
+	// 	return (
+	// 		<Button color='black' bgcolor='transparent' ptb='0' prl='5' onClick={onClick} name='carousle'>
+	// 			{type === consts.PREV ? (
+	// 				<i className='fo fo-angle-right' />
+	// 			) : (
+	// 					<i className='fo fo-angle-left' />
+	// 				)}
+	// 		</Button>
+	// 	);
+	// };
 
 	return (
 		<div className='parent'>
 			<div className='categories'>
 				<div className='owl-item'>
-					<Carousel
+					{/* <Carousel
 						isRTL
 						focusOnSelect={true}
 						breakPoints={breakPoints}
@@ -57,7 +57,7 @@ const Category = () => {
 								</Link>
 							);
 						})}
-					</Carousel>
+					</Carousel> */}
 				</div>
 			</div>
 		</div>

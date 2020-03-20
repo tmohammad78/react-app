@@ -5,22 +5,24 @@ import Svg1 from './heart2.svg';
 import { useDispatch } from 'react-redux';
 import { addFoodLike, removeFoodLike } from 'services/likeFood/action';
 import { LikeFoodStyle } from './style.js';
-import { IFoodList } from 'src/types';
+import { INewFoodList } from 'src/types';
+
 interface IProps {
-	food: IFoodList
+	food: INewFoodList
 }
+
 const LikeFood = ({ food }: IProps) => {
 	const dispatch = useDispatch();
 
 	const checkDispatch = () => {
-		if (food.like) {
+		if (food) {
 			dispatch(removeFoodLike(food));
 		} else {
 			dispatch(addFoodLike(food));
 		}
 	};
 
-	const handleLikeFood = e => {
+	const handleLikeFood = (e: React.FormEvent<EventTarget>) => {
 		e.preventDefault();
 		e.stopPropagation();
 		checkDispatch();

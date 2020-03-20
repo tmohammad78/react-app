@@ -10,7 +10,7 @@ import Spinner from './component/Spinner';
 import AuthPage from './pages/auth';
 import Order from './pages/order';
 
-const App = () => {
+const App: React.SFC = () => {
 	const [theme, toggleTheme, componentMounted] = useDarkMode();
 	const themeMode = theme === 'light' ? themes.light : themes.dark;
 	if (!componentMounted) {

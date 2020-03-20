@@ -1,11 +1,11 @@
-import { likeFoodActionTypes, LikeFoodSystem } from './actionType';
+import { likeFoodActionTypes, LikeFoodSystemAction } from './actionType';
 import { Reducer } from 'redux';
 import { LikeFoodState } from '../../types/index';
 const initialState: LikeFoodState = {
 	likeFood: {}
 };
 
-export const likeFoodReducer: Reducer<LikeFoodState, LikeFoodSystem> = (state = initialState, action) => {
+export const likeFoodReducer: Reducer<LikeFoodState, LikeFoodSystemAction> = (state = initialState, action) => {
 	switch (action.type) {
 		case likeFoodActionTypes.ADD_TO_LIKE: {
 			const { food } = action;

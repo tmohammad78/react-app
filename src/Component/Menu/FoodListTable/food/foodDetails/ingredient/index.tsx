@@ -1,17 +1,14 @@
 import React from 'react';
-import PropTypes from 'prop-types';
-import { truncate } from 'helper';
+import { truncate } from 'helper/index';
 import './style.scss';
-
-const Ingredient = ({ ingredient, checkTruncate = true }) => {
-  return ingredient ? (
-    <div className='ingredient'>{checkTruncate ? truncate(ingredient, 8) : ingredient}</div>
-  ) : null;
-};
-
-Ingredient.propTypes = {
-  ingredient: PropTypes.string,
-  checkTruncate: PropTypes.bool
+interface IProps {
+	ingredient: string,
+	checkTruncate?: boolean
+}
+const Ingredient: React.SFC<IProps> = ({ ingredient, checkTruncate = true }) => {
+	return ingredient ? (
+		<div className='ingredient'>{checkTruncate ? truncate(ingredient, 8) : ingredient}</div>
+	) : null;
 };
 
 export default Ingredient;

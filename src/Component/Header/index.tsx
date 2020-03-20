@@ -1,14 +1,16 @@
 import React, { useState } from 'react';
 
-import { Button } from '../Buttons/Button';
-import Login from '../Login';
-import Modal from '../Modal';
-import './style.scss';
+import { Button } from 'component/Buttons/Button';
+import Login from 'component/Login';
+import Modal from 'component/Modal';
 import Portal from 'component/Portal';
+
+import './style.scss';
+
 interface Props {
 	toggleTheme: () => void
 }
-const Header = React.memo(({ toggleTheme }: Props) => {
+const Header: React.SFC<Props> = React.memo(({ toggleTheme }) => {
 	const [showModal, setShowModal] = useState(false);
 	console.log('header render');
 	const backgroundLogo =

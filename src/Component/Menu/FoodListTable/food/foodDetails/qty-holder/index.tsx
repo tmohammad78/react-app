@@ -1,82 +1,89 @@
 import React, { useState, useEffect } from 'react';
 import { useDispatch } from 'react-redux';
+
 import { addFood, removeFood } from 'services/cart/actions';
 import { SubFoodModal } from 'services/subFood/action';
 import { Button } from 'component/Buttons/Button.js';
 import { Span } from './span';
+import { IFoodList } from 'src/types/index';
+
 import { QtyStyle, AvailableBox } from './style';
 import './style.scss';
 
-const QtyHolder = ({ food }) => {
-  let removeBtn;
-  let subfoodIcon;
-  const [width, setWidth] = useState('');
-  const dispatch = useDispatch();
+interface IProps {
+	food: IFoodList
+}
 
-  useEffect(() => {
-    if (food.quantity > 0) {
-      setWidth('show-detail');
-    } else {
-      setWidth('');
-    }
-  });
+const QtyHolder: React.SFC<IProps> = ({ food }) => {
+	let removeBtn;
+	let subfoodIcon;
+	const [width, setWidth] = useState('');
+	const dispatch = useDispatch();
 
-  if (food.subFoods) {
-    subfoodIcon = (
-      <div>
-        <i className='fo fo-arrow-left' />
-      </div>
-    );
-  }
+	useEffect(() => {
+		if (food.quantity > 0) {
+			setWidth('show-detail');
+		} else {
+			setWidth('');
+		}
+	});
 
-  const handleRemove = e => {
-    e.preventDefault();
+	if (food.subFoods) {
+		subfoodIcon = (
+			<div>
+				<i className='fo fo-arrow-left' />
+			</div>
+		);
+	}
 
-    dispatch(removeFood(food));
-    if (!(food.quantity > 0)) {
-    }
-  };
+	const handleRemove = (e: React.FormEvent<EventTarget>) => {
+		e.preventDefault();
 
-  const addClicked = () => {
-    if (food.subFoods.length > 0) {
-      dispatch(SubFoodModal(food));
-    } else {
-      dispatch(addFood(food, 1));
-    }
-  };
+		dispatch(removeFood(food));
+		if (!(food.quantity > 0)) {
+		}
+	};
 
-  const handleClick = e => {
-    setWidth('show-detail');
-    e.preventDefault();
-    addClicked();
-  };
+	const addClicked = () => {
+		if (food.subFoods.length > 0) {
+			dispatch(SubFoodModal(food));
+		} else {
+			dispatch(addFood(food, 1));
+		}
+	};
 
-  if (food.quantity > 0) {
-    removeBtn = (
-      <Button bgcolor='transparent' borderRadius='50' ptb='5' prl='6' onClick={handleRemove}>
-        <i className='fo fo-minus' />
-      </Button>
-    );
-  }
-  return food.available ? (
-    <QtyStyle className={`${width}`}>
-      <div className='anc-box'>
-        {removeBtn}
-        {food.quantity ? <Span qty={food.quantity} /> : null}
-        <Button bgcolor='transparent' borderRadius='50' ptb='5' prl='6' onClick={handleClick}>
-          <i className='fo fo-plus' />
-          <span className='testing'/>
-        </Button>
-      </div>
-      {subfoodIcon}
-    </QtyStyle>
-  ) : (
-    <AvailableBox>
-      <span className='meal-badge'>
-        <span>{food.unavailableText}</span>
-      </span>
-    </AvailableBox>
-  );
+	const handleClick = (e: React.FormEvent<EventTarget>) => {
+		setWidth('show-detail');
+		e.preventDefault();
+		addClicked();
+	};
+
+	if (food.quantity > 0) {
+		removeBtn = (
+			<Button bgcolor='transparent' borderRadius='50' ptb='5' prl='6' onClick={handleRemove}>
+				<i className='fo fo-minus' />
+			</Button>
+		);
+	}
+	return food.available ? (
+		<QtyStyle className={`${width}`}>
+			<div className='anc-box'>
+				{removeBtn}
+				{food.quantity ? <Span qty={food.quantity} /> : null}
+				<Button bgcolor='transparent' borderRadius='50' ptb='5' prl='6' onClick={handleClick}>
+					<i className='fo fo-plus' />
+					<span className='testing' />
+				</Button>
+			</div>
+			{subfoodIcon}
+		</QtyStyle>
+	) : (
+			<AvailableBox>
+				<span className='meal-badge'>
+					<span>{food.unavailableText}</span>
+				</span>
+			</AvailableBox>
+		);
 };
 
 export default QtyHolder;

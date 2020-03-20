@@ -7,10 +7,12 @@ import Spinner from 'component/Spinner/index.js';
 import RightSide from './rightSide/rightSide';
 
 import { RestMenuHolder } from './style.js';
+
 const Cart = lazy(() => import('component/FloatCart'));
 interface Props {
 	toggleTheme: () => void
 }
+
 const Order = React.memo(({ toggleTheme }: Props) => {
 	return (
 		<React.Fragment>

@@ -21,6 +21,6 @@
       "helper/*": ["src/helper/*"]
     }
   },
-  "include": ["**/*.ts", "**/*.tsx", "webpack/commonVariables.js"],
+  "include": ["**/*.ts", "**/*.tsx", "webpack/commonVariables.js", "src/component/Buttons/Button.js"],
   "exclude": ["node_modules"]
 }

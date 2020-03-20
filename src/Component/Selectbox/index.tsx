@@ -3,6 +3,7 @@ import React, { useState } from 'react';
 import { Button } from 'component/Buttons/Button';
 
 import './style.scss';
+
 interface props {
 	handleOnChange: (values: string) => void
 }

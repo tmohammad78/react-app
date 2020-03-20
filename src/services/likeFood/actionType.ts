@@ -15,4 +15,4 @@ export interface IRemoveFoodLikeAction {
 	likeFood: IFoodList
 }
 
-export type LikeFoodSystem = IAddFoodLikeAction | IRemoveFoodLikeAction;
+export type LikeFoodSystemAction = IAddFoodLikeAction | IRemoveFoodLikeAction;

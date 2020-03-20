@@ -1,38 +1,37 @@
-import { string } from "yup"
+
 
 export interface AuthState {
 	errorMessage: string,
 	token: string,
 	refreshToken: string,
 	expiresIn: string,
-	logged: boolean
+	logged: boolean | string
 }
 export interface ICartItemsObject {
-	[key: number]: IFoodList
+	[key: string]: IFoodList
 }
 export interface CartState {
 	products: IFoodList[];
 	items: ICartItemsObject;
 	foodToAdd: IFoodList | object;
-	cartTotal: object;
+	cartTotal: ICartTotalState;
 }
 
-export interface ICartTotalStateObject {
-	productQuantity: number,
-	totalPrice: number
-}
 export interface ICartTotalState {
-	[type: string]: ICartTotalStateObject
+	[type: string]: number
 }
 
 export interface SubFoodState {
-	food: IFoodList[],
+	food?: IFoodList[],
 	show: boolean
 }
 
-
+export interface ITTT {
+	food: testing;
+	like: boolean;
+}
 export interface testing {
-	[key: string]: IFoodList[] | object
+	[key: string]: INewFoodList
 }
 export interface MenuState {
 	foodListItem: testing,
@@ -43,7 +42,7 @@ export interface MenuState {
 
 
 export interface TestLikeState {
-	[key: number]: IFoodList
+	[key: number]: IFoodList | null
 }
 export interface LikeFoodState {
 	likeFood: TestLikeState
@@ -103,7 +102,10 @@ export interface IFoodList {
 	quantity: number
 	packaging?: number;
 	saleOnRamadan?: boolean;
-	subFoods: ISubFood[] | boolean;
+	subFoods: ISubFood[];
+}
+interface INewFoodList extends IFoodList {
+	like: boolean
 }
 
 export interface ISectionFood {

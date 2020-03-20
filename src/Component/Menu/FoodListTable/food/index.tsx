@@ -1,5 +1,4 @@
 import React, { useState, useMemo, useCallback } from 'react';
-import PropTypes from 'prop-types';
 import { useDispatch, useSelector } from 'react-redux';
 
 import FoodDetails from './details-holder/index';
@@ -12,18 +11,17 @@ import { SubFoodModal } from 'services/subFood/action';
 
 import { FoodItem } from './style.js';
 import { IApplicationState } from 'services/reducers';
-import { IFoodList } from 'src/types';
-interface Props {
+import { IFoodList, INewFoodList } from 'src/types';
+interface IProps {
 	food: IFoodList
 }
-const Food = ({ food }: Props) => {
-	const className = [];
-	const newItem = useSelector<IApplicationState, IFoodList[]>(state => state.menu.foodListItem[food.id]);
+const Food: React.SFC<IProps> = ({ food }) => {
+	const ActiveclassName = [];
+	const newItem = useSelector<IApplicationState, INewFoodList>(state => state.menu.foodListItem[food.id]);
 	const dispatch = useDispatch();
 	const [showModal, SetShowModal] = useState(false);
-
 	if (food.quantity > 0) {
-		className.push('active-box');
+		ActiveclassName.push('active-box');
 	}
 
 	const handleshowModal = useCallback(() => {
@@ -46,9 +44,7 @@ const Food = ({ food }: Props) => {
 		<FoodItem>
 			<section
 				className={
-					className.map(item => {
-						return item;
-					}) || ''
+					ActiveclassName[0] || ''
 				}
 			>
 				<FoodBadge quantity={newItem.quantity} />
@@ -67,8 +63,5 @@ const Food = ({ food }: Props) => {
 	);
 };
 
-Food.propTypes = {
-	food: PropTypes.object.isRequired
-};
 
 export default Food;

@@ -1,21 +1,26 @@
 import React, { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { Route } from 'react-router-dom';
-import { skipAuth } from 'services/auth/action';
-import './style.scss';
-import MainAuth from './Main';
-import Register from 'component/Register';
+import { Route, useLocation } from 'react-router-dom';
 
-const AuthPage = props => {
+import { skipAuth } from 'services/auth/action';
+import { IApplicationState } from 'services/reducers';
+import Register from 'component/Register';
+import MainAuth from './Main';
+import { AuthState } from 'src/types';
+
+import './style.scss';
+
+const AuthPage: React.SFC<any> = (props) => {
 	const dispatch = useDispatch();
-	const logged = useSelector(state => state.auth);
+	const location = useLocation();
+	const logged = useSelector<IApplicationState, AuthState>(state => state.auth);
 	const [RegisterUi, setRegisterUi] = useState(false);
 
 	useEffect(() => {
-		if (props.location.pathname == '/' && logged) {
+		if (location.pathname == '/' && logged) {
 			props.redirect('/');
 		}
-		if (props.location.pathname == '/auth/test') {
+		if (location.pathname == '/auth/test') {
 			setRegisterUi(true);
 		} else {
 			setRegisterUi(false);
@@ -42,7 +47,7 @@ const AuthPage = props => {
 						<MainAuth {...props} callBackChangeState={handleShow} handleSkipAuth={handleSkipAuth} />
 					)}
 				/>
-				<Route exact path='/auth/test' component={() => <Register />} />
+				<Route exact path='/auth/test' component={Register} />
 			</div>
 		</div>
 	);

@@ -1,4 +1,4 @@
-import { _ } from 'underscore';
+import * as { _ } from 'underscore';
 import { IDataMain } from '../actionTypes';
 import { ICategory, ISubFood, IFoodList, ISectionFood, ICategoryResponse } from '../../../types';
 

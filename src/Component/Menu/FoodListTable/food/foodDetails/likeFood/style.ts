@@ -1,7 +1,14 @@
 import styled from 'styled-components';
-const Parent = ({ className, children , onClick }) => <div className={className}>{children}</div>;
+interface IProps {
+	className: string;
+	children: React.ReactNode;
+	onClick: () => void;
+}
+const Parent = ({ className, children, onClick }: IProps) => (
+	<div className= { className } > { children } < /div>
+);
 export const LikeFoodStyle = styled(Parent).attrs({
-  className: ''
+	className: ''
 })`
   position: absolute;
   right: 15px;
