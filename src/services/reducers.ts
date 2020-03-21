@@ -4,7 +4,7 @@ import { cartReducer } from './cart/reducer';
 // import { totalReducer } from './total/reducer';
 // import coverReducer from './cover/reducer';
 import { subFoodReducer } from './subFood/reducer';
-import { likeFoodReducer } from './likeFood/reducer';
+// import { likeFoodReducer } from './likeFood/reducer';
 import { authReducer } from './auth/reducer';
 import { AuthState, MenuState, CartState, SubFoodState, LikeFoodState } from '../types/index';
 

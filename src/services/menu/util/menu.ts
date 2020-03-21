@@ -20,6 +20,7 @@ function makeFoodItem(food: IFoodList) {
 		subFoods: food.subFoods || false,
 		priceLabel: food.priceLabel || '',
 		visible: true,
+		like: false,
 		quantity: 0,
 		saleOnRamadan: food.saleOnRamadan
 	}
@@ -124,6 +125,7 @@ const parseMenu = (data: IDataMain, sort?: any) => {
 									available: subAvailable,
 									unavailableText: subUnavailableText,
 									priceLabel,
+									like: false,
 									quantity: quantity,
 									subFoods
 								});

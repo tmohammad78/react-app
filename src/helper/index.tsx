@@ -11,6 +11,8 @@ export const currency = (number: number, showToman: boolean = true) => {
 		const realPrice = number;
 		const final = realPrice.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,');
 		return toPersianNum(final);
+	} else {
+		return null;
 	}
 };
 
@@ -24,8 +26,9 @@ export const truncate = (str: string, num = 5) => {
 	const arrStr = str.split(' ');
 	if (str.length > num) {
 		return `${arrStr.slice(0, num).join(' ')} ...`;
+	} else {
+		return str;
 	}
-	return str;
 };
 interface IArray {
 	[key: string]: string

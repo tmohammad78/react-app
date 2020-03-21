@@ -17,8 +17,8 @@ const App: React.SFC = () => {
 		return <div />;
 	}
 	return (
-		<ThemeProvider theme={themeMode}>
-			<GlobalStyles />
+		<ThemeProvider theme={themeMode.}>
+			// <GlobalStyles />
 			<Suspense fallback={<Spinner />}>
 				<Router history={browserHistory}>
 					<Switch>

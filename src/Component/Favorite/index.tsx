@@ -6,7 +6,7 @@ import { IApplicationState } from 'services/reducers';
 import { LikeFoodState, IFoodList, INewFoodList, TestLikeState } from 'src/types/index';
 
 const Favorite: React.SFC = () => {
-	let favoriteFood = useSelector<IApplicationState, LikeFoodState>(state => state.likeFood);
+	// let favoriteFood = useSelector<IApplicationState, LikeFoodState>(state => state.likeFood);
 	const ToArray = (objectList: TestLikeState) => {
 		const list: INewFoodList[] = [];
 		Object.values(objectList).forEach((item: INewFoodList) => {
@@ -16,7 +16,7 @@ const Favorite: React.SFC = () => {
 		return list;
 	};
 
-	favoriteFood.likeFood = objectToArray(favoriteFood.likeFood);
+	// favoriteFood.likeFood = objectToArray(favoriteFood.likeFood);
 	return (
 		<div
 			className=''
@@ -27,9 +27,12 @@ const Favorite: React.SFC = () => {
 			<div>
 				<span>علاقه مندی ها</span>
 			</div>
-			{favoriteFood.map((item: INewFoodList) => {
+			{/* {favoriteFood.map((item: INewFoodList) => {
 				return <Food food={item} key={item.id} />;
-			})}
+			})} */}
+			<div>
+				dkf
+			</div>
 		</div>
 	);
 };

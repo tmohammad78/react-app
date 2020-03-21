@@ -80,6 +80,7 @@ export interface ISubFood {
 	stock?: undefined | boolean;
 	quantity: number
 	saleOnRamadan?: boolean;
+	like: boolean;
 }
 
 export interface IFoodList extends ISubFood {

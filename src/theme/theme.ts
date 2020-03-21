@@ -1,4 +1,6 @@
 import { DefaultTheme } from 'styled-components'
+import 'styled-components'
+
 const lightTheme = {
 	body: '#f8f8f8',
 	text: '#333',
@@ -14,6 +16,7 @@ const lightTheme = {
 	AvailableBox: '#FFF',
 	AvailableBoxText: '#888'
 };
+
 const darkTheme = {
 	body: '#1D1C2A',
 	text: '#FFF',
