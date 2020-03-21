@@ -3,11 +3,20 @@ import { useSelector } from 'react-redux';
 import Food from '../Menu/FoodListTable/food';
 import { objectToArray } from 'helper/index';
 import { IApplicationState } from 'services/reducers';
-import { LikeFoodState, IFoodList } from 'src/types/index';
+import { LikeFoodState, IFoodList, INewFoodList, TestLikeState } from 'src/types/index';
 
 const Favorite: React.SFC = () => {
 	let favoriteFood = useSelector<IApplicationState, LikeFoodState>(state => state.likeFood);
-	favoriteFood = objectToArray(favoriteFood);
+	const ToArray = (objectList: TestLikeState) => {
+		const list: INewFoodList[] = [];
+		Object.values(objectList).forEach((item: INewFoodList) => {
+			list[parseInt(item.index)] = item;
+		});
+
+		return list;
+	};
+
+	favoriteFood.likeFood = objectToArray(favoriteFood.likeFood);
 	return (
 		<div
 			className=''
@@ -18,7 +27,7 @@ const Favorite: React.SFC = () => {
 			<div>
 				<span>علاقه مندی ها</span>
 			</div>
-			{favoriteFood.map((item: IFoodList) => {
+			{favoriteFood.map((item: INewFoodList) => {
 				return <Food food={item} key={item.id} />;
 			})}
 		</div>

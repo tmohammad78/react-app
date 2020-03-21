@@ -35,7 +35,7 @@ export const toPersianNum = (value: any, dontTrim = false) => {
 	const num = dontTrim ? value.toString() : value.toString().trim(',');
 	const len = value.length;
 	let res = '';
-	let pos: IArray[] = [];
+	let pos: string = '';
 	const persianNumbers = ['۰', '۱', '۲', '۳', '۴', '۵', '۶', '۷', '۸', '۹'];
 
 	for (i = 0; i < len; i++) {
@@ -46,7 +46,9 @@ export const toPersianNum = (value: any, dontTrim = false) => {
 	}
 	return res;
 };
-
+// / interface test {
+// 	// 	objectList: TestLikeState[] | ICartItemsObject[]
+// 	// }
 export const objectToArray = (objectList: ICartItemsObject) => {
 	const list: IFoodList[] = [];
 	Object.values(objectList).forEach((item: IFoodList) => {

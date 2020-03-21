@@ -13,7 +13,7 @@ export interface IApplicationState {
 	cart: CartState,
 	auth: AuthState,
 	subFood: SubFoodState,
-	likeFood: LikeFoodState
+	// likeFood: LikeFoodState
 }
 const newRootReducer: Reducer<IApplicationState, AnyAction> = combineReducers<IApplicationState>({
 	menu: menuReducer,
@@ -21,7 +21,7 @@ const newRootReducer: Reducer<IApplicationState, AnyAction> = combineReducers<IA
 	// resInfo: coverReducer,
 	// total: totalReducer,
 	subFood: subFoodReducer,
-	likeFood: likeFoodReducer,
+	// likeFood: likeFoodReducer,
 	auth: authReducer
 });
 

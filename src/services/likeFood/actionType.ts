@@ -7,12 +7,12 @@ export enum likeFoodActionTypes {
 
 export interface IAddFoodLikeAction {
 	type: likeFoodActionTypes.ADD_TO_LIKE,
-	food: INewFoodList
+	food: any
 }
 
 export interface IRemoveFoodLikeAction {
 	type: likeFoodActionTypes.DELETE_TO_LIKE,
-	likeFood: INewFoodList
+	likeFood: any
 }
 
 export type LikeFoodSystemAction = IAddFoodLikeAction | IRemoveFoodLikeAction;

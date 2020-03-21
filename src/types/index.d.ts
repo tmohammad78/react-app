@@ -85,7 +85,7 @@ export interface ISubFood {
 export interface IFoodList extends ISubFood {
 	catId?: number,
 	categoryTitle?: string,
-	categoryIndex?: number,
+	categoryIndex?: number | undefined,
 	subFoods: ISubFood[];
 }
 interface INewFoodList extends IFoodList {
@@ -113,7 +113,7 @@ export interface ICategoryResponse {
 /// modal
 export interface IModal {
 	subFood?: boolean;
-	className: string,
+	className?: string,
 	show: boolean;
 	onClose: () => void;
 	closeOnEsc?: boolean;

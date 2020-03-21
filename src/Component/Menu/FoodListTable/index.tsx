@@ -20,10 +20,9 @@ interface ITest2 {
 	asc: boolean
 }
 interface ITest {
-	lowestprice: ITest2[],
-	highestprice: ITest2[]
+	[key: string]: ITest2
 }
-const sortBy = {
+const sortBy: ITest = {
 	lowestprice: { field: 'price', asc: true },
 	highestprice: { field: 'price', asc: false }
 };
@@ -33,7 +32,7 @@ interface IProps {
 const FoodListTable: React.SFC<IProps> = ({ itemFood }: IProps) => {
 	const originalItems = [...itemFood];
 	const row = [];
-	let lastCategory: string | null = null;
+	let lastCategory: string | undefined = '';
 
 	const subFood = useSelector<IApplicationState, SubFoodState>(state => state.subFood);
 	const [foodList, setFoodList] = useState(itemFood);
@@ -78,17 +77,18 @@ const FoodListTable: React.SFC<IProps> = ({ itemFood }: IProps) => {
 	};
 
 	const sortHandler = (value: string) => {
-		let newItem;
+		let newItem: IFoodList[] = [];
 		const sortItem = sortBy[value];
 		if (sortItem) {
 			const index = sortItem.asc ? 1 : -1;
-			newItem = originalItems.sort((a, b) => {
-				return (
-					//        a.catIndex - b.catIndex ||
-					//          a.catId - b.catId ||
-					a.categoryIndex - b.categoryIndex || (a[sortItem.field] - b[sortItem.field]) * index
-				);
-			});
+			// newItem = originalItems.sort((a, b) => {
+
+			// 	// return (
+			// 	// 	//        a.catIndex - b.catIndex ||
+			// 	// 	//          a.catId - b.catId ||
+			// 	// 	(a.categoryIndex - b.categoryIndex ? ) || (a[sortItem.field] - b[sortItem.field]) * index
+			// 	// );
+			// });
 		} else {
 			newItem = originalItems;
 		}
@@ -98,7 +98,7 @@ const FoodListTable: React.SFC<IProps> = ({ itemFood }: IProps) => {
 	if (foodList.length > 0) {
 		foodList.forEach((food) => {
 			if (food.categoryTitle !== lastCategory) {
-				row.push(<FoodListTitle category={food.categoryTitle} id={food.catId} />);
+				row.push(<FoodListTitle category={food.categoryTitle} id={food.catId?.toString()} />);
 			}
 			row.push(<Food food={food} />);
 			lastCategory = food.categoryTitle;
@@ -123,7 +123,7 @@ const FoodListTable: React.SFC<IProps> = ({ itemFood }: IProps) => {
 					className='subFoodModal'
 					subFood
 				>
-					<SubFood subfood={subFood} />
+					{/* <SubFood subfood={subFood} /> */}
 				</Modal>
 
 				<FoodList>{row}</FoodList>

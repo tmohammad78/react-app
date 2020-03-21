@@ -1,7 +1,7 @@
 import React from 'react';
 interface IProps {
-	category: string,
-	id: string
+	category: string | undefined,
+	id: string | undefined
 }
 const FoodListTitle = ({ category, id }: IProps) => {
 	return (

@@ -8,7 +8,7 @@ import { SubFoodState, ISubFood } from 'src/types';
 interface IProps {
 	subFood: SubFoodState
 }
-const SubFood = ({ subFood }: IProps) => {
+const SubFood: React.SFC<IProps> = ({ subFood }) => {
 	return (
 		<SubFoodStyle>
 			<DetailModal subfood={true} defaultDetail={subFood} food={subFood.food} />

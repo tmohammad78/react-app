@@ -33,7 +33,7 @@ export const dislikeProduct: ActionCreator<IDisLikeProductAction> = product => (
 
 
 
-export const fetchMenu: ActionCreator<ThunkAction<Promise<AnyAction | void >, IApplicationState, undefined, IFetchMenuAction>> = (callback: () => void) => (dispatch: Dispatch, getState: () => IApplicationState) => {
+export const fetchMenu: ActionCreator<ThunkAction<Promise<AnyAction | void> | string, IApplicationState, undefined, IFetchMenuAction>> = (callback: () => void) => (dispatch: Dispatch, getState: () => IApplicationState) => {
 	const cart = getState().cart.items;
 	const likedFood = getState().likeFood.likeFood;
 	const foodList = getState().menu.foodList;
@@ -77,26 +77,16 @@ export const fetchMenu: ActionCreator<ThunkAction<Promise<AnyAction | void >, IA
 			}
 		});
 	};
-	// return !foodList ?
-	// 	axios.
-	// 		get<IRestDataGet[]>(restaurantMenu)
-	// 		.then((response: AxiosResponse) => {
-	// 			const { data } = response;
-	// 			Data.foodList = data;
-	// 			return productLoaded(data);
-	// 		})
-	// 		.catch(err => {
-	// 			console.log(err, 'Could not fetch foodList. Try again later.');
-	// 		})
-	// 	: true
-	return axios.
-		get<IRestDataGet[]>(restaurantMenu)
-		.then((response: AxiosResponse) => {
-			const { data } = response;
-			Data.foodList = data;
-			return productLoaded(data);
-		})
-		.catch(err => {
-			console.log(err, 'Could not fetch foodList. Try again later.');
-		})
+	return !foodList ?
+		axios.
+			get<IRestDataGet[]>(restaurantMenu)
+			.then((response: AxiosResponse) => {
+				const { data } = response;
+				Data.foodList = data;
+				return productLoaded(data);
+			})
+			.catch(err => {
+				console.log(err, 'Could not fetch foodList. Try again later.');
+			})
+		: ''
 };
