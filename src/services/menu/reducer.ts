@@ -4,7 +4,7 @@ import { Reducer } from 'redux';
 
 const initialState: MenuState = {
 	foodListItem: {},
-	foodList: null,
+	foodList: [],
 	categoryList: []
 };
 

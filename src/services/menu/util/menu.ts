@@ -3,28 +3,27 @@ import { IDataMain } from '../actionTypes';
 import { ICategory, ISubFood, IFoodList, ISectionFood, ICategoryResponse } from '../../../types';
 
 function makeFoodItem(food: IFoodList) {
-	return food.title
-		? {
-			id: food.id,
-			title: food.title,
-			index: food.index || 'default',
-			ingredient: food.ingredient || '',
-			img: food.img || '',
-			archive: typeof food.archive !== 'undefined' ? food.archive : false,
-			price: food.price,
-			discount: food.discount || 0,
-			discountPercentage: food.discountPercentage || 0,
-			foodTag: food.foodTag || undefined,
-			available: typeof food.available !== 'undefined' ? food.available : true,
-			unavailableText: food.unavailableText || '',
-			stock: typeof food.stock !== "undefined" ? food.stock : true,
-			subFoods: food.subFoods || false,
-			priceLabel: food.priceLabel || '',
-			visible: true,
-			quantity: 0,
-			saleOnRamadan: food.saleOnRamadan
-		}
-		: false;
+	return {
+		id: food.id,
+		title: food.title,
+		index: food.index || 'default',
+		ingredient: food.ingredient || '',
+		img: food.img || '',
+		archive: typeof food.archive !== 'undefined' ? food.archive : false,
+		price: food.price,
+		discount: food.discount || 0,
+		discountPercentage: food.discountPercentage || 0,
+		foodTag: food.foodTag || undefined,
+		available: typeof food.available !== 'undefined' ? food.available : true,
+		unavailableText: food.unavailableText || '',
+		stock: typeof food.stock !== "undefined" ? food.stock : true,
+		subFoods: food.subFoods || false,
+		priceLabel: food.priceLabel || '',
+		visible: true,
+		quantity: 0,
+		saleOnRamadan: food.saleOnRamadan
+	}
+
 }
 
 function subFoodData(foods: ISubFood[]) {
@@ -102,7 +101,7 @@ const parseMenu = (data: IDataMain, sort?: any) => {
 								}
 							});
 
-							subFoods = _.sortBy(subFoods,(food: ISubFood): string => {
+							subFoods = _.sortBy(subFoods, (food: ISubFood): string => {
 								return food.index;
 							});
 
@@ -115,11 +114,12 @@ const parseMenu = (data: IDataMain, sort?: any) => {
 								}
 								const foodItemWithSub = makeFoodItem({
 									id: section.id,
-									index: section.index,
 									title: section.title,
+									index: section.index,
 									ingredient: section.description || '', // || subData.ingredient || "",
 									img: section.img,
-									price: section.priceLabel,
+									discount: 0,
+									price: parseInt(section.priceLabel),
 									discountPercentage: subData.maxDiscount,
 									available: subAvailable,
 									unavailableText: subUnavailableText,
@@ -129,7 +129,7 @@ const parseMenu = (data: IDataMain, sort?: any) => {
 								});
 
 								if (subQuantity) {
-									foodItemWithSub.quantity = subQuantity;
+									// foodItemWithSub.quantity = subQuantity;
 								}
 
 								foodList.push(foodItemWithSub);

@@ -56,7 +56,7 @@ export const objectToArray = (objectList: ICartItemsObject) => {
 	return list;
 };
 
-export const arrayToObject = (list: IFoodList[], keyField = 'id'): INewFoodList => {
+export const arrayToObject = (list: IFoodList[], keyField = 'id'): INewFoodList[] => {
 	return Object.assign(
 		{},
 		...list.map((item: IFoodList, index) => ({ [item['id']]: { ...item, index } }))

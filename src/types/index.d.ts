@@ -22,7 +22,7 @@ export interface ICartTotalState {
 }
 
 export interface SubFoodState {
-	food?: IFoodList[],
+	food: IFoodList[],
 	show: boolean
 }
 
@@ -35,7 +35,7 @@ export interface testing {
 }
 export interface MenuState {
 	foodListItem: testing,
-	foodList: IFoodList[] | null,
+	foodList: IFoodList[],
 	// | null for foodlist
 	categoryList: ICategory[]
 }
@@ -68,29 +68,9 @@ export interface ISubFood {
 	title: string,
 	ingredient: string;
 	img: string;
-	archive: boolean | undefined;
-	price: number,
-	discount: number;
-	discountPercentage: number;
-	foodTag: string | undefined;
-	available: boolean | undefined;
-	unavailableText: string;
-	priceLabel: string;
-	visible: boolean,
-	stock: undefined | boolean;
-	quantity: number
-	saleOnRamadan?: boolean;
-}
-
-export interface IFoodList {
-	id: string;
-	index: string;
-	title: string,
-	ingredient: string;
-	img: string;
 	archive?: boolean | undefined;
 	price: number,
-	discount?: number;
+	discount: number;
 	discountPercentage: number;
 	foodTag?: string | undefined;
 	available: boolean | undefined;
@@ -100,11 +80,12 @@ export interface IFoodList {
 	stock?: undefined | boolean;
 	quantity: number
 	saleOnRamadan?: boolean;
+}
 
+export interface IFoodList extends ISubFood {
 	catId?: number,
 	categoryTitle?: string,
 	categoryIndex?: number,
-
 	subFoods: ISubFood[];
 }
 interface INewFoodList extends IFoodList {
@@ -132,6 +113,7 @@ export interface ICategoryResponse {
 /// modal
 export interface IModal {
 	subFood?: boolean;
+	className: string,
 	show: boolean;
 	onClose: () => void;
 	closeOnEsc?: boolean;

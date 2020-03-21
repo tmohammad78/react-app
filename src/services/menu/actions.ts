@@ -1,4 +1,4 @@
-import axios from 'axios';
+import axios, { AxiosResponse, } from 'axios';
 import { IRestDataGet, IUpdateMenuAction, IDisLikeProductAction, ILikeProductAction, menuActionTypes, IFetchMenuAction } from './actionTypes';
 import { restaurantMenu } from '../util';
 import { objectToArray } from '../../helper/index';
@@ -33,7 +33,7 @@ export const dislikeProduct: ActionCreator<IDisLikeProductAction> = product => (
 
 
 
-export const fetchMenu: ActionCreator<ThunkAction<Promise<AnyAction | null>, IApplicationState, undefined, IFetchMenuAction>> = (callback: () => void) => (dispatch: Dispatch, getState: () => IApplicationState) => {
+export const fetchMenu: ActionCreator<ThunkAction<Promise<AnyAction | void >, IApplicationState, undefined, IFetchMenuAction>> = (callback: () => void) => (dispatch: Dispatch, getState: () => IApplicationState) => {
 	const cart = getState().cart.items;
 	const likedFood = getState().likeFood.likeFood;
 	const foodList = getState().menu.foodList;
@@ -47,13 +47,13 @@ export const fetchMenu: ActionCreator<ThunkAction<Promise<AnyAction | null>, IAp
 		Object.keys(cart).forEach(key => {
 			const cartItem = cart[key];
 
-			const food = foodListItem[cartItem.id];
+			const food = foodListItem[parseInt(cartItem.id)];
 			if (food) food.quantity = cartItem.quantity;
 		});
 
 		Object.keys(likedFood).forEach(key => {
 			const likedItem = likedFood[key];
-			const food = foodListItem[`${likedItem.id}`];
+			const food = foodListItem[parseInt(likedItem.id)];
 			food ? (food.like = true) : null;
 		});
 
@@ -77,17 +77,26 @@ export const fetchMenu: ActionCreator<ThunkAction<Promise<AnyAction | null>, IAp
 			}
 		});
 	};
-
-	return !foodList ?
-		axios.
-			get<IRestDataGet[]>(restaurantMenu)
-			.then(response => {
-				const { data } = response;
-				Data.foodList = data;
-				return productLoaded(data);
-			})
-			.catch(err => {
-				console.log(err, 'Could not fetch foodList. Try again later.');
-			})
-		: null
+	// return !foodList ?
+	// 	axios.
+	// 		get<IRestDataGet[]>(restaurantMenu)
+	// 		.then((response: AxiosResponse) => {
+	// 			const { data } = response;
+	// 			Data.foodList = data;
+	// 			return productLoaded(data);
+	// 		})
+	// 		.catch(err => {
+	// 			console.log(err, 'Could not fetch foodList. Try again later.');
+	// 		})
+	// 	: true
+	return axios.
+		get<IRestDataGet[]>(restaurantMenu)
+		.then((response: AxiosResponse) => {
+			const { data } = response;
+			Data.foodList = data;
+			return productLoaded(data);
+		})
+		.catch(err => {
+			console.log(err, 'Could not fetch foodList. Try again later.');
+		})
 };

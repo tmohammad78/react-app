@@ -35,7 +35,7 @@ const FoodListTable: React.SFC<IProps> = ({ itemFood }: IProps) => {
 	const row = [];
 	let lastCategory: string | null = null;
 
-	const subFood = useSelector<IApplicationState, SubFoodState[]>(state => state.subFood);
+	const subFood = useSelector<IApplicationState, SubFoodState>(state => state.subFood);
 	const [foodList, setFoodList] = useState(itemFood);
 	const [searchKey, setSearchKey] = useState('');
 	const [inStock, setInStock] = useState(false);
@@ -123,7 +123,7 @@ const FoodListTable: React.SFC<IProps> = ({ itemFood }: IProps) => {
 					className='subFoodModal'
 					subFood
 				>
-					<SubFood subfood={subFood.food} />
+					<SubFood subfood={subFood} />
 				</Modal>
 
 				<FoodList>{row}</FoodList>
