@@ -15,7 +15,7 @@ export const addFoodLike: ActionCreator<ThunkAction<AnyAction, IApplicationState
 
 export const removeFoodLike: ActionCreator<ThunkAction<AnyAction, IApplicationState, undefined, IRemoveFoodLikeAction>> = (food: IFoodList) => (dispatch: Dispatch, getState: () => IApplicationState) => {
 	const likeFood = getState().likeFood.likeFood;
-	delete likeFood[food.id];
+	delete likeFood[parseInt(food.id)];
 	dispatch(dislikeProduct({ id: food.id }));
 	return dispatch({
 		type: likeFoodActionTypes.DELETE_TO_LIKE,

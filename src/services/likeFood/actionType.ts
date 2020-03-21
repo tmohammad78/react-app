@@ -1,4 +1,4 @@
-import { IFoodList } from "src/types";
+import { IFoodList , INewFoodList } from "src/types";
 
 export enum likeFoodActionTypes {
 	ADD_TO_LIKE = 'ADD_TO_LIKE',
@@ -7,12 +7,12 @@ export enum likeFoodActionTypes {
 
 export interface IAddFoodLikeAction {
 	type: likeFoodActionTypes.ADD_TO_LIKE,
-	food: IFoodList
+	food: INewFoodList
 }
 
 export interface IRemoveFoodLikeAction {
 	type: likeFoodActionTypes.DELETE_TO_LIKE,
-	likeFood: IFoodList
+	likeFood: INewFoodList
 }
 
 export type LikeFoodSystemAction = IAddFoodLikeAction | IRemoveFoodLikeAction;

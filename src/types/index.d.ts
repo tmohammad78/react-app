@@ -42,7 +42,7 @@ export interface MenuState {
 
 
 export interface TestLikeState {
-	[key: number]: IFoodList | null
+	[key: string]: INewFoodList
 }
 export interface LikeFoodState {
 	likeFood: TestLikeState
@@ -79,8 +79,7 @@ export interface ISubFood {
 	visible: boolean,
 	stock: undefined | boolean;
 	quantity: number
-	packaging: number;
-	saleOnRamadan: boolean;
+	saleOnRamadan?: boolean;
 }
 
 export interface IFoodList {
@@ -100,8 +99,12 @@ export interface IFoodList {
 	visible?: boolean,
 	stock?: undefined | boolean;
 	quantity: number
-	packaging?: number;
 	saleOnRamadan?: boolean;
+
+	catId?: number,
+	categoryTitle?: string,
+	categoryIndex?: number,
+
 	subFoods: ISubFood[];
 }
 interface INewFoodList extends IFoodList {
@@ -111,7 +114,7 @@ interface INewFoodList extends IFoodList {
 export interface ISectionFood {
 	description: string;
 	food: IFoodList[];
-	id: number;
+	id: string;
 	img: string;
 	index: string;
 	priceLabel: string;

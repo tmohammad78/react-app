@@ -23,12 +23,12 @@ export const updateProduct: ActionCreator<IUpdateMenuAction> = product => ({
 
 export const likeProduct: ActionCreator<ILikeProductAction> = product => ({
 	type: menuActionTypes.LIKED_PRODUCT,
-	payload: product
+	product
 });
 
 export const dislikeProduct: ActionCreator<IDisLikeProductAction> = product => ({
 	type: menuActionTypes.DISLIKED_PRODUCT,
-	payload: product
+	product
 });
 
 

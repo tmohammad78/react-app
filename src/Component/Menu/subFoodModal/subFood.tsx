@@ -4,9 +4,9 @@ import DetailModal from '../FoodListTable/food/foodModal';
 import FoodDetails from '../FoodListTable/food/details-holder';
 import { FoodItem } from '../FoodListTable/food/style';
 import { SubFoodStyle } from './style.js';
-import { IFoodList } from 'src/types';
+import { IFoodList, ISubFood } from 'src/types';
 
-const SubFood = ({ subfood }: ISubFood[]) => {
+const SubFood = ({ subfood }: IFoodList[]) => {
 	return (
 		<SubFoodStyle>
 			<DetailModal subfood={true} defaultDetail={subfood} food={subfood} />

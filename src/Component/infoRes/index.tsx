@@ -6,7 +6,9 @@ interface IRestInfo {
 	fullAddress: string
 }
 const InfoRes: React.SFC = () => {
-	const [restInfo, setRestInfo] = useState<IRestInfo>();
+	const [restInfo, setRestInfo] = useState<IRestInfo>({
+		fullAddress: ''
+	});
 	useEffect(() => {
 		handleFetchInfo();
 	}, []);

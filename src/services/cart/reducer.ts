@@ -1,6 +1,7 @@
 import { CartSystemAction, cartActionTypes } from './actionTypes';
 import { CartState } from '../../types/index';
 import { Reducer } from 'redux';
+
 const initialState: CartState = {
 	products: [],
 	items: {},

@@ -11,12 +11,14 @@ export const subFoodReducer: Reducer<SubFoodState, SubFoodSystemAction> = (state
 		case subFoodActionTypes.SET_SUBFOOD: {
 			const { food, show } = action.payload;
 			return {
+				...state,
 				show,
 				food
 			};
 		}
 		case subFoodActionTypes.CLOSE_MODAL: {
 			return {
+				...state,
 				show: action.show
 			};
 		}

@@ -11,7 +11,7 @@ export enum subFoodActionTypes {
 export interface ISubFoodModal {
 	type: subFoodActionTypes.SET_SUBFOOD,
 	payload: {
-		food: IFoodList,
+		food: IFoodList[],
 		show: boolean
 	}
 }

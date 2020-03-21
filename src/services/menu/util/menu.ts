@@ -1,4 +1,4 @@
-import * as { _ } from 'underscore';
+import _ from 'underscore';
 import { IDataMain } from '../actionTypes';
 import { ICategory, ISubFood, IFoodList, ISectionFood, ICategoryResponse } from '../../../types';
 
@@ -7,11 +7,11 @@ function makeFoodItem(food: IFoodList) {
 		? {
 			id: food.id,
 			title: food.title,
+			index: food.index || 'default',
 			ingredient: food.ingredient || '',
 			img: food.img || '',
 			archive: typeof food.archive !== 'undefined' ? food.archive : false,
-			price: food.price ,
-			index: food.index || 0,
+			price: food.price,
 			discount: food.discount || 0,
 			discountPercentage: food.discountPercentage || 0,
 			foodTag: food.foodTag || undefined,
@@ -22,7 +22,6 @@ function makeFoodItem(food: IFoodList) {
 			priceLabel: food.priceLabel || '',
 			visible: true,
 			quantity: 0,
-			packaging: food.packaging,
 			saleOnRamadan: food.saleOnRamadan
 		}
 		: false;
@@ -77,7 +76,7 @@ const parseMenu = (data: IDataMain, sort?: any) => {
 				sectionList.forEach((section) => {
 					const foods = section.food;
 					if (foods && foods.length) {
-						if (section.id === 0) {
+						if (parseInt(section.id) === 0) {
 							foods.forEach((food: IFoodList) => {
 								const foodItem = makeFoodItem(food);
 								if (foodItem) {
@@ -103,7 +102,7 @@ const parseMenu = (data: IDataMain, sort?: any) => {
 								}
 							});
 
-							subFoods = _.sortBy(subFoods, (food: IFoodList) => {
+							subFoods = _.sortBy(subFoods,(food: ISubFood): string => {
 								return food.index;
 							});
 
@@ -120,6 +119,7 @@ const parseMenu = (data: IDataMain, sort?: any) => {
 									title: section.title,
 									ingredient: section.description || '', // || subData.ingredient || "",
 									img: section.img,
+									price: section.priceLabel,
 									discountPercentage: subData.maxDiscount,
 									available: subAvailable,
 									unavailableText: subUnavailableText,

@@ -109,7 +109,10 @@ export const registerAction: ActionCreator<ThunkAction<Promise<AnyAction>, IAppl
 
 			return dispatch({
 				type: authActionTypes.AUTH_REGISTER,
-				payload: data
+				payload: {
+					...data,
+					logged: true
+				}
 			});
 		});
 };

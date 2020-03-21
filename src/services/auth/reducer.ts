@@ -16,14 +16,14 @@ export const authReducer: Reducer<AuthState, AuthSystemAction> = (
 ) => {
 	switch (action.type) {
 		case authActionTypes.AUTH_REGISTER:
-			const { idToken, refreshToken, expiresIn, logged } = action.payload;
+			const { idToken, refreshToken, expiresIn } = action.payload;
 			return {
 				...state,
 				// ...state.logged,
 				token: idToken,
 				refreshToken,
 				expiresIn,
-				logged
+				logged: action.payload.logged
 			};
 
 		case authActionTypes.AUTH_LOGIN:
@@ -45,6 +45,7 @@ export const authReducer: Reducer<AuthState, AuthSystemAction> = (
 		case authActionTypes.SKIPAUTH:
 			const { logged } = action.payload;
 			return {
+				...state,
 				logged
 			};
 		default:
