@@ -1,6 +1,6 @@
 import React from 'react';
 import { Button } from 'component/Buttons/Button';
-import { NavLink, RouteComponentProps, useLocation, useRouteMatch } from 'react-router-dom';
+import { NavLink, useLocation, useRouteMatch } from 'react-router-dom';
 
 
 interface IProps {

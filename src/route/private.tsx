@@ -1,17 +1,19 @@
-import React from 'react';
-import { Route, Redirect, RouteProps } from 'react-router-dom';
+import React, { FunctionComponent } from 'react';
+import { Route, Redirect, RouteProps, RouteComponentProps } from 'react-router-dom';
 import { useSelector } from 'react-redux';
-
 import { IApplicationState } from 'services/reducers';
-import { AuthState } from 'src/types';
+import { AuthState } from 'types';
 
-interface PrivateRouteProps extends RouteProps {
+interface PrivateRouteProps {
 	component: any;
-	isSignedIn: boolean;
+	isSignedIn?: boolean;
+	toggleTheme: string | boolean | (() => void);
+	children?: React.ReactNode;
+	path: string;
 }
 
 
-const PrivateRoute: React.SFC<PrivateRouteProps> = ({ component: Component, ...props }, toggleTheme: () => void) => {
+const PrivateRoute: React.SFC<PrivateRouteProps> = ({ component: Component, toggleTheme, ...props }): JSX.Element => {
 	const auth = useSelector<IApplicationState, AuthState>(state => state.auth);
 	return (
 		<Route

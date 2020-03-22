@@ -10,10 +10,10 @@ import { RestMenuHolder } from './style.js';
 
 const Cart = lazy(() => import('component/FloatCart'));
 interface Props {
-	toggleTheme: () => void
+	toggleTheme: string | boolean | (() => void)
 }
 
-const Order = React.memo(({ toggleTheme }: Props) => {
+const Order: React.SFC<Props> = React.memo(({ toggleTheme }) => {
 	return (
 		<React.Fragment>
 			<Header toggleTheme={toggleTheme} />

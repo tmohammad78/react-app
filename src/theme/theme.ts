@@ -1,7 +1,19 @@
-import { DefaultTheme } from 'styled-components'
-import 'styled-components'
-
-const lightTheme = {
+interface ILightTheme {
+	body: string,
+	text: string
+	inputText: string,
+	color: string,
+	toggleBorder: string,
+	foodItem_bgcolor: string,
+	whitebg: string,
+	btnbg: string,
+	categoryColor: string,
+	bgCart: string,
+	foodItemTextSpan: string,
+	AvailableBox: string,
+	AvailableBoxText: string
+}
+const lightTheme: ILightTheme = {
 	body: '#f8f8f8',
 	text: '#333',
 	inputText: '#fff',
@@ -17,7 +29,7 @@ const lightTheme = {
 	AvailableBoxText: '#888'
 };
 
-const darkTheme = {
+const darkTheme: ILightTheme = {
 	body: '#1D1C2A',
 	text: '#FFF',
 	inputText: '#fff',

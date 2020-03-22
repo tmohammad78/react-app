@@ -35,7 +35,7 @@ export const dislikeProduct: ActionCreator<IDisLikeProductAction> = product => (
 
 export const fetchMenu: ActionCreator<ThunkAction<Promise<AnyAction | void> | string, IApplicationState, undefined, IFetchMenuAction>> = (callback: () => void) => (dispatch: Dispatch, getState: () => IApplicationState) => {
 	const cart = getState().cart.items;
-	const likedFood = getState().likeFood.likeFood;
+	// const likedFood = getState().likeFood.likeFood;
 	const foodList = getState().menu.foodList;
 
 	const productLoaded = (data: IDataMain, sort?: string | null) => {
@@ -51,11 +51,11 @@ export const fetchMenu: ActionCreator<ThunkAction<Promise<AnyAction | void> | st
 			if (food) food.quantity = cartItem.quantity;
 		});
 
-		Object.keys(likedFood).forEach(key => {
-			const likedItem = likedFood[key];
-			const food = foodListItem[parseInt(likedItem.id)];
-			food ? (food.like = true) : null;
-		});
+		// Object.keys(likedFood).forEach(key => {
+		// 	const likedItem = likedFood[key];
+		// 	const food = foodListItem[parseInt(likedItem.id)];
+		// 	food ? (food.like = true) : null;
+		// });
 
 		if (callback) {
 			callback();

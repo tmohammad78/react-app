@@ -1,4 +1,4 @@
-import { IFoodList , INewFoodList } from "src/types";
+import { IFoodList , INewFoodList } from "types";
 
 export enum likeFoodActionTypes {
 	ADD_TO_LIKE = 'ADD_TO_LIKE',

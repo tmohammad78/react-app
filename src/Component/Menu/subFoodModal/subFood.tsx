@@ -4,14 +4,15 @@ import DetailModal from '../FoodListTable/food/foodModal';
 import FoodDetails from '../FoodListTable/food/details-holder';
 import { FoodItem } from '../FoodListTable/food/style';
 import { SubFoodStyle } from './style.js';
-import { SubFoodState, ISubFood } from 'src/types';
+import { objectToArray } from 'src/helper';
+import { SubFoodState, ISubFood } from 'types';
 interface IProps {
 	subFood: SubFoodState
 }
 const SubFood: React.SFC<IProps> = ({ subFood }) => {
 	return (
 		<SubFoodStyle>
-			<DetailModal subfood={true} defaultDetail={subFood} food={subFood.food} />
+			{/* <DetailModal subfood={true} defaultDetail={subFood} food={objectToArray(subFood.food)} /> */}
 			<div>
 				{subFood.food.map((food, i) => {
 					return (

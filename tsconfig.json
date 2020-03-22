@@ -10,17 +10,27 @@
     "jsx": "react",
     "strict": true,
     "noImplicitReturns": true,
+    "declaration": true,
     "rootDir": "./",
     "outDir": "dist",
     "allowJs": true,
-    "baseUrl": "./",
-    "paths": {
-      "component/*": ["src/component/*"],
-      "services/*": ["src/services/*"],
-      "pages/*": ["src/pages/*"],
-      "helper/*": ["src/helper/*"]
-    }
+    "baseUrl": "./src",
+    // "paths": {
+    //   "component/*": ["component/*"],
+    //   "services/*": ["services/*"],
+    //   "pages/*": ["pages/*"],
+    //   "helper/*": ["helper/*"],
+    //   "types/*": ["types/*"]
+    // }
   },
-  "include": ["**/*.ts", "**/*.tsx", "webpack/commonVariables.js", "src/component/Buttons/Button.js", "src/component/Menu/FoodListTable/food/foodDetails/likeFood/style.js", "src/theme/global.js"],
+  "include": [
+    "**/*.ts",
+    "**/*.tsx",
+    "webpack/commonVariables.js",
+    "src/component/Buttons/Button.js",
+    "src/component/Menu/FoodListTable/food/foodDetails/likeFood/style.js",
+    "src/theme/global.js",
+    "src/theme/theme.ts"
+  ],
   "exclude": ["node_modules"]
 }

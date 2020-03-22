@@ -6,7 +6,7 @@ declare global {
 	interface Window {
 		__REDUX_DEVTOOLS_EXTENSION_COMPOSE__?: typeof compose;
 		// Storage.getItem: string | null
-}
+	}
 }
 
 export default (initialState: any): Store<IApplicationState> => {
@@ -29,7 +29,7 @@ export default (initialState: any): Store<IApplicationState> => {
 		const persist = {
 			cart: state.cart,
 			// total: state.total,
-			likeFood: state.likeFood,
+			// likeFood: state.likeFood,
 			auth: {
 				token: state.auth.token,
 				refreshToken: state.auth.refreshToken,

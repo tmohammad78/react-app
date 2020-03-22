@@ -1,4 +1,4 @@
-import { IFoodList } from 'src/types';
+import { IFoodList } from 'types';
 export enum cartActionTypes {
 	LOAD_CART = 'LOAD_CART',
 	ADD_FOOD_CART = 'ADD_FOOD_CART',

@@ -3,7 +3,7 @@ import { updateProduct } from 'services/menu/actions';
 import { objectToArray } from 'helper/index';
 import { Dispatch, ActionCreator, AnyAction } from 'redux';
 import { ThunkAction } from 'redux-thunk';
-import { IFoodList } from 'src/types';
+import { IFoodList } from 'types';
 import { IApplicationState } from '../reducers';
 
 export const loadCart: ActionCreator<ILoadCartAction> = (products) => ({

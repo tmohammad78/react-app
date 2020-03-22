@@ -10,8 +10,8 @@ module.exports = [
     devtool: 'cheap-module-source-map',
     entry: {
       app: [
-        'core-js/stable',
-        'regenerator-runtime/runtime',
+        // 'core-js/stable',
+        // 'regenerator-runtime/runtime',
         // "webpack-hot-middleware/client",
         // "react-hot-loader/patch",
         `${commonVariables.appEntry}/index.tsx`
@@ -88,6 +88,9 @@ module.exports = [
           ]
         }
       ]
+    },
+    resolve: {
+      extensions: ['.ts', '.tsx', '.js']
     },
     plugins: [new webpack.NamedModulesPlugin(), new webpack.HotModuleReplacementPlugin()],
     devServer: {

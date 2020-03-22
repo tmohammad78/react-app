@@ -5,7 +5,7 @@ import { useDispatch } from 'react-redux';
 import FormLogin from 'component/Login/form';
 import { registerAction, loginAction, checkVerfify } from 'services/auth/action';
 import firebase from '../../../firebaseconfig';
-import { MyFormValues } from 'src/types';
+import { MyFormValues } from 'types';
 
 import './style.scss';
 

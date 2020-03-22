@@ -6,7 +6,7 @@ import { skipAuth } from 'services/auth/action';
 import { IApplicationState } from 'services/reducers';
 import Register from 'component/Register';
 import MainAuth from './Main';
-import { AuthState } from 'src/types';
+import { AuthState } from 'types';
 
 import './style.scss';
 

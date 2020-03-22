@@ -49,6 +49,7 @@ module.exports = [
         }
       }
     },
+
     plugins: [
       new HtmlWebpackPlugin({
         title: 'Food Delivery',

@@ -8,7 +8,7 @@ import Portal from 'component/Portal';
 import './style.scss';
 
 interface Props {
-	toggleTheme: () => void
+	toggleTheme: string | boolean | (() => void)
 }
 const Header: React.SFC<Props> = React.memo(({ toggleTheme }) => {
 	const [showModal, setShowModal] = useState(false);
