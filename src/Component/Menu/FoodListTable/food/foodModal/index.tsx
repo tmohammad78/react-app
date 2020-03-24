@@ -5,7 +5,7 @@ import Tittle from '../foodDetails/Tittle';
 import Ingredient from '../foodDetails/ingredient';
 import QtyHolder from '../foodDetails/qty-holder';
 import Price from '../foodDetails/price';
-import { IFoodList } from 'src/types';
+import { IFoodList } from 'types';
 
 import './style.scss';
 

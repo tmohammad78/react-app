@@ -5,7 +5,7 @@ import Price from '../foodDetails/price';
 import QtyHolder from '../foodDetails/qty-holder';
 import Tittle from '../foodDetails/Tittle';
 import LikeFood from '../foodDetails/likeFood';
-import { INewFoodList } from 'src/types';
+import { INewFoodList } from 'types';
 
 import './style.scss';
 

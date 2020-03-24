@@ -9,7 +9,7 @@ import Spinner from 'component/Spinner';
 const Modal = lazy(() => import('component/Modal/index'));
 const SearchBar = lazy(() => import('./searchBar/searchBar'));
 import { IApplicationState } from 'services/reducers';
-import { ISubFood, IFoodList, SubFoodState } from 'src/types/index';
+import { ISubFood, IFoodList, SubFoodState } from 'types';
 
 import { FoodList, NotFoundStyle, FoodMenu } from './style.js';
 

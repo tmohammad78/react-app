@@ -25,8 +25,19 @@ module.exports = [
       //   path: `${commonVariables.publicPath}`,
       //   filename: 'server.js'
     },
+    resolve: {
+      extensions: ['.ts', '.tsx', '.js', '.jsx']
+    },
     module: {
       rules: [
+        {
+          test: /\.(tsx|jsx|js|ts)?$/,
+          exclude: /node_modules/,
+          use: [
+            { loader: 'babel-loader' }
+            // { loader: "eslint-loader" }
+          ]
+        },
         {
           test: /\.(sa|sc|c)ss$/,
           use: [
@@ -89,9 +100,9 @@ module.exports = [
         }
       ]
     },
-    resolve: {
-      extensions: ['.ts', '.tsx', '.js']
-    },
+    // resolve: {
+    //   extensions: ['.ts', '.tsx', '.js']
+    // },
     plugins: [new webpack.NamedModulesPlugin(), new webpack.HotModuleReplacementPlugin()],
     devServer: {
       host: 'localhost',

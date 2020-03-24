@@ -11,7 +11,7 @@ import { SubFoodModal } from 'services/subFood/action';
 
 import { FoodItem } from './style.js';
 import { IApplicationState } from 'services/reducers';
-import { IFoodList, INewFoodList } from 'src/types';
+import { IFoodList, INewFoodList } from 'types';
 interface IProps {
 	food: IFoodList
 }

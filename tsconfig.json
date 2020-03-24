@@ -5,16 +5,20 @@
     "allowSyntheticDefaultImports": true,
     "esModuleInterop": true,
     "moduleResolution": "node",
+    "skipLibCheck": true,
     "lib": ["es6", "dom"],
     "sourceMap": true,
     "jsx": "react",
     "strict": true,
     "noImplicitReturns": true,
+    "noImplicitThis": true,
+    "noImplicitAny": true,
+    "strictNullChecks": true,
     "declaration": true,
-    "rootDir": "./",
+    "rootDir": "src",
     "outDir": "dist",
-    "allowJs": true,
-    "baseUrl": "./src",
+    "allowJs": true
+    // "baseUrl": "./src"
     // "paths": {
     //   "component/*": ["component/*"],
     //   "services/*": ["services/*"],
@@ -23,14 +27,15 @@
     //   "types/*": ["types/*"]
     // }
   },
-  "include": [
-    "**/*.ts",
-    "**/*.tsx",
-    "webpack/commonVariables.js",
-    "src/component/Buttons/Button.js",
-    "src/component/Menu/FoodListTable/food/foodDetails/likeFood/style.js",
-    "src/theme/global.js",
-    "src/theme/theme.ts"
-  ],
-  "exclude": ["node_modules"]
+  //   "include": [
+  //     "**/*.ts",
+  //     "**/*.tsx",
+  //     "webpack/commonVariables.js",
+  //     "src/component/Buttons/Button.js",
+  //     "src/component/Menu/FoodListTable/food/foodDetails/likeFood/style.js",
+  //     "src/theme/global.js",
+  //     "src/theme/theme.ts"
+  //   ],
+  "include": ["./src"],
+  "exclude": ["node_modules", "build"]
 }

@@ -4,7 +4,7 @@ import DetailModal from '../FoodListTable/food/foodModal';
 import FoodDetails from '../FoodListTable/food/details-holder';
 import { FoodItem } from '../FoodListTable/food/style';
 import { SubFoodStyle } from './style.js';
-import { objectToArray } from 'src/helper';
+import { objectToArray } from 'helper';
 import { SubFoodState, ISubFood } from 'types';
 interface IProps {
 	subFood: SubFoodState

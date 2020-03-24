@@ -5,7 +5,7 @@ import { addFood, removeFood } from 'services/cart/actions';
 import { SubFoodModal } from 'services/subFood/action';
 import { Button } from 'component/Buttons/Button.js';
 import { Span } from './span';
-import { IFoodList } from 'src/types/index';
+import { IFoodList } from 'types';
 
 import { QtyStyle, AvailableBox } from './style';
 import './style.scss';

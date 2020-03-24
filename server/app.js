@@ -2,7 +2,7 @@ const ReactDOMServer = require('react-dom/server');
 const path = require('path');
 const fs = require('fs');
 const express = require('express');
-const App = require('../src/app');
+// const App = require('../src/');
 const cors = require('cors');
 
 app.use(cors());

@@ -5,8 +5,8 @@ import { Button } from 'component/Buttons/Button';
 import CartProduct from './CartProduct';
 
 import { objectToArray, currency } from 'helper/index';
-import { ICartItemsObject, ICartTotalState } from 'src/types';
-import { IApplicationState } from 'src/services/reducers';
+import { ICartItemsObject, ICartTotalState } from 'types';
+import { IApplicationState } from 'services/reducers';
 
 import { CartListHolder, CartShowMobile, RestCart, LeftSideHolder } from './style.js';
 import './style.scss';

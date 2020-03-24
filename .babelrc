@@ -1,5 +1,9 @@
 {
-  "presets": [["@babel/preset-env", { "modules": false }], "@babel/preset-react"],
+  "presets": [
+    ["@babel/preset-env", { "modules": false }],
+    "@babel/preset-react",
+    "@babel/preset-typescript"
+  ],
   "plugins": [
     "react-hot-loader/babel",
     // "transform-react-jsx",
@@ -8,10 +12,13 @@
     [
       "module-resolver",
       {
-        "root": ["./src"],
+        "root": ["./"],
         "alias": {
           "services": "./src/services",
-          "pages": "./src/pages"
+          "pages": "./src/pages",
+          "helper": "./src/helper",
+          "hooks": "./src/hooks",
+          "types": "./src/types"
         }
       }
     ],

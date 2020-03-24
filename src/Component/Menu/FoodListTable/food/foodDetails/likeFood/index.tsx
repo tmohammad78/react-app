@@ -5,7 +5,7 @@ import Svg1 from './heart2.svg';
 import { useDispatch } from 'react-redux';
 import { addFoodLike, removeFoodLike } from 'services/likeFood/action';
 import { LikeFoodStyle } from './style.js';
-import { INewFoodList } from 'src/types';
+import { INewFoodList } from 'types';
 
 interface IProps {
 	food: INewFoodList

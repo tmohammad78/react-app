@@ -3,7 +3,7 @@ import { useSelector } from 'react-redux';
 import Food from '../Menu/FoodListTable/food';
 import { objectToArray } from 'helper/index';
 import { IApplicationState } from 'services/reducers';
-import { LikeFoodState, IFoodList, INewFoodList, TestLikeState } from 'src/types/index';
+import { LikeFoodState, IFoodList, INewFoodList, TestLikeState } from 'types';
 
 const Favorite: React.SFC = () => {
 	// let favoriteFood = useSelector<IApplicationState, LikeFoodState>(state => state.likeFood);

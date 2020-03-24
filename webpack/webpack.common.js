@@ -12,29 +12,35 @@ module.exports = [
     },
     module: {
       rules: [
-        {
-          test: /\.ts(x?)$/,
-          exclude: /node_modules/,
-          use: [
-            {
-              loader: 'ts-loader'
-            }
-          ]
-        },
+        // {
+        //   test: /\.ts(x?)$/,
+        //   exclude: /node_modules/,
+        //   use: [
+        //     {
+        //       loader: 'ts-loader'
+        //     }
+        //   ]
+        // },
         {
           enforce: 'pre',
           test: /\.js$/,
           loader: 'source-map-loader'
         },
         {
-          test: /\.(js|jsx)$/,
+          test: /\.(ts|js)x?$/,
           exclude: /node_modules/,
+          resolve: {
+            extensions: ['.ts', 'tsx']
+          },
           use: [
             { loader: 'babel-loader' }
             // { loader: "eslint-loader" }
           ]
         }
       ]
+    },
+    resolve: {
+      extensions: ['.ts', '.tsx', '.js']
     },
     optimization: {
       splitChunks: {

@@ -1,7 +1,7 @@
-import * as React from "react";
+import React from "react";
 import { Provider } from "react-redux";
-import store from 'services/store';
-import { IApplicationState } from 'services/reducers';
+import store from '../src/services/store';
+import { IApplicationState } from '../src/services/reducers';
 import 'lazysizes';
 
 export interface props {
@@ -9,7 +9,7 @@ export interface props {
 	initialState?: IApplicationState | object;
 }
 
-const Root = ({ children, initialState = {} }: props) => (
+const Root: React.SFC<props> = ({ children, initialState = {} }): JSX.Element => (
 	<Provider store={store(initialState)}>{children}</Provider>
 );
 

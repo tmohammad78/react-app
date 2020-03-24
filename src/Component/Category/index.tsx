@@ -5,7 +5,7 @@ import { Link } from 'react-scroll';
 import { Iw, TextIw } from './style';
 import { Button } from 'component/Buttons/Button';
 import { IApplicationState } from 'services/reducers';
-import { ICategory } from 'src/types/index';
+import { ICategory } from 'types';
 
 const Category: React.SFC = () => {
 	const item = useSelector<IApplicationState, ICategory[]>(state => state.menu.categoryList);

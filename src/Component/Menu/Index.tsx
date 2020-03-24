@@ -5,7 +5,7 @@ import { fetchMenu } from '../../services/menu/actions';
 import Spinner from '../Spinner';
 import { TabContentHolder } from '../../pages/order/style';
 import { IApplicationState } from 'services/reducers';
-import { IFoodList } from 'src/types/index';
+import { IFoodList } from 'types';
 
 const Category = lazy(() => import('../Category/index'));
 const FoodListTable = lazy(() => import('./FoodListTable'));

@@ -6,9 +6,9 @@ import { themes } from './theme/theme';
 import { GlobalStyles } from './theme/global';
 import PrivateRoute from './route/private';
 import { browserHistory } from './route/history';
-import Spinner from 'component/Spinner';
-import AuthPage from 'pages/auth';
-import Order from 'pages/order';
+import Spinner from './component/Spinner';
+import AuthPage from './pages/auth';
+import Order from './pages/order';
 interface Itest {
 	theme: string;
 	toggleTheme: () => void;

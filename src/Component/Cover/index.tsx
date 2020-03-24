@@ -4,7 +4,7 @@ import { useSelector } from 'react-redux';
 
 import { resturantData } from 'services/util';
 import { IApplicationState } from 'services/reducers';
-import { ICategory } from 'src/types';
+import { ICategory } from 'types';
 
 import './style.scss';
 

@@ -8,7 +8,7 @@ import Price from 'component/Menu/FoodListTable/food/foodDetails/price';
 
 import { removeFood } from 'services/cart/actions';
 
-import { IFoodList } from 'src/types/index';
+import { IFoodList } from 'types';
 
 interface IProps {
 	product: IFoodList;
