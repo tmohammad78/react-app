@@ -1,101 +1,29 @@
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
-const autoprefixer = require('autoprefixer');
 const path = require('path');
-const commonVariables = require('./commonVariables');
 const FriendlyErrorsWebpackPlugin = require('friendly-errors-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
-const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
 const MinifyPlugin = require('babel-minify-webpack-plugin');
-const CompressionPlugin = require('compression-webpack-plugin');
 const HtmlWebpackRootPlugin = require('html-webpack-root-plugin');
 const WorkboxPlugin = require('workbox-webpack-plugin');
 var WebpackPwaManifest = require('webpack-pwa-manifest');
+const webpack = require('webpack');
 const SWPrecacheWebpackPlugin = require('sw-precache-webpack-plugin');
 const PUBLIC_PATH = 'https://food-delivery-7d366.firebaseapp.com/';
-module.exports = Object.keys(commonVariables.languages).map(function(language) {
-  return {
-    mode: 'production',
-    entry: {
-      app: ['core-js/stable', 'regenerator-runtime/runtime', `${commonVariables.appEntry}/index.js`]
-    },
-    output: {
-      chunkFilename: `[name].[chunkhash:8].js`
-    },
-    module: {
-      rules: [
-        {
-          test: /\.(sa|sc|c)ss$/,
-          use: [
-            {
-              loader: MiniCssExtractPlugin.loader
-            },
-            {
-              loader: 'css-loader',
-              options: {
-                // minimize: true,
-                sourceMap: false
-              }
-            },
-            {
-              loader: 'postcss-loader',
-              options: {
-                ident: 'postcss',
-                sourceMap: false,
-                plugins: () => [
-                  autoprefixer({
-                    // browsers: [
-                    //   ">1%",
-                    //   "last 4 versions",
-                    //   "Firefox ESR",
-                    //   "not ie < 9"
-                    // ]
-                  })
-                ]
-              }
-            },
-            {
-              loader: 'sass-loader',
-              options: {
-                sourceMap: false
-              }
-            }
-          ]
-        },
-        {
-          test: /\.svg$/,
-          use: [
-            {
-              loader: 'babel-loader'
-            },
-            {
-              loader: 'react-svg-loader',
-              options: {
-                jsx: true
-              }
-            }
-          ]
-        }
-      ]
-    },
-    optimization: {
-      concatenateModules: true,
-      minimizer: [
-        new UglifyJsPlugin({
-          uglifyOptions: {
-            output: {
-              comments: false
-            }
-          }
-        })
-      ]
-    },
-    devServer: {
-      historyApiFallback: true
-    },
+const isDevelopment = process.env.NODE_ENV !== 'production';
+module.exports = type => {
+  const plugins = [
+    new HtmlWebpackPlugin({
+      title: 'Food Delivery',
+      template: 'assets/index.html',
+      favicon: 'assets/favicon.ico',
+      cache: true
+    })
+  ];
 
-    plugins: [
-      //   new BundleAnalyzerPlugin(),
+  if (isDevelopment) {
+    plugins.push(new webpack.NamedModulesPlugin(), new webpack.HotModuleReplacementPlugin());
+  } else {
+    plugins.push(
       new FriendlyErrorsWebpackPlugin(),
       //   new CompressionPlugin(),
       new MinifyPlugin(),
@@ -155,6 +83,9 @@ module.exports = Object.keys(commonVariables.languages).map(function(language) {
         }
       }),
       new HtmlWebpackRootPlugin('root')
-    ]
+    );
+  }
+  return {
+    plugins
   };
-});
+};

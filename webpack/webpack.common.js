@@ -41,6 +41,9 @@ module.exports = [
         favicon: 'assets/favicon.ico',
         cache: true
       })
-    ]
+    ],
+    resolve: {
+      extensions: ['.js', '.jsx']
+    }
   }
 ];
