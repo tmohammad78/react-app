@@ -5,9 +5,9 @@
   "author": "",
   "license": "MIT",
   "private": true,
-  "scripts": {
-    "start": "concurrently \"npm run server\" \"cross-env NODE_ENV=development webpack-dev-server  --env.mode=dev\"",
-    "server": "nodemon server/app",
+  "scripts": {  
+	
+    "start": "SET NODE_ENV=development nodemon ./server --watch ./server --exec babel-node --presets es2015",
     "publish": "node server/app",
     "dev:bundleanalyzer": "yarn dev --env.addons=bundleanalyzer",
     "build": "npm run clean & cross-env NODE_ENV=production webpack -p --env.mode=prod --mode production",
@@ -99,7 +99,9 @@
   "dependencies": {
     "autoprefixer": "^9.7.3",
     "axios": "^0.19.1",
+    "babel-cli": "^6.26.0",
     "babel-plugin-transform-react-jsx": "^6.24.1",
+    "babel-preset-react": "^6.24.1",
     "classnames": "^2.2.6",
     "concurrently": "^4.1.2",
     "core-js": "^3.6.2",
@@ -109,7 +111,6 @@
     "formik": "^2.1.1",
     "history": "^4.10.1",
     "html-webpack-root-plugin": "^0.10.0",
-    "": "^5.2.0",
     "node-sass": "^4.13.1",
     "nodemon": "^1.19.4",
     "polished": "^3.4.2",
