@@ -12,8 +12,8 @@ const app = express();
 const compiler = webpack(webpackConfig);
 
 if (!isProduction) {
-//   app.use(webpackDevMiddleware(compiler));
-//   app.use(webpackHotMiddleware(compiler));
+  //   app.use(webpackDevMiddleware(compiler));
+  //   app.use(webpackHotMiddleware(compiler));
 } else {
   //public directory
   app.use(express.static('../assets'));
@@ -24,6 +24,7 @@ if (!isProduction) {
     next();
   });
 }
+app.use(express.static(path.resolve(__dirname, '../dist')));
 app.use(
   webpackDevMiddleware(compiler, {
     publicPath: '../dist',

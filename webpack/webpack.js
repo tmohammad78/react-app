@@ -19,10 +19,10 @@ module.exports = [
       ]
     },
     output: {
-      chunkFilename: `[name].fa.js`,
+      //   chunkFilename: `[name].fa.js`,
       filename: 'client.js',
-      path: path.resolve(__dirname, '../dist'),
-      publicPath: '/'
+      path: path.resolve(__dirname, '../dist')
+      //   publicPath: '/'
     },
     resolve: {
       extensions: ['.js', '.jsx']
@@ -116,8 +116,8 @@ module.exports = [
     output: {
       filename: 'server.js',
       libraryTarget: 'commonjs2',
-      path: path.resolve(__dirname, '../dist'),
-      publicPath: '/'
+      path: path.resolve(__dirname, '../dist')
+      //   publicPath: '/'
     },
     resolve: {
       extensions: ['.js', '.jsx']
