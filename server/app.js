@@ -10,7 +10,7 @@ app.use(cors());
 const PORT = process.env.PORT || 3006;
 const app = express();
 
-app.use(express.static('./dist'));
+app.use(express.static(path.join(__dirname, '../build/client')));
 
 app.get('/*', (req, res) => {
   const app = ReactDOMServer.renderToString(<App />);

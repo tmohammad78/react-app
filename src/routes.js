@@ -6,7 +6,7 @@ import { useDarkMode } from './hooks/useDarkMode';
 import { lightTheme, darkTheme } from './theme/theme';
 import { GlobalStyles } from './theme/global';
 import PrivateRoute from './route/private';
-import { browserHistory } from './route/history';
+// import { browserHistory } from './route/history';
 import Spinner from 'component/Spinner';
 import AuthPage from 'pages/auth';
 import Order from 'pages/order';
@@ -20,12 +20,12 @@ const App = () => {
     <ThemeProvider theme={themeMode}>
       <GlobalStyles />
       <Suspense fallback={<Spinner />}>
-        <Router history={browserHistory}>
+        
           <Switch>
             <PrivateRoute path='/' toggleTheme={toggleTheme} component={Order} />
             <Route path='/auth' component={AuthPage} />
           </Switch>
-        </Router>
+        
       </Suspense>
     </ThemeProvider>
   );

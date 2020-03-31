@@ -9,4 +9,4 @@ if (!isProduction) {
 } else {
   entry.push('./src/index.js');
 }
-export default entry;
+module.exports = entry;

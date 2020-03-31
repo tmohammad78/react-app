@@ -1,9 +1,8 @@
-import HtmlWebpackPlugin from 'html-webpack-plugin';
-
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const webpack = require('webpack');
 const autoprefixer = require('autoprefixer');
 const path = require('path');
-const commonVariables = require('./commonVariables');
+// const commonVariables = require('./commonVariables');
 const FriendlyErrorsWebpackPlugin = require('friendly-errors-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
@@ -98,4 +97,4 @@ if (isProduction) {
 } else {
   plugins.push(new webpack.NamedModulesPlugin(), new webpack.HotModuleReplacementPlugin());
 }
-export default plugins;
+module.exports =  plugins ;

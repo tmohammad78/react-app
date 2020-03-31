@@ -8,7 +8,7 @@ const PrivateRoute = ({ component: Component, ...props }) => {
     <Route
       {...props}
       render={({ location }) => {
-        if (auth.logged || auth.logged == 'skiped') {
+        if (!auth.logged || auth.logged == 'skiped') {
           return <Component {...props} toggleTheme={props.toggleTheme} />;
         } else {
           return (

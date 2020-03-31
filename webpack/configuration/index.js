@@ -1,8 +1,8 @@
-import module from './module';
-import plugins from './plugins';
-import resolve from './resolve';
-import optimization from './optimization';
-import devtool from './devtool';
-import entry from './entry';
-import output from './output';
-export { module, plugins, entry, output, resolve, optimization, devtool };
+const modules = require('./module');
+const plugins = require('./plugins');
+const resolve = require('./resolve');
+const optimization = require('./optimization');
+const devtool = require('./devtool');
+const entry = require('./entry');
+const output = require('./output');
+module.exports = { modules, plugins, entry, output, resolve, optimization, devtool };

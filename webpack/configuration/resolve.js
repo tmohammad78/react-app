@@ -1,3 +1,2 @@
-export default {
-  extensions: ['.js', '.jsx']
-};
+
+module.exports = { extensions: ['.js', '.jsx'] };

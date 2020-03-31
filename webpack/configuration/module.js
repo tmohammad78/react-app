@@ -1,4 +1,3 @@
-import ExtractTextPlugin from 'extract-text-webpack-plugin';
 const isProduction = process.env.NODE_ENV === 'production';
 const rules = [
   {
@@ -126,6 +125,4 @@ if (isProduction) {
     }
   );
 }
-export default {
-  rules
-};
+module.exports =  {rules} ;

@@ -1,12 +1,10 @@
-import html from './html';
-// Initial State
-import initialState from './initialState';
-export default function clientRender() {
+const html = require('./html');
+function clientRender() {
   return (req, res) =>
     res.send(
       html({
-        title: 'Codejobs',
-        initialState: initialState(req)
+        title: 'testing'
       })
     );
 }
+module.exports = clientRender;
