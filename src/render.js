@@ -1,12 +1,3 @@
-// const render = require('./render');
-
-// export default function serverRenderer() {
-//   return (req, res, next) => {
-//     console.log('tessssssssss ');
-//     res.status(200).send(render);
-//   };
-// }
-
 import React from 'react';
 import Root from './Root';
 import Routs from './routes';

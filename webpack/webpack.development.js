@@ -10,18 +10,20 @@ module.exports = [
     mode: 'development',
     target: 'web',
     devtool: 'source-map',
-    entry: {
-      app: [
-        'core-js/stable',
-        'regenerator-runtime/runtime',
-        'webpack-hot-middleware/client',
-        `${commonVariables.appEntry}/index.js`
-      ]
-    },
+    entry: ['webpack-hot-middleware/client', `${commonVariables.appEntry}/index.js`],
+    // entry: {
+    //   app: [
+    //     // 'core-js/stable',
+    //     // 'regenerator-runtime/runtime',
+    //     'webpack-hot-middleware/client', //hmr active
+    //     `${commonVariables.appEntry}/index.js`
+    //   ]
+    // },
     output: {
       //   chunkFilename: `[name].fa.js`,
       filename: 'client.js',
-      path: path.resolve(__dirname, '../dist')
+      path: path.resolve(__dirname, '../dist'),
+      publicPath: '/dist/'
       //   publicPath: '/'
     },
     resolve: {
@@ -85,16 +87,16 @@ module.exports = [
         }
       ]
     },
-    devServer: { writeToDisk: true },
     plugins: [
       new webpack.NamedModulesPlugin(),
-      new webpack.HotModuleReplacementPlugin(),
-      new HtmlWebpackPlugin({
-        title: 'Food Delivery',
-        template: 'assets/index.html',
-        favicon: 'assets/favicon.ico',
-        cache: true
-      })
+      new webpack.HotModuleReplacementPlugin()
+      //   new HtmlWebpackPlugin({
+      //     title: 'Food Delivery',
+      //     template: 'assets/index.html',
+      //     title: 'Food',
+      //     // favicon: 'assets/favicon.ico',
+      //     cache: true
+      //   })
     ]
   },
 
@@ -104,19 +106,26 @@ module.exports = [
     mode: 'development',
     target: 'node',
     devtool: 'source-map',
-    entry: {
-      app: [
-        'core-js/stable',
-        'regenerator-runtime/runtime',
-        'webpack-hot-middleware/client',
-        // 'react-hot-loader/patch',
-        `${commonVariables.appEntry}/serverindex.js`
-      ]
-    },
+    entry: [
+      'core-js/stable',
+      'regenerator-runtime/runtime',
+      'webpack-hot-middleware/client',
+      `${commonVariables.appEntry}/serverindex.js`
+    ],
+    // entry: {
+    //   app: [
+    //     'core-js/stable',
+    //     'regenerator-runtime/runtime',
+    //     'webpack-hot-middleware/client',
+    //     // 'react-hot-loader/patch',
+    //     `${commonVariables.appEntry}/serverindex.js`
+    //   ]
+    // },
     output: {
       filename: 'server.js',
       libraryTarget: 'commonjs2',
-      path: path.resolve(__dirname, '../dist')
+      path: `${commonVariables.outputPath}`,
+      publicPath: '/dist/'
       //   publicPath: '/'
     },
     resolve: {
@@ -157,7 +166,10 @@ module.exports = [
             {
               loader: 'sass-loader',
               options: {
-                sourceMap: true
+                sassOptions: {
+                  sourceMap: true,
+                  outputStyle: 'compressed'
+                }
               }
             }
           ]
@@ -183,7 +195,6 @@ module.exports = [
         }
       ]
     },
-    devServer: { writeToDisk: true },
     plugins: [new webpack.HotModuleReplacementPlugin()]
   }
 ];
