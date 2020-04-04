@@ -2,34 +2,49 @@ import React from 'react';
 import Root from './Root';
 import Routs from './routes';
 import ReactDOMServer from 'react-dom/server';
-import * as serviceWorker from '../assets/serviceWorker';
+// import * as serviceWorker from '../assets/serviceWorker';
 import { HelmetProvider } from 'react-helmet-async';
 import { browserHistory } from './route/history';
 import { StaticRouter } from 'react-router-dom';
 import Index from './template/Index';
 
-let helmetContext = {};
-const view = (
-  <Root>
-    <StaticRouter history={browserHistory}>
+export const render = (error, req, res) => {
+  let helmetContext = {};
+  let view;
+  if (!error) {
+    view = (
+      <Root>
+        <StaticRouter history={browserHistory}>
+          <HelmetProvider context={helmetContext}>
+            <Routs />
+          </HelmetProvider>
+        </StaticRouter>
+      </Root>
+    );
+  } else {
+    view = (
       <HelmetProvider context={helmetContext}>
-        <Routs />
+        <Error error={error} />
       </HelmetProvider>
-    </StaticRouter>
-  </Root>
-);
+    );
+  }
 
-const renderView = ReactDOMServer.renderToString(view);
+  // const viewModal = (
 
-let response = <Index renderedView={renderView} helmet={helmetContext.helmet} />;
-console.log('res ', response);
-response = ReactDOMServer.renderToString(response);
-response = '<!DOCTYPE html>' + response;
+  // )
 
-if (typeof window !== 'undefined') {
-  ReactDOM.render(App, document.getElementById('root'));
-} else {
-  ReactDOM.hydrate(App);
-}
+  const renderView = ReactDOMServer.renderToString(view);
+  // const renderViewModa = ReactDOMServer.renderToString(viewModal);
+  let response = <Index renderedView={renderView} helmet={helmetContext.helmet} error={error} />;
+  // console.log('res ', response);
+  response = ReactDOMServer.renderToString(response);
+  response = '<!DOCTYPE html>' + response;
 
-serviceWorker.register();
+  if (typeof window !== 'undefined') {
+    ReactDOM.render(App, document.getElementById('root'));
+  } else {
+    ReactDOM.hydrate(App);
+  }
+};
+
+// serviceWorker.register();

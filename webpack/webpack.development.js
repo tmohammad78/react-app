@@ -2,6 +2,7 @@ const webpack = require('webpack');
 const autoprefixer = require('autoprefixer');
 const commonVariables = require('./commonVariables');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const nodeExternals = require('webpack-node-externals');
 const path = require('path');
 
 module.exports = [
@@ -10,7 +11,10 @@ module.exports = [
     mode: 'development',
     target: 'web',
     devtool: 'source-map',
-    entry: ['webpack-hot-middleware/client', `${commonVariables.appEntry}/index.js`],
+    entry: [
+      //   'webpack-hot-middleware/client?name=client&reload=true',
+      `${commonVariables.appEntry}/index.js`
+    ],
     // entry: {
     //   app: [
     //     // 'core-js/stable',
@@ -22,7 +26,7 @@ module.exports = [
     output: {
       //   chunkFilename: `[name].fa.js`,
       filename: 'client.js',
-      path: path.resolve(__dirname, '../dist'),
+      path: `${commonVariables.outputPath}`,
       publicPath: '/dist/'
       //   publicPath: '/'
     },
@@ -107,11 +111,12 @@ module.exports = [
     target: 'node',
     devtool: 'source-map',
     entry: [
-      'core-js/stable',
-      'regenerator-runtime/runtime',
-      'webpack-hot-middleware/client',
-      `${commonVariables.appEntry}/serverindex.js`
+      //   'core-js/stable',
+      //   'regenerator-runtime/runtime',
+      //   'webpack-hot-middleware/client?name=server&reload=true',
+      `${commonVariables.appEntry}/server.js`
     ],
+    externals: [nodeExternals()],
     // entry: {
     //   app: [
     //     'core-js/stable',
@@ -128,51 +133,16 @@ module.exports = [
       publicPath: '/dist/'
       //   publicPath: '/'
     },
-    resolve: {
-      extensions: ['.js', '.jsx']
-    },
     module: {
       rules: [
         {
           test: /\.(js|jsx)$/,
           exclude: /node_modules/,
-          use: [
-            { loader: 'babel-loader' }
-            // { loader: "eslint-loader" }
-          ]
+          use: [{ loader: 'babel-loader' }]
         },
         {
           test: /\.(sa|sc|c)ss$/,
-          use: [
-            { loader: 'style-loader' },
-            { loader: 'css-loader' },
-            {
-              loader: 'postcss-loader',
-              options: {
-                ident: 'postcss',
-                sourceMap: true,
-                plugins: () => [
-                  autoprefixer({
-                    // browsers: [
-                    //   ">1%",
-                    //   "last 4 versions",
-                    //   "Firefox ESR",
-                    //   "not ie < 9"
-                    // ]
-                  })
-                ]
-              }
-            },
-            {
-              loader: 'sass-loader',
-              options: {
-                sassOptions: {
-                  sourceMap: true,
-                  outputStyle: 'compressed'
-                }
-              }
-            }
-          ]
+          loader: 'ignore-loader'
         },
         {
           test: /\.(png|jpg|woff|woff2|eot|ttf|jpe?g|gif)$/,
@@ -194,6 +164,9 @@ module.exports = [
           ]
         }
       ]
+    },
+    resolve: {
+      extensions: ['.js', '.jsx']
     },
     plugins: [new webpack.HotModuleReplacementPlugin()]
   }

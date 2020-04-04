@@ -1,4 +1,3 @@
-
 import 'firebase/auth';
 import firebase from 'firebase/app';
 
@@ -13,6 +12,10 @@ const firebaseConfig = {
   measurementId: 'G-VXH4R3P1R1'
 };
 
+if (!firebase.apps.length) {
+  firebase.initializeApp(firebaseConfig);
+}
+
 // class Firebase {
 //   constructor() {
 //     app.initializeApp(firebaseConfig);
@@ -20,7 +23,6 @@ const firebaseConfig = {
 //   }
 // }
 
-firebase.initializeApp(firebaseConfig);
 export default firebase;
 
 // export default Firebase;

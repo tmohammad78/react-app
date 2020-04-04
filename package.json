@@ -7,11 +7,11 @@
   "private": true,
   "scripts": {
     "start-dev": " concurrently \"npm run server\" && npm run watch && \"cross-env NODE_ENV=development   --env.mode=prod\" ",
-    "dev": "concurrently \"npm run server\" && npm run watch && \"cross-env NODE_ENV=development   --env.mode=dev\"",
-	"start":"node server/production.js",
-	"publish": "node server/app",
-	"server": "node server/index.js ",
-	"watch": "webpack",
+    "dev": "concurrently \"npm run server\" ",
+    "start": "node server/production.js",
+    "publish": "node server/app",
+    "server": "node server/index.js ",
+    "watch": "webpack",
     "dev:bundleanalyzer": "yarn dev --env.addons=bundleanalyzer",
     "build": "npm run clean & cross-env NODE_ENV=production webpack --config webpack/webpack.production.js -p --env.mode=prod --mode production",
     "clean": "rimraf dist",
@@ -83,6 +83,7 @@
     "webpack-dev-server": "^3.10.3",
     "webpack-hot-middleware": "^2.25.0",
     "webpack-merge": "^4.2.2",
+    "webpack-node-externals": "^1.7.2",
     "workbox-webpack-plugin": "^5.0.0"
   },
   "dependencies": {
@@ -100,6 +101,7 @@
     "formik": "^2.1.1",
     "history": "^4.10.1",
     "html-webpack-root-plugin": "^0.10.0",
+    "ignore-loader": "^0.1.2",
     "lazysizes": "^5.2.0",
     "node-sass": "^4.13.1",
     "nodemon": "^2.0.2",
