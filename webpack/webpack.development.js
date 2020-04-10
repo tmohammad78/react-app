@@ -11,18 +11,13 @@ module.exports = [
     mode: 'development',
     target: 'web',
     devtool: 'source-map',
-    entry: [
-      //   'webpack-hot-middleware/client?name=client&reload=true',
-      `${commonVariables.appEntry}/index.js`
-    ],
-    // entry: {
-    //   app: [
-    //     // 'core-js/stable',
-    //     // 'regenerator-runtime/runtime',
-    //     'webpack-hot-middleware/client', //hmr active
-    //     `${commonVariables.appEntry}/index.js`
-    //   ]
-    // },
+    entry: {
+      app: [
+        'webpack-hot-middleware/client?name=client&reload=true',
+        // 'react-hot-loader/patch',
+        `${commonVariables.appEntry}/client.js`
+      ]
+    },
     output: {
       //   chunkFilename: `[name].fa.js`,
       filename: 'client.js',
@@ -93,14 +88,9 @@ module.exports = [
     },
     plugins: [
       new webpack.NamedModulesPlugin(),
-      new webpack.HotModuleReplacementPlugin()
-      //   new HtmlWebpackPlugin({
-      //     title: 'Food Delivery',
-      //     template: 'assets/index.html',
-      //     title: 'Food',
-      //     // favicon: 'assets/favicon.ico',
-      //     cache: true
-      //   })
+      new webpack.HotModuleReplacementPlugin(),
+      new webpack.optimize.OccurrenceOrderPlugin(),
+      new webpack.NoEmitOnErrorsPlugin()
     ]
   },
 
@@ -110,22 +100,22 @@ module.exports = [
     mode: 'development',
     target: 'node',
     devtool: 'source-map',
-    entry: [
-      //   'core-js/stable',
-      //   'regenerator-runtime/runtime',
-      //   'webpack-hot-middleware/client?name=server&reload=true',
-      `${commonVariables.appEntry}/server.js`
-    ],
+    // entry: [
+    //   'core-js/stable',
+    //   'regenerator-runtime/runtime',
+    //   'webpack-hot-middleware/client',
+    //   `${commonVariables.appEntry}/server.js`
+    // ],
     externals: [nodeExternals()],
-    // entry: {
-    //   app: [
-    //     'core-js/stable',
-    //     'regenerator-runtime/runtime',
-    //     'webpack-hot-middleware/client',
-    //     // 'react-hot-loader/patch',
-    //     `${commonVariables.appEntry}/serverindex.js`
-    //   ]
-    // },
+    entry: {
+      app: [
+        'core-js/stable',
+        'regenerator-runtime/runtime',
+        'webpack-hot-middleware/client',
+        // 'react-hot-loader/patch',
+        `${commonVariables.appEntry}/server.js`
+      ]
+    },
     output: {
       filename: 'server.js',
       libraryTarget: 'commonjs2',

@@ -20,12 +20,10 @@ const App = () => {
     <ThemeProvider theme={themeMode}>
       <GlobalStyles />
       <Suspense fallback={<Spinner />}>
-        
-          <Switch>
-            <PrivateRoute path='/' toggleTheme={toggleTheme} component={Order} />
-            <Route path='/auth' component={AuthPage} />
-          </Switch>
-        
+        <Switch>
+          <PrivateRoute path='/' toggleTheme={toggleTheme} component={Order} />
+          <Route path='/auth' component={AuthPage} />
+        </Switch>
       </Suspense>
     </ThemeProvider>
   );

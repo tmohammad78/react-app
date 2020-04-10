@@ -1,10 +1,4 @@
 import { render } from './render';
-// export default function serverRenderer() {
-//   return (req, res, next) => {
-//     console.log('tessssssssss ');
-//     res.status(200).send(render);
-//   };
-// }
 
 export default function serverRenderer() {
   return async (req, res) => {

@@ -18,18 +18,16 @@ const compiler = webpack(webpackConfig);
 
 app.use(
   webpackDevMiddleware(compiler, {
-	publicPath: '/dist/',
-	noInfo: true,
+    publicPath: '/dist/',
+    noInfo: true,
     serverSideRender: true
   })
 );
 
-console.log(compiler);
-
 app.use(webpackHotMiddleware(compiler.compilers.find(compiler => compiler.name === 'client')));
-app.use(webpackHotServerMiddleware(compiler));
+app.use(webpackHotServerMiddleware(compiler, { chunkName: 'app' }));
 app.disable('x-powered-by');
 
 app.listen(3000, () => {
-  console.log(`😎 Server is listening on port 8080`);
+  console.log('server is runnig');
 });

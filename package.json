@@ -6,7 +6,7 @@
   "license": "MIT",
   "private": true,
   "scripts": {
-    "start-dev": " concurrently \"npm run server\" && npm run watch && \"cross-env NODE_ENV=development   --env.mode=prod\" ",
+    "start-dev": " concurrently \"npm run server\"",
     "dev": "concurrently \"npm run server\" ",
     "start": "node server/production.js",
     "publish": "node server/app",

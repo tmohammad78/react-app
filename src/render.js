@@ -2,7 +2,6 @@ import React from 'react';
 import Root from './Root';
 import Routs from './routes';
 import ReactDOMServer from 'react-dom/server';
-// import * as serviceWorker from '../assets/serviceWorker';
 import { HelmetProvider } from 'react-helmet-async';
 import { browserHistory } from './route/history';
 import { StaticRouter } from 'react-router-dom';
@@ -13,13 +12,14 @@ export const render = (error, req, res) => {
   let view;
   if (!error) {
     view = (
-      <Root>
-        <StaticRouter history={browserHistory}>
-          <HelmetProvider context={helmetContext}>
-            <Routs />
-          </HelmetProvider>
-        </StaticRouter>
-      </Root>
+      //   <Root>
+      //     <StaticRouter history={browserHistory}>
+      //       <HelmetProvider context={helmetContext}>
+      //         <Routs />
+      //       </HelmetProvider>
+      //     </StaticRouter>
+      //   </Root>
+      ccc
     );
   } else {
     view = (
@@ -46,5 +46,3 @@ export const render = (error, req, res) => {
     ReactDOM.hydrate(App);
   }
 };
-
-// serviceWorker.register();

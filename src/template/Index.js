@@ -39,9 +39,7 @@ function Index({ renderedView, helmet, error }) {
         <meta name='og:title' property='og:title' content='Food Delivery' />
         <meta property='og:description' content='Food Delivery Site boilerplate' />
         <meta property='og:description' content='' />
-        <meta property='og:image' content='' />ّ
-        {/* <link rel='manifest' href='/manifest.json' /> */}
-        {helmet.title.toComponent()}
+        <meta property='og:image' content='' />ّ{helmet.title.toComponent()}
         {helmet.meta.toComponent()}
         {helmet.link.toComponent()}
         <link rel='shortcut icon' href='/app-icon.png' type='image/png' />
