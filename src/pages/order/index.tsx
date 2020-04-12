@@ -1,14 +1,14 @@
 import React, { lazy, Suspense } from 'react';
 
-import Cover from 'component/Cover';
-import Header from 'component/Header';
-import Footer from 'component/Footer';
-import Spinner from 'component/Spinner/index.js';
+import Cover from 'Components/Cover/index';
+import Header from 'Components/Header/index';
+import Footer from 'Components/Footer/index';
+import Spinner from 'Components/Spinner/index.js';
 import RightSide from './rightSide/rightSide';
 
-import { RestMenuHolder } from './style.js';
+import { RestMenuHolder } from './style';
 
-const Cart = lazy(() => import('component/FloatCart'));
+const Cart = lazy(() => import('Components/FloatCart'));
 interface Props {
 	toggleTheme: string | boolean | (() => void)
 }

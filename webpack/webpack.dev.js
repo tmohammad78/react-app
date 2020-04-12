@@ -12,31 +12,31 @@ module.exports = [
       app: [
         // 'core-js/stable',
         // 'regenerator-runtime/runtime',
-        // "webpack-hot-middleware/client",
-        // "react-hot-loader/patch",
-        `${commonVariables.appEntry}/index.tsx`
-      ]
+        'webpack-hot-middleware/client',
+        // 'react-hot-loader/patch',
+        `${commonVariables.appEntry}/index.tsx`,
+      ],
     },
     output: {
       // chunkFilename: `[name].${language}.js`
       filename: 'main.js',
-      path: path.resolve(__dirname, 'dist')
+      path: path.resolve(__dirname, 'dist'),
 
       //   path: `${commonVariables.publicPath}`,
       //   filename: 'server.js'
     },
     resolve: {
-      extensions: ['.ts', '.tsx', '.js', '.jsx']
+      extensions: ['.ts', '.tsx', '.js', '.jsx'],
     },
     module: {
       rules: [
         {
-          test: /\.(tsx|jsx|js|ts)?$/,
+          test: /\.(jsx|js)?$/,
           exclude: /node_modules/,
           use: [
-            { loader: 'babel-loader' }
+            { loader: 'babel-loader' },
             // { loader: "eslint-loader" }
-          ]
+          ],
         },
         {
           test: /\.(sa|sc|c)ss$/,
@@ -56,17 +56,17 @@ module.exports = [
                     //   "Firefox ESR",
                     //   "not ie < 9"
                     // ]
-                  })
-                ]
-              }
+                  }),
+                ],
+              },
             },
             {
               loader: 'sass-loader',
               options: {
-                sourceMap: true
-              }
-            }
-          ]
+                sourceMap: true,
+              },
+            },
+          ],
         },
         // {
         //   test: /\.(png|jpe?g|gif)$/i,
@@ -81,24 +81,24 @@ module.exports = [
         // },
         {
           test: /\.(png|jpg|woff|woff2|eot|ttf|jpe?g|gif)$/,
-          loader: 'url-loader?limit=8000&name=images/[name].[ext]'
+          loader: 'url-loader?limit=8000&name=images/[name].[ext]',
         },
 
         {
           test: /\.svg$/,
           use: [
             {
-              loader: 'babel-loader'
+              loader: 'babel-loader',
             },
             {
               loader: 'react-svg-loader',
               options: {
-                jsx: true
-              }
-            }
-          ]
-        }
-      ]
+                jsx: true,
+              },
+            },
+          ],
+        },
+      ],
     },
     // resolve: {
     //   extensions: ['.ts', '.tsx', '.js']
@@ -108,8 +108,8 @@ module.exports = [
       host: 'localhost',
       port: PORT,
       historyApiFallback: true,
-      // hot: true,
-      open: true
-    }
-  }
+      hot: true,
+      open: true,
+    },
+  },
 ];

@@ -1,7 +1,6 @@
 import React from 'react';
-import { Button } from 'component/Buttons/Button';
+import { Button } from '@Components/Buttons/Button';
 import { NavLink, useLocation, useRouteMatch } from 'react-router-dom';
-
 
 interface IProps {
 	callBackChangeState: () => void;

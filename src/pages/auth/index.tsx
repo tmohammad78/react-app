@@ -2,11 +2,11 @@ import React, { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { Route, useLocation } from 'react-router-dom';
 
-import { skipAuth } from 'services/auth/action';
-import { IApplicationState } from 'services/reducers';
-import Register from 'component/Register';
+import { skipAuth } from 'Redux/auth/action';
+import { IApplicationState } from 'Redux/reducers';
+import Register from 'Components/Register/index';
 import MainAuth from './Main';
-import { AuthState } from 'types';
+import { AuthState } from 'Types/index';
 
 import './style.scss';
 

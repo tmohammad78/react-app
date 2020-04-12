@@ -17,25 +17,18 @@
     "declaration": true,
     "rootDir": "src",
     "outDir": "dist",
-    "allowJs": true
-    // "baseUrl": "./src"
-    // "paths": {
-    //   "component/*": ["component/*"],
-    //   "services/*": ["services/*"],
-    //   "pages/*": ["pages/*"],
-    //   "helper/*": ["helper/*"],
-    //   "types/*": ["types/*"]
-    // }
+    "allowJs": true,
+    "baseUrl": ".",
+    "paths": {
+      "@Components/*": ["./src/Components/*"],
+      "Redux/*": ["./src/Redux/*"],
+      "Pages/*": ["./src/Pages/*"],
+      "Route/*": ["./src/Route/*"],
+      "Helper/*": ["./src/Helper/*"],
+      "Types/*": ["./src/Types/*"],
+      "Config/*": ["./src/Config/*"]
+    }
   },
-  //   "include": [
-  //     "**/*.ts",
-  //     "**/*.tsx",
-  //     "webpack/commonVariables.js",
-  //     "src/component/Buttons/Button.js",
-  //     "src/component/Menu/FoodListTable/food/foodDetails/likeFood/style.js",
-  //     "src/theme/global.js",
-  //     "src/theme/theme.ts"
-  //   ],
-  "include": ["./src"],
+  "include": ["src/**/*"],
   "exclude": ["node_modules", "build"]
 }

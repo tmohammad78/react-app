@@ -3,7 +3,7 @@ import { Route } from 'react-router-dom';
 
 import TabBar from '../TabBar';
 import InnerRoute from '../InnerRoute';
-import Menu from 'component/Menu';
+import Menu from 'Components/Menu/index';
 
 import { RestProfileContainer, RightSideHolder } from '../style';
 

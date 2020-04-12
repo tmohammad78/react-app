@@ -2,18 +2,14 @@ import React, { Suspense } from 'react';
 import { Switch, Route, Router } from 'react-router-dom';
 import { ThemeProvider } from 'styled-components';
 import { useDarkMode } from './hooks/useDarkMode';
-import { themes } from './theme/theme';
-import { GlobalStyles } from './theme/global';
-import PrivateRoute from './route/private';
-import { browserHistory } from './route/history';
-import Spinner from './component/Spinner';
-import AuthPage from './pages/auth';
-import Order from './pages/order';
-interface Itest {
-	theme: string;
-	toggleTheme: () => void;
-	componentMount: boolean
-}
+import { themes } from './Theme/theme';
+import { GlobalStyles } from './Theme/global';
+import PrivateRoute from './Route/private';
+import { browserHistory } from './Route/history';
+import Spinner from 'Components/Spinner';
+import AuthPage from './Pages/auth';
+import Order from './Pages/order';
+
 const App = () => {
 	const [theme, toggleTheme, componentMounted] = useDarkMode();
 	const themeMode = theme === 'light' ? themes.light : themes.dark;

@@ -9,7 +9,7 @@ ReactDOM.render(
 	<Root>
 		<Routs />
 	</Root>,
-	document.getElementById('root') as HTMLElement
+	document.getElementById('root')
 );
 
 // serviceWorker.register();

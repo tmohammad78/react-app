@@ -1,10 +1,10 @@
 import React from "react";
 import { Provider } from "react-redux";
-import store from '../src/services/store';
-import { IApplicationState } from '../src/services/reducers';
+import store from './Redux/store';
+import { IApplicationState } from './Redux/reducers';
 import 'lazysizes';
 
-export interface props {
+interface props {
 	children: React.ReactNode;
 	initialState?: IApplicationState | object;
 }

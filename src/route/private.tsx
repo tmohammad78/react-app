@@ -1,8 +1,8 @@
 import React, { FunctionComponent } from 'react';
 import { Route, Redirect, RouteProps, RouteComponentProps } from 'react-router-dom';
 import { useSelector } from 'react-redux';
-import { IApplicationState } from 'services/reducers';
-import { AuthState } from 'types';
+import { IApplicationState } from 'Redux/reducers';
+import { AuthState } from 'Types/index';
 
 interface PrivateRouteProps {
 	component: any;
