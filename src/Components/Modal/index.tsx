@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import { IModal } from 'Types/index';
+import { IModal } from '@Types/index';
 import './style.scss';
 
 const Modal = ({

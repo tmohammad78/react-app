@@ -3,7 +3,7 @@ const autoprefixer = require('autoprefixer');
 const commonVariables = require('./commonVariables');
 const path = require('path');
 
-const PORT = process.env.PORT || 8080;
+const PORT = process.env.PORT || 3000;
 module.exports = [
   {
     mode: 'development',
@@ -12,7 +12,7 @@ module.exports = [
       app: [
         // 'core-js/stable',
         // 'regenerator-runtime/runtime',
-        'webpack-hot-middleware/client',
+        // 'webpack-hot-middleware/client',
         // 'react-hot-loader/patch',
         `${commonVariables.appEntry}/index.tsx`,
       ],
@@ -26,12 +26,21 @@ module.exports = [
       //   filename: 'server.js'
     },
     resolve: {
-      extensions: ['.ts', '.tsx', '.js', '.jsx'],
+        // alias: {
+        //   Components: path.resolve(__dirname, 'src/Components'),
+        // //   Redux: path.resolve(__dirname, 'src/Redux'),
+        // //   Pages: path.resolve(__dirname, 'src/Pages'),
+        // //   Route: path.resolve(__dirname, 'src/Route'),
+        // //   Helper: path.resolve(__dirname, 'src/Helper'),
+        // //   Types: path.resolve(__dirname, 'src/Types'),
+        // //   Config: path.resolve(__dirname, 'src/Config'),
+        // },
+      extensions: ['.ts', '.tsx', '.js','.json', '.jsx', '.scss', '.css'],
     },
     module: {
       rules: [
         {
-          test: /\.(jsx|js)?$/,
+          test: /\.(js|ts)x?$/,
           exclude: /node_modules/,
           use: [
             { loader: 'babel-loader' },
@@ -42,6 +51,7 @@ module.exports = [
           test: /\.(sa|sc|c)ss$/,
           use: [
             { loader: 'style-loader' },
+            // { loader: 'css-modules-typescript-loader' },
             { loader: 'css-loader' },
             {
               loader: 'postcss-loader',

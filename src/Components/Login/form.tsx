@@ -1,9 +1,9 @@
 import React, { Fragment } from 'react';
 import { Formik, Form, Field } from 'formik';
-import { validation } from '../../Helper/validation';
+import { validation } from '@Helper/validation';
 import { Button } from '../Buttons/Button';
 import Input from '../Input/index';
-import { MyFormValues } from 'Types/index';
+import { MyFormValues } from '@Types/index';
 import './style.scss';
 
 

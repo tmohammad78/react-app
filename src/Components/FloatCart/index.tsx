@@ -1,12 +1,12 @@
 import React, { useState } from 'react';
 import { useSelector } from 'react-redux';
 
-import { Button } from 'Components/Buttons/Button';
+import { Button } from '@Components/Buttons/Button';
 import CartProduct from './CartProduct/index';
 
-import { objectToArray, currency } from 'Helper/index';
-import { ICartItemsObject, ICartTotalState } from 'Types/index';
-import { IApplicationState } from 'Redux/reducers';
+import { objectToArray, currency } from '@Helper/index';
+import { ICartItemsObject, ICartTotalState } from '@Types/index';
+import { IApplicationState } from '@Redux/reducers';
 
 import { CartListHolder, CartShowMobile, RestCart, LeftSideHolder } from './style.js';
 import './style.scss';

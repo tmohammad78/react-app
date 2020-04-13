@@ -1,4 +1,4 @@
-import { ISubFood, IFoodList } from "Types/index";
+import { ISubFood, IFoodList } from "@Types/index";
 
 export const SET_SUBFOOD = 'SET_SUBFOOD';
 export const CLOSE_MODAL = 'CLOSE_MODAL';

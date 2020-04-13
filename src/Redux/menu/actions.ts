@@ -1,12 +1,12 @@
 import axios, { AxiosResponse, } from 'axios';
 import { IRestDataGet, IUpdateMenuAction, IDisLikeProductAction, ILikeProductAction, menuActionTypes, IFetchMenuAction } from './actionTypes';
 import { restaurantMenu } from '../util';
-import { objectToArray } from '../../Helper/index';
+import { objectToArray } from '@Helper/index';
 import parseMenu from './util/menu';
 import { IDataMain } from './actionTypes';
 import { IApplicationState } from '../reducers';
-import { IFoodList } from '../../Types/index';
-import { arrayToObject } from 'Helper/index';
+import { IFoodList } from '@Types/index';
+import { arrayToObject } from '@Helper/index';
 import { ThunkAction } from 'redux-thunk';
 import { Dispatch, ActionCreator, AnyAction } from 'redux';
 interface ttt {

@@ -1,7 +1,7 @@
 import React from 'react';
 import styled, { keyframes } from 'styled-components';
-import { QtyStyle } from 'Components/Menu/FoodListTable/food/foodDetails/qty-holder/style';
-import { QtySpan } from 'Components/Menu/FoodListTable/food/foodDetails/qty-holder/span/style';
+import { QtyStyle } from '@Components/Menu/FoodListTable/food/foodDetails/qty-holder/style';
+import { QtySpan } from '@Components/Menu/FoodListTable/food/foodDetails/qty-holder/span/style';
 
 export const RestCart = styled.div`
   position: sticky;

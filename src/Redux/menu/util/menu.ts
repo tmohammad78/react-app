@@ -1,6 +1,6 @@
 import _ from 'underscore';
 import { IDataMain } from '../actionTypes';
-import { ICategory, ISubFood, IFoodList, ISectionFood, ICategoryResponse } from 'Types/index';
+import { ICategory, ISubFood, IFoodList, ISectionFood, ICategoryResponse } from '@Types/index';
 
 function makeFoodItem(food: IFoodList) {
 	return {

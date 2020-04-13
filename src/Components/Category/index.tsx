@@ -3,9 +3,9 @@ import { useSelector } from 'react-redux';
 import { Link } from 'react-scroll';
 // import Carousel, { consts } from 'react-elastic-carousel';
 import { Iw, TextIw } from './style';
-import { Button } from 'Components/Buttons/Button';
-import { IApplicationState } from 'Redux/reducers';
-import { ICategory } from 'Types/index';
+import { Button } from '@Components/Buttons/Button';
+import { IApplicationState } from '@Redux/reducers';
+import { ICategory } from '@Types/index';
 
 const Category: React.SFC = () => {
 	const item = useSelector<IApplicationState, ICategory[]>(state => state.menu.categoryList);

@@ -1,4 +1,4 @@
-import { IFoodList, ICartItemsObject, INewFoodList } from "Types/index";
+import { IFoodList, ICartItemsObject, INewFoodList } from "@Types/index";
 
 export const currency = (number: number, showToman: boolean = true) => {
 	if (showToman && number !== 0) {

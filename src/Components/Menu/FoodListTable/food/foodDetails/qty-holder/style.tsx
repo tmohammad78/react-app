@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 interface IProps {
-	className: string;
+	className?: any;
 	children: React.ReactNode
 }
 const Parent = ({ className, children }: IProps) => <div className={className}>{children}</div>;

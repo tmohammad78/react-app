@@ -1,5 +1,5 @@
 import React, { Fragment } from 'react';
-import Input from 'Components/Input/index';
+import Input from '@Components/Input/index';
 import './style.scss';
 interface SearchProps {
 	filterText: string;

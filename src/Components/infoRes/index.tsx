@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import { restaurantInfo } from '../../Redux/util';
+import { restaurantInfo } from '@Redux/util';
 import { RestInfo, LeftBox, RightBox } from './style';
 interface IRestInfo {
 	fullAddress: string

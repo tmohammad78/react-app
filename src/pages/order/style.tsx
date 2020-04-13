@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
-import { LeftSideHolder, CartShowMobile } from 'Components/FloatCart/style';
-import { RestInfo, LeftBox, RightBox } from 'Components/infoRes/style';
+import { LeftSideHolder, CartShowMobile } from '@Components/FloatCart/style';
+import { RestInfo, LeftBox, RightBox } from '@Components/infoRes/style';
 
 const Clear = ({ className, children }: any): JSX.Element => {
 	return <div className={className}> {children} </div>

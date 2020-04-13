@@ -1,15 +1,15 @@
 import React, { useState, useEffect, lazy, Suspense } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { closeSubFoodModal } from 'Redux/subFood/action';
+import { closeSubFoodModal } from '@Redux/subFood/action';
 
 import Food from './food/index';
 import SubFood from '../subFoodModal/subFood';
 import FoodListTitle from './FoodListTitle/index';
-import Spinner from 'Components/Spinner/index';
-const Modal = lazy(() => import('Components/Modal/index'));
+import Spinner from '@Components/Spinner/index';
+const Modal = lazy(() => import('@Components/Modal/index'));
 const SearchBar = lazy(() => import('./searchBar/searchBar'));
-import { IApplicationState } from 'Redux/reducers';
-import { ISubFood, IFoodList, SubFoodState } from 'Types/index';
+import { IApplicationState } from '@Redux/reducers';
+import { ISubFood, IFoodList, SubFoodState } from '@Types/index';
 
 import { FoodList, NotFoundStyle, FoodMenu } from './style.js';
 

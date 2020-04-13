@@ -1,5 +1,5 @@
 import { CartSystemAction, cartActionTypes } from './actionTypes';
-import { CartState } from '../../Types/index';
+import { CartState } from '@Types/index';
 import { Reducer } from 'redux';
 
 const initialState: CartState = {

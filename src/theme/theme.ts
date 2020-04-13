@@ -13,7 +13,7 @@ interface ILightTheme {
 	AvailableBox: string,
 	AvailableBoxText: string
 }
-const lightTheme: ILightTheme = {
+const lightTheme = {
 	body: '#f8f8f8',
 	text: '#333',
 	inputText: '#fff',
@@ -29,7 +29,7 @@ const lightTheme: ILightTheme = {
 	AvailableBoxText: '#888'
 };
 
-const darkTheme: ILightTheme = {
+const darkTheme = {
 	body: '#1D1C2A',
 	text: '#FFF',
 	inputText: '#fff',
@@ -45,7 +45,18 @@ const darkTheme: ILightTheme = {
 	AvailableBoxText: '#FFF'
 };
 
-export const themes = {
-	light: lightTheme,
-	dark: darkTheme
+interface StyleClosetTheme {
+	lightTheme: { [key in keyof typeof lightTheme]: string };
+	darkTheme: { [key in keyof typeof darkTheme]: string };
 }
+const theme: StyleClosetTheme = {
+	lightTheme,
+	darkTheme
+};
+
+export { theme, StyleClosetTheme };
+
+// export const themes = {
+// 	light: lightTheme,
+// 	dark: darkTheme
+// }

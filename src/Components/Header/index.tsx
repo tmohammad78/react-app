@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
 
-import { Button } from 'Components/Buttons/Button';
-import Login from 'Components/Login/index';
-import Modal from 'Components/Modal/index';
-import Portal from 'Components/Portal/index';
+import { Button } from '@Components/Buttons/Button';
+import Login from '@Components/Login/index';
+import Modal from '@Components/Modal/index';
+import Portal from '@Components/Portal/index';
 
 import './style.scss';
 

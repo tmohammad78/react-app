@@ -1,14 +1,14 @@
 import React from 'react';
 import { useDispatch } from 'react-redux';
 
-import { Button } from 'Components/Buttons/Button';
-import QtyHolder from 'Components/Menu/FoodListTable/food/foodDetails/qty-holder/index';
-import Tittle from 'Components/Menu/FoodListTable/food/foodDetails/Tittle/index';
-import Price from 'Components/Menu/FoodListTable/food/foodDetails/price/index';
+import { Button } from '@Components/Buttons/Button';
+import QtyHolder from '@Components/Menu/FoodListTable/food/foodDetails/qty-holder/index';
+import Tittle from '@Components/Menu/FoodListTable/food/foodDetails/Tittle/index';
+import Price from '@Components/Menu/FoodListTable/food/foodDetails/price/index';
 
-import { removeFood } from 'Redux/cart/actions';
+import { removeFood } from '@Redux/cart/actions';
 
-import { IFoodList } from 'Types/index';
+import { IFoodList } from '@Types/index';
 
 interface IProps {
 	product: IFoodList;

@@ -2,10 +2,10 @@ import React, { useEffect, useState } from 'react';
 import { useHistory } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 
-import FormLogin from 'Components/Login/form';
-import { registerAction, loginAction, checkVerfify } from 'Redux/auth/action';
-import firebase from '../../Config/firebaseconfig';
-import { MyFormValues } from 'Types/index';
+import FormLogin from '@Components/Login/form';
+import { registerAction, loginAction, checkVerfify } from '@Redux/auth/action';
+import firebase from '@Config/firebaseconfig';
+import { MyFormValues } from '@Types/index';
 
 import './style.scss';
 

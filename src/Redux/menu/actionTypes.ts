@@ -1,4 +1,4 @@
-import { ICategoryResponse, MenuState, IFoodList, INewFoodList } from 'Types/index';
+import { ICategoryResponse, MenuState, IFoodList, INewFoodList } from '@Types/index';
 
 export enum menuActionTypes {
 	FETCH_MENU = "FETCH_MENU",

@@ -1,34 +1,46 @@
 {
   "compilerOptions": {
-    "target": "es5",
-    "module": "CommonJS",
+    "module": "commonjs", // for Node and export
+    "target": "es2015", // version of export file it can be any version
+    "outDir": "lib", // exported in the folder
+    "declaration": true, // add .d.ts file in outDir
+    "sourceMap": true, // add .map file outDir  . debugger  forbid implicit any
+    "jsx": "react", // transform JSX
+	"Strict": true, //enable strict  features
+    "strictNullChecks": true, //check and compile JS
+	
     "allowSyntheticDefaultImports": true,
     "esModuleInterop": true,
     "moduleResolution": "node",
     "skipLibCheck": true,
     "lib": ["es6", "dom"],
-    "sourceMap": true,
-    "jsx": "react",
     "strict": true,
     "noImplicitReturns": true,
+    "noEmit": true,
     "noImplicitThis": true,
     "noImplicitAny": true,
-    "strictNullChecks": true,
-    "declaration": true,
-    "rootDir": "src",
-    "outDir": "dist",
+    "forceConsistentCasingInFileNames": true,
+    "resolveJsonModule": true,
+    "isolatedModules": true,
+    "rootDir": ".",
     "allowJs": true,
-    "baseUrl": ".",
+    "baseUrl": "./src",
     "paths": {
-      "@Components/*": ["./src/Components/*"],
-      "Redux/*": ["./src/Redux/*"],
-      "Pages/*": ["./src/Pages/*"],
-      "Route/*": ["./src/Route/*"],
-      "Helper/*": ["./src/Helper/*"],
-      "Types/*": ["./src/Types/*"],
-      "Config/*": ["./src/Config/*"]
-    }
+      //   "@/*": ["./src/*"],
+      "Components/*": ["./Components/*"],
+      "@Redux/*": ["Redux/*"],
+      "@Pages/*": ["Pages/*"],
+      "@Route/*": ["Route/*"],
+      "@Helper/*": ["Helper/*"],
+      "@Types/*": ["Types/*"],
+      "@Config/*": ["Config/*"],
+      "@Hooks/*": ["Hooks/*"]
+    },
+    "plugins": [
+      { "transform": "typescript-transform-paths" },
+      { "transform": "typescript-transform-paths", "afterDeclarations": true }
+    ]
   },
-  "include": ["src/**/*"],
+  "include": ["./src/**/*"],
   "exclude": ["node_modules", "build"]
 }

@@ -122,3 +122,8 @@ export interface IModal {
 	children: React.ReactNode;
 
 }
+
+declare module '*.scss' {
+	const content: { [className: string]: string };
+	export = content;
+}

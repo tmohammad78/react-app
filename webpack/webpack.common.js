@@ -11,13 +11,25 @@ module.exports = [
     },
     module: {
       rules: [
+        // {
+        //   test: /\.ts(x?)$/,
+        //   exclude: /node_modules/,
+        //   use: [
+        //     {
+        //       loader: 'ts-loader',
+        //     },
+        //   ],
+        // },
+
         {
-          test: /\.ts(x?)$/,
+          test: /\.(js|ts)x?$/,
           exclude: /node_modules/,
+          resolve: {
+            extensions: ['.js', 'jsx', '.tsx', '.ts'],
+          },
           use: [
-            {
-              loader: 'ts-loader',
-            },
+            { loader: 'babel-loader' },
+            // { loader: "eslint-loader" }
           ],
         },
         {
@@ -25,21 +37,7 @@ module.exports = [
           test: /\.js$/,
           loader: 'source-map-loader',
         },
-        {
-          test: /\.(js)x?$/,
-          exclude: /node_modules/,
-          resolve: {
-            extensions: ['.js', 'jsx'],
-          },
-          use: [
-            { loader: 'babel-loader' },
-            // { loader: "eslint-loader" }
-          ],
-        },
       ],
-    },
-    resolve: {
-      extensions: ['.ts', '.tsx', '.js', '.jsx'],
     },
     optimization: {
       splitChunks: {

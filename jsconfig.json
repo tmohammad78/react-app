@@ -1,16 +1,19 @@
 {
   "compilerOptions": {
-    // "baseUrl": "./src",
-    // "paths": {
-    //   "Components/*": ["./src/Components/*"],
-    //   "Redux/*": ["./src/Redux/*"],
-    //   "Pages/*": ["./src/Pages/*"],
-    //   "Route/*": ["./src/Route/*"],
-    //   "Helper/*": ["./src/Helper/*"],
-    //   "Types/*": ["./src/Types/*"],
-    //   "Config/*": ["./src/Config/*"]
-	// }
-	 // },
+    "moduleResolution": "node",
+    "baseUrl": "./src",
+    "paths": {
+      "Components/*": ["Components/*"],
+      "@Redux/*": ["Redux/*"],
+      "@Pages/*": ["Pages/*"],
+      "@Route/*": ["Route/*"],
+      "@Helper/*": ["Helper/*"],
+      "@Types/*": ["Types/*"],
+      "@Config/*": ["Config/*"],
+	  "@Styles/*": ["Styles/*"],
+	  "@Hooks/*": ["Hooks/*"]
+    }
+    // },
     // "plugins": [
     //   {
     //     "name": "typescript-styled-plugin",

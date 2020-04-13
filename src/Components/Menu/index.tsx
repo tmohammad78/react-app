@@ -1,11 +1,11 @@
 import React, { Fragment, useState, useEffect, Suspense, lazy } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
-import { fetchMenu } from '../../Redux/menu/actions';
+import { fetchMenu } from '@Redux/menu/actions';
 import Spinner from '../Spinner/index';
-import { TabContentHolder } from '../../Pages/order/style';
-import { IApplicationState } from 'Redux/reducers';
-import { IFoodList } from 'Types/index';
+import { TabContentHolder } from '@Pages/order/style';
+import { IApplicationState } from '@Redux/reducers';
+import { IFoodList } from '@Types/index';
 
 const Category = lazy(() => import('../Category/index'));
 const FoodListTable = lazy(() => import('./FoodListTable/index'));

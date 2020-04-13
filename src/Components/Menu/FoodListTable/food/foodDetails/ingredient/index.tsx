@@ -1,5 +1,5 @@
 import React from 'react';
-import { truncate } from 'Helper/index';
+import { truncate } from '@Helper/index';
 import './style.scss';
 interface IProps {
 	ingredient: string,
