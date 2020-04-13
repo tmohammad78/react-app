@@ -6,9 +6,9 @@
     "declaration": true, // add .d.ts file in outDir
     "sourceMap": true, // add .map file outDir  . debugger  forbid implicit any
     "jsx": "react", // transform JSX
-	"Strict": true, //enable strict  features
+    "Strict": true, //enable strict  features
     "strictNullChecks": true, //check and compile JS
-	
+
     "allowSyntheticDefaultImports": true,
     "esModuleInterop": true,
     "moduleResolution": "node",
@@ -24,18 +24,18 @@
     "isolatedModules": true,
     "rootDir": ".",
     "allowJs": true,
-    "baseUrl": "./src",
-    "paths": {
-      //   "@/*": ["./src/*"],
-      "Components/*": ["./Components/*"],
-      "@Redux/*": ["Redux/*"],
-      "@Pages/*": ["Pages/*"],
-      "@Route/*": ["Route/*"],
-      "@Helper/*": ["Helper/*"],
-      "@Types/*": ["Types/*"],
-      "@Config/*": ["Config/*"],
-      "@Hooks/*": ["Hooks/*"]
-    },
+    // "baseUrl": "./src",
+    // "paths": {
+    //   //   "@/*": ["./src/*"],
+    //   "Components/*": ["./Components/*"],
+    //   "@Redux/*": ["Redux/*"],
+    //   "@Pages/*": ["Pages/*"],
+    //   "@Route/*": ["Route/*"],
+    //   "@Helper/*": ["Helper/*"],
+    //   "@Types/*": ["Types/*"],
+    //   "@Config/*": ["Config/*"],
+    //   "@Hooks/*": ["Hooks/*"]
+    // },
     "plugins": [
       { "transform": "typescript-transform-paths" },
       { "transform": "typescript-transform-paths", "afterDeclarations": true }

@@ -1,4 +1,4 @@
-import { IFoodList , INewFoodList } from "@Types/index";
+import { IFoodList , INewFoodList } from "../../Types/index";
 
 export enum likeFoodActionTypes {
 	ADD_TO_LIKE = 'ADD_TO_LIKE',

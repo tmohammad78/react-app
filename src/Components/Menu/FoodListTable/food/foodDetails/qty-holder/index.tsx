@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 
-import { addFood, removeFood } from '@Redux/cart/actions';
-import { SubFoodModal } from '@Redux/subFood/action';
-import { Button } from '@Components/Buttons/Button.js';
+import { addFood, removeFood } from '../../../../../../Redux/cart/actions';
+import { SubFoodModal } from '../../../../../../Redux/subFood/action';
+import { Button } from '../../../../../../Components/Buttons/Button';
 import { Span } from './span/index';
-import { IFoodList } from '@Types/index';
+import { IFoodList } from '../../../../../../Types/index';
 
 import { QtyStyle, AvailableBox } from './style';
 import './style.scss';

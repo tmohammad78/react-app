@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { currency } from '@Helper/index';
+import { currency } from '../../../../../../../Helper/index';
 import { QtySpan } from './style';
 
 interface IProps {

@@ -58,7 +58,7 @@ module.exports = [
         title: 'Food Delivery',
         template: 'assets/index.html',
         favicon: 'assets/favicon.ico',
-        cache: true,
+        // cache: true,
       }),
     ],
   },

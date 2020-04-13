@@ -1,6 +1,6 @@
 import React from 'react';
 
-import Selectbox from '@Components/Selectbox/index';
+import Selectbox from '../../../Components/Selectbox/index';
 interface Iprops {
 	onChange: (values: string) => void
 }

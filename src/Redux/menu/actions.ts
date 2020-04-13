@@ -1,12 +1,12 @@
 import axios, { AxiosResponse, } from 'axios';
 import { IRestDataGet, IUpdateMenuAction, IDisLikeProductAction, ILikeProductAction, menuActionTypes, IFetchMenuAction } from './actionTypes';
 import { restaurantMenu } from '../util';
-import { objectToArray } from '@Helper/index';
+import { objectToArray } from '../../Helper/index';
 import parseMenu from './util/menu';
 import { IDataMain } from './actionTypes';
 import { IApplicationState } from '../reducers';
-import { IFoodList } from '@Types/index';
-import { arrayToObject } from '@Helper/index';
+import { IFoodList } from '../../Types/index';
+import { arrayToObject } from '../../Helper/index';
 import { ThunkAction } from 'redux-thunk';
 import { Dispatch, ActionCreator, AnyAction } from 'redux';
 interface ttt {
@@ -37,7 +37,7 @@ export const fetchMenu: ActionCreator<ThunkAction<Promise<AnyAction | void> | st
 	const cart = getState().cart.items;
 	// const likedFood = getState().likeFood.likeFood;
 	const foodList = getState().menu.foodList;
-
+	debugger
 	const productLoaded = (data: IDataMain, sort?: string | null) => {
 		const menu = parseMenu(data, sort);
 		const foodList = menu.foodList;
@@ -77,7 +77,8 @@ export const fetchMenu: ActionCreator<ThunkAction<Promise<AnyAction | void> | st
 			}
 		});
 	};
-	return !foodList ?
+
+	return foodList.length == 0 ?
 		axios.
 			get<IRestDataGet[]>(restaurantMenu)
 			.then((response: AxiosResponse) => {

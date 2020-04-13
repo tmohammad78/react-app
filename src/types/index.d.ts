@@ -40,6 +40,10 @@ export interface MenuState {
 	categoryList: ICategory[]
 }
 
+declare module '*.scss' {
+	const content: any;
+	export default content;
+}
 
 export interface TestLikeState {
 	[key: string]: INewFoodList

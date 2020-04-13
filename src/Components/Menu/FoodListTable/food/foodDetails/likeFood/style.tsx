@@ -4,12 +4,14 @@ import styled from 'styled-components';
 interface IProps {
 	className: string,
 	children: React.ReactNode,
-	onClick: () => void
+	onClick: (e: React.FormEvent<EventTarget>) => void
 }
 const Parent = ({ className, children, onClick }: IProps) => {
 	return (
-		<div className={className}>
-			{children} </div>)
+		<div className={className} onClick={onClick} >
+			{children}
+		</div>
+	);
 };
 export const LikeFoodStyle = styled(Parent).attrs({
 	className: ''

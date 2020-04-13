@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 
-import { currency } from '@Helper/index';
+import { currency } from '../../../../../../Helper/index';
 
 interface IProps {
 	quantity: number

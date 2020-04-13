@@ -1,11 +1,14 @@
 import React from 'react';
+import { useDispatch } from 'react-redux';
+
+import { addFoodLike, removeFoodLike } from '../../../../../../Redux/likeFood/action';
+import { INewFoodList } from '../../../../../../Types/index';
+
+
 import Svg from './heart.svg';
 import Svg1 from './heart2.svg';
 
-import { useDispatch } from 'react-redux';
-import { addFoodLike, removeFoodLike } from '@Redux/likeFood/action';
-import { LikeFoodStyle } from './style.js';
-import { INewFoodList } from '@Types/index';
+import { LikeFoodStyle } from './style';
 
 interface IProps {
 	food: INewFoodList
@@ -13,16 +16,15 @@ interface IProps {
 
 const LikeFood = ({ food }: IProps) => {
 	const dispatch = useDispatch();
-
 	const checkDispatch = () => {
-		if (food) {
+		if (food.like) {
 			dispatch(removeFoodLike(food));
 		} else {
 			dispatch(addFoodLike(food));
 		}
 	};
 
-	const handleLikeFood = (e: React.FormEvent<EventTarget>) => {
+	const handleLikeFood = (e: React.FormEvent<EventTarget>): void => {
 		e.preventDefault();
 		e.stopPropagation();
 		checkDispatch();
@@ -30,10 +32,10 @@ const LikeFood = ({ food }: IProps) => {
 
 	return (
 		<div className={`${food.like ? 'show' : 'hide'}`}>
-			<div onClick={handleLikeFood}>
+			<LikeFoodStyle className={`${food.like ? 'show' : 'hide'}`} onClick={handleLikeFood}>
 				{food.like ? <Svg1 /> : <Svg />}
 				<div className='icon-heart'></div>
-			</div>
+			</LikeFoodStyle>
 		</div>
 	);
 };

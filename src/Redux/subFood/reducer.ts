@@ -1,6 +1,6 @@
 import { subFoodActionTypes, SubFoodSystemAction } from './actionType';
 import { Reducer } from 'redux';
-import { SubFoodState } from '@Types/index';
+import { SubFoodState } from '../../Types/index';
 const initialState: SubFoodState = {
 	food: [],
 	show: false,

@@ -2,9 +2,9 @@ import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import { useSelector } from 'react-redux';
 
-import { resturantData } from '@Redux/util';
-import { IApplicationState } from '@Redux/reducers';
-import { ICategory } from '@Types/index';
+import { resturantData } from '../../Redux/util';
+import { IApplicationState } from '../../Redux/reducers';
+import { ICategory } from '../../Types/index';
 
 import './style.scss';
 
