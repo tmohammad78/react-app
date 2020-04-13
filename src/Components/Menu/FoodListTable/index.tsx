@@ -81,14 +81,14 @@ const FoodListTable: React.SFC<IProps> = ({ itemFood }: IProps) => {
 		const sortItem = sortBy[value];
 		if (sortItem) {
 			const index = sortItem.asc ? 1 : -1;
-			// newItem = originalItems.sort((a, b) => {
+			newItem = originalItems.sort((a, b) => {
 
-			// 	// return (
-			// 	// 	//        a.catIndex - b.catIndex ||
-			// 	// 	//          a.catId - b.catId ||
-			// 	// 	(a.categoryIndex - b.categoryIndex ? ) || (a[sortItem.field] - b[sortItem.field]) * index
-			// 	// );
-			// });
+				return (
+					//        a.catIndex - b.catIndex ||
+					//          a.catId - b.catId ||
+					(a.categoryIndex - b.categoryIndex) || ((a[sortItem.field] - b[sortItem.field]) * index)
+				);
+			});
 		} else {
 			newItem = originalItems;
 		}
