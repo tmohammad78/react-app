@@ -42,7 +42,7 @@ const App = () => {
 	if (!componentMounted) {
 		return <div />;
 	}
-	console.log('red');
+	
 
 	return (
 		// <ThemeProvider theme='light'>
@@ -50,7 +50,7 @@ const App = () => {
 		<Suspense fallback={<Spinner />}>
 			<Router history={browserHistory}>
 				<Switch>
-					<PrivateRoute path='/' toggleTheme={toggleTheme} component={Order} />
+					<PrivateRoute exact path='/' toggleTheme={toggleTheme} component={Order} />
 					<Route path='/auth' component={AuthPage} />
 				</Switch>
 			</Router>

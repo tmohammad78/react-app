@@ -15,18 +15,18 @@ interface PrivateRouteProps {
 const PrivateRoute: React.SFC<PrivateRouteProps> = ({ component: Component, toggleTheme, ...props }): JSX.Element => {
 
 	const auth = useSelector<IApplicationState, AuthState>(state => state.auth);
-
 	return (
 		<Route
 			{...props}
 			render={({ location }) => {
-				if (true) {
+				if (auth.logged || auth.logged == 'skipped') {
 					return <Component {...props} toggleTheme={toggleTheme} />;
 				} else {
 					return (
 						<Redirect
 							to={{
 								pathname: '/auth',
+								state: location
 							}}
 						/>
 					);
