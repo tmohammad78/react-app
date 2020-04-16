@@ -1,4 +1,18 @@
-import { DefaultTheme } from 'styled-components'
+interface ILightTheme {
+	body: string,
+	text: string
+	inputText: string,
+	color: string,
+	toggleBorder: string,
+	foodItem_bgcolor: string,
+	whitebg: string,
+	btnbg: string,
+	categoryColor: string,
+	bgCart: string,
+	foodItemTextSpan: string,
+	AvailableBox: string,
+	AvailableBoxText: string
+}
 const lightTheme = {
 	body: '#f8f8f8',
 	text: '#333',
@@ -14,6 +28,7 @@ const lightTheme = {
 	AvailableBox: '#FFF',
 	AvailableBoxText: '#888'
 };
+
 const darkTheme = {
 	body: '#1D1C2A',
 	text: '#FFF',
@@ -30,7 +45,18 @@ const darkTheme = {
 	AvailableBoxText: '#FFF'
 };
 
-export const themes = {
-	light: lightTheme,
-	dark: darkTheme
+interface StyleClosetTheme {
+	lightTheme: { [key in keyof typeof lightTheme]: string };
+	darkTheme: { [key in keyof typeof darkTheme]: string };
 }
+const theme: StyleClosetTheme = {
+	lightTheme,
+	darkTheme
+};
+
+export { theme, StyleClosetTheme };
+
+// export const themes = {
+// 	light: lightTheme,
+// 	dark: darkTheme
+// }

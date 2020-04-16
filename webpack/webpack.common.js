@@ -6,34 +6,38 @@ module.exports = [
   {
     output: {
       path: commonVariables.outputPath,
-      filename: `./static/[name].app.js`
-      //publicPath: commonVariables.publicPath
+      filename: `./static/[name].app.js`,
+      publicPath: commonVariables.publicPath,
     },
     module: {
       rules: [
+        // {
+        //   test: /\.ts(x?)$/,
+        //   exclude: /node_modules/,
+        //   use: [
+        //     {
+        //       loader: 'ts-loader',
+        //     },
+        //   ],
+        // },
+
         {
-          test: /\.ts(x?)$/,
+          test: /\.(js|ts)x?$/,
           exclude: /node_modules/,
+          resolve: {
+            extensions: ['.js', 'jsx', '.tsx', '.ts'],
+          },
           use: [
-            {
-              loader: 'ts-loader'
-            }
-          ]
+            { loader: 'babel-loader' },
+            // { loader: "eslint-loader" }
+          ],
         },
         {
           enforce: 'pre',
           test: /\.js$/,
-          loader: 'source-map-loader'
+          loader: 'source-map-loader',
         },
-        {
-          test: /\.(js|jsx)$/,
-          exclude: /node_modules/,
-          use: [
-            { loader: 'babel-loader' }
-            // { loader: "eslint-loader" }
-          ]
-        }
-      ]
+      ],
     },
     optimization: {
       splitChunks: {
@@ -43,18 +47,19 @@ module.exports = [
             test: 'vendor',
             name: 'vendor',
             filename: 'vendor.js',
-            enforce: true
-          }
-        }
-      }
+            enforce: true,
+          },
+        },
+      },
     },
+
     plugins: [
       new HtmlWebpackPlugin({
         title: 'Food Delivery',
         template: 'assets/index.html',
         favicon: 'assets/favicon.ico',
-        cache: true
-      })
-    ]
-  }
+        // cache: true,
+      }),
+    ],
+  },
 ];

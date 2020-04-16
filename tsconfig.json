@@ -1,25 +1,46 @@
 {
   "compilerOptions": {
-    "target": "es5",
-    "module": "es6",
+    "module": "commonjs", // for Node and export
+    "target": "es2015", // version of export file it can be any version
+    "outDir": "lib", // exported in the folder
+    "declaration": true, // add .d.ts file in outDir
+    "sourceMap": true, // add .map file outDir  . debugger  forbid implicit any
+    "jsx": "react", // transform JSX
+    "Strict": true, //enable strict  features
+    "strictNullChecks": true, //check and compile JS
+
     "allowSyntheticDefaultImports": true,
+    "esModuleInterop": true, // forexample for testing jest 
     "moduleResolution": "node",
+    "skipLibCheck": true,
     "lib": ["es6", "dom"],
-    "sourceMap": true,
-    "jsx": "react",
     "strict": true,
     "noImplicitReturns": true,
-    "rootDir": "./",
-    "outDir": "dist",
+    "noEmit": true,
+    "noImplicitThis": true,
+    "noImplicitAny": true,
+    "forceConsistentCasingInFileNames": true,
+    "resolveJsonModule": true,
+    "isolatedModules": true,
+    "rootDir": ".",
     "allowJs": true,
-    "baseUrl": "./",
-    "paths": {
-      "component/*": ["src/component/*"],
-      "services/*": ["src/services/*"],
-      "pages/*": ["src/pages/*"],
-      "helper/*": ["src/helper/*"]
-    },
-    "include": ["**/*.ts", "**/*.tsx"],
-    "exclude": ["node_modules"]
-  }
+    // "baseUrl": "./src",
+    // "paths": {
+    //   //   "@/*": ["./src/*"],
+    //   "Components/*": ["./Components/*"],
+    //   "@Redux/*": ["Redux/*"],
+    //   "@Pages/*": ["Pages/*"],
+    //   "@Route/*": ["Route/*"],
+    //   "@Helper/*": ["Helper/*"],
+    //   "@Types/*": ["Types/*"],
+    //   "@Config/*": ["Config/*"],
+    //   "@Hooks/*": ["Hooks/*"]
+    // },
+    "plugins": [
+      { "transform": "typescript-transform-paths" },
+      { "transform": "typescript-transform-paths", "afterDeclarations": true }
+    ]
+  },
+  "include": ["./src/**/*"],
+  "exclude": ["node_modules", "build"]
 }

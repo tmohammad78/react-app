@@ -2,31 +2,39 @@ const webpack = require('webpack');
 const autoprefixer = require('autoprefixer');
 const commonVariables = require('./commonVariables');
 const path = require('path');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
 
-const PORT = process.env.PORT || 8080;
+const PORT = process.env.PORT || 3000;
 module.exports = [
   {
     mode: 'development',
     devtool: 'cheap-module-source-map',
     entry: {
       app: [
-        'core-js/stable',
-        'regenerator-runtime/runtime',
-        // "webpack-hot-middleware/client",
-        // "react-hot-loader/patch",
-        `${commonVariables.appEntry}/index.js`
-      ]
+        // 'core-js/stable',
+        'regenerator-runtime/runtime',   // it was an error in @babel/runtime in starting project
+        // 'webpack-hot-middleware/client',
+        // 'react-hot-loader/patch',
+        `${commonVariables.appEntry}/index.tsx`,
+      ],
     },
     output: {
-      // chunkFilename: `[name].${language}.js`
+      chunkFilename: '[name].fa.js',
       filename: 'main.js',
-      path: path.resolve(__dirname, 'dist')
-
-      //   path: `${commonVariables.publicPath}`,
-      //   filename: 'server.js'
+      publicPath: '/',
+      path: `${commonVariables.outputPath}`,
+      filename: 'server.js',
+    },
+    resolve: {
+      extensions: ['.ts', '.tsx', '.js', '.json', '.jsx', '.scss', '.css'],
     },
     module: {
       rules: [
+        {
+          test: /\.(js|ts)x?$/,
+          exclude: /node_modules/,
+          use: [{ loader: 'babel-loader' }],
+        },
         {
           test: /\.(sa|sc|c)ss$/,
           use: [
@@ -35,67 +43,60 @@ module.exports = [
             {
               loader: 'postcss-loader',
               options: {
-                ident: 'postcss',
                 sourceMap: true,
-                plugins: () => [
-                  autoprefixer({
-                    // browsers: [
-                    //   ">1%",
-                    //   "last 4 versions",
-                    //   "Firefox ESR",
-                    //   "not ie < 9"
-                    // ]
-                  })
-                ]
-              }
+                config: {
+                  path: path.resolve(__dirname, 'postcss.config.js'),
+                },
+              },
             },
             {
               loader: 'sass-loader',
               options: {
-                sourceMap: true
-              }
-            }
-          ]
+                sourceMap: true,
+              },
+            },
+          ],
         },
-        // {
-        //   test: /\.(png|jpe?g|gif)$/i,
-        //   use: [
-        //     {
-        //       loader: 'file-loader',
-        //       options: {
-        //         name: '[path][name].[ext]'
-        //       }
-        //     }
-        //   ]
-        // },
+
         {
           test: /\.(png|jpg|woff|woff2|eot|ttf|jpe?g|gif)$/,
-          loader: 'url-loader?limit=8000&name=images/[name].[ext]'
+          loader: 'url-loader?limit=8000&name=images/[name].[ext]',
         },
 
         {
           test: /\.svg$/,
           use: [
             {
-              loader: 'babel-loader'
+              loader: 'babel-loader',
             },
             {
               loader: 'react-svg-loader',
               options: {
-                jsx: true
-              }
-            }
-          ]
-        }
-      ]
+                jsx: true,
+              },
+            },
+          ],
+        },
+      ],
     },
-    plugins: [new webpack.NamedModulesPlugin(), new webpack.HotModuleReplacementPlugin()],
+    plugins: [
+      new webpack.NamedModulesPlugin(),
+      new webpack.HotModuleReplacementPlugin(),
+      new HtmlWebpackPlugin({
+        title: 'Food Delivery',
+        template: 'assets/index.html',
+        favicon: 'assets/favicon.ico',
+        // cache: true,
+      }),
+    ],
     devServer: {
       host: 'localhost',
       port: PORT,
       historyApiFallback: true,
-      // hot: true,
-      open: true
-    }
-  }
+      hot: true,
+      open: true,
+      contentBase: path.join(__dirname, 'dist'),
+      publicPath: '/', // here's the change
+    },
+  },
 ];
