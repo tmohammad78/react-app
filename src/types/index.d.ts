@@ -1,5 +1,5 @@
 
-
+import "@testing-library/jest-dom/extend-expect"; // for matcher in the test files 
 export interface AuthState {
 	errorMessage: string,
 	token: string,

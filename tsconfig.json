@@ -10,7 +10,7 @@
     "strictNullChecks": true, //check and compile JS
 
     "allowSyntheticDefaultImports": true,
-    "esModuleInterop": true,
+    "esModuleInterop": true, // forexample for testing jest 
     "moduleResolution": "node",
     "skipLibCheck": true,
     "lib": ["es6", "dom"],

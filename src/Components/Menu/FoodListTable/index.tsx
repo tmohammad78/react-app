@@ -107,6 +107,7 @@ const FoodListTable: React.SFC<IProps> = ({ itemFood }: IProps) => {
 		row.push(<NotFound />);
 	}
 
+	console.log(subFood);
 	return (
 		<FoodMenu>
 			<Suspense fallback={<Spinner />}>
@@ -123,7 +124,7 @@ const FoodListTable: React.SFC<IProps> = ({ itemFood }: IProps) => {
 					className='subFoodModal'
 					subFood
 				>
-					{/* <SubFood subfood={subFood} /> */}
+					<SubFood subfood={subFood} />
 				</Modal>
 
 				<FoodList>{row}</FoodList>
