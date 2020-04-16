@@ -12,6 +12,7 @@ export const subFoodReducer: Reducer<SubFoodState, SubFoodSystemAction> = (state
 			const { food, show } = action.payload;
 			return {
 				...state,
+				...state.food,
 				show,
 				food
 			};

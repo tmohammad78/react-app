@@ -10,12 +10,13 @@ interface IProps {
 	subFood: SubFoodState
 }
 const SubFood: React.SFC<IProps> = ({ subFood }) => {
+
 	console.log('ddd', subFood);
 	return (
 		<SubFoodStyle>
 			<DetailModal subfood={true} defaultDetail={subFood} food={subFood.food} />
 			<div>
-				{subFood.food.map((food, i) => {
+				{subFood.subFoods.map((food, i) => {
 					return (
 						<FoodItem key={food.catId}>
 							<section>

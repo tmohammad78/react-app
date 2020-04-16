@@ -118,15 +118,21 @@ const FoodListTable: React.SFC<IProps> = ({ itemFood }: IProps) => {
 					inStock={inStock}
 					onChangeStock={stockHandler}
 				/>
-				<Modal
-					show={subFood.show}
-					onClose={() => dispatch(closeSubFoodModal(true))}
-					className='subFoodModal'
-					subFood
-				>
-					<SubFood subfood={subFood} />
-				</Modal>
+				{
 
+					subFood.show ?
+						<>
+							<Modal
+								show={subFood.show}
+								onClose={() => dispatch(closeSubFoodModal(true))}
+								className='subFoodModal'
+								subFood
+							>
+								<SubFood subFood={subFood.food} />
+							</Modal>
+						</>
+						: null
+				}
 				<FoodList>{row}</FoodList>
 			</Suspense>
 		</FoodMenu>

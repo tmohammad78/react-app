@@ -12,7 +12,7 @@ module.exports = [
     entry: {
       app: [
         // 'core-js/stable',
-        // 'regenerator-runtime/runtime',
+        'regenerator-runtime/runtime',   // it was an error in @babel/runtime in starting project
         // 'webpack-hot-middleware/client',
         // 'react-hot-loader/patch',
         `${commonVariables.appEntry}/index.tsx`,
