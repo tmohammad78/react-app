@@ -1,5 +1,5 @@
 import { menuActionTypes, MenuSystemAction } from './actionTypes';
-import { MenuState } from '@Types/index';
+import { MenuState } from '../../Types/index';
 import { Reducer } from 'redux';
 
 const initialState: MenuState = {

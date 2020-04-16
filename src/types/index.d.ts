@@ -1,5 +1,5 @@
 
-
+import "@testing-library/jest-dom/extend-expect"; // for matcher in the test files 
 export interface AuthState {
 	errorMessage: string,
 	token: string,
@@ -40,6 +40,10 @@ export interface MenuState {
 	categoryList: ICategory[]
 }
 
+declare module '*.scss' {
+	const content: any;
+	export default content;
+}
 
 export interface TestLikeState {
 	[key: string]: INewFoodList

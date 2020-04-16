@@ -1,12 +1,12 @@
 import axios, { AxiosResponse, } from 'axios';
 import { IRestDataGet, IUpdateMenuAction, IDisLikeProductAction, ILikeProductAction, menuActionTypes, IFetchMenuAction } from './actionTypes';
 import { restaurantMenu } from '../util';
-import { objectToArray } from '@Helper/index';
+import { objectToArray } from '../../Helper/index';
 import parseMenu from './util/menu';
 import { IDataMain } from './actionTypes';
 import { IApplicationState } from '../reducers';
-import { IFoodList } from '@Types/index';
-import { arrayToObject } from '@Helper/index';
+import { IFoodList } from '../../Types/index';
+import { arrayToObject } from '../../Helper/index';
 import { ThunkAction } from 'redux-thunk';
 import { Dispatch, ActionCreator, AnyAction } from 'redux';
 interface ttt {
@@ -35,7 +35,7 @@ export const dislikeProduct: ActionCreator<IDisLikeProductAction> = product => (
 
 export const fetchMenu: ActionCreator<ThunkAction<Promise<AnyAction | void> | string, IApplicationState, undefined, IFetchMenuAction>> = (callback: () => void) => (dispatch: Dispatch, getState: () => IApplicationState) => {
 	const cart = getState().cart.items;
-	// const likedFood = getState().likeFood.likeFood;
+	const likedFood = getState().likeFood.likeFood;
 	const foodList = getState().menu.foodList;
 
 	const productLoaded = (data: IDataMain, sort?: string | null) => {
@@ -51,11 +51,11 @@ export const fetchMenu: ActionCreator<ThunkAction<Promise<AnyAction | void> | st
 			if (food) food.quantity = cartItem.quantity;
 		});
 
-		// Object.keys(likedFood).forEach(key => {
-		// 	const likedItem = likedFood[key];
-		// 	const food = foodListItem[parseInt(likedItem.id)];
-		// 	food ? (food.like = true) : null;
-		// });
+		Object.keys(likedFood).forEach(key => {
+			const likedItem = likedFood[key];
+			const food = foodListItem[parseInt(likedItem.id)];
+			food ? (food.like = true) : null;
+		});
 
 		if (callback) {
 			callback();
@@ -77,7 +77,8 @@ export const fetchMenu: ActionCreator<ThunkAction<Promise<AnyAction | void> | st
 			}
 		});
 	};
-	return !foodList ?
+
+	return foodList.length == 0 ?
 		axios.
 			get<IRestDataGet[]>(restaurantMenu)
 			.then((response: AxiosResponse) => {

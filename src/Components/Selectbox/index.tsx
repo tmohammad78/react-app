@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-import { Button } from '@Components/Buttons/Button';
+import { Button } from '../../Components/Buttons/Button';
 
 import './style.scss';
 

@@ -3,15 +3,15 @@ import { useDispatch, useSelector } from 'react-redux';
 
 import FoodDetails from './details-holder/index';
 import DetailModal from './foodModal/index';
-import Modal from '@Components/Modal/index';
+import Modal from '../../../../Components/Modal/index';
 import FoodImage from './foodDetails/foodImage/index';
 import FoodBadge from './foodDetails/FoodBadge/index';
-import Portal from '@Components/Portal/index';
-import { SubFoodModal } from '@Redux/subFood/action';
+import Portal from '../../../../Components/Portal/index';
+import { SubFoodModal } from '../../../../Redux/subFood/action';
 
-import { FoodItem } from './style.js';
-import { IApplicationState } from '@Redux/reducers';
-import { IFoodList, INewFoodList } from '@Types/index';
+import { FoodItem } from './style';
+import { IApplicationState } from '../../../../Redux/reducers';
+import { IFoodList, INewFoodList } from '../../../../Types/index';
 interface IProps {
 	food: IFoodList
 }

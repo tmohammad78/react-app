@@ -1,17 +1,17 @@
 import React, { useState, useEffect, lazy, Suspense } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { closeSubFoodModal } from '@Redux/subFood/action';
+import { closeSubFoodModal } from '../../../Redux/subFood/action';
 
 import Food from './food/index';
 import SubFood from '../subFoodModal/subFood';
 import FoodListTitle from './FoodListTitle/index';
-import Spinner from '@Components/Spinner/index';
-const Modal = lazy(() => import('@Components/Modal/index'));
+import Spinner from '../../../Components/Spinner/index';
+const Modal = lazy(() => import('../../../Components/Modal/index'));
 const SearchBar = lazy(() => import('./searchBar/searchBar'));
-import { IApplicationState } from '@Redux/reducers';
-import { ISubFood, IFoodList, SubFoodState } from '@Types/index';
+import { IApplicationState } from '../../../Redux/reducers';
+import { ISubFood, IFoodList, SubFoodState } from '../../../Types/index';
 
-import { FoodList, NotFoundStyle, FoodMenu } from './style.js';
+import { FoodList, NotFoundStyle, FoodMenu } from './style';
 
 const Sort = lazy(() => import('../sort'));
 
@@ -81,14 +81,14 @@ const FoodListTable: React.SFC<IProps> = ({ itemFood }: IProps) => {
 		const sortItem = sortBy[value];
 		if (sortItem) {
 			const index = sortItem.asc ? 1 : -1;
-			// newItem = originalItems.sort((a, b) => {
+			newItem = originalItems.sort((a, b) => {
 
-			// 	// return (
-			// 	// 	//        a.catIndex - b.catIndex ||
-			// 	// 	//          a.catId - b.catId ||
-			// 	// 	(a.categoryIndex - b.categoryIndex ? ) || (a[sortItem.field] - b[sortItem.field]) * index
-			// 	// );
-			// });
+				return (
+					//        a.catIndex - b.catIndex ||
+					//          a.catId - b.catId ||
+					(a.categoryIndex - b.categoryIndex) || ((a[sortItem.field] - b[sortItem.field]) * index)
+				);
+			});
 		} else {
 			newItem = originalItems;
 		}
@@ -107,6 +107,7 @@ const FoodListTable: React.SFC<IProps> = ({ itemFood }: IProps) => {
 		row.push(<NotFound />);
 	}
 
+	console.log(subFood);
 	return (
 		<FoodMenu>
 			<Suspense fallback={<Spinner />}>
@@ -117,15 +118,21 @@ const FoodListTable: React.SFC<IProps> = ({ itemFood }: IProps) => {
 					inStock={inStock}
 					onChangeStock={stockHandler}
 				/>
-				<Modal
-					show={subFood.show}
-					onClose={() => dispatch(closeSubFoodModal(true))}
-					className='subFoodModal'
-					subFood
-				>
-					{/* <SubFood subfood={subFood} /> */}
-				</Modal>
+				{
 
+					subFood.show ?
+						<>
+							<Modal
+								show={subFood.show}
+								onClose={() => dispatch(closeSubFoodModal(true))}
+								className='subFoodModal'
+								subFood
+							>
+								<SubFood subFood={subFood.food} />
+							</Modal>
+						</>
+						: null
+				}
 				<FoodList>{row}</FoodList>
 			</Suspense>
 		</FoodMenu>

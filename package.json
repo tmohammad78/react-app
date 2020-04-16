@@ -15,7 +15,7 @@
     "lint": "eslint --ext .jsx --ext .js src",
     "test": "jest --watchAll",
     "test:watch": "jest --watch",
-	"test:coverage": "jest --coverage"
+    "test:coverage": "jest --coverage"
   },
   "jest": {
     "transform": {
@@ -106,9 +106,10 @@
   "dependencies": {
     "@babel/runtime": "^7.9.2",
     "@testing-library/jest-dom": "^4.2.4",
-    "@testing-library/react": "^9.3.2",
+    "@testing-library/react": "^9.5.0",
     "@testing-library/user-event": "^7.1.2",
     "@types/html-webpack-plugin": "^3.2.2",
+    "@types/jest": "^25.2.1",
     "@types/styled-components": "^5.0.1",
     "@types/webpack-merge": "^4.1.5",
     "autoprefixer": "^9.7.6",
@@ -120,6 +121,7 @@
     "formik": "^2.1.4",
     "history": "^4.10.1",
     "html-webpack-root-plugin": "^0.10.0",
+    "jest": "^25.3.0",
     "lazysizes": "^5.2.0",
     "node-sass": "^4.13.1",
     "polished": "^3.4.4",
@@ -130,14 +132,18 @@
     "react-hot-loader": "^4.12.19",
     "react-redux": "^7.2.0",
     "react-router-dom": "^5.1.2",
+    "react-scroll": "^1.7.16",
     "react-svg-loader": "^3.0.3",
     "redux": "^4.0.5",
     "redux-thunk": "^2.3.0",
     "regenerator-runtime": "^0.13.3",
     "styled-components": "^5.1.0",
+    "ts-jest": "^25.3.1",
+    "underscore": "^1.10.2",
     "url-loader": "^3.0.0",
     "webpack-hot-server-middleware": "^0.6.0",
-    "webpack-pwa-manifest": "^4.2.0"
+    "webpack-pwa-manifest": "^4.2.0",
+    "yup": "^0.28.3"
   },
   "browserslist": [
     ">0.2%",

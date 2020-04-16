@@ -2,7 +2,7 @@ import { IAuthRegisterAction, IAuthloginAction, authActionTypes, IAuthcheckLogin
 import axios from '../../API/api';
 import { AxiosResponse } from 'axios';
 import { Dispatch, ActionCreator, AnyAction } from 'redux';
-import { browserHistory } from '@Route/history';
+import { browserHistory } from '../../Route/history';
 import { ThunkAction } from 'redux-thunk';
 import { IApplicationState } from '../reducers';
 
@@ -36,14 +36,13 @@ export const checkLogin: ActionCreator<ThunkAction<AnyAction, IApplicationState,
 // 	payload: auth
 // });
 
-export const skipAuth: ActionCreator<IAuthSkipAction> = () => {
-	return {
-		type: authActionTypes.SKIPAUTH,
-		payload: {
-			logged: true
-		}
+export const skipAuth: ActionCreator<IAuthSkipAction> = () => ({
+	type: authActionTypes.SKIPAUTH,
+	payload: {
+		logged: true
 	}
-};
+})
+
 // export const skipAuth: ActionCreator<IAuthSkipAction> = () => ({
 // 	type: authActionTypes.SKIPAUTH
 // });
