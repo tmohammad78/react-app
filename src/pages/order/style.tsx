@@ -51,8 +51,8 @@ export const RestMenuHolder = styled(Clear).attrs({
 			display: none;
     }
     .wrapper {
-			width: 71%;
-      float: right;
+		width: 71%;
+      	float: right;
     }
   }
 `;
