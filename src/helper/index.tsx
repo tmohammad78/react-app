@@ -61,9 +61,19 @@ export const objectToArray = (objectList: ICartItemsObject) => {
 	return list;
 };
 
+
+
 export const arrayToObject = (list: IFoodList[], keyField = 'id'): INewFoodList[] => {
 	return Object.assign(
 		{},
 		...list.map((item: IFoodList, index) => ({ [item['id']]: { ...item, index } }))
 	);
 };
+
+// export function arrayToObject<T extends { id: string }>(array: T[]): { [k: string]: T } {
+// 	let obj: { [k: string]: T } = {};
+// 	array.forEach(val => {
+// 		obj[val.id] = val;
+// 	})
+// 	return obj;
+// }

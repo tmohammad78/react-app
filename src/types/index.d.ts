@@ -21,6 +21,11 @@ export interface ICartTotalState {
 	[type: string]: number
 }
 
+
+
+
+
+
 export interface SubFoodState {
 	food: IFoodList[],
 	show: boolean
@@ -45,9 +50,18 @@ declare module '*.scss' {
 	export default content;
 }
 
+
+
 export interface TestLikeState {
 	[key: string]: INewFoodList
 }
+
+
+
+
+
+
+
 export interface LikeFoodState {
 	likeFood: TestLikeState
 }
