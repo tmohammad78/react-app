@@ -1,13 +1,13 @@
 import React from 'react';
-import { Route } from 'react-router-dom';
+import { Route, Switch } from 'react-router-dom';
 
-import TabBar from '../TabBar';
+import TabBar from '../tabBar';
 import InnerRoute from '../InnerRoute';
 import Menu from '../../../Components/Menu/index';
 
 import { RestProfileContainer, RightSideHolder } from '../style';
 
-const RightSide: React.SFC = React.memo(() => {
+const RightSide: React.SFC = () => {
 	return (
 		<RightSideHolder>
 			<RestProfileContainer>
@@ -17,5 +17,5 @@ const RightSide: React.SFC = React.memo(() => {
 			</RestProfileContainer>
 		</RightSideHolder>
 	);
-});
+};
 export default RightSide;

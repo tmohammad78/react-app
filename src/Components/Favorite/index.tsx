@@ -6,6 +6,7 @@ import { IApplicationState } from '../../Redux/reducers';
 import { LikeFoodState, INewFoodList, TestLikeState } from '../../Types/index';
 
 const Favorite: React.SFC = () => {
+	console.log('favorite');
 	let favoriteFood = useSelector<IApplicationState, LikeFoodState>(state => state.likeFood);
 	const ToArray = (objectList: TestLikeState) => {
 		const list: INewFoodList[] = [];

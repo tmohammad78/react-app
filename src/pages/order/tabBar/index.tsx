@@ -1,12 +1,13 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
 
-import { MenuTab } from './style';
+import { MenuTab } from '../style';
 
-const TabBar: React.SFC = () => {
+const TabBar: React.SFC = (props) => {
+	console.log(props)
 	return (
 		<MenuTab>
-			<NavLink to='/'>منوی غذا</NavLink>
+			<NavLink to='/' >منوی غذا</NavLink>
 			<NavLink to='/info' activeClassName='active'>
 				اطلاعات رستوران
       		</NavLink>
