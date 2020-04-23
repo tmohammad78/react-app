@@ -4,7 +4,6 @@ import { NavLink } from 'react-router-dom';
 import { MenuTab } from '../style';
 
 const TabBar: React.SFC = (props) => {
-	console.log(props)
 	return (
 		<MenuTab>
 			<NavLink to='/' >منوی غذا</NavLink>

@@ -10,7 +10,7 @@ import { IFoodList } from '../../../Types/index';
 import Category from '../Category/index';
 const FoodListTable = lazy(() => import('./FoodListTable/index'));
 
-const Menu: React.SFC = () => {
+const Menu: React.SFC = (props) => {
 	const dispatch = useDispatch();
 	const foodList = useSelector<IApplicationState, IFoodList[]>(state => state.menu.foodList);
 	const [loading, setLoading] = useState(true);

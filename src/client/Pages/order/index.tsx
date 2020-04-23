@@ -13,15 +13,16 @@ interface Props {
 	toggleTheme: string | boolean | (() => void)
 }
 
-const Order: React.SFC<Props> = React.memo(({ toggleTheme }) => {
+const Order: React.SFC<Props> = React.memo((props) => {
+
 	return (
 		<React.Fragment>
-			<Header toggleTheme={toggleTheme} />
+			<Header toggleTheme={props.toggleTheme} />
 			<Cover />
 			<Suspense fallback={<Spinner />}>
 				<RestMenuHolder>
 					<div className='wrapper clearfix '>
-						<RightSide />
+						<RightSide route={props.route} />
 					</div>
 					<Cart />
 				</RestMenuHolder>

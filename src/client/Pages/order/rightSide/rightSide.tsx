@@ -1,19 +1,17 @@
 import React from 'react';
-import { Route, Switch } from 'react-router-dom';
-
-import TabBar from '../tabBar';
-import InnerRoute from '../InnerRoute';
-import Menu from '../../../Components/Menu/index';
-
+import { Route } from 'react-router-dom';
 import { RestProfileContainer, RightSideHolder } from '../style';
 
-const RightSide: React.SFC = () => {
+const RightSide: React.SFC = (props) => {
 	return (
 		<RightSideHolder>
 			<RestProfileContainer>
-				<Route path='/' component={TabBar} />
-				<Route exact path='/' component={Menu} />
-				<Route path='/:name' component={InnerRoute} />
+				{
+					props.route.routes.map((item: any) => {
+						console.log(item)
+						return <Route exact={item.exact ? item.exact : false} path={item.path} component={item.component} />
+					})
+				}
 			</RestProfileContainer>
 		</RightSideHolder>
 	);

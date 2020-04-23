@@ -2,8 +2,8 @@ const path = require('path');
 const PROJECT_ROOT = path.resolve(__dirname, '../');
 
 const LANGUAGES = {
-  fa: require('../src/i18n/fa.json'),
-  en: require('../src/i18n/en.json'),
+  fa: require('../src/client/i18n/fa.json'),
+  en: require('../src/client/i18n/en.json'),
 };
 
 module.exports = {
