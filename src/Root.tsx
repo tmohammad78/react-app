@@ -1,7 +1,7 @@
 import React from "react";
 import { Provider } from "react-redux";
-import store from './Redux/store';
-import { IApplicationState } from './Redux/reducers';
+import store from './client/Redux/store';
+import { IApplicationState } from './client/Redux/reducers';
 import 'lazysizes';
 
 interface props {

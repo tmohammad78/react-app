@@ -1,15 +1,15 @@
 import React, { Suspense } from 'react';
 import { Switch, Route, Router } from 'react-router-dom';
 // import { ThemeProvider } from 'styled-components';
-import { useDarkMode } from './Hooks/useDarkMode';
+import { useDarkMode } from './client/hooks/useDarkMode';
 // import { themes } from './Theme/theme';
 // import { GlobalStyles } from './Theme/global';
 // import { ThemeProvider, createGlobalStyle } from './Theme/styled-components';
-import PrivateRoute from './Route/private';
-import { browserHistory } from './Route/history';
-import Spinner from './Components/Spinner/index';
-import AuthPage from './Pages/auth/index';
-import Order from './Pages/order/index';
+import PrivateRoute from './client/Route/private';
+import { browserHistory } from './client/Route/history';
+import Spinner from './client/Components/Spinner/index';
+import AuthPage from './client/Pages/auth/index';
+import Order from './client/Pages/order/index';
 
 // const GlobalStyles = createGlobalStyle`
 //   *,
