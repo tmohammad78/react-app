@@ -14,19 +14,19 @@ interface Props {
 }
 
 const Order: React.SFC<Props> = React.memo((props) => {
-
+	// toggleTheme={props.toggleTheme}
 	return (
 		<React.Fragment>
-			<Header toggleTheme={props.toggleTheme} />
+			<Header />
 			<Cover />
-			<Suspense fallback={<Spinner />}>
+			{/* <Suspense fallback={<Spinner />}>
 				<RestMenuHolder>
 					<div className='wrapper clearfix '>
 						<RightSide route={props.route} />
 					</div>
 					<Cart />
 				</RestMenuHolder>
-			</Suspense>
+			</Suspense> */}
 			<Footer />
 		</React.Fragment>
 	);

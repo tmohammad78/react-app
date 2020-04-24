@@ -6,15 +6,13 @@
     "declaration": true, // add .d.ts file in outDir
     "sourceMap": true, // add .map file outDir  . debugger  forbid implicit any
     "jsx": "react", // transform JSX
-    "Strict": true, //enable strict  features
+    "strict": true, //enable strict  features
     "strictNullChecks": true, //check and compile JS
-
     "allowSyntheticDefaultImports": true,
-    "esModuleInterop": true, // forexample for testing jest 
+    "esModuleInterop": true, // forexample for testing jest
     "moduleResolution": "node",
     "skipLibCheck": true,
     "lib": ["es6", "dom"],
-    "strict": true,
     "noImplicitReturns": true,
     "noEmit": true,
     "noImplicitThis": true,
@@ -24,18 +22,6 @@
     "isolatedModules": true,
     "rootDir": ".",
     "allowJs": true,
-    // "baseUrl": "./src",
-    // "paths": {
-    //   //   "@/*": ["./src/*"],
-    //   "Components/*": ["./Components/*"],
-    //   "@Redux/*": ["Redux/*"],
-    //   "@Pages/*": ["Pages/*"],
-    //   "@Route/*": ["Route/*"],
-    //   "@Helper/*": ["Helper/*"],
-    //   "@Types/*": ["Types/*"],
-    //   "@Config/*": ["Config/*"],
-    //   "@Hooks/*": ["Hooks/*"]
-    // },
     "plugins": [
       { "transform": "typescript-transform-paths" },
       { "transform": "typescript-transform-paths", "afterDeclarations": true }

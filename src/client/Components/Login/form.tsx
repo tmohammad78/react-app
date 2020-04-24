@@ -3,7 +3,7 @@ import { Formik, Form, Field } from 'formik';
 import { validation } from '../../Helper/validation';
 import { Button } from '../Buttons/Button';
 import Input from '../Input/index';
-import { MyFormValues } from '@Types';
+import { MyFormValues } from '../../../types/index';
 import './style.scss';
 
 

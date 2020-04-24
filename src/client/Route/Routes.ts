@@ -17,52 +17,52 @@ export default [
 		component: RequireAuth(Order),
 		path: '/',
 		exact: true,
-		routes: [
-			{
-				component: TabBar,
-				path: '/'
-			},
-			{
-				component: Menu,
-				path: '/',
-				exact: true
-			},
-			{
-				component: InnerRoute,
-				path: '/:name',
-				routes: [
-					{
-						path: '/',
-						component: Menu,
-						exact: true
-					},
-					{
-						path: '/info',
-						component: InfoRest
-					},
-					{
-						path: '/favorite',
-						component: Favorite
-					}
+		// routes: [
+		// 	{
+		// 		component: TabBar,
+		// 		path: '/'
+		// 	},
+		// 	{
+		// 		component: Menu,
+		// 		path: '/',
+		// 		exact: true
+		// 	},
+		// 	{
+		// 		component: InnerRoute,
+		// 		path: '/:name',
+		// 		routes: [
+		// 			{
+		// 				path: '/',
+		// 				component: Menu,
+		// 				exact: true
+		// 			},
+		// 			{
+		// 				path: '/info',
+		// 				component: InfoRest
+		// 			},
+		// 			{
+		// 				path: '/favorite',
+		// 				component: Favorite
+		// 			}
 
-				]
-			}
-		]
+		// 		]
+		// 	}
+		// ]
 	},
 	{
 		component: AuthPage,
 		path: '/auth',
-		routes: [
-			{
-				component: MainAuth,
-				path: '/auth',
-				exact: true
-			},
-			{
-				component: Register,
-				path: '/auth/test',
-				exact: true
-			}
-		]
+		// routes: [
+		// 	{
+		// 		component: MainAuth,
+		// 		path: '/auth',
+		// 		exact: true
+		// 	},
+		// 	{
+		// 		component: Register,
+		// 		path: '/auth/test',
+		// 		exact: true
+		// 	}
+		// ]
 	}
 ]

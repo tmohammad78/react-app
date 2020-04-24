@@ -4,6 +4,7 @@ const VENDORS_LIB = ['react', 'react-dom', 'react-router-dom'];
 
 module.exports = [
   {
+    entry: ['@babel/polyfill'],
     output: {
       path: commonVariables.outputPath,
       filename: `./static/[name].app.js`,
@@ -11,31 +12,32 @@ module.exports = [
     },
     module: {
       rules: [
-        // {
-        //   test: /\.ts(x?)$/,
-        //   exclude: /node_modules/,
-        //   use: [
-        //     {
-        //       loader: 'ts-loader',
-        //     },
-        //   ],
-        // },
-
         {
           test: /\.(js|ts)x?$/,
           exclude: /node_modules/,
           resolve: {
             extensions: ['.js', 'jsx', '.tsx', '.ts'],
           },
-          use: [
-            { loader: 'babel-loader' },
-            // { loader: "eslint-loader" }
-          ],
+          loader: 'babel-loader',
         },
         {
           enforce: 'pre',
           test: /\.js$/,
           loader: 'source-map-loader',
+        },
+        {
+          test: /\.svg$|\.ico$/,
+          use: [
+            {
+              loader: 'babel-loader',
+            },
+            {
+              loader: 'react-svg-loader',
+              options: {
+                jsx: true,
+              },
+            },
+          ],
         },
       ],
     },
@@ -52,14 +54,5 @@ module.exports = [
         },
       },
     },
-
-    plugins: [
-      new HtmlWebpackPlugin({
-        title: 'Food Delivery',
-        template: 'assets/index.html',
-        favicon: 'assets/favicon.ico',
-        // cache: true,
-      }),
-    ],
   },
 ];

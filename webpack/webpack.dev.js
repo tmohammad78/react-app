@@ -3,27 +3,26 @@ const autoprefixer = require('autoprefixer');
 const commonVariables = require('./commonVariables');
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-
-const PORT = process.env.PORT || 3000;
 module.exports = [
   {
     mode: 'development',
     devtool: 'cheap-module-source-map',
+    target: 'web',
     entry: {
       app: [
         // 'core-js/stable',
-        'regenerator-runtime/runtime',   // it was an error in @babel/runtime in starting project
+        'regenerator-runtime/runtime', // it was an error in @babel/runtime in starting project
         // 'webpack-hot-middleware/client',
         // 'react-hot-loader/patch',
-        `${commonVariables.appEntry}/index.tsx`,
+        // `${commonVariables.appEntry}/index.tsx`,
+        path.resolve(__dirname, '../src/client/client.tsx'),
       ],
     },
     output: {
-      chunkFilename: '[name].fa.js',
-      filename: 'main.js',
+      //   chunkFilename: '[name].fa.js',
+      filename: 'build.js',
       publicPath: '/',
-      path: `${commonVariables.outputPath}`,
-      filename: 'server.js',
+      path: path.resolve(__dirname, '../lib'),
     },
     resolve: {
       extensions: ['.ts', '.tsx', '.js', '.json', '.jsx', '.scss', '.css'],
@@ -62,41 +61,26 @@ module.exports = [
           test: /\.(png|jpg|woff|woff2|eot|ttf|jpe?g|gif)$/,
           loader: 'url-loader?limit=8000&name=images/[name].[ext]',
         },
-
-        {
-          test: /\.svg$/,
-          use: [
-            {
-              loader: 'babel-loader',
-            },
-            {
-              loader: 'react-svg-loader',
-              options: {
-                jsx: true,
-              },
-            },
-          ],
-        },
       ],
     },
     plugins: [
       new webpack.NamedModulesPlugin(),
       new webpack.HotModuleReplacementPlugin(),
-      new HtmlWebpackPlugin({
-        title: 'Food Delivery',
-        template: 'assets/index.html',
-        favicon: 'assets/favicon.ico',
-        // cache: true,
-      }),
+      //   new HtmlWebpackPlugin({
+      //     title: 'Food Delivery',
+      //     template: 'assets/index.html',
+      //     favicon: 'assets/favicon.ico',
+      //     // cache: true,
+      //   }),
     ],
-    devServer: {
-      host: 'localhost',
-      port: PORT,
-      historyApiFallback: true,
-      hot: true,
-      open: true,
-      contentBase: path.join(__dirname, 'dist'),
-      publicPath: '/', // here's the change
-    },
+    // devServer: {
+    //   host: 'localhost',
+    //   port: PORT,
+    //   historyApiFallback: true,
+    //   hot: true,
+    //   open: true,
+    //   contentBase: path.join(__dirname, 'dist'),
+    //   publicPath: '/', // here's the change
+    // },
   },
 ];
