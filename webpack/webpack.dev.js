@@ -1,8 +1,6 @@
 const webpack = require('webpack');
-const autoprefixer = require('autoprefixer');
-const commonVariables = require('./commonVariables');
 const path = require('path');
-const HtmlWebpackPlugin = require('html-webpack-plugin');
+
 module.exports = [
   {
     mode: 'development',
@@ -44,7 +42,7 @@ module.exports = [
               options: {
                 sourceMap: true,
                 config: {
-                  path: path.resolve(__dirname, 'postcss.config.js'),
+                  path: path.resolve(__dirname, '../postcss.config.js'),
                 },
               },
             },

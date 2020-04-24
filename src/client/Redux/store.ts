@@ -5,6 +5,7 @@ import { IApplicationState } from './reducers';
 declare global {
 	interface Window {
 		__REDUX_DEVTOOLS_EXTENSION_COMPOSE__?: typeof compose;
+		__INITIAL_STATE__: any;
 		// Storage.getItem: string | null
 	}
 }
@@ -18,7 +19,7 @@ export default (initialState: any): Store<IApplicationState> => {
 	} else {
 		enhancer = compose(
 			applyMiddleware(...middleware),
-			window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ && window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__(),
+			// window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ && window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__(),
 			// window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
 		);
 	}

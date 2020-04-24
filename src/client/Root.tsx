@@ -11,10 +11,9 @@ interface props {
 
 const Root: React.SFC<props> = ({ children, initialState = {} }): JSX.Element => {
 	initialState = window.__INITIAL_STATE__;
-	delete window.__STATE__;
+	delete window.__INITIAL_STATE__;
 	return <Provider store={store(initialState)}>{children}</Provider>
 }
 
-);
 
 export default Root;

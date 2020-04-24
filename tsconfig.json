@@ -11,13 +11,14 @@
     "allowSyntheticDefaultImports": true,
     "esModuleInterop": true, // forexample for testing jest
     "moduleResolution": "node",
+    "forceConsistentCasingInFileNames": false, //for casing erro in the route file
     "skipLibCheck": true,
     "lib": ["es6", "dom"],
     "noImplicitReturns": true,
     "noEmit": true,
     "noImplicitThis": true,
     "noImplicitAny": true,
-    "forceConsistentCasingInFileNames": true,
+    // "forceConsistentCasingInFileNames": true,
     "resolveJsonModule": true,
     "isolatedModules": true,
     "rootDir": ".",

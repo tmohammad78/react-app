@@ -8,7 +8,7 @@ import { Helmet } from "react-helmet";
 
 import Routes from "../client/Route/Routes";
 
-export default (req, store, context) => {
+export default (req: any, store: any, context: any) => {
 	console.log("in rendering ", store);
 	const content = renderToString(
 		<Provider store={store}>
@@ -17,7 +17,6 @@ export default (req, store, context) => {
 			</StaticRouter>
 		</Provider>
 	);
-	// <link href="favicon.ico" rel="shortcut icon" type="image/x-icon" href='./favicon.ico' />
 	const helmet = Helmet.renderStatic();
 
 	return `
@@ -29,9 +28,9 @@ export default (req, store, context) => {
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
 		<meta http-equiv="content-type" content="text/html; charset=UTF-8" />
-
 		<link rel="sitemap" type="application/xml" title="Sitemap" href="sitemap.xml" />
 		<link rel="manifest" href="./manifest.json" />
+		<link href="favicon.ico" rel="shortcut icon" type="image/x-icon" href='./favicon.ico' />
 		<!-- its for google verification google webmaster tool by verfiying you can see details performance data and good security -->
 		<meta name="google-site-verification" content=""/>
 
