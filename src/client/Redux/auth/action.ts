@@ -2,7 +2,7 @@ import { IAuthRegisterAction, IAuthloginAction, authActionTypes, IAuthcheckLogin
 import axios from '../../../API/api';
 import { AxiosResponse } from 'axios';
 import { Dispatch, ActionCreator, AnyAction } from 'redux';
-import { browserHistory } from '../../Route/history';
+// import { browserHistory } from '../../Route/history';
 import { ThunkAction } from 'redux-thunk';
 import { IApplicationState } from '../reducers';
 
@@ -69,7 +69,7 @@ export const loginAction: ActionCreator<ThunkAction<Promise<AnyAction>, IApplica
 		})
 		.then((Response: AxiosResponse) => {
 			const data = Response.data;
-			browserHistory.push('/');
+			// browserHistory.push('/');
 			console.log(data);
 			return dispatch({
 				type: authActionTypes.AUTH_LOGIN,
@@ -99,7 +99,7 @@ export const registerAction: ActionCreator<ThunkAction<Promise<AnyAction>, IAppl
 			// /accounts:signUp?key=AIzaSyDa29GWAYmBAuPEE7gxgVepxYYr6JAyfMQ
 			///accounts:signInWithPassword?key=AIzaSyDa29GWAYmBAuPEE7gxgVepxYYr6JAyfMQ
 			const data = Response.data;
-			browserHistory.push('/');
+			// browserHistory.push('/');
 			console.log(data);
 
 

@@ -7,13 +7,12 @@ export default (req: any) => {
 	// const axiosInstance = axios.create({
 	// 	baseURL: "http://react-ssr-api.herokuapp.com",
 	// 	headers: { cookie: req.get("cookie") || "" },
-	//   });
-	console.log('ddddddddd');
+	// });
 	const store = createStore(
 		newRootReducer,
 		{},
 		applyMiddleware(thunk.withExtraArgument(instance))
 	);
-	console.log('store', store)
+	console.log('in create store ',store)
 	return store;
 };

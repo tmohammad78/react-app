@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { useHistory } from 'react-router-dom';
+// import { useHistory } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 
 import FormLogin from '../Login/form';
@@ -21,7 +21,7 @@ const initialState = {
 	password: ''
 }
 const Register: React.SFC = () => {
-	const history = useHistory();
+	// const history = useHistory();
 	const dispatch = useDispatch();
 	const [newUser, setNewUser] = useState(true);
 	const [value, setValues] = useState<MyFormValues>(initialState);
@@ -72,7 +72,7 @@ const Register: React.SFC = () => {
 			<i
 				className='fo fo-arrow-left'
 				onClick={() => {
-					history.goBack();
+					// history.goBack();
 				}}
 			/>
 			<div>

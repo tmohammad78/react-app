@@ -36,7 +36,14 @@ module.exports = [
           test: /\.(sa|sc|c)ss$/,
           use: [
             { loader: 'style-loader' },
-            { loader: 'css-loader' },
+            {
+              loader: 'css-loader',
+              options: {
+                modules: {
+                  localIdentName: '[path][name]__[local]',
+                },
+              },
+            },
             {
               loader: 'postcss-loader',
               options: {
@@ -61,24 +68,6 @@ module.exports = [
         },
       ],
     },
-    plugins: [
-      new webpack.NamedModulesPlugin(),
-      new webpack.HotModuleReplacementPlugin(),
-      //   new HtmlWebpackPlugin({
-      //     title: 'Food Delivery',
-      //     template: 'assets/index.html',
-      //     favicon: 'assets/favicon.ico',
-      //     // cache: true,
-      //   }),
-    ],
-    // devServer: {
-    //   host: 'localhost',
-    //   port: PORT,
-    //   historyApiFallback: true,
-    //   hot: true,
-    //   open: true,
-    //   contentBase: path.join(__dirname, 'dist'),
-    //   publicPath: '/', // here's the change
-    // },
+    plugins: [new webpack.NamedModulesPlugin(), new webpack.HotModuleReplacementPlugin()],
   },
 ];

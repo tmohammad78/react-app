@@ -38,14 +38,18 @@ module.exports = Object.keys(commonVariables.languages).map(function (language) 
         {
           test: /\.(sa|sc|c)ss$/,
           use: [
-            // {
-            //   loader: MiniCssExtractPlugin.loader,
-            // },
+            {
+              loader: MiniCssExtractPlugin.loader,
+            },
             {
               loader: 'css-loader',
               options: {
-                // minimize: true,
-                sourceMap: false,
+                importLoaders: 2, // the loader that should acaive before css loader
+                esModule: true,
+                sourceMap: false, // because if it true it increase bundle size
+                modules: {
+                  localIdentName: '[path][name]__[local]--[hash:base64:5]',
+                },
               },
             },
             {
@@ -69,6 +73,9 @@ module.exports = Object.keys(commonVariables.languages).map(function (language) 
               loader: 'sass-loader',
               options: {
                 sourceMap: false,
+                sassOptions: {
+                  outputStyle: 'compressed',
+                },
               },
             },
           ],
@@ -96,12 +103,10 @@ module.exports = Object.keys(commonVariables.languages).map(function (language) 
       new FriendlyErrorsWebpackPlugin(),
       //   new CompressionPlugin(),
       new MinifyPlugin(),
-      //   new MiniCssExtractPlugin({
-      //     filename: '[name].' + language + '.css',
-      //     chunkFilename: '[id].' + language + '.css',
-      //     filename: `static/css/[name].[contenthash].css`,
-      //     chunkFilename: `static/css/[id].[contenthash].css`,
-      //   }),
+      new MiniCssExtractPlugin({
+        filename: '[name].fa.css',
+        chunkFilename: '[id].fa.css'
+      }),
       //   new WorkboxPlugin.GenerateSW({
       //     // these options encourage the ServiceWorkers to get in there fast
       //     // and not allow any straggling "old" SWs to hang around

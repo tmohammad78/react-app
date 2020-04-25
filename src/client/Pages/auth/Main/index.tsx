@@ -1,6 +1,6 @@
 import React from 'react';
 import { Button } from '../../../Components/Buttons/Button';
-import { NavLink, useLocation, RouteComponentProps, useRouteMatch } from 'react-router-dom';
+import { NavLink, RouteComponentProps, useRouteMatch } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { skipAuth } from '../../../Redux/auth/action';
 
@@ -12,7 +12,7 @@ interface IProps {
 }
 const MainAuth: React.SFC<> = (props) => {
 	console.log(props)
-	const location = useLocation();
+	// const location = useLocation();
 	const dispatch = useDispatch();
 	const handleSkipAuth = () => {
 		dispatch(skipAuth());
@@ -32,7 +32,7 @@ const MainAuth: React.SFC<> = (props) => {
 				</div>
 				<div></div>
 				<div className='registerbtn'>
-					<NavLink to={`${location.state.pathname}`}>
+					<NavLink to={`\too`}>
 						<Button
 							ptb='13'
 							prl='100'

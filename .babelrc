@@ -11,6 +11,7 @@
     [
       "babel-plugin-styled-components",
       {
+        "ssr": true,
         "minify": true,
         "transpileTemplateLiterals": true
       }

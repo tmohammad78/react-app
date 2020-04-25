@@ -1,13 +1,11 @@
-import React, { useEffect } from 'react';
-import { Route, Redirect, RouteProps, RouteComponentProps } from 'react-router-dom';
+import React from 'react';
+import { Redirect } from 'react-router-dom';
 import { useSelector } from 'react-redux';
-import { IApplicationState } from '../../Redux/reducers';
-import { AuthState } from '../../../types/index';
-import { renderRoutes } from 'react-router-config';
-import AuthPage from '../Pages/auth/index';
+import { IApplicationState } from '../Redux/reducers';
+import { AuthState } from '../../types/index';
 
-const RequireAuth = (ComposedComponent) => {
-	return (props) => {
+const RequireAuth = (ComposedComponent: any) => {
+	return (props: any) => {
 		console.log(props);
 		const auth = useSelector<IApplicationState, AuthState>(state => state.auth);
 		if (auth.logged) {
@@ -15,7 +13,7 @@ const RequireAuth = (ComposedComponent) => {
 		}
 		return <Redirect to={{
 			pathname: '/auth',
-			state: props.location
+			// state: props.location
 		}} />
 	}
 
