@@ -1,13 +1,28 @@
-import AuthPage from '../Pages/auth/index';
-import RequireAuth from '../Hoc/auth';
-import Register from '../Components/Register/index';
-import MainAuth from '../Pages/auth/main/index';
-import Order from '../Pages/order';
-import Menu from '../Components/Menu/index';
-import InnerRoute from '../Pages/order/InnerRoute';
-import TabBar from '../Pages/order/tabBar/index';
-import InfoRest from '../Components/infoRes/index';
-import Favorite from '../Components/Favorite/index';
+
+import Spinner from '../Components/Spinner';
+import loadable from '@loadable/component'
+
+const AuthPage = loadable(() => import('../Pages/auth/index'))
+
+const RequireAuth = loadable(() => import('../Hoc/auth'))
+
+const Register = loadable(() => import('../Components/Register/index'))
+
+const MainAuth = loadable(() => import('../Pages/auth/main/index'))
+
+const Order = loadable(() => import('../Pages/order'))
+
+const Menu = loadable(() => import('../Components/Menu/index'))
+
+const InnerRoute = loadable(() => import('../Pages/order/InnerRoute'))
+
+const TabBar = loadable(() => import('../Pages/order/tabBar/index'))
+
+const InfoRest = loadable(() => import('../Components/infoRes/index'))
+
+const Favorite = loadable(() => import('../Components/Favorite/index'))
+
+
 
 
 export default [

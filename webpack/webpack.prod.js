@@ -5,7 +5,7 @@ const commonVariables = require('./commonVariables');
 const FriendlyErrorsWebpackPlugin = require('friendly-errors-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 // const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
-const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
+const TerserPlugin = require('terser-webpack-plugin');
 const MinifyPlugin = require('babel-minify-webpack-plugin');
 const webpackNodeExternals = require('webpack-node-externals');
 const CompressionPlugin = require('compression-webpack-plugin');
@@ -14,6 +14,10 @@ const WorkboxPlugin = require('workbox-webpack-plugin');
 var WebpackPwaManifest = require('webpack-pwa-manifest');
 const SWPrecacheWebpackPlugin = require('sw-precache-webpack-plugin');
 const PUBLIC_PATH = 'https://food-delivery-7d366.firebaseapp.com/';
+const AssetsPlugin = require('assets-webpack-plugin');
+const assetsPluginInstance = new AssetsPlugin();
+const LoadablePlugin = require('@loadable/webpack-plugin');
+
 module.exports = Object.keys(commonVariables.languages).map(function (language) {
   return {
     mode: 'production',
@@ -29,6 +33,7 @@ module.exports = Object.keys(commonVariables.languages).map(function (language) 
     },
     output: {
       filename: 'bundle.js',
+      publicPath: path.resolve('../dist'),
       //   chunkFilename: `[name].[chunkhash:8].js`,
       path: path.resolve(__dirname, '../dist'),
     },
@@ -98,14 +103,33 @@ module.exports = Object.keys(commonVariables.languages).map(function (language) 
     //   historyApiFallback: true,
     // },
 
+    optimization: {
+      minimize: true,
+      minimizer: [new TerserPlugin()],
+      splitChunks: {
+        cacheGroups: {
+          default: false,
+          venders: false,
+          vendor: {
+            chunks: 'all',
+            test: 'vendor',
+            name: 'vendor',
+            filename: 'vendor.js',
+            enforce: true,
+          },
+        },
+      },
+    },
     plugins: [
       //   new BundleAnalyzerPlugin(),
+      new LoadablePlugin(),
       new FriendlyErrorsWebpackPlugin(),
+      assetsPluginInstance,
       //   new CompressionPlugin(),
       new MinifyPlugin(),
       new MiniCssExtractPlugin({
         filename: '[name].fa.css',
-        chunkFilename: '[id].fa.css'
+        chunkFilename: '[id].fa.css',
       }),
       //   new WorkboxPlugin.GenerateSW({
       //     // these options encourage the ServiceWorkers to get in there fast

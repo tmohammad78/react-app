@@ -19,14 +19,14 @@ const Order: React.SFC<Props> = React.memo((props) => {
 		<React.Fragment>
 			<Header />
 			<Cover />
-			{/* <Suspense fallback={<Spinner />}>
+			<Suspense fallback={<Spinner />}>
 				<RestMenuHolder>
 					<div className='wrapper clearfix '>
 						<RightSide route={props.route} />
 					</div>
 					<Cart />
 				</RestMenuHolder>
-			</Suspense> */}
+			</Suspense>
 			<Footer />
 		</React.Fragment>
 	);

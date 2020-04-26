@@ -5,11 +5,11 @@ const VENDORS_LIB = ['react', 'react-dom', 'react-router-dom'];
 module.exports = [
   {
     entry: ['@babel/polyfill'],
-    output: {
-      path: commonVariables.outputPath,
-      filename: `./static/[name].app.js`,
-      publicPath: commonVariables.publicPath,
-    },
+    // output: {
+    //   path: commonVariables.outputPath,
+    //   filename: `./static/[name].app.js`,
+    //   publicPath: '/',
+    // },
     module: {
       rules: [
         {
@@ -41,18 +41,6 @@ module.exports = [
         },
       ],
     },
-    optimization: {
-      splitChunks: {
-        cacheGroups: {
-          vendor: {
-            chunks: 'initial',
-            test: 'vendor',
-            name: 'vendor',
-            filename: 'vendor.js',
-            enforce: true,
-          },
-        },
-      },
-    },
+
   },
 ];

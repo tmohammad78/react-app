@@ -13,7 +13,7 @@ import Spinner from './Components/Spinner/index'
 import { browserHistory } from './Route/history';
 import { compose, createStore, applyMiddleware } from 'redux';
 import newRootReducer from './Redux/reducers';
-
+import { loadableReady } from '@loadable/component'
 
 
 const middleware = [thunk];
@@ -37,9 +37,11 @@ const Application = (
 )
 const root = document.getElementById('root');
 
-if (root?.hasChildNodes() === true) {
-	hydrate(Application, root)
-} else {
-	render(Application, root)
-	// serviceWorker.unregister();
-}
+loadableReady(() => {
+	if (root?.hasChildNodes() === true) {
+		hydrate(Application, root)
+	} else {
+		render(Application, root)
+		// serviceWorker.unregister();
+	}
+})

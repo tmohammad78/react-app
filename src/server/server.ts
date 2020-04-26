@@ -2,16 +2,14 @@ import express from 'express';
 import createStore from '../Helper/createStore';
 import { matchRoutes } from 'react-router-config';
 import Routes from '../client/Route/Routes';
-
 import renderer from '../Helper/render';
-import path from 'path';
 
 const app = express();
 
 //add the bundle file to the project
-app.use(express.static(path.resolve(__dirname, '../lib')));
+app.use(express.static('lib'));
 //add static files in project
-app.use(express.static(path.resolve('../../asssets')))
+app.use(express.static('asssets'))
 
 app.get("*", (req, res) => {
 	const store = createStore(req);
@@ -28,11 +26,8 @@ app.get("*", (req, res) => {
 		});
 	Promise.all(promises)
 		.then(() => {
-
 			const context = {};
-			console.log('my store chchch  is', store);
 			const content = renderer(req, store, context);
-			console.log('cccc', content)
 			if (context.url) {
 				return res.redirect(301, context.url);
 			}

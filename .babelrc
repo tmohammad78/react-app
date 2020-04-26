@@ -5,19 +5,21 @@
     "@babel/preset-typescript"
   ],
   "plugins": [
-    "react-hot-loader/babel",
+    "react-hot-loader/babel", 
+    "@loadable/babel-plugin",
     "@babel/plugin-proposal-class-properties",
     ["@babel/plugin-proposal-decorators", { "legacy": true }],
     [
       "babel-plugin-styled-components",
       {
-        "ssr": true,
+        "ssr": false,
         "minify": true,
         "transpileTemplateLiterals": true
       }
     ],
     ["@babel/plugin-transform-modules-commonjs"],
     "transform-react-remove-prop-types",
+
     "@babel/plugin-transform-react-constant-elements",
     "@babel/plugin-transform-react-inline-elements",
     "@babel/plugin-transform-runtime",

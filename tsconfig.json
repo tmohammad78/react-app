@@ -25,7 +25,15 @@
     "allowJs": true,
     "plugins": [
       { "transform": "typescript-transform-paths" },
-      { "transform": "typescript-transform-paths", "afterDeclarations": true }
+      { "transform": "typescript-transform-paths", "afterDeclarations": true },
+      {
+        "transform": "typescript-plugin-styled-components",
+        "type": "config",
+
+        // other typescript-plugin-styled-components options can be added here
+        "minify": true,
+        "ssr": true
+      }
     ]
   },
   "include": ["./src/**/*"],
