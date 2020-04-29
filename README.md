@@ -48,7 +48,7 @@ in this Project I used Redux thunk but I want to change it to [redux saga](https
 In this sample code we are using HOF and we pass a function in a nother function (Redux Thunk)
 ```
 export const fetchMenu = () => (dispatch,getState) =>{
-	
+	//axios and fetching data
 	return dispatch({
 		type:FETCHMENU
 		payload:{
