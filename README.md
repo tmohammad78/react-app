@@ -43,7 +43,8 @@ I think Context is good when we want update our child component not a seprate fi
 ### Asynce 
 The solution is We should use Redux Thunk for be asynce foexample for data fetching 
 in this Project I used Redux thunk but I want to change it to [redux saga](https://github.com/redux-saga/redux-saga)  , it's more powerful 
-###Sample Code
+
+### Sample Code
 In this sample code we are using HOF and we pass a function in a nother function (Redux Thunk)
 ```
 export const fetchMenu = () => (dispatch,getState) =>{
