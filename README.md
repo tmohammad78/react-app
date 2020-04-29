@@ -65,7 +65,7 @@ and a main webpack.config in the root dir
 
 
 # In Progress
-- [] server side rendering
+- []server side rendering
 
 
 # To DO
