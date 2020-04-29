@@ -75,5 +75,6 @@ and a main webpack.config in the root dir
 - [ ] Add SWR for cache
 - [ ] Add Testing with Jest
 - [ ] Add Tree shaking
+- [ ] Docker
 
 ![](sitelast.gif)
