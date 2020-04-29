@@ -31,7 +31,7 @@ make a acceptable project for my CV . Now I'm trying to learn and implement serv
 * [react Helmet](https://github.com/nfl/react-helmet)
 
 
-#Why?
+# Why?
 
 ### motivation
 In this Section I wanna to explain why this package and why Not others
@@ -58,14 +58,14 @@ export const fetchMenu = () => (dispatch,getState) =>{
 ```
 
 ## Webpack
-Be honstly  , With using Webpack you should have headache😁 , but the Good Reason for MARYAM is thak you learn alot of things 
+Be honstly  , With using Webpack you should have headache😁 , but the Good Reason for continue is that you learn alot of things 
 and you learn what happend it building and serving
 I seperate development and production in webpack and the common file that is all the things we do in both ,
 and a main webpack.config in the root dir
 
 
 # In Progress
-- []server side rendering
+- [ ] server side rendering
 
 
 # To DO
