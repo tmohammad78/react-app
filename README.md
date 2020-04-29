@@ -69,10 +69,10 @@ and a main webpack.config in the root dir
 
 
 # To DO
-- [] compelete Server side rendering
-- [] Add Redux Saga
-- [] Add SWR for cache
-- [] Add Testing with Jest
-- [] Add Tree shaking
+- [ ] compelete Server side rendering
+- [ ] Add Redux Saga
+- [ ] Add SWR for cache
+- [ ] Add Testing with Jest
+- [ ] Add Tree shaking
 
 ![](sitelast.gif)
