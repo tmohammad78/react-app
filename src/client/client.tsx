@@ -6,14 +6,14 @@ import thunk from 'redux-thunk';
 // import * as serviceWorker from '../assets/serviceWorker';
 import './styles/main.scss';
 import { Switch, Router, BrowserRouter } from 'react-router-dom';
-import Routes from './Route/Routes';
+// import Routes from './Route/Routes';
 import Root from './Root';
 // import store from './Redux/store';
 import Spinner from './Components/Spinner/index'
 import { browserHistory } from './Route/history';
 import { compose, createStore, applyMiddleware } from 'redux';
 import newRootReducer from './Redux/reducers';
-
+import { loadableReady } from '@loadable/component'
 
 
 const middleware = [thunk];
@@ -26,20 +26,23 @@ const Application = (
 	// <Root>
 	<Provider store={storeRoot}>
 		<Suspense fallback={<Spinner />}>
-			<Router history={browserHistory}  >
+			{/* <Router history={browserHistory}  >
 				<Switch>
 					{renderRoutes(Routes)}
 				</Switch>
-			</Router>
+			</Router> */}
+			<div>flnfdjn</div>
 		</Suspense>
 	</Provider>
 	// </Root>
 )
 const root = document.getElementById('root');
 
-if (root?.hasChildNodes() === true) {
-	hydrate(Application, root)
-} else {
-	render(Application, root)
-	// serviceWorker.unregister();
-}
+loadableReady(() => {
+	if (root?.hasChildNodes() === true) {
+		hydrate(Application, root)
+	} else {
+		render(Application, root)
+		// serviceWorker.unregister();
+	}
+})

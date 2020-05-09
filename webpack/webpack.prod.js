@@ -5,7 +5,7 @@ const commonVariables = require('./commonVariables');
 const FriendlyErrorsWebpackPlugin = require('friendly-errors-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 // const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
-const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
+const TerserPlugin = require('terser-webpack-plugin');
 const MinifyPlugin = require('babel-minify-webpack-plugin');
 const webpackNodeExternals = require('webpack-node-externals');
 const CompressionPlugin = require('compression-webpack-plugin');
@@ -14,6 +14,8 @@ const WorkboxPlugin = require('workbox-webpack-plugin');
 var WebpackPwaManifest = require('webpack-pwa-manifest');
 const SWPrecacheWebpackPlugin = require('sw-precache-webpack-plugin');
 const PUBLIC_PATH = 'https://food-delivery-7d366.firebaseapp.com/';
+const LoadablePlugin = require('@loadable/webpack-plugin');
+
 module.exports = Object.keys(commonVariables.languages).map(function (language) {
   return {
     mode: 'production',
@@ -29,12 +31,17 @@ module.exports = Object.keys(commonVariables.languages).map(function (language) 
     },
     output: {
       filename: 'bundle.js',
-      //   chunkFilename: `[name].[chunkhash:8].js`,
+      chunkFilename: `[name].[chunkhash:8].js`,
       path: path.resolve(__dirname, '../dist'),
     },
     externals: [webpackNodeExternals()],
     module: {
       rules: [
+        {
+          test: /\.(js|ts)x?$/,
+          exclude: /node_modules/,
+          use: [{ loader: 'babel-loader' }],
+        },
         {
           test: /\.(sa|sc|c)ss$/,
           use: [
@@ -46,7 +53,7 @@ module.exports = Object.keys(commonVariables.languages).map(function (language) 
               options: {
                 importLoaders: 2, // the loader that should acaive before css loader
                 esModule: true,
-                sourceMap: false, // because if it true it increase bundle size
+                sourceMap: true, // because if it true it increase bundle size
                 modules: {
                   localIdentName: '[path][name]__[local]--[hash:base64:5]',
                 },
@@ -56,7 +63,7 @@ module.exports = Object.keys(commonVariables.languages).map(function (language) 
               loader: 'postcss-loader',
               options: {
                 ident: 'postcss',
-                sourceMap: false,
+                sourceMap: true,
                 plugins: () => [
                   autoprefixer({
                     // browsers: [
@@ -72,7 +79,7 @@ module.exports = Object.keys(commonVariables.languages).map(function (language) 
             {
               loader: 'sass-loader',
               options: {
-                sourceMap: false,
+                sourceMap: true,
                 sassOptions: {
                   outputStyle: 'compressed',
                 },
@@ -82,18 +89,10 @@ module.exports = Object.keys(commonVariables.languages).map(function (language) 
         },
       ],
     },
-    // optimization: {
-    //   concatenateModules: true,
-    //   minimizer: [
-    //     new UglifyJsPlugin({
-    //       uglifyOptions: {
-    //         output: {
-    //           comments: false,
-    //         },
-    //       },
-    //     }),
-    //   ],
-    // },
+    optimization: {
+      minimize: true,
+      minimizer: [new TerserPlugin()],
+    },
     // devServer: {
     //   historyApiFallback: true,
     // },
@@ -101,19 +100,22 @@ module.exports = Object.keys(commonVariables.languages).map(function (language) 
     plugins: [
       //   new BundleAnalyzerPlugin(),
       new FriendlyErrorsWebpackPlugin(),
+      new LoadablePlugin(),
       //   new CompressionPlugin(),
       new MinifyPlugin(),
       new MiniCssExtractPlugin({
-        filename: '[name].fa.css',
-        chunkFilename: '[id].fa.css'
+        // filename: '[name].fa.css',
+        // chunkFilename: '[id].fa.css',
+        filename: `static/css/[name].[contenthash].css`,
+        chunkFilename: `static/css/[id].[contenthash].css`,
       }),
-      //   new WorkboxPlugin.GenerateSW({
-      //     // these options encourage the ServiceWorkers to get in there fast
-      //     // and not allow any straggling "old" SWs to hang around
-      //     swDest: 'sw.js',
-      //     clientsClaim: true,
-      //     skipWaiting: true,
-      //   }),
+        // new WorkboxPlugin.GenerateSW({
+        //   // these options encourage the ServiceWorkers to get in there fast
+        //   // and not allow any straggling "old" SWs to hang around
+        //   swDest: 'sw.js',
+        //   clientsClaim: true,
+        //   skipWaiting: true,
+        // }),
       //   //   webpack.optimize.DedupePlugin
       //   new WebpackPwaManifest({
       //     name: 'Food Delivery',

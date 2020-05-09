@@ -13,7 +13,7 @@ const RequireAuth = (ComposedComponent: any) => {
 		}
 		return <Redirect to={{
 			pathname: '/auth',
-			// state: props.location
+			state: props.location
 		}} />
 	}
 

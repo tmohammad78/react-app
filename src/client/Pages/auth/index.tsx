@@ -1,18 +1,14 @@
 import React, { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-// import {  useLocation } from 'react-router-dom';
-
 import { skipAuth } from '../../Redux/auth/action';
 import { IApplicationState } from '../../Redux/reducers';
 import { renderRoutes } from 'react-router-config';
-import Register from '../../Components/Register/index';
-import MainAuth from './Main';
 import { AuthState } from '../../../Types/index';
+import MainAuth from './Main/index';
 
 import './style.scss';
 
 const AuthPage: React.SFC<any> = (props) => {
-	// const location = useLocation();
 	const logged = useSelector<IApplicationState, AuthState>(state => state.auth);
 	const [RegisterUi, setRegisterUi] = useState(false);
 	console.log('in authpage', props)
@@ -40,7 +36,8 @@ const AuthPage: React.SFC<any> = (props) => {
 				<picture>
 					<div className='my_img'></div>
 				</picture>
-				{renderRoutes(props.route.routes)}
+				{/* {renderRoutes(props.route.routes)} */}
+				<MainAuth callBackChangeState={handleShow} />
 				{/* <Route
 					exact
 					path={'/auth'}

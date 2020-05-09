@@ -1,22 +1,23 @@
 import React from 'react';
 import { Button } from '../../../Components/Buttons/Button';
-import { NavLink, RouteComponentProps, useRouteMatch } from 'react-router-dom';
+import { NavLink, RouteComponentProps, useRouteMatch, useLocation } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { skipAuth } from '../../../Redux/auth/action';
 
 type IParams = { url: string };
 interface IProps {
-	// callBackChangeState: () => void;
-	// handleSkipAuth: () => void,
+	callBackChangeState: () => void;
+	handleSkipAuth: () => void,
 	match: RouteComponentProps<IParams>
 }
-const MainAuth: React.SFC<> = (props) => {
-	console.log(props)
+const MainAuth: React.SFC = (props) => {
 	// const location = useLocation();
 	const dispatch = useDispatch();
+
 	const handleSkipAuth = () => {
 		dispatch(skipAuth());
 	};
+
 	return (
 		<div className='inner_content'>
 			<div className='title'>
@@ -24,7 +25,8 @@ const MainAuth: React.SFC<> = (props) => {
 			</div>
 			<div className='registerButton'>
 				<div className='registerbtn'>
-					<NavLink to={`${props.match.url}/test`}>
+					<NavLink to={`/test`}>
+						{/* ${props.match.url} */}
 						<Button ptb='16' prl='100' onClick={props.callBackChangeState}>
 							ثبت نام
             			</Button>
@@ -32,7 +34,8 @@ const MainAuth: React.SFC<> = (props) => {
 				</div>
 				<div></div>
 				<div className='registerbtn'>
-					<NavLink to={`\too`}>
+					{/* ${location.state.pathname} */}
+					<NavLink to={`/`}>
 						<Button
 							ptb='13'
 							prl='100'

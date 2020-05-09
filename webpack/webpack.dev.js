@@ -1,5 +1,7 @@
 const webpack = require('webpack');
 const path = require('path');
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const LoadablePlugin = require('@loadable/webpack-plugin');
 
 module.exports = [
   {
@@ -17,10 +19,10 @@ module.exports = [
       ],
     },
     output: {
-      //   chunkFilename: '[name].fa.js',
-      filename: 'build.js',
-      publicPath: '/',
+      filename: '[name].build.js',
+      chunkFilename: '[name].chunk.js',
       path: path.resolve(__dirname, '../lib'),
+      publicPath: '/',
     },
     resolve: {
       extensions: ['.ts', '.tsx', '.js', '.json', '.jsx', '.scss', '.css'],
@@ -35,7 +37,9 @@ module.exports = [
         {
           test: /\.(sa|sc|c)ss$/,
           use: [
-            { loader: 'style-loader' },
+            {
+              loader: MiniCssExtractPlugin.loader,
+            },
             {
               loader: 'css-loader',
               options: {
@@ -68,6 +72,14 @@ module.exports = [
         },
       ],
     },
-    plugins: [new webpack.NamedModulesPlugin(), new webpack.HotModuleReplacementPlugin()],
+    plugins: [
+      new MiniCssExtractPlugin({
+        filename: 'static/css/[name].fa.css',
+        chunkFilename: 'static/css/[id].fa.css',
+      }),
+      new LoadablePlugin(),
+      new webpack.NamedModulesPlugin(),
+      new webpack.HotModuleReplacementPlugin(),
+    ],
   },
 ];
