@@ -145,3 +145,12 @@ declare module '*.scss' {
 	const content: { [className: string]: string };
 	export = content;
 }
+
+declare global {
+	interface Window {
+		__REDUX_DEVTOOLS_EXTENSION_COMPOSE__?: typeof compose;
+		__INITIAL_STATE__: any;
+		__ASSET_MANIFEST__: any
+		// Storage.getItem: string | null
+	}
+}

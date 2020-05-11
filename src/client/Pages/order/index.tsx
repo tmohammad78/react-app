@@ -1,36 +1,43 @@
-import React, { lazy, Suspense } from 'react';
+import React, { useState } from 'react';
 
 import Cover from '../../Components/Cover/index';
 import Header from '../../Components/Header/index';
 import Footer from '../../Components/Footer/index';
-import Spinner from '../../Components/Spinner/index';
 import RightSide from './rightSide/rightSide';
-
+import { ThemeProvider } from 'styled-components';
 import { RestMenuHolder } from './style';
+import darkTheme from '../../Theme/dark';
+import lightTheme from '../../Theme/light';
+import Cart from '../../Components/FloatCart';
 
-const Cart = lazy(() => import('../../Components/FloatCart'));
 interface Props {
 	toggleTheme: string | boolean | (() => void)
 }
 
-const Order: React.SFC<Props> = React.memo((props) => {
-	// toggleTheme={props.toggleTheme}
-	return (
-		<React.Fragment>
-			<Header />
-			<Cover />
-			{/* <Suspense fallback={<Spinner />}>
-				<RestMenuHolder>
-					<div className='wrapper clearfix '>
-						<RightSide route={props.route} />
-					</div>
-					<Cart />
-				</RestMenuHolder>
-			</Suspense> */}
-			<Footer />
-		</React.Fragment>
+const Order: React.SFC<Props> = (props) => {
+	console.log(props);
+	const stored = localStorage.getItem('isDarkMode');
+	const [isDarkMode, setIsDarkMode] = useState(
+		stored === 'true' ? true : false
 	);
-});
+	const toggleTheme = () => {
+		setIsDarkMode(!isDarkMode);
+		localStorage.setItem('isDarkMode', !isDarkMode);
+	};
+	return (
+		<ThemeProvider theme={isDarkMode ? darkTheme : lightTheme}>
+			<Header toggleTheme={toggleTheme} />
+			<Cover />
+			<RestMenuHolder>
+				<div className='wrapper clearfix '>
+					{/* <RightSide route={props.route} /> */}
+				</div>
+				<Cart />
+			</RestMenuHolder>
+			<Footer />
+		</ThemeProvider>
+	);
+};
 
 
 export default Order;

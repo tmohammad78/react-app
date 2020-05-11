@@ -1,85 +1,291 @@
-const webpack = require('webpack');
 const path = require('path');
+const autoprefixer = require('autoprefixer');
+const webpack = require('webpack');
+// const CaseSensitivePathsPlugin = require('case-sensitive-paths-webpack-plugin');
+const eslintFormatter = require('react-dev-utils/eslintFormatter');
+const LodashModuleReplacementPlugin = require('lodash-webpack-plugin');
+const { ReactLoadablePlugin } = require('react-loadable/webpack');
+const ErrorOverlayPlugin = require('error-overlay-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
-const LoadablePlugin = require('@loadable/webpack-plugin');
+const ManifestPlugin = require('webpack-manifest-plugin');
+const TerserPlugin = require('terser-webpack-plugin');
+const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin');
+const { getAppEnv } = require('./env');
+const env = getAppEnv();
+const { PUBLIC_URL = '' } = env.raw;
+const resolvePath = (relativePath) => path.resolve(__dirname, relativePath);
 
 module.exports = [
+  //// ---------- client -----------
   {
+    name: 'client',
     mode: 'development',
     devtool: 'cheap-module-source-map',
-    target: 'web',
-    entry: {
-      app: [
-        // 'core-js/stable',
-        'regenerator-runtime/runtime', // it was an error in @babel/runtime in starting project
-        // 'webpack-hot-middleware/client',
-        // 'react-hot-loader/patch',
-        // `${commonVariables.appEntry}/index.tsx`,
-        path.resolve(__dirname, '../src/client/client.tsx'),
-      ],
-    },
+    entry: [
+      'webpack-hot-middleware/client?path=/__webpack_hmr&reload=true',
+      resolvePath('../src/client/client.tsx'),
+    ],
     output: {
-      filename: '[name].build.js',
+      path: resolvePath('../build'),
+      filename: '[name].bundle.js',
       chunkFilename: '[name].chunk.js',
-      path: path.resolve(__dirname, '../lib'),
-      publicPath: '/',
-    },
-    resolve: {
-      extensions: ['.ts', '.tsx', '.js', '.json', '.jsx', '.scss', '.css'],
+      publicPath: PUBLIC_URL + '/',
     },
     module: {
       rules: [
         {
           test: /\.(js|ts)x?$/,
-          exclude: /node_modules/,
-          use: [{ loader: 'babel-loader' }],
+          loader: 'babel-loader',
+          resolve: {
+            extensions: ['.js', 'jsx', '.tsx', '.ts'],
+          },
+          options: {
+            cacheDirectory: true,
+          },
         },
+        // {
+        //   test: /\.module\.s?css$/,
+        //   include: [resolvePath('../src')],
+        //   use: [
+        //     'style-loader',
+        //     {
+        //       loader: 'css-loader',
+        //       options: {
+        //         localsConvention: 'camelCase',
+        //         modules: true,
+        //       },
+        //     },
+        //     {
+        //       loader: 'postcss-loader',
+        //       options: {
+        //         ident: 'postcss',
+        //         sourceMap: true,
+        //         plugins: () => [
+        //           autoprefixer({
+        //             // browsers: [
+        //             //   ">1%",
+        //             //   "last 4 versions",
+        //             //   "Firefox ESR",
+        //             //   "not ie < 9"
+        //             // ]
+        //           }),
+        //         ],
+        //       },
+        //     },
+        //     'sass-loader',
+        //     // 'import-glob-loader',
+        //   ],
+        // },
         {
-          test: /\.(sa|sc|c)ss$/,
+          test: /\.s?css$/,
+          include: [resolvePath('../src')],
+          exclude: [/\.module\.s?css$/],
           use: [
-            {
-              loader: MiniCssExtractPlugin.loader,
-            },
-            {
-              loader: 'css-loader',
-              options: {
-                modules: {
-                  localIdentName: '[path][name]__[local]',
-                },
-              },
-            },
+            'style-loader',
+            'css-loader',
             {
               loader: 'postcss-loader',
               options: {
+                ident: 'postcss',
                 sourceMap: true,
-                config: {
-                  path: path.resolve(__dirname, '../postcss.config.js'),
-                },
+                plugins: () => [
+                  autoprefixer({
+                    // browsers: [
+                    //   ">1%",
+                    //   "last 4 versions",
+                    //   "Firefox ESR",
+                    //   "not ie < 9"
+                    // ]
+                  }),
+                ],
               },
             },
-            {
-              loader: 'sass-loader',
-              options: {
-                sourceMap: true,
-              },
-            },
+            'sass-loader',
           ],
         },
-
         {
           test: /\.(png|jpg|woff|woff2|eot|ttf|jpe?g|gif)$/,
           loader: 'url-loader?limit=8000&name=images/[name].[ext]',
         },
+
+        {
+          test: /\.svg$/,
+          use: [
+            {
+              loader: 'babel-loader',
+            },
+            {
+              loader: 'react-svg-loader',
+              options: {
+                jsx: true,
+              },
+            },
+          ],
+        },
       ],
     },
     plugins: [
-      new MiniCssExtractPlugin({
-        filename: 'static/css/[name].fa.css',
-        chunkFilename: 'static/css/[id].fa.css',
-      }),
-      new LoadablePlugin(),
-      new webpack.NamedModulesPlugin(),
+      new webpack.DefinePlugin(env.forWebpackDefinePlugin),
+      new webpack.IgnorePlugin(/^\.\/locale$/, /moment$/),
+      new LodashModuleReplacementPlugin(),
       new webpack.HotModuleReplacementPlugin(),
+      //   new CaseSensitivePathsPlugin(),
+      new ErrorOverlayPlugin(),
+      new ReactLoadablePlugin({
+        filename: 'build/react-loadable.json',
+      }),
     ],
+    // node: {
+    //   dgram: 'empty',
+    //   fs: 'empty',
+    //   net: 'empty',
+    //   tls: 'empty',
+    // },
+  },
+  ///        ----------production ----------
+  {
+    name: 'server',
+    mode: 'production',
+    devtool: 'source-map',
+    entry: [
+      //   polyfills: resolvePath('../src/client/polyfills.ts'),
+      //   main: resolvePath('../src/client/index.ts'),
+      'core-js/stable',
+      'regenerator-runtime/runtime',
+      resolvePath('../src/client/client.tsx'),
+    ],
+    output: {
+      path: resolvePath('../build'),
+      filename: 'static/js/[name].[chunkhash:8].js',
+      chunkFilename: 'static/js/[name].[chunkhash:8].chunk.js',
+      publicPath: PUBLIC_URL + '/',
+    },
+    module: {
+      rules: [
+        {
+          test: /\.(js|ts)x?$/,
+          loader: 'babel-loader',
+          resolve: {
+            extensions: ['.js', 'jsx', '.tsx', '.ts'],
+          },
+          options: {
+            compact: true,
+          },
+        },
+        // {
+        //   test: /\.module\.s?css$/,
+        //   include: [resolvePath('../src')],
+        //   use: [
+        //     MiniCssExtractPlugin.loader,
+        //     {
+        //       loader: 'css-loader',
+        //       options: {
+        //         localsConvention: 'camelCase',
+        //         modules: true,
+        //       },
+        //     },
+        //     {
+        //       loader: 'postcss-loader',
+        //       options: {
+        //         ident: 'postcss',
+        //         sourceMap: true,
+        //         plugins: () => [
+        //           autoprefixer({
+        //             // browsers: [
+        //             //   ">1%",
+        //             //   "last 4 versions",
+        //             //   "Firefox ESR",
+        //             //   "not ie < 9"
+        //             // ]
+        //           }),
+        //         ],
+        //       },
+        //     },
+        //     'sass-loader',
+        //     // 'import-glob-loader',
+        //   ],
+        // },
+        {
+          test: /\.s?css$/,
+          include: [resolvePath('../src')],
+          exclude: [/\.module\.s?css$/],
+          use: [
+            MiniCssExtractPlugin.loader,
+            'css-loader',
+            {
+              loader: 'postcss-loader',
+              options: {
+                ident: 'postcss',
+                sourceMap: true,
+                plugins: () => [
+                  autoprefixer({
+                    // browsers: [
+                    //   ">1%",
+                    //   "last 4 versions",
+                    //   "Firefox ESR",
+                    //   "not ie < 9"
+                    // ]
+                  }),
+                ],
+              },
+            },
+            'sass-loader',
+          ],
+        },
+        {
+          test: /\.(png|jpg|woff|woff2|eot|ttf|jpe?g|gif)$/,
+          loader: 'url-loader?limit=8000&name=images/[name].[ext]',
+        },
+
+        {
+          test: /\.svg$/,
+          use: [
+            {
+              loader: 'babel-loader',
+            },
+            {
+              loader: 'react-svg-loader',
+              options: {
+                jsx: true,
+              },
+            },
+          ],
+        },
+      ],
+    },
+    optimization: {
+      minimize: true,
+      minimizer: [
+        new TerserPlugin({
+          sourceMap: true,
+          terserOptions: {
+            output: {
+              comments: false,
+            },
+          },
+          extractComments: false,
+        }),
+      ],
+    },
+    plugins: [
+      new webpack.DefinePlugin(env.forWebpackDefinePlugin),
+      new webpack.IgnorePlugin(/^\.\/locale$/, /moment$/),
+      new LodashModuleReplacementPlugin(),
+      new MiniCssExtractPlugin({
+        filename: 'static/css/[name].[contenthash:8].css',
+      }),
+      new ManifestPlugin({
+        fileName: 'asset-manifest.json',
+      }),
+      new ReactLoadablePlugin({
+        filename: 'build/react-loadable.json',
+      }),
+    ],
+    node: {
+      dgram: 'empty',
+      fs: 'empty',
+      net: 'empty',
+      tls: 'empty',
+    },
   },
 ];

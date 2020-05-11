@@ -2,13 +2,7 @@ import { compose, createStore, applyMiddleware, Store } from 'redux';
 import thunk from 'redux-thunk';
 import newRootReducer from './reducers';
 import { IApplicationState } from './reducers';
-declare global {
-	interface Window {
-		__REDUX_DEVTOOLS_EXTENSION_COMPOSE__?: typeof compose;
-		__INITIAL_STATE__: any;
-		// Storage.getItem: string | null
-	}
-}
+
 
 export default (initialState: any): Store<IApplicationState> => {
 	// initialState = JSON.parse(window.localStorage.getItem('state')) || initialState;
