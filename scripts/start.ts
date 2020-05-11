@@ -1,15 +1,23 @@
 /* eslint-disable no-console */
+
 process.env.NODE_ENV = 'development';
 process.env.PUBLIC_URL = process.env.PUBLIC_URL || '';
 
-require('@babel/register')({
-	"presets": ["@babel/preset-env"],
-	plugins: [
-		'dynamic-import-node'
-	]
-});
-
-const chalk = require('chalk');
+// require('@babel/register')({
+// 	presets: [
+// 		[
+// 			"@babel/preset-env",
+// 			{
+// 				targets: {
+// 					node: "current"
+// 				}
+// 			}
+// 		]
+// 	],
+// });
+// const chalk = require('chalk');
+import chalk from 'chalk';
+import { app } from '../server/server';
 const clearConsole = require('react-dev-utils/clearConsole');
 const express = require('express');
 const openBrowser = require('react-dev-utils/openBrowser');
@@ -24,10 +32,7 @@ const {
 	choosePort,
 	prepareUrls
 } = require('react-dev-utils/WebpackDevServerUtils');
-// import { applyDevMiddleware } from './utils/devMiddleWare';
 
-// const { applyDevMiddleware } = require('./utils/devMiddleware');
-// const { purgeCacheOnChange } = require('./utils/purgeCacheOnChange');
 
 process.on('unhandledRejection', err => {
 	throw err;
@@ -35,7 +40,6 @@ process.on('unhandledRejection', err => {
 
 const DEFAULT_PORT = process.env.PORT || 3000;
 const HOST = process.env.HOST || '0.0.0.0';
-const isInteractive = process.stdout.isTTY;
 const server = express();
 
 
@@ -57,7 +61,7 @@ server.use(
 
 server.use(
 	webpackHotMiddleware(
-		compiler.compilers.find(compiler => compiler.name === 'client'),
+		compiler.compilers.find((compiler: any) => compiler.name === 'client'),
 		{
 			path: '/__webpack_hmr',
 			heartbeat: 4000
@@ -65,22 +69,19 @@ server.use(
 	)
 );
 
-server.use((req, res) => {
-	const app = require('../src/server/server.ts');
+server.use((req: any, res: any) => {
+
 	app(req, res);
 });
 
-choosePort(HOST, DEFAULT_PORT).then(port => {
+choosePort(HOST, DEFAULT_PORT).then((port: any) => {
 	if (!port) {
 		return;
 	}
 	const urls = prepareUrls('http', HOST, port);
-	server.listen(port, HOST, err => {
+	server.listen(port, HOST, (err: any) => {
 		if (err) {
 			return console.log(err);
-		}
-		if (isInteractive) {
-			clearConsole();
 		}
 		console.log(chalk.white('\n\tStarting dev server...'));
 		openBrowser(urls.localUrlForBrowser);

@@ -20,7 +20,7 @@
     "noImplicitAny": true,
     // "forceConsistentCasingInFileNames": true,
     "resolveJsonModule": true,
-    "isolatedModules": true,
+    "isolatedModules": false,
     "rootDir": ".",
     "allowJs": true,
     "plugins": [
@@ -28,6 +28,6 @@
       { "transform": "typescript-transform-paths", "afterDeclarations": true }
     ]
   },
-  "include": ["./src/**/*"],
-  "exclude": ["node_modules", "build"]
+  "include": ["./src/**/*", "server"],
+  "exclude": ["node_modules"]
 }

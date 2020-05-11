@@ -3,10 +3,6 @@ import Loadable from 'react-loadable';
 import renderer from '../src/Helper/render';
 import createStore from '../src/Helper/createStore';
 
-// const Loadable = require('react-loadable');
-// const renderer = require('../Helper/render');
-// const createStore = require('../Helper/createStore');
-
 export const renderServerSide = (req: any, res: any) => {
 	Loadable.preloadAll()
 		.then(() => createStore(req))

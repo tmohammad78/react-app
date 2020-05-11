@@ -1,7 +1,7 @@
 import { applyMiddleware, createStore } from "redux";
 import thunk from "redux-thunk";
 import newRootReducer from "../client/Redux/reducers";
-import instance from '../API/api';
+// import instance from '../API/api';
 
 export default (req: any) => {
 	// const axiosInstance = axios.create({

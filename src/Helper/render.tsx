@@ -6,7 +6,7 @@ import { Provider } from "react-redux";
 import Loadable from 'react-loadable';
 import { Helmet } from "react-helmet";
 import { ServerStyleSheet, StyleSheetManager } from 'styled-components';
-import { getBundles, Manifest } from 'react-loadable/webpack';
+import { getBundles, Manifest, Bundle } from 'react-loadable/webpack';
 import Routes from "../client/Route/Routes";
 import JsonStatic from '../../build/react-loadable.json';
 import Html from './html';
@@ -29,7 +29,7 @@ export default (store: any, req: any, res: any) => {
 	);
 
 	sheet.seal();
-	const Manifest: Manifest = JsonStatic;
+	const Manifest: Bundle | undefined | any = JsonStatic;
 	const fullApp = Html({
 		helmet: Helmet.renderStatic(),
 		store: store.getState(),

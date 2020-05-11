@@ -1,12 +1,9 @@
-module.exports = function (api) {
-  api.cache(true);
-  const presets = [
+module.exports = {
+  presets: [
     [
       '@babel/preset-env',
       {
         modules: false,
-        useBuiltIns: 'entry',
-        corejs: 3.6,
         targets: {
           node: 'current',
         },
@@ -14,8 +11,8 @@ module.exports = function (api) {
     ],
     '@babel/preset-react',
     '@babel/preset-typescript',
-  ];
-  const plugins = [
+  ],
+  plugins: [
     'react-hot-loader/babel',
     'react-loadable/babel',
     '@babel/plugin-proposal-class-properties',
@@ -37,12 +34,7 @@ module.exports = function (api) {
     '@babel/plugin-proposal-export-default-from',
     '@babel/plugin-proposal-logical-assignment-operators',
     '@babel/plugin-proposal-do-expressions',
-  ];
-
-  return {
-    presets,
-    plugins,
-  };
+  ],
 };
 
 // {

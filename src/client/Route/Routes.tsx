@@ -40,7 +40,7 @@ const Favorite = Loadable({
 	loading: () => <Spinner />
 });
 
-const Routes: RouteConfig[] | undefined = [
+const Routes: any | undefined = [
 	{
 		component: RequireAuth(Order),
 		path: '/',
