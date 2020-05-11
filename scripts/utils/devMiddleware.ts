@@ -1,30 +1,31 @@
 // import webpack from 'webpack';
 
-// import webpackDevMiddleware from 'webpack-dev-middleware';
-// import webpackHotMiddleware from 'webpack-hot-middleware';
-// import Config from '../../webpack/webpack.dev';
+const webpack = require('webpack');
+const webpackDevMiddleware = require('webpack-dev-middleware');
+const webpackHotMiddleware = require('webpack-hot-middleware');
 
-export const applyDevMiddleware = app => {
+const Config = require('../../webpack/webpack.dev')
+export const applyDevMiddleware = (app: any) => {
 	console.log('dddd')
 	const compiler = webpack(Config);
 	app.use(
 		webpackDevMiddleware(compiler, {
-			hot: true,
 			publicPath: '/',
-			progress: true,
-			stats: {
-				colors: true,
-				assets: true,
-				chunks: false,
-				modules: false,
-				hash: false
-			}
+			// progress: true,
+			serverSideRender: true
+			// stats: {
+			// 	colors: true,
+			// 	assets: true,
+			// 	chunks: false,
+			// 	modules: false,
+			// 	hash: false
+			// }
 		})
 	);
 
 	app.use(
 		webpackHotMiddleware(
-			compiler.compilers.find(compiler => compiler.name === 'client'),
+			compiler.compilers.find((compiler: any) => compiler.name === 'client'),
 			{
 				path: '/__webpack_hmr',
 				heartbeat: 4000

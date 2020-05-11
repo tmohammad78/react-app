@@ -7,7 +7,6 @@ import { subFoodReducer } from './subFood/reducer';
 import { likeFoodReducer } from './likeFood/reducer';
 import { authReducer } from './auth/reducer';
 import { AuthState, MenuState, CartState, SubFoodState, LikeFoodState } from '../../Types/index';
-
 export interface IApplicationState {
 	menu: MenuState,
 	cart: CartState,

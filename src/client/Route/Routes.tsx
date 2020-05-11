@@ -5,39 +5,39 @@ import RequireAuth from '../Hoc/auth';
 
 const AuthPage = Loadable({
 	loader: () => import('../Pages/auth/index'),
-	loading: () => <Spinner />
+	loading: () => <div>...loadin</div>
 });
 const Register = Loadable({
 	loader: () => import('../Components/Register/index'),
-	loading: () => <Spinner />
+	loading: () => <div>...loadin</div>
 });
 const MainAuth = Loadable({
 	loader: () => import('../Pages/auth/main/index'),
-	loading: () => <Spinner />
+	loading: () => <div>...loadin</div>
 });
 const Order = Loadable({
 	loader: () => import('../Pages/order'),
-	loading: () => <Spinner />
+	loading: () => <div>...loadin</div>
 });
 const Menu = Loadable({
 	loader: () => import('../Components/Menu/index'),
-	loading: () => <Spinner />
+	loading: () => <div>...loadin</div>
 });
 const InnerRoute = Loadable({
 	loader: () => import('../Pages/order/InnerRoute'),
-	loading: () => <Spinner />
+	loading: () => <div>...loadin</div>
 });
 const TabBar = Loadable({
 	loader: () => import('../Pages/order/tabBar/index'),
-	loading: () => <Spinner />
+	loading: () => <div>...loadin</div>
 });
 const InfoRest = Loadable({
 	loader: () => import('../Components/infoRes/index'),
-	loading: () => <Spinner />
+	loading: () => <div>...loadin</div>
 });
 const Favorite = Loadable({
 	loader: () => import('../Components/Favorite/index'),
-	loading: () => <Spinner />
+	loading: () => <div>...loadin</div>
 });
 
 const Routes: any | undefined = [

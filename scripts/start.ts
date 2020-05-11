@@ -17,16 +17,16 @@ process.env.PUBLIC_URL = process.env.PUBLIC_URL || '';
 // });
 // const chalk = require('chalk');
 import chalk from 'chalk';
-import { app } from '../server/server';
+
 const clearConsole = require('react-dev-utils/clearConsole');
 const express = require('express');
 const openBrowser = require('react-dev-utils/openBrowser');
 const path = require('path');
 
-const webpack = require('webpack');
-const webpackDevMiddleware = require('webpack-dev-middleware');
-const webpackHotMiddleware = require('webpack-hot-middleware');
-const Config = require('../webpack/webpack.dev');
+// const webpack = require('webpack');
+// const webpackDevMiddleware = require('webpack-dev-middleware');
+// const webpackHotMiddleware = require('webpack-hot-middleware');
+// const Config = require('../webpack/webpack.dev');
 
 const {
 	choosePort,
@@ -34,43 +34,40 @@ const {
 } = require('react-dev-utils/WebpackDevServerUtils');
 
 
-process.on('unhandledRejection', err => {
-	throw err;
-});
-
 const DEFAULT_PORT = process.env.PORT || 3000;
 const HOST = process.env.HOST || '0.0.0.0';
 const server = express();
 
 
-const compiler = webpack(Config);
-server.use(
-	webpackDevMiddleware(compiler, {
-		hot: true,
-		publicPath: '/',
-		progress: true,
-		stats: {
-			colors: true,
-			assets: true,
-			chunks: false,
-			modules: false,
-			hash: false
-		}
-	})
-);
+// const compiler = webpack(Config);
+// server.use(
+// 	webpackDevMiddleware(compiler, {
+// 		hot: true,
+// 		publicPath: '/',
+// 		progress: true,
+// 		stats: {
+// 			colors: true,
+// 			assets: true,
+// 			chunks: false,
+// 			modules: false,
+// 			hash: false
+// 		}
+// 	})
+// );
 
-server.use(
-	webpackHotMiddleware(
-		compiler.compilers.find((compiler: any) => compiler.name === 'client'),
-		{
-			path: '/__webpack_hmr',
-			heartbeat: 4000
-		}
-	)
-);
-
+// server.use(
+// 	webpackHotMiddleware(
+// 		compiler.compilers.find((compiler: any) => compiler.name === 'client'),
+// 		{
+// 			path: '/__webpack_hmr',
+// 			heartbeat: 4000
+// 		}
+// 	)
+// );
+const { applyDevMiddleware } = require('./utils/devMiddleware');
+applyDevMiddleware(server)
+import { app } from '../server/server';
 server.use((req: any, res: any) => {
-
 	app(req, res);
 });
 

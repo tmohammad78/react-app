@@ -1,6 +1,7 @@
 import { getAppEnv } from '../../webpack/env';
 import serialize from 'serialize-javascript';
 const env = getAppEnv();
+import { Bundle } from 'react-loadable/webpack';
 const { NODE_ENV, PUBLIC_URL = '' } = env.raw;
 
 let assetManifest: any;
@@ -12,7 +13,7 @@ if (NODE_ENV === 'production') {
 	};
 }
 
-const prefetchStyleLinks = bundles => {
+const prefetchStyleLinks = (bundles: Bundle[]) => {
 	if (NODE_ENV !== 'production') {
 		return '';
 	}
@@ -33,7 +34,7 @@ const prefetchStyleLinks = bundles => {
 		.join('');
 };
 
-const cssLinks = bundles => {
+const cssLinks = (bundles: Bundle[]) => {
 	if (NODE_ENV !== 'production') {
 		return '';
 	}
@@ -48,7 +49,7 @@ const cssLinks = bundles => {
 		.join('');
 };
 
-const preloadScripts = bundles => {
+const preloadScripts = (bundles: Bundle[]) => {
 	const mainJS = assetManifest['main.js'];
 	const bundleFilePaths = bundles
 		.filter(bundle => bundle.file.match(/\.js$/))
@@ -59,7 +60,7 @@ const preloadScripts = bundles => {
 		.join('');
 };
 
-const jsScripts = bundles => {
+const jsScripts = (bundles: Bundle[]) => {
 	const mainJS = assetManifest['main.js'];
 	const bundleFilePaths = bundles
 		.filter(bundle => bundle.file.match(/\.js$/))
@@ -72,8 +73,15 @@ const jsScripts = bundles => {
 		)
 		.join('');
 };
+interface test {
+	helmet: any,
+	store: any,
+	bundles: Bundle[],
+	sheet: any,
+	content: string
+}
 
-const Html = ({ helmet, store, content, bundles, sheet }) => {
+const Html = ({ helmet, store, bundles, sheet, content }: test): string => {
 	const htmlAttrs = helmet.htmlAttributes.toString();
 	const bodyAttrs = helmet.bodyAttributes.toString();
 	console.log('in html', store);

@@ -21,6 +21,7 @@ module.exports = [
     name: 'client',
     mode: 'development',
     devtool: 'cheap-module-source-map',
+    target: 'web',
     entry: [
       'webpack-hot-middleware/client?path=/__webpack_hmr&reload=true',
       resolvePath('../src/client/client.tsx'),
@@ -43,39 +44,6 @@ module.exports = [
             cacheDirectory: true,
           },
         },
-        // {
-        //   test: /\.module\.s?css$/,
-        //   include: [resolvePath('../src')],
-        //   use: [
-        //     'style-loader',
-        //     {
-        //       loader: 'css-loader',
-        //       options: {
-        //         localsConvention: 'camelCase',
-        //         modules: true,
-        //       },
-        //     },
-        //     {
-        //       loader: 'postcss-loader',
-        //       options: {
-        //         ident: 'postcss',
-        //         sourceMap: true,
-        //         plugins: () => [
-        //           autoprefixer({
-        //             // browsers: [
-        //             //   ">1%",
-        //             //   "last 4 versions",
-        //             //   "Firefox ESR",
-        //             //   "not ie < 9"
-        //             // ]
-        //           }),
-        //         ],
-        //       },
-        //     },
-        //     'sass-loader',
-        //     // 'import-glob-loader',
-        //   ],
-        // },
         {
           test: /\.s?css$/,
           include: [resolvePath('../src')],
@@ -148,11 +116,10 @@ module.exports = [
   ///        ----------production ----------
   {
     name: 'server',
-    mode: 'production',
+    mode: 'development',
+    target: 'node',
     devtool: 'source-map',
     entry: [
-      //   polyfills: resolvePath('../src/client/polyfills.ts'),
-      //   main: resolvePath('../src/client/index.ts'),
       'core-js/stable',
       'regenerator-runtime/runtime',
       resolvePath('../src/client/client.tsx'),
@@ -160,6 +127,7 @@ module.exports = [
     output: {
       path: resolvePath('../build'),
       filename: 'static/js/[name].[chunkhash:8].js',
+      libraryTarget: 'commonjs2',
       chunkFilename: 'static/js/[name].[chunkhash:8].chunk.js',
       publicPath: PUBLIC_URL + '/',
     },
@@ -175,39 +143,6 @@ module.exports = [
             compact: true,
           },
         },
-        // {
-        //   test: /\.module\.s?css$/,
-        //   include: [resolvePath('../src')],
-        //   use: [
-        //     MiniCssExtractPlugin.loader,
-        //     {
-        //       loader: 'css-loader',
-        //       options: {
-        //         localsConvention: 'camelCase',
-        //         modules: true,
-        //       },
-        //     },
-        //     {
-        //       loader: 'postcss-loader',
-        //       options: {
-        //         ident: 'postcss',
-        //         sourceMap: true,
-        //         plugins: () => [
-        //           autoprefixer({
-        //             // browsers: [
-        //             //   ">1%",
-        //             //   "last 4 versions",
-        //             //   "Firefox ESR",
-        //             //   "not ie < 9"
-        //             // ]
-        //           }),
-        //         ],
-        //       },
-        //     },
-        //     'sass-loader',
-        //     // 'import-glob-loader',
-        //   ],
-        // },
         {
           test: /\.s?css$/,
           include: [resolvePath('../src')],
