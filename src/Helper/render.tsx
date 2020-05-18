@@ -8,6 +8,7 @@ import { Helmet } from "react-helmet";
 import { ServerStyleSheet, StyleSheetManager } from 'styled-components';
 import { getBundles, Bundle } from 'react-loadable/webpack';
 import Routes from "../client/Route/Routes";
+// @ts-ignore
 import JsonStatic from '../../build/react-loadable.json';
 import Html from './html';
 

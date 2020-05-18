@@ -1,70 +1,51 @@
-/* eslint-disable no-console */
-
 process.env.NODE_ENV = 'development';
 process.env.PUBLIC_URL = process.env.PUBLIC_URL || '';
 
-// require('@babel/register')({
-// 	presets: [
-// 		[
-// 			"@babel/preset-env",
-// 			{
-// 				targets: {
-// 					node: "current"
-// 				}
-// 			}
-// 		]
-// 	],
-// });
-// const chalk = require('chalk');
 import chalk from 'chalk';
-
-const clearConsole = require('react-dev-utils/clearConsole');
-const express = require('express');
-const openBrowser = require('react-dev-utils/openBrowser');
-const path = require('path');
-
-// const webpack = require('webpack');
-// const webpackDevMiddleware = require('webpack-dev-middleware');
-// const webpackHotMiddleware = require('webpack-hot-middleware');
-// const Config = require('../webpack/webpack.dev');
-
-const {
+import clearConsole from 'react-dev-utils/clearConsole';
+import express from 'express';
+import openBrowser from 'react-dev-utils/openBrowser';
+import {
 	choosePort,
 	prepareUrls
-} = require('react-dev-utils/WebpackDevServerUtils');
+} from 'react-dev-utils/WebpackDevServerUtils'
+import webpack from 'webpack';
+import webpackDevMiddleware from 'webpack-dev-middleware';
+import webpackHotMiddleware from 'webpack-hot-middleware';
+// import Config from '../webpack/webpack.dev';
+const Config = require('../webpack/webpack.dev')
 
-
-const DEFAULT_PORT = process.env.PORT || 3000;
+const DEFAULT_PORT: number = parseInt(process.env.PORT ? process.env.PORT : '') || 3000;
 const HOST = process.env.HOST || '0.0.0.0';
 const server = express();
 
 
-// const compiler = webpack(Config);
-// server.use(
-// 	webpackDevMiddleware(compiler, {
-// 		hot: true,
-// 		publicPath: '/',
-// 		progress: true,
-// 		stats: {
-// 			colors: true,
-// 			assets: true,
-// 			chunks: false,
-// 			modules: false,
-// 			hash: false
-// 		}
-// 	})
-// );
+const compiler = webpack(Config);
+console.log('type compiler', compiler);
 
-// server.use(
-// 	webpackHotMiddleware(
-// 		compiler.compilers.find((compiler: any) => compiler.name === 'client'),
-// 		{
-// 			path: '/__webpack_hmr',
-// 			heartbeat: 4000
-// 		}
-// 	)
-// );
-const { applyDevMiddleware } = require('./utils/devMiddleware');
+
+server.use(
+	webpackDevMiddleware(compiler, {
+		publicPath: '/',
+		stats: {
+			colors: true,
+			assets: true,
+			chunks: false,
+			modules: false,
+			hash: false
+		}
+	})
+);
+server.use(
+	webpackHotMiddleware(
+		compiler.compilers.find((Compiler: any) => Compiler.name === 'client'),
+		{
+			path: '/__webpack_hmr',
+			heartbeat: 4000
+		}
+	)
+);
+import { applyDevMiddleware } from './utils/devMiddleware';
 applyDevMiddleware(server)
 import { app } from '../server/server';
 server.use((req: any, res: any) => {
