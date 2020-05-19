@@ -3,7 +3,7 @@ import { NavLink } from 'react-router-dom';
 
 import { MenuTab } from '../style';
 
-const TabBar: React.SFC = (props) => {
+const TabBar: React.SFC = () => {
 	return (
 		<MenuTab>
 			<NavLink to='/' >منوی غذا</NavLink>
