@@ -9,7 +9,7 @@ import { TabContentHolder } from './style';
 import { renderRoutes } from 'react-router-config';
 
 const InnerRoute = ({ routes }) => {
-	console.log('inner route ', routes)
+	// console.log('inner route ', routes)
 	return (
 		<TabContentHolder>
 			{/* <Route exact path='/' component={Menu} />

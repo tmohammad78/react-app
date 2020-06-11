@@ -8,32 +8,33 @@ import { Helmet } from "react-helmet";
 import { ServerStyleSheet, StyleSheetManager } from 'styled-components';
 import { getBundles, Bundle } from 'react-loadable/webpack';
 import Routes from "../client/Route/Routes";
+
 // @ts-ignore
 import JsonStatic from '../../build/react-loadable.json';
+// @ts-ignore
 import Html from './html';
 
 export default (store: any, req: any, res: any) => {
-	console.log("in rendering ", store.getState());
 	const sheet = new ServerStyleSheet();
 	const modules: string[] = [];
 	const context = {};
 	const content = renderToString(
-		<Loadable.Capture report={moduleName => modules.push(moduleName)}>
-			<Provider store={store}>
-				<StyleSheetManager sheet={sheet.instance} >
+		sheet.collectStyles(
+			<Loadable.Capture report={moduleName => modules.push(moduleName)}>
+				<Provider store={store}>
+					{/* <StyleSheetManager sheet={sheet.instance} > */}
 					<StaticRouter location={req.path} context={context}>
 						<div>{renderRoutes(Routes)}</div>
 					</StaticRouter>
-				</StyleSheetManager>
-			</Provider>
-		</Loadable.Capture>
+					{/* </StyleSheetManager> */}
+				</Provider>
+			</Loadable.Capture>
+		)
 	);
-
-	sheet.seal();
 	const Manifest: Bundle | undefined | any = JsonStatic ? JsonStatic : '';
 	const fullApp = Html({
 		helmet: Helmet.renderStatic(),
-		store: store.getState(),
+		store: store,
 		bundles: getBundles(Manifest, modules),
 		sheet,
 		content

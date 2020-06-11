@@ -6,7 +6,6 @@ const webpackHotMiddleware = require('webpack-hot-middleware');
 
 const Config = require('../../webpack/webpack.dev')
 export const applyDevMiddleware = (app: any) => {
-	console.log('dddd')
 	const compiler = webpack(Config);
 	app.use(
 		webpackDevMiddleware(compiler, {

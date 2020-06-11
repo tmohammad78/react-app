@@ -11,7 +11,7 @@ import './style.scss';
 const AuthPage: React.SFC<any> = (props) => {
 	const logged = useSelector<IApplicationState, AuthState>(state => state.auth);
 	const [RegisterUi, setRegisterUi] = useState(false);
-	console.log('in authpage', props)
+	// console.log('in authpage', props)
 
 	useEffect(() => {
 
@@ -37,7 +37,9 @@ const AuthPage: React.SFC<any> = (props) => {
 					<div className='my_img'></div>
 				</picture>
 				{/* {renderRoutes(props.route.routes)} */}
-				<MainAuth callBackChangeState={handleShow} />
+				<div>fdkhb</div>
+				{/* <MainAuth callBackChangeState={handleShow} /> */}
+
 				{/* <Route
 					exact
 					path={'/auth'}

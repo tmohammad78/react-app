@@ -84,11 +84,9 @@ interface test {
 const Html = ({ helmet, store, bundles, sheet, content }: test): string => {
 	const htmlAttrs = helmet.htmlAttributes.toString();
 	const bodyAttrs = helmet.bodyAttributes.toString();
-	console.log('in html', store);
-
 	const styleTags = sheet.getStyleTags();
-	console.log('styleTags', styleTags);
 	sheet.seal();
+
 	return `
     <!doctype html>
     <html lang="en" ${htmlAttrs}>

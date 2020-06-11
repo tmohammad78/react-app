@@ -2,7 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 
 interface IProps {
-	className: string,
+	className?: any,
 	children: React.ReactNode,
 	onClick: (e: React.FormEvent<EventTarget>) => void
 }

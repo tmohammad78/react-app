@@ -15,7 +15,7 @@ interface Props {
 }
 
 const Order: React.SFC<Props> = (props) => {
-	console.log(props);
+	// console.log(props);
 	const stored = localStorage.getItem('isDarkMode');
 	const [isDarkMode, setIsDarkMode] = useState(
 		stored === 'true' ? true : false

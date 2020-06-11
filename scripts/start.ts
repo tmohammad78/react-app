@@ -21,8 +21,6 @@ const server = express();
 
 
 const compiler = webpack(Config);
-console.log('type compiler', compiler);
-
 
 server.use(
 	webpackDevMiddleware(compiler, {
@@ -36,8 +34,10 @@ server.use(
 		}
 	})
 );
+
 server.use(
 	webpackHotMiddleware(
+		// @ts-ignore
 		compiler.compilers.find((Compiler: any) => Compiler.name === 'client'),
 		{
 			path: '/__webpack_hmr',
@@ -45,8 +45,9 @@ server.use(
 		}
 	)
 );
-import { applyDevMiddleware } from './utils/devMiddleware';
-applyDevMiddleware(server)
+
+// import { applyDevMiddleware } from './utils/devMiddleware';
+// applyDevMiddleware(server)
 import { app } from '../server/server';
 server.use((req: any, res: any) => {
 	app(req, res);

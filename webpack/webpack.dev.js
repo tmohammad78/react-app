@@ -81,9 +81,9 @@ module.exports = [
           use: [
             {
               loader: 'babel-loader',
-              options: {
-                presets: ['env', 'react'],
-              },
+            //   options: {
+            //     presets: ['env', 'react'],
+            //   },
             },
             {
               loader: 'react-svg-loader',

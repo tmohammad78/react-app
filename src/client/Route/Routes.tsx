@@ -13,7 +13,7 @@ const Register = Loadable({
 });
 const MainAuth = Loadable({
 	loader: () => import('../Pages/auth/main/index'),
-	loading: () => <div>...loadin</div>
+	loading: () => <div>...loading</div>
 });
 const Order = Loadable({
 	loader: () => import('../Pages/order'),
@@ -41,42 +41,42 @@ const Favorite = Loadable({
 });
 
 const Routes: any | undefined = [
-	{
-		component: RequireAuth(Order),
-		path: '/',
-		exact: true,
-		routes: [
-			{
-				component: TabBar,
-				path: '/'
-			},
-			{
-				component: Menu,
-				path: '/',
-				exact: true
-			},
-			{
-				component: InnerRoute,
-				path: '/:name',
-				routes: [
-					{
-						path: '/',
-						component: Menu,
-						exact: true
-					},
-					{
-						path: '/info',
-						component: InfoRest
-					},
-					{
-						path: '/favorite',
-						component: Favorite
-					}
+	// {
+	// 	component: RequireAuth(Order),
+	// 	path: '/',
+	// 	exact: true,
+	// 	routes: [
+	// 		{
+	// 			component: TabBar,
+	// 			path: '/'
+	// 		},
+	// 		{
+	// 			component: Menu,
+	// 			path: '/',
+	// 			exact: true
+	// 		},
+	// 		{
+	// 			component: InnerRoute,
+	// 			path: '/:name',
+	// 			routes: [
+	// 				{
+	// 					path: '/',
+	// 					component: Menu,
+	// 					exact: true
+	// 				},
+	// 				{
+	// 					path: '/info',
+	// 					component: InfoRest
+	// 				},
+	// 				{
+	// 					path: '/favorite',
+	// 					component: Favorite
+	// 				}
 
-				]
-			}
-		]
-	},
+	// 			]
+	// 		}
+	// 	]
+	// },
 	{
 		component: AuthPage,
 		path: '/auth',

@@ -8,7 +8,7 @@ const RightSide: React.SFC = (props) => {
 			<RestProfileContainer>
 				{
 					props.route.routes.map((item: any) => {
-						console.log(item)
+						// console.log(item)
 						return <Route exact={item.exact ? item.exact : false} path={item.path} component={item.component} />
 					})
 				}
