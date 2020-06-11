@@ -15,6 +15,7 @@ module.exports = {
   plugins: [
     'react-hot-loader/babel',
     'react-loadable/babel',
+    '@loadable/babel-plugin',
     '@babel/plugin-proposal-class-properties',
     ['@babel/plugin-proposal-decorators', { legacy: true }],
     [

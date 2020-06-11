@@ -78,10 +78,11 @@ interface test {
 	store: any,
 	bundles: Bundle[],
 	sheet: any,
-	content: string
+	content: string,
+	extractor: any
 }
 
-const Html = ({ helmet, store, bundles, sheet, content }: test): string => {
+const Html = ({ helmet, store, bundles, sheet, content, extractor }: test): string => {
 	const htmlAttrs = helmet.htmlAttributes.toString();
 	const bodyAttrs = helmet.bodyAttributes.toString();
 	const styleTags = sheet.getStyleTags();
@@ -101,18 +102,18 @@ const Html = ({ helmet, store, bundles, sheet, content }: test): string => {
 		<link rel="stylesheet" href="/static/css/app.fa.css"/>
 		<link rel="stylesheet" href="/dist/static/css/app.fa.css"/>
 		<link rel="stylesheet" href="/dist/app.fa.css"/>
-
+${extractor.getLinkTags()}
 		<link rel="apple-touch-icon" href="https://cdn.glitch.com/49d34dc6-8fbd-46bb-8221-b99ffd36f1af%2Ftouchicon-180.png?v=1566411949736">
 
 		<style type="text/css">
-        
-        ${prefetchStyleLinks(bundles)}
+    
         ${helmet.link.toString()}
-        ${cssLinks(bundles)}
+        
         ${helmet.style.toString()}
 
         ${helmet.noscript.toString()}
-        ${preloadScripts(bundles)}
+	
+		${extractor.getStyleTags()}
         ${styleTags}
       </head>
       <body ${bodyAttrs}>
@@ -138,7 +139,7 @@ const Html = ({ helmet, store, bundles, sheet, content }: test): string => {
           }
         </script>
         ${helmet.script.toString()}
-        ${jsScripts(bundles)}
+        ${extractor.getScriptTags()}
       </body>
     </html>
   `;

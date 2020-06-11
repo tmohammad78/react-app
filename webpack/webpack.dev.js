@@ -12,6 +12,9 @@ const TerserPlugin = require('terser-webpack-plugin');
 const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin');
 const { getAppEnv } = require('./env');
 const env = getAppEnv();
+
+const LoadablePlugin = require('@loadable/webpack-plugin');
+
 const { PUBLIC_URL = '' } = env.raw;
 const resolvePath = (relativePath) => path.resolve(__dirname, relativePath);
 
@@ -75,15 +78,14 @@ module.exports = [
           test: /\.(png|jpg|woff|woff2|eot|ttf|jpe?g|gif)$/,
           loader: 'url-loader?limit=8000&name=images/[name].[ext]',
         },
-
         {
           test: /\.svg$/,
           use: [
             {
               loader: 'babel-loader',
-            //   options: {
-            //     presets: ['env', 'react'],
-            //   },
+              //   options: {
+              //     presets: ['env', 'react'],
+              //   },
             },
             {
               loader: 'react-svg-loader',
@@ -98,13 +100,17 @@ module.exports = [
     plugins: [
       new webpack.DefinePlugin(env.forWebpackDefinePlugin),
       new webpack.IgnorePlugin(/^\.\/locale$/, /moment$/),
+      new LoadablePlugin({
+        filename: 'react-loadable.json',
+        writeToDisk: true,
+      }),
       new LodashModuleReplacementPlugin(),
       new webpack.HotModuleReplacementPlugin(),
       //   new CaseSensitivePathsPlugin(),
       new ErrorOverlayPlugin(),
-      new ReactLoadablePlugin({
-        filename: 'build/react-loadable.json',
-      }),
+      //   new ReactLoadablePlugin({
+      //     filename: 'build/react-loadable.json',
+      //   }),
     ],
     // node: {
     //   dgram: 'empty',
@@ -210,13 +216,11 @@ module.exports = [
       new webpack.IgnorePlugin(/^\.\/locale$/, /moment$/),
       new LodashModuleReplacementPlugin(),
       new MiniCssExtractPlugin({
+        ignoreOrder: true,
         filename: 'static/css/[name].[contenthash:8].css',
       }),
       new ManifestPlugin({
         fileName: 'asset-manifest.json',
-      }),
-      new ReactLoadablePlugin({
-        filename: 'build/react-loadable.json',
       }),
     ],
     node: {

@@ -14,6 +14,7 @@ const Spinner = require('./Components/Spinner/index.tsx');
 import { browserHistory } from './Route/history';
 import newRootReducer from './Redux/reducers';
 import Head from './Head';
+import { loadableReady } from '@loadable/component'
 
 import './styles/main.scss';
 
@@ -37,8 +38,9 @@ const Application = (
 	</Provider>
 )
 const root = document.getElementById('root');
+
 export const main = () => {
-	Loadable.preloadReady().then(() => {
+	loadableReady(() => {
 		if (root?.hasChildNodes() === true) {
 			hydrate(Application, root)
 		} else {
