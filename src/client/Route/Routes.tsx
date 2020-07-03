@@ -1,82 +1,74 @@
 import React from 'react';
-import Loadable from 'react-loadable';
 import Spinner from '../Components/Spinner';
 import RequireAuth from '../Hoc/auth';
+import loadable from '@loadable/component'
+// import AuthPage from '../Pages/auth/index';
 
-const AuthPage = Loadable({
-	loader: () => import('../Pages/auth/index'),
-	loading: () => <div>...loadin</div>
+const AuthPage = loadable(() => import('../Pages/auth/index'), {
+	fallback: <div>...loadin</div>
 });
-const Register = Loadable({
-	loader: () => import('../Components/Register/index'),
-	loading: () => <div>...loadin</div>
+const Register = loadable(() => import('../Components/Register/index'), {
+	fallback: <div>...loadin</div>
 });
-const MainAuth = Loadable({
-	loader: () => import('../Pages/auth/main/index'),
-	loading: () => <div>...loading</div>
+const MainAuth = loadable(() => import('../Pages/auth/main/index'), {
+	fallback: <div>...loading</div>
 });
-const Order = Loadable({
-	loader: () => import('../Pages/order'),
-	loading: () => <div>...loadin</div>
+const Order = loadable(() => import('../Pages/order'), {
+	fallback: <div>...loadin</div>
 });
-const Menu = Loadable({
-	loader: () => import('../Components/Menu/index'),
-	loading: () => <div>...loadin</div>
+const Menu = loadable(() => import('../Components/Menu/index'), {
+	fallback: <div>...loadin</div>
 });
-const InnerRoute = Loadable({
-	loader: () => import('../Pages/order/InnerRoute'),
-	loading: () => <div>...loadin</div>
+const InnerRoute = loadable(() => import('../Pages/order/InnerRoute'), {
+	fallback: <div>...loadin</div>
 });
-const TabBar = Loadable({
-	loader: () => import('../Pages/order/tabBar/index'),
-	loading: () => <div>...loadin</div>
+const TabBar = loadable(() => import('../Pages/order/tabBar/index'), {
+	fallback: <div>...loadin</div>
 });
-const InfoRest = Loadable({
-	loader: () => import('../Components/infoRes/index'),
-	loading: () => <div>...loadin</div>
+const InfoRest = loadable(() => import('../Components/infoRes/index'), {
+	fallback: <div>...loadin</div>
 });
-const Favorite = Loadable({
-	loader: () => import('../Components/Favorite/index'),
-	loading: () => <div>...loadin</div>
+const Favorite = loadable(() => import('../Components/Favorite/index'), {
+	fallback: <div>...loadin</div>
 });
 
 const Routes: any | undefined = [
-	// {
-	// 	component: RequireAuth(Order),
-	// 	path: '/',
-	// 	exact: true,
-	// 	routes: [
-	// 		{
-	// 			component: TabBar,
-	// 			path: '/'
-	// 		},
-	// 		{
-	// 			component: Menu,
-	// 			path: '/',
-	// 			exact: true
-	// 		},
-	// 		{
-	// 			component: InnerRoute,
-	// 			path: '/:name',
-	// 			routes: [
-	// 				{
-	// 					path: '/',
-	// 					component: Menu,
-	// 					exact: true
-	// 				},
-	// 				{
-	// 					path: '/info',
-	// 					component: InfoRest
-	// 				},
-	// 				{
-	// 					path: '/favorite',
-	// 					component: Favorite
-	// 				}
+	{
+		component: RequireAuth(Order),
+		path: '/',
+		exact: true,
+		routes: [
+			{
+				component: TabBar,
+				path: '/'
+			},
+			{
+				component: Menu,
+				path: '/',
+				exact: true
+			},
+			{
+				component: InnerRoute,
+				path: '/:name',
+				routes: [
+					{
+						path: '/',
+						component: Menu,
+						exact: true
+					},
+					{
+						path: '/info',
+						component: InfoRest
+					},
+					{
+						path: '/favorite',
+						component: Favorite
+					}
 
-	// 			]
-	// 		}
-	// 	]
-	// },
+				]
+			}
+		]
+	},
 	{
 		component: AuthPage,
 		path: '/auth',

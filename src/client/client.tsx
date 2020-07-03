@@ -1,7 +1,6 @@
 import React, { Suspense } from "react";
 import { render, hydrate } from 'react-dom';
 import thunk from 'redux-thunk';
-import Loadable from 'react-loadable';
 import { Provider } from "react-redux";
 import { renderRoutes } from 'react-router-config';
 import { Switch, Router } from 'react-router-dom';

@@ -1,5 +1,17 @@
 
 import "@testing-library/jest-dom/extend-expect"; // for matcher in the test files 
+// declare module '*.scss'; 
+// declare module '*.scss' {
+// 	const content: { [className: string]: string };
+// 	export = content;
+// }
+
+// declare module '*.scss';
+declare module '*.scss' {
+	const content: { [className: string]: string };
+	export = content;
+}
+
 export interface AuthState {
 	errorMessage: string,
 	token: string,

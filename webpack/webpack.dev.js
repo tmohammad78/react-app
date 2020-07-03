@@ -4,19 +4,17 @@ const webpack = require('webpack');
 // const CaseSensitivePathsPlugin = require('case-sensitive-paths-webpack-plugin');
 const eslintFormatter = require('react-dev-utils/eslintFormatter');
 const LodashModuleReplacementPlugin = require('lodash-webpack-plugin');
-const { ReactLoadablePlugin } = require('react-loadable/webpack');
 const ErrorOverlayPlugin = require('error-overlay-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const ManifestPlugin = require('webpack-manifest-plugin');
 const TerserPlugin = require('terser-webpack-plugin');
+const LoadablePlugin = require('@loadable/webpack-plugin');
 const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin');
 const { getAppEnv } = require('./env');
 const env = getAppEnv();
 
-const LoadablePlugin = require('@loadable/webpack-plugin');
-
 const { PUBLIC_URL = '' } = env.raw;
-const resolvePath = (relativePath) => path.resolve(__dirname, relativePath);
+const resolvePath = relativePath => path.resolve(__dirname, relativePath);
 
 module.exports = [
   //// ---------- client -----------
@@ -27,13 +25,16 @@ module.exports = [
     target: 'web',
     entry: [
       'webpack-hot-middleware/client?path=/__webpack_hmr&reload=true',
-      resolvePath('../src/client/client.tsx'),
+      resolvePath('../src/client/client.tsx')
     ],
     output: {
       path: resolvePath('../build'),
       filename: '[name].bundle.js',
       chunkFilename: '[name].chunk.js',
-      publicPath: PUBLIC_URL + '/',
+      publicPath: PUBLIC_URL + '/'
+    },
+    resolve: {
+      extensions: ['.ts', '.tsx', '.js', '.css', '.scss']
     },
     module: {
       rules: [
@@ -41,19 +42,29 @@ module.exports = [
           test: /\.(js|ts)x?$/,
           loader: 'babel-loader',
           resolve: {
-            extensions: ['.js', 'jsx', '.tsx', '.ts'],
+            extensions: ['.js', 'jsx', '.tsx', '.ts']
           },
           options: {
-            cacheDirectory: true,
-          },
+            cacheDirectory: true
+          }
         },
         {
           test: /\.s?css$/,
           include: [resolvePath('../src')],
-          exclude: [/\.module\.s?css$/],
+          //   exclude: [/\.module\.s?css$/],
           use: [
             'style-loader',
-            'css-loader',
+            { loader: 'css-modules-typescript-loader' },
+            {
+              loader: 'css-loader',
+              options: {
+                modules: true
+                // importLoaders: 1,
+                // localIdentName: '[name]_[local]_[hash:base64]',
+                // sourceMap: true,
+                // minimize: true
+              }
+            },
             {
               loader: 'postcss-loader',
               options: {
@@ -67,22 +78,22 @@ module.exports = [
                     //   "Firefox ESR",
                     //   "not ie < 9"
                     // ]
-                  }),
-                ],
-              },
+                  })
+                ]
+              }
             },
-            'sass-loader',
-          ],
+            'sass-loader'
+          ]
         },
         {
           test: /\.(png|jpg|woff|woff2|eot|ttf|jpe?g|gif)$/,
-          loader: 'url-loader?limit=8000&name=images/[name].[ext]',
+          loader: 'url-loader?limit=8000&name=images/[name].[ext]'
         },
         {
           test: /\.svg$/,
           use: [
             {
-              loader: 'babel-loader',
+              loader: 'babel-loader'
               //   options: {
               //     presets: ['env', 'react'],
               //   },
@@ -90,28 +101,25 @@ module.exports = [
             {
               loader: 'react-svg-loader',
               options: {
-                jsx: true,
-              },
-            },
-          ],
-        },
-      ],
+                jsx: true
+              }
+            }
+          ]
+        }
+      ]
     },
     plugins: [
-      new webpack.DefinePlugin(env.forWebpackDefinePlugin),
-      new webpack.IgnorePlugin(/^\.\/locale$/, /moment$/),
+      //   new webpack.DefinePlugin(env.forWebpackDefinePlugin),
+      //   new webpack.IgnorePlugin(/^\.\/locale$/, /moment$/),
       new LoadablePlugin({
-        filename: 'react-loadable.json',
-        writeToDisk: true,
+        filename: 'loadable-stats.json',
+        writeToDisk: true
       }),
       new LodashModuleReplacementPlugin(),
-      new webpack.HotModuleReplacementPlugin(),
+      new webpack.HotModuleReplacementPlugin()
       //   new CaseSensitivePathsPlugin(),
-      new ErrorOverlayPlugin(),
-      //   new ReactLoadablePlugin({
-      //     filename: 'build/react-loadable.json',
-      //   }),
-    ],
+      //   new ErrorOverlayPlugin()
+    ]
     // node: {
     //   dgram: 'empty',
     //   fs: 'empty',
@@ -119,7 +127,7 @@ module.exports = [
     //   tls: 'empty',
     // },
   },
-  ///        ----------production ----------
+  ///        ----------server ----------
   {
     name: 'server',
     mode: 'development',
@@ -128,14 +136,17 @@ module.exports = [
     entry: [
       'core-js/stable',
       'regenerator-runtime/runtime',
-      resolvePath('../src/client/client.tsx'),
+      resolvePath('../src/client/client.tsx')
     ],
     output: {
       path: resolvePath('../build'),
       filename: 'static/js/[name].[chunkhash:8].js',
       libraryTarget: 'commonjs2',
       chunkFilename: 'static/js/[name].[chunkhash:8].chunk.js',
-      publicPath: PUBLIC_URL + '/',
+      publicPath: PUBLIC_URL + '/'
+    },
+    resolve: {
+      extensions: ['.ts', '.tsx', '.js', '.css', '.scss']
     },
     module: {
       rules: [
@@ -143,19 +154,28 @@ module.exports = [
           test: /\.(js|ts)x?$/,
           loader: 'babel-loader',
           resolve: {
-            extensions: ['.js', 'jsx', '.tsx', '.ts'],
+            extensions: ['.js', 'jsx', '.tsx', '.ts']
           },
           options: {
-            compact: true,
-          },
+            compact: true
+          }
         },
         {
           test: /\.s?css$/,
           include: [resolvePath('../src')],
-          exclude: [/\.module\.s?css$/],
+          //   exclude: [/\.module\.s?css$/],
           use: [
+            // {
+            //   loader: 'isomorphic-style-loader',
+            // },
             MiniCssExtractPlugin.loader,
-            'css-loader',
+            {
+              loader: 'css-loader',
+              options: {
+                modules: true,
+                sourceMap: true
+              }
+            },
             {
               loader: 'postcss-loader',
               options: {
@@ -169,33 +189,33 @@ module.exports = [
                     //   "Firefox ESR",
                     //   "not ie < 9"
                     // ]
-                  }),
-                ],
-              },
+                  })
+                ]
+              }
             },
-            'sass-loader',
-          ],
+            'sass-loader'
+          ]
         },
         {
           test: /\.(png|jpg|woff|woff2|eot|ttf|jpe?g|gif)$/,
-          loader: 'url-loader?limit=8000&name=images/[name].[ext]',
+          loader: 'url-loader?limit=8000&name=images/[name].[ext]'
         },
 
         {
           test: /\.svg$/,
           use: [
             {
-              loader: 'babel-loader',
+              loader: 'babel-loader'
             },
             {
               loader: 'react-svg-loader',
               options: {
-                jsx: true,
-              },
-            },
-          ],
-        },
-      ],
+                jsx: true
+              }
+            }
+          ]
+        }
+      ]
     },
     optimization: {
       minimize: true,
@@ -204,12 +224,12 @@ module.exports = [
           sourceMap: true,
           terserOptions: {
             output: {
-              comments: false,
-            },
+              comments: false
+            }
           },
-          extractComments: false,
-        }),
-      ],
+          extractComments: false
+        })
+      ]
     },
     plugins: [
       new webpack.DefinePlugin(env.forWebpackDefinePlugin),
@@ -217,17 +237,37 @@ module.exports = [
       new LodashModuleReplacementPlugin(),
       new MiniCssExtractPlugin({
         ignoreOrder: true,
-        filename: 'static/css/[name].[contenthash:8].css',
+        filename: 'static/css/[name].[contenthash:8].css'
       }),
       new ManifestPlugin({
-        fileName: 'asset-manifest.json',
-      }),
+        fileName: 'asset-manifest.json'
+      })
     ],
     node: {
       dgram: 'empty',
       fs: 'empty',
       net: 'empty',
-      tls: 'empty',
-    },
-  },
+      tls: 'empty'
+    }
+  }
 ];
+
+//production
+
+// use: ExtractTextPlugin.extract({
+// 	fallback: "isomorphic-style-loader",
+// 	use: [
+// 		{
+// 			loader: 'css-loader',
+// 			options: {
+// 				modules: true,
+// 				importLoaders: 1,
+// 				localIdentName: '[hash:base64:10]',
+// 				sourceMap: true
+// 			}
+// 		},
+// 		{
+// 			loader: 'sass-loader'
+// 		}
+// 	]
+// })
