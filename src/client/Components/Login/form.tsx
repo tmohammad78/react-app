@@ -4,7 +4,7 @@ import { validation } from '../../Helper/validation';
 import { Button } from '../Buttons/Button';
 import Input from '../Input/index';
 import { MyFormValues } from '../../../types/index';
-import './style.scss';
+import Style from  './style.scss';
 
 
 interface Props {

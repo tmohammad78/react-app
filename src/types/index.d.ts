@@ -7,9 +7,10 @@ import "@testing-library/jest-dom/extend-expect"; // for matcher in the test fil
 // }
 
 // declare module '*.scss';
+declare module '*.scss';
 declare module '*.scss' {
-	const content: { [className: string]: string };
-	export = content;
+    const content: {[className: string]: string};
+    export default content;
 }
 
 export interface AuthState {

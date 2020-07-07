@@ -5,7 +5,8 @@ import { IApplicationState } from '../../Redux/reducers';
 import { renderRoutes } from 'react-router-config';
 import { AuthState } from '../../../Types/index';
 import MainAuth from './Main/index';
-// import './style.module.scss';
+// import  style from './style.scss';
+// import './style.scss';
 
 const AuthPage: React.SFC<any> = (props) => {
 	const logged = useSelector<IApplicationState, AuthState>(state => state.auth);
@@ -35,9 +36,9 @@ const AuthPage: React.SFC<any> = (props) => {
 				<picture>
 					<div className='my_img'></div>
 				</picture>
-				{renderRoutes(props.route.routes)}
-				<div className={'test'}>fdkhb</div>
-				<MainAuth callBackChangeState={handleShow} />
+				{/* {renderRoutes(props.route.routes)} */}
+				<div className='test'>fdkhb</div>
+				{/* <MainAuth callBackChangeState={handleShow} /> */}
 
 				{/* <Route
 					exact

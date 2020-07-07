@@ -7,7 +7,7 @@ import { registerAction, loginAction, checkVerfify } from '../../Redux/auth/acti
 import firebase from '../../Config/firebaseconfig';
 import { MyFormValues } from '../../../Types/index';
 
-import './style.scss';
+import Style from './style.scss';
 
 declare global {
 	interface Window {

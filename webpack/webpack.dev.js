@@ -1,7 +1,6 @@
 const path = require('path');
 const autoprefixer = require('autoprefixer');
 const webpack = require('webpack');
-// const CaseSensitivePathsPlugin = require('case-sensitive-paths-webpack-plugin');
 const eslintFormatter = require('react-dev-utils/eslintFormatter');
 const LodashModuleReplacementPlugin = require('lodash-webpack-plugin');
 const ErrorOverlayPlugin = require('error-overlay-webpack-plugin');
@@ -11,6 +10,7 @@ const TerserPlugin = require('terser-webpack-plugin');
 const LoadablePlugin = require('@loadable/webpack-plugin');
 const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin');
 const { getAppEnv } = require('./env');
+const AssetsPlugin = require('assets-webpack-plugin');
 const env = getAppEnv();
 
 const { PUBLIC_URL = '' } = env.raw;
@@ -50,15 +50,17 @@ module.exports = [
         },
         {
           test: /\.s?css$/,
-          include: [resolvePath('../src')],
-          //   exclude: [/\.module\.s?css$/],
+            exclude: [/node_modules/],
           use: [
             'style-loader',
             { loader: 'css-modules-typescript-loader' },
+                {
+                  loader: MiniCssExtractPlugin.loader
+                },
             {
               loader: 'css-loader',
               options: {
-                modules: true
+                // modules: true
                 // importLoaders: 1,
                 // localIdentName: '[name]_[local]_[hash:base64]',
                 // sourceMap: true,
@@ -111,21 +113,20 @@ module.exports = [
     plugins: [
       //   new webpack.DefinePlugin(env.forWebpackDefinePlugin),
       //   new webpack.IgnorePlugin(/^\.\/locale$/, /moment$/),
+      new AssetsPlugin({useCompilerPath: true}),
       new LoadablePlugin({
         filename: 'loadable-stats.json',
         writeToDisk: true
       }),
+      new MiniCssExtractPlugin({
+        filename: 'static/css/[name].[contenthash:8].css'
+      }),
+      new ManifestPlugin({
+        fileName: 'asset-manifest.json'
+      }),
       new LodashModuleReplacementPlugin(),
       new webpack.HotModuleReplacementPlugin()
-      //   new CaseSensitivePathsPlugin(),
-      //   new ErrorOverlayPlugin()
     ]
-    // node: {
-    //   dgram: 'empty',
-    //   fs: 'empty',
-    //   net: 'empty',
-    //   tls: 'empty',
-    // },
   },
   ///        ----------server ----------
   {
@@ -162,38 +163,11 @@ module.exports = [
         },
         {
           test: /\.s?css$/,
-          include: [resolvePath('../src')],
-          //   exclude: [/\.module\.s?css$/],
           use: [
-            // {
-            //   loader: 'isomorphic-style-loader',
-            // },
-            MiniCssExtractPlugin.loader,
             {
-              loader: 'css-loader',
-              options: {
-                modules: true,
-                sourceMap: true
-              }
-            },
-            {
-              loader: 'postcss-loader',
-              options: {
-                ident: 'postcss',
-                sourceMap: true,
-                plugins: () => [
-                  autoprefixer({
-                    // browsers: [
-                    //   ">1%",
-                    //   "last 4 versions",
-                    //   "Firefox ESR",
-                    //   "not ie < 9"
-                    // ]
-                  })
-                ]
-              }
-            },
-            'sass-loader'
+              loader: 'ignore-loader'
+            }
+
           ]
         },
         {
@@ -234,14 +208,7 @@ module.exports = [
     plugins: [
       new webpack.DefinePlugin(env.forWebpackDefinePlugin),
       new webpack.IgnorePlugin(/^\.\/locale$/, /moment$/),
-      new LodashModuleReplacementPlugin(),
-      new MiniCssExtractPlugin({
-        ignoreOrder: true,
-        filename: 'static/css/[name].[contenthash:8].css'
-      }),
-      new ManifestPlugin({
-        fileName: 'asset-manifest.json'
-      })
+      new LodashModuleReplacementPlugin()
     ],
     node: {
       dgram: 'empty',
@@ -251,23 +218,3 @@ module.exports = [
     }
   }
 ];
-
-//production
-
-// use: ExtractTextPlugin.extract({
-// 	fallback: "isomorphic-style-loader",
-// 	use: [
-// 		{
-// 			loader: 'css-loader',
-// 			options: {
-// 				modules: true,
-// 				importLoaders: 1,
-// 				localIdentName: '[hash:base64:10]',
-// 				sourceMap: true
-// 			}
-// 		},
-// 		{
-// 			loader: 'sass-loader'
-// 		}
-// 	]
-// })

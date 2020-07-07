@@ -11,7 +11,7 @@ import path from 'path';
 import Html from './html';
 
 // @ts-ignore
-// import statsFile from '../../build/react-loadable.json'
+import statsFile from '../../build/react-loadable.json'
 const statsFile2 = path.resolve(
 	__dirname,
 	'../../dist/loadable-stats.json',
@@ -30,7 +30,8 @@ export default (store?: any, req?: any, res?: any) => {
 	// console.log('extractor', extractor)
 	const sheet = new ServerStyleSheet();
 	const context = {};
-	const extractorNew = extractor.collectChunks(sheet.collectStyles(
+	//
+	const extractorNew =  extractor.collectChunks(sheet.collectStyles(
 		<Provider store={store}>
 			<StyleSheetManager sheet={sheet.instance} >
 				<StaticRouter location={req.path} context={context}>

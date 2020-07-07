@@ -25,13 +25,6 @@ const compiler = webpack(Config);
 server.use(
 	webpackDevMiddleware(compiler, {
 		publicPath: '/',
-		stats: {
-			colors: true,
-			assets: true,
-			chunks: false,
-			modules: false,
-			hash: false
-		}
 	})
 );
 
