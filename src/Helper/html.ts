@@ -1,7 +1,7 @@
 import { getAppEnv } from '../../webpack/env';
 import serialize from 'serialize-javascript';
 const env = getAppEnv();
-import { Bundle } from 'react-loadable/webpack';
+// import { Bundle } from 'react-loadable/webpack';
 const { NODE_ENV, PUBLIC_URL = '' } = env.raw;
 
 let assetManifest: any;

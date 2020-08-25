@@ -2,20 +2,20 @@ module.exports = {
   presets: [
     [
       '@babel/preset-env',
-      {
-        modules: false,
-        targets: {
-          node: 'current',
-        },
-      },
+    //   {
+    //     modules: false,
+    //     targets: {
+    //       node: 'current',
+    //     },
+    //   },
     ],
     '@babel/preset-react',
     '@babel/preset-typescript',
   ],
   plugins: [
     'react-hot-loader/babel',
-    'react-loadable/babel',
-    '@babel/plugin-proposal-class-properties',
+	'@babel/plugin-proposal-class-properties',
+	"@loadable/babel-plugin",
     ['@babel/plugin-proposal-decorators', { legacy: true }],
     [
       'babel-plugin-styled-components',
@@ -55,7 +55,6 @@ module.exports = {
 //   ],
 //   "plugins": [
 //     "react-hot-loader/babel",
-//     "react-loadable/babel",
 //     "@babel/plugin-proposal-class-properties",
 //     ["@babel/plugin-proposal-decorators", { "legacy": true }],
 //     [

@@ -1,5 +1,5 @@
 
-import Loadable from 'react-loadable';
+
 import renderer from '../src/Helper/render';
 import createStore from '../src/Helper/createStore';
 

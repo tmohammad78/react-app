@@ -1,5 +1,4 @@
 import React from 'react';
-import Loadable from 'react-loadable';
 import Spinner from '../Components/Spinner';
 import RequireAuth from '../Hoc/auth';
 

@@ -3,13 +3,11 @@ import { renderToString } from "react-dom/server";
 import { renderRoutes } from "react-router-config";
 import { StaticRouter } from "react-router-dom";
 import { Provider } from "react-redux";
-import Loadable from 'react-loadable';
+i
 import { Helmet } from "react-helmet";
 import { ServerStyleSheet, StyleSheetManager } from 'styled-components';
-import { getBundles, Bundle } from 'react-loadable/webpack';
+
 import Routes from "../client/Route/Routes";
-// @ts-ignore
-import JsonStatic from '../../build/react-loadable.json';
 import Html from './html';
 
 export default (store: any, req: any, res: any) => {
