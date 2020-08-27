@@ -32,18 +32,18 @@ module.exports = [
         },
       ],
     },
-    optimization: {
-      splitChunks: {
-        cacheGroups: {
-          vendor: {
-            chunks: 'initial',
-            test: 'vendor',
-            name: 'vendor',
-            filename: 'vendor.js',
-            enforce: true,
-          },
-        },
-      },
-    },
+    // optimization: {
+    //   splitChunks: {
+    //     cacheGroups: {
+    //       vendor: {
+    //         chunks: 'initial',
+    //         test: 'vendor',
+    //         name: 'vendor',
+    //         filename: 'vendor.js',
+    //         enforce: true,
+    //       },
+    //     },
+    //   },
+    // },
   },
 ];

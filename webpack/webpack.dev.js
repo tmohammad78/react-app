@@ -8,6 +8,7 @@ const TerserPlugin = require('terser-webpack-plugin');
 const LoadablePlugin = require('@loadable/webpack-plugin');
 const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin');
 const { getAppEnv } = require('./env');
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const env = getAppEnv();
 const { PUBLIC_URL = '' } = env.raw;
 const resolvePath = (relativePath) => path.resolve(__dirname, relativePath);
@@ -45,7 +46,14 @@ module.exports = [
         {
           test: /\.s?css$/,
           use: [
-            'style-loader',
+            {
+              loader: MiniCssExtractPlugin.loader,
+              // options: {
+              //   publicPath: '/public/css',
+              // },
+            },
+
+            // 'style-loader',
             'css-loader',
             {
               loader: 'postcss-loader',
@@ -91,6 +99,10 @@ module.exports = [
       ],
     },
     plugins: [
+      new MiniCssExtractPlugin({
+        filename: 'css/[id].css',
+        chunkFilename: 'css/[id].css',
+      }),
       new webpack.HotModuleReplacementPlugin(),
       new LoadablePlugin({
         writeToDisk: true,
@@ -144,20 +156,20 @@ module.exports = [
         },
       ],
     },
-    optimization: {
-      minimize: true,
-      minimizer: [
-        new TerserPlugin({
-          sourceMap: true,
-          terserOptions: {
-            output: {
-              comments: false,
-            },
-          },
-          extractComments: false,
-        }),
-      ],
-    },
+    // optimization: {
+    //   minimize: true,
+    //   minimizer: [
+    //     new TerserPlugin({
+    //       sourceMap: true,
+    //       terserOptions: {
+    //         output: {
+    //           comments: false,
+    //         },
+    //       },
+    //       extractComments: false,
+    //     }),
+    //   ],
+    // },
     plugins: [
       new webpack.DefinePlugin(env.forWebpackDefinePlugin),
       new webpack.IgnorePlugin(/^\.\/locale$/, /moment$/),
@@ -165,11 +177,5 @@ module.exports = [
         fileName: 'asset-manifest.json',
       }),
     ],
-    node: {
-      dgram: 'empty',
-      fs: 'empty',
-      net: 'empty',
-      tls: 'empty',
-    },
   },
 ];

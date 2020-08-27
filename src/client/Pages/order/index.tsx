@@ -25,15 +25,14 @@ const Order: React.SFC<Props> = (props) => {
 
   return (
     <ThemeProvider theme={isDarkMode ? darkTheme : lightTheme}>
-      {/* <Header toggleTheme={toggleTheme} /> */}
-	  dff
+      <Header toggleTheme={toggleTheme} />
       <Cover />
-      {/* <RestMenuHolder>
-				<div className='wrapper clearfix '>
-					<RightSide route={props.route} />
-				</div>
-				<Cart />
-			</RestMenuHolder> */}
+      <RestMenuHolder>
+        <div className='wrapper clearfix '>
+          <RightSide route={props.route.routes} />
+        </div>
+        <Cart />
+      </RestMenuHolder>
       <Footer />
     </ThemeProvider>
   );

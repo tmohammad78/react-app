@@ -19,7 +19,7 @@ const Favorite = loadable(() => import('../Components/Favorite/index'));
 
 const Routes: any | undefined = [
   {
-    component: RequireAuth(Order),
+    component: Order,
     path: '/',
     exact: true,
     routes: [

@@ -2,12 +2,12 @@ import React from 'react';
 import { Route } from 'react-router-dom';
 import { RestProfileContainer, RightSideHolder } from '../style';
 
-const RightSide: React.SFC = (props) => {
-  console.log('rightside', props);
+const RightSide: React.SFC = ({ route }) => {
+  console.log('rightside', route);
   return (
     <RightSideHolder>
       <RestProfileContainer>
-        {props.route.routes.map((item: any) => {
+        {route.map((item: any) => {
           console.log(item);
           return (
             <Route

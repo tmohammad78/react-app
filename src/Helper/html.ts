@@ -21,21 +21,16 @@ interface test {
 }
 
 const Html = ({ helmet, store, extractor, styleTags, content }: test): string => {
-  console.log('teeeeeeeeee');
-
-  // You can now collect your script tags
-  const scriptTags = extractor.getScriptTags(); // or extractor.getScriptElements();
+  const scriptTags = extractor.getScriptTags();
   // You can also collect your "preload/prefetch" links
-  const linkTags = extractor.getLinkTags(); // or extractor.getLinkElements();
-  // And you can even collect your style tags (if you use "mini-css-extract-plugin")
-  const styleTagscss = extractor.getStyleTags(); // or extractor.getStyleElements();
-
+  const linkTags = extractor.getLinkTags();
+  const styleTagscss = extractor.getStyleTags();
   const htmlAttrs = helmet.htmlAttributes.toString();
   const bodyAttrs = helmet.bodyAttributes.toString();
-  // const styleTags = sheet.getStyleTags();
-  // sheet.seal();
 
-  console.log('in the html ', store);
+  console.log('in the html ', styleTagscss);
+  console.log('after');
+  console.log('content', content);
 
   return `
     <!doctype html>
