@@ -3,10 +3,9 @@ const autoprefixer = require('autoprefixer');
 const webpack = require('webpack');
 
 const ErrorOverlayPlugin = require('error-overlay-webpack-plugin');
-const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const ManifestPlugin = require('webpack-manifest-plugin');
 const TerserPlugin = require('terser-webpack-plugin');
-const LoadablePlugin = require('@loadable/webpack-plugin')
+const LoadablePlugin = require('@loadable/webpack-plugin');
 const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin');
 const { getAppEnv } = require('./env');
 const env = getAppEnv();
@@ -34,8 +33,8 @@ module.exports = [
       rules: [
         {
           test: /\.(js|ts)x?$/,
-		  loader: 'babel-loader',
-		  exclude: /node_modules/,
+          loader: 'babel-loader',
+          exclude: /node_modules/,
           resolve: {
             extensions: ['.js', 'jsx', '.tsx', '.ts'],
           },
@@ -45,8 +44,6 @@ module.exports = [
         },
         {
           test: /\.s?css$/,
-          include: [resolvePath('../src')],
-          exclude: [/\.module\.s?css$/],
           use: [
             'style-loader',
             'css-loader',
@@ -73,15 +70,15 @@ module.exports = [
         {
           test: /\.(png|jpg|woff|woff2|eot|ttf|jpe?g|gif)$/,
           loader: 'url-loader?limit=8000&name=images/[name].[ext]',
+          options: {
+            esModule: false,
+          },
         },
         {
           test: /\.svg$/,
           use: [
             {
               loader: 'babel-loader',
-              options: {
-                presets: ['env', 'react'],
-              },
             },
             {
               loader: 'react-svg-loader',
@@ -94,10 +91,12 @@ module.exports = [
       ],
     },
     plugins: [
-	  new webpack.HotModuleReplacementPlugin(),
-	  new LoadablePlugin(),
+      new webpack.HotModuleReplacementPlugin(),
+      new LoadablePlugin({
+        writeToDisk: true,
+      }),
       new ErrorOverlayPlugin(),
-    ]
+    ],
   },
   ///        ----------production ----------
   {
@@ -122,6 +121,7 @@ module.exports = [
         {
           test: /\.(js|ts)x?$/,
           loader: 'babel-loader',
+          exclude: /node_modules/,
           resolve: {
             extensions: ['.js', 'jsx', '.tsx', '.ts'],
           },
@@ -129,52 +129,19 @@ module.exports = [
             compact: true,
           },
         },
-        // {
-        //   test: /\.s?css$/,
-        //   include: [resolvePath('../src')],
-        //   exclude: [/\.module\.s?css$/],
-        //   use: [
-        //     MiniCssExtractPlugin.loader,
-        //     'css-loader',
-        //     {
-        //       loader: 'postcss-loader',
-        //       options: {
-        //         ident: 'postcss',
-        //         sourceMap: true,
-        //         plugins: () => [
-        //           autoprefixer({
-        //             // browsers: [
-        //             //   ">1%",
-        //             //   "last 4 versions",
-        //             //   "Firefox ESR",
-        //             //   "not ie < 9"
-        //             // ]
-        //           }),
-        //         ],
-        //       },
-        //     },
-        //     'sass-loader',
-        //   ],
-        // },
-        // {
-        //   test: /\.(png|jpg|woff|woff2|eot|ttf|jpe?g|gif)$/,
-        //   loader: 'url-loader?limit=8000&name=images/[name].[ext]',
-        // },
+        {
+          test: /\.s?css$/,
+          loader: 'ignore-loader',
+        },
+        {
+          test: /\.(png|jpg|woff|woff2|eot|ttf|jpe?g|gif)$/,
+          loader: 'url-loader?emitFile=false',
+        },
 
-        // {
-        //   test: /\.svg$/,
-        //   use: [
-        //     {
-        //       loader: 'babel-loader',
-        //     },
-        //     {
-        //       loader: 'react-svg-loader',
-        //       options: {
-        //         jsx: true,
-        //       },
-        //     },
-        //   ],
-        // },
+        {
+          test: /\.svg$/,
+          loader: 'ignore-loader',
+        },
       ],
     },
     optimization: {
@@ -194,9 +161,6 @@ module.exports = [
     plugins: [
       new webpack.DefinePlugin(env.forWebpackDefinePlugin),
       new webpack.IgnorePlugin(/^\.\/locale$/, /moment$/),
-      new MiniCssExtractPlugin({
-        filename: 'static/css/[name].[contenthash:8].css',
-      }),
       new ManifestPlugin({
         fileName: 'asset-manifest.json',
       }),

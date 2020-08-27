@@ -11,33 +11,32 @@ import lightTheme from '../../Theme/light';
 import Cart from '../../Components/FloatCart';
 
 interface Props {
-	toggleTheme: string | boolean | (() => void)
+  toggleTheme: string | boolean | (() => void);
 }
 
 const Order: React.SFC<Props> = (props) => {
-	console.log(props);
-	const stored = localStorage.getItem('isDarkMode');
-	const [isDarkMode, setIsDarkMode] = useState(
-		stored === 'true' ? true : false
-	);
-	const toggleTheme = () => {
-		setIsDarkMode(!isDarkMode);
-		localStorage.setItem('isDarkMode', !isDarkMode);
-	};
-	return (
-		<ThemeProvider theme={isDarkMode ? darkTheme : lightTheme}>
-			<Header toggleTheme={toggleTheme} />
-			<Cover />
-			<RestMenuHolder>
+  console.log('in the order component', props);
+  const stored = localStorage.getItem('isDarkMode');
+  const [isDarkMode, setIsDarkMode] = useState(stored === 'true' ? true : false);
+  const toggleTheme = () => {
+    setIsDarkMode(!isDarkMode);
+    localStorage.setItem('isDarkMode', !isDarkMode);
+  };
+
+  return (
+    <ThemeProvider theme={isDarkMode ? darkTheme : lightTheme}>
+      {/* <Header toggleTheme={toggleTheme} /> */}
+	  dff
+      <Cover />
+      {/* <RestMenuHolder>
 				<div className='wrapper clearfix '>
-					{/* <RightSide route={props.route} /> */}
+					<RightSide route={props.route} />
 				</div>
 				<Cart />
-			</RestMenuHolder>
-			<Footer />
-		</ThemeProvider>
-	);
+			</RestMenuHolder> */}
+      <Footer />
+    </ThemeProvider>
+  );
 };
-
 
 export default Order;

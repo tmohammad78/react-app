@@ -32,12 +32,13 @@ const AuthPage: React.SFC<any> = (props) => {
 
 	return (
 		<div>
+			ddnk
 			<div className={`image-background ${RegisterUi ? 'active' : ''}`}>
-				<picture>
+				{/* <picture>
 					<div className='my_img'></div>
-				</picture>
+				</picture> */}
 				{/* {renderRoutes(props.route.routes)} */}
-				<MainAuth callBackChangeState={handleShow} />
+				{/* <MainAuth callBackChangeState={handleShow} /> */}
 				{/* <Route
 					exact
 					path={'/auth'}
