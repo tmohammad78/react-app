@@ -19,6 +19,5 @@ export default (req: any) => {
     newRootReducer,
     applyMiddleware(thunk.withExtraArgument(instance))
   );
-  console.log('in create store ', store);
   return store;
 };

@@ -17,6 +17,17 @@ const TabBar = loadable(() => import('../Pages/order/tabBar/index'));
 const InfoRest = loadable(() => import('../Components/infoRes/index'));
 const Favorite = loadable(() => import('../Components/Favorite/index'));
 
+// import AuthPage from '../Pages/auth/index';
+
+// import Register from '../Components/Register/index';
+// import MainAuth from '../Pages/auth/main/index';
+// import Order from '../Pages/order';
+// import Menu from '../Components/Menu/index';
+// import InnerRoute from '../Pages/order/InnerRoute';
+// import TabBar from '../Pages/order/tabBar/index';
+// import InfoRest from '../Components/infoRes/index';
+// import Favorite from '../Components/Favorite/index';
+
 const Routes: any | undefined = [
   {
     component: Order,

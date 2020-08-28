@@ -6,7 +6,6 @@
   "license": "MIT",
   "private": true,
   "scripts": {
-    "start": "concurrently  \"cross-env NODE_ENV=development webpack-dev-server  --env.mode=dev\"",
     "start:dev": "ts-node scripts/start.ts",
     "build": "npm run clean & cross-env NODE_ENV=production webpack -p --env.mode=prod --mode production",
     "clean": "rimraf dist",
