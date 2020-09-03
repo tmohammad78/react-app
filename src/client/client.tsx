@@ -39,10 +39,11 @@ const Application = (
 );
 loadableReady(() => {
   const root = document.getElementById('root');
-  if (root?.hasChildNodes() === true) {
-    hydrate(Application, root);
-  } else {
-    render(Application, root);
-    serviceWorker.register();
-  }
+  hydrate(Application, root);
+  // if (root?.hasChildNodes() === true) {
+  //   hydrate(Application, root);
+  // } else {
+  //   render(Application, root);
+  //   serviceWorker.register();
+  // }
 });

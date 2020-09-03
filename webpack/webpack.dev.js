@@ -47,14 +47,19 @@ module.exports = [
           test: /\.s?css$/,
           use: [
             {
-              loader: MiniCssExtractPlugin.loader,
+              // loader: MiniCssExtractPlugin.loader,
               // options: {
               //   publicPath: '/public/css',
               // },
             },
-
-            // 'style-loader',
-            'css-loader',
+            'style-loader',
+            {
+              loader: 'css-loader',
+              options: {
+                modules: true,
+                localIdentName: '[name]__[local]--[hash:base64:5]',
+              },
+            },
             {
               loader: 'postcss-loader',
               options: {
@@ -99,16 +104,23 @@ module.exports = [
       ],
     },
     plugins: [
-      new MiniCssExtractPlugin({
-        filename: 'css/[id].css',
-        chunkFilename: 'css/[id].css',
-      }),
+      // new MiniCssExtractPlugin({
+      //   filename: 'css/[id].css',
+      //   chunkFilename: 'css/[id].css',
+      // }),
       new webpack.HotModuleReplacementPlugin(),
       new LoadablePlugin({
         writeToDisk: true,
       }),
       new ErrorOverlayPlugin(),
     ],
+    node: {
+      dgram: 'empty',
+      fs: 'empty',
+      net: 'empty',
+      tls: 'empty',
+      child_process: 'empty',
+    },
   },
   ///        ----------production ----------
   {

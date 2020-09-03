@@ -7,5 +7,4 @@ export const app = express();
 // app.use(express.static(path.resolve(__dirname, '../build')));
 
 // app.use(express.static(path.resolve('../../assets')));
-
 app.use(renderServerSide);

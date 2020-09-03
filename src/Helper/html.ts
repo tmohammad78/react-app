@@ -15,20 +15,20 @@ if (NODE_ENV === 'production') {
 interface test {
   helmet: any;
   store: any;
-  extractor: any;
+  extractor?: any;
   styleTags: any;
   content: string;
 }
 
 const Html = ({ helmet, store, extractor, styleTags, content }: test): string => {
-  const scriptTags = extractor.getScriptTags();
+  // const scriptTags = extractor.getScriptTags();
   // You can also collect your "preload/prefetch" links
-  const linkTags = extractor.getLinkTags();
-  const styleTagscss = extractor.getStyleTags();
+  // const linkTags = extractor.getLinkTags();
+  // const styleTagscss = extractor.getStyleTags();
   const htmlAttrs = helmet.htmlAttributes.toString();
   const bodyAttrs = helmet.bodyAttributes.toString();
 
-  console.log('in the html ', styleTagscss);
+  // console.log('in the html ', styleTagscss);
   console.log('after');
   console.log('content', content);
 
@@ -46,12 +46,12 @@ const Html = ({ helmet, store, extractor, styleTags, content }: test): string =>
 		<link rel="stylesheet" href="/dist/static/css/app.fa.css"/>
 		<link rel="stylesheet" href="/dist/app.fa.css"/>
 		<link rel="apple-touch-icon" href="https://cdn.glitch.com/49d34dc6-8fbd-46bb-8221-b99ffd36f1af%2Ftouchicon-180.png?v=1566411949736">
-		${linkTags}
+		
 		<style type="text/css">
         ${helmet.link.toString()}
         ${helmet.style.toString()}
         ${helmet.noscript.toString()}
-		    ${styleTagscss}
+		 
         ${styleTags}
       </head>
       <body ${bodyAttrs}>
@@ -76,7 +76,7 @@ const Html = ({ helmet, store, extractor, styleTags, content }: test): string =>
           }
         </script>
         ${helmet.script.toString()}
-        ${scriptTags}
+        
       </body>
     </html>
   `;
