@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useSelector } from 'react-redux';
 
-import { Button } from '../../Components/Buttons/Button';
+import { Button } from '../Buttons/Button';
 import CartProduct from './CartProduct/index';
 
 import { objectToArray, currency } from '../../Helper/index';

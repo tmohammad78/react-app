@@ -1,4 +1,4 @@
-import React, { lazy, Suspense } from 'react';
+import React, { FunctionComponent, lazy, Suspense } from 'react';
 
 import Cover from '../../Components/Cover/index';
 import Header from '../../Components/Header/index';
@@ -8,12 +8,13 @@ import RightSide from './rightSide/rightSide';
 
 import { RestMenuHolder } from './style';
 
-const Cart = lazy(() => import('../../Components/FloatCart'));
+const Cart = lazy(() => import('../../Components/FloatCart/index'));
+
 interface Props {
 	toggleTheme: string | boolean | (() => void)
 }
 
-const Order: React.SFC<Props> = React.memo(({ toggleTheme }) => {
+const Order: FunctionComponent<Props> = React.memo(({ toggleTheme }) => {
 	return (
 		<React.Fragment>
 			<Header toggleTheme={toggleTheme} />

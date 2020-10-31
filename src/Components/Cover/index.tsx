@@ -1,10 +1,10 @@
-import React, { useEffect, useState } from 'react';
+import React, { FunctionComponent, useEffect, useState } from 'react';
 import axios from 'axios';
 import { useSelector } from 'react-redux';
 
 import { resturantData } from '../../Redux/util';
 import { IApplicationState } from '../../Redux/reducers';
-import { ICategory } from '../../Types/index';
+import { ICategory } from '../../types/index';
 
 import './style.scss';
 
@@ -12,10 +12,9 @@ interface IDataInfo {
 	[key: string]: string
 }
 
-const initiaState: IDataInfo = {};
-const Cover: React.SFC = () => {
-	const [data, setData] = useState<IDataInfo>(initiaState);
-	console.log('render cover');
+const initialState: IDataInfo = {};
+const Cover: FunctionComponent = () => {
+	const [data, setData] = useState<IDataInfo>(initialState);
 	const item = useSelector<IApplicationState, ICategory[]>(state => state.menu.categoryList);
 	const backgroundCover =
 		'url(https://static.delino.com/Image/Restaurant/Cover/st5xrnas.i4s_big.jpg)';

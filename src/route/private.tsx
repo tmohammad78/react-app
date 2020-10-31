@@ -1,8 +1,8 @@
-import React, { useEffect } from 'react';
-import { Route, Redirect, RouteProps, RouteComponentProps } from 'react-router-dom';
+import React, { FunctionComponent } from 'react';
+import { Route, Redirect } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import { IApplicationState } from '../Redux/reducers';
-import { AuthState } from '../Types/index';
+import { AuthState } from '../types/index';
 
 interface PrivateRouteProps {
 	component: any;
@@ -12,14 +12,14 @@ interface PrivateRouteProps {
 	path: string;
 }
 
-const PrivateRoute: React.SFC<PrivateRouteProps> = ({ component: Component, toggleTheme, ...props }): JSX.Element => {
+const PrivateRoute: FunctionComponent<PrivateRouteProps> = ({ component: Component, toggleTheme, ...props }): JSX.Element => {
 
 	const auth = useSelector<IApplicationState, AuthState>(state => state.auth);
 	return (
 		<Route
 			{...props}
 			render={({ location }) => {
-				if (auth.logged || auth.logged == 'skipped') {
+				if (auth.logged || auth.logged === 'skipped') {
 					return <Component {...props} toggleTheme={toggleTheme} />;
 				} else {
 					return (

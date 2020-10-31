@@ -1,6 +1,6 @@
 // const chalk = require('chalk');
-const ERR_NO_ENV_FLAG =
-	`You must pass an --env.mode flag into your build for webpack to work!`
+// @ts-ignore
+const ERR_NO_ENV_FLAG = `You must pass an --env.mode flag into your build for webpack to work!`;
 
 
 module.exports = {

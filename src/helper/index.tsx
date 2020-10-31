@@ -1,23 +1,21 @@
-import { IFoodList, ICartItemsObject, INewFoodList } from "../Types/index";
+// @ts-ignore
+import { ICartItemsObject, IFoodList, INewFoodList } from '../Types/index';
 
-export const currency = (number: number, showToman: boolean = true) => {
-	if (showToman && number !== 0) {
-		const realPrice = number;
-		const final = realPrice.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,');
-
+export const currency = (numberValue: number, showToman: boolean = true) => {
+	if (showToman && numberValue !== 0) {
+		const final = numberValue.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,');
 		return `${toPersianNum(final)} تومان`;
 	}
-	if (showToman === false) {
-		const realPrice = number;
-		const final = realPrice.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,');
+	if (!showToman) {
+		const final = numberValue.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,');
 		return toPersianNum(final);
 	} else {
 		return null;
 	}
 };
 
-export const discountPrice = (number: number, discountPercentage: number) => {
-	const price = number - number * (discountPercentage / 100);
+export const discountPrice = (numberValue: number, discountPercentage: number) => {
+	const price = numberValue - numberValue * (discountPercentage / 100);
 	const final = price.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,');
 	return `${toPersianNum(final)} تومان`;
 };
@@ -30,9 +28,11 @@ export const truncate = (str: string, num = 5) => {
 		return str;
 	}
 };
+
 interface IArray {
 	[key: string]: string
 }
+
 export const toPersianNum = (value: any, dontTrim = false) => {
 	let i = 0;
 	const num = dontTrim ? value.toString() : value.toString().trim(',');
@@ -49,31 +49,20 @@ export const toPersianNum = (value: any, dontTrim = false) => {
 	}
 	return res;
 };
-// / interface test {
-// 	// 	objectList: TestLikeState[] | ICartItemsObject[]
-// 	// }
+
 export const objectToArray = (objectList: ICartItemsObject) => {
 	const list: IFoodList[] = [];
 	Object.values(objectList).forEach((item: IFoodList) => {
-		list[parseInt(item.index)] = item;
+		list[parseInt(item.index, 10)] = item;
 	});
 
 	return list;
 };
 
 
-
 export const arrayToObject = (list: IFoodList[], keyField = 'id'): INewFoodList[] => {
 	return Object.assign(
 		{},
-		...list.map((item: IFoodList, index) => ({ [item['id']]: { ...item, index } }))
+		...list.map((item: IFoodList, index) => ({ [item.id]: { ...item, index } }))
 	);
 };
-
-// export function arrayToObject<T extends { id: string }>(array: T[]): { [k: string]: T } {
-// 	let obj: { [k: string]: T } = {};
-// 	array.forEach(val => {
-// 		obj[val.id] = val;
-// 	})
-// 	return obj;
-// }

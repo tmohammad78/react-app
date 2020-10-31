@@ -1,6 +1,6 @@
 import _ from 'underscore';
 import { IDataMain } from '../actionTypes';
-import { ICategory, ISubFood, IFoodList, ISectionFood, ICategoryResponse } from '../../../Types/index';
+import { ICategory, ISubFood, IFoodList, ISectionFood, ICategoryResponse } from '../../../types/index';
 
 function makeFoodItem(food: IFoodList) {
 	return {
@@ -16,14 +16,14 @@ function makeFoodItem(food: IFoodList) {
 		foodTag: food.foodTag || undefined,
 		available: typeof food.available !== 'undefined' ? food.available : true,
 		unavailableText: food.unavailableText || '',
-		stock: typeof food.stock !== "undefined" ? food.stock : true,
+		stock: typeof food.stock !== 'undefined' ? food.stock : true,
 		subFoods: food.subFoods || false,
 		priceLabel: food.priceLabel || '',
 		visible: true,
 		like: false,
 		quantity: 0,
 		saleOnRamadan: food.saleOnRamadan
-	}
+	};
 
 }
 
@@ -76,7 +76,7 @@ const parseMenu = (data: IDataMain, sort?: any) => {
 				sectionList.forEach((section) => {
 					const foods = section.food;
 					if (foods && foods.length) {
-						if (parseInt(section.id) === 0) {
+						if (parseInt(section.id, 10) === 0) {
 							foods.forEach((food: IFoodList) => {
 								const foodItem = makeFoodItem(food);
 								if (foodItem) {
@@ -120,7 +120,7 @@ const parseMenu = (data: IDataMain, sort?: any) => {
 									ingredient: section.description || '', // || subData.ingredient || "",
 									img: section.img,
 									discount: 0,
-									price: parseInt(section.priceLabel),
+									price: parseInt(section.priceLabel, 10),
 									discountPercentage: subData.maxDiscount,
 									available: subAvailable,
 									unavailableText: subUnavailableText,

@@ -1,4 +1,4 @@
-import React, { useState, useEffect, lazy, Suspense } from 'react';
+import { useState, useEffect, lazy, Suspense, FunctionComponent } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { closeSubFoodModal } from '../../../Redux/subFood/action';
 
@@ -6,6 +6,7 @@ import Food from './food/index';
 import SubFood from '../subFoodModal/subFood';
 import FoodListTitle from './FoodListTitle/index';
 import Spinner from '../../../Components/Spinner/index';
+
 const Modal = lazy(() => import('../../../Components/Modal/index'));
 const SearchBar = lazy(() => import('./searchBar/searchBar'));
 import { IApplicationState } from '../../../Redux/reducers';
@@ -19,17 +20,21 @@ interface ITest2 {
 	field: string,
 	asc: boolean
 }
+
 interface ITest {
 	[key: string]: ITest2
 }
+
 const sortBy: ITest = {
 	lowestprice: { field: 'price', asc: true },
 	highestprice: { field: 'price', asc: false }
 };
+
 interface IProps {
 	itemFood: IFoodList[]
 }
-const FoodListTable: React.SFC<IProps> = ({ itemFood }: IProps) => {
+
+const FoodListTable: FunctionComponent<IProps> = ({ itemFood }: IProps) => {
 	const originalItems = [...itemFood];
 	const row = [];
 	let lastCategory: string | undefined = '';
@@ -59,6 +64,7 @@ const FoodListTable: React.SFC<IProps> = ({ itemFood }: IProps) => {
 		if (text) {
 			newList = newList.filter(item => item.title.indexOf(text) > -1);
 			searchIngredient = searchIngredient.filter(item => item.ingredient.indexOf(text) > -1);
+			// @ts-ignore
 			result = newList.concat(searchIngredient);
 		} else {
 			newList ? (result = newList) : (result = itemFood);
@@ -104,10 +110,10 @@ const FoodListTable: React.SFC<IProps> = ({ itemFood }: IProps) => {
 			lastCategory = food.categoryTitle;
 		});
 	} else {
+		// @ts-ignore
 		row.push(<NotFound />);
 	}
 
-	console.log(subFood);
 	return (
 		<FoodMenu>
 			<Suspense fallback={<Spinner />}>
@@ -126,7 +132,6 @@ const FoodListTable: React.SFC<IProps> = ({ itemFood }: IProps) => {
 								show={subFood.show}
 								onClose={() => dispatch(closeSubFoodModal(true))}
 								className='subFoodModal'
-								subFood
 							>
 								<SubFood subFood={subFood.food} />
 							</Modal>

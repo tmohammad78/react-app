@@ -1,4 +1,5 @@
-import { IFoodList } from '../../Types/index';
+import { IFoodList } from '../../types/index';
+
 export enum cartActionTypes {
 	LOAD_CART = 'LOAD_CART',
 	ADD_FOOD_CART = 'ADD_FOOD_CART',
@@ -18,6 +19,7 @@ export interface IAddFoodCartAction {
 		quantity: number
 	}
 }
+
 export interface IUpdateCartAction {
 	type: cartActionTypes.UPDATE_CART,
 	payload: {
@@ -25,6 +27,7 @@ export interface IUpdateCartAction {
 		totalProduct: number
 	}
 }
+
 export interface IRemoveFoodCartAction {
 	type: cartActionTypes.REMOVE_FOOD_CART,
 	payload: {

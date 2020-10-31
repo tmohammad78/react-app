@@ -1,11 +1,13 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, FunctionComponent } from 'react';
 import axios from 'axios';
 import { restaurantInfo } from '../../Redux/util';
 import { RestInfo, LeftBox, RightBox } from './style';
+
 interface IRestInfo {
 	fullAddress: string
 }
-const InfoRes: React.SFC = () => {
+
+const InfoRes: FunctionComponent = () => {
 	const [restInfo, setRestInfo] = useState<IRestInfo>({
 		fullAddress: ''
 	});
@@ -50,7 +52,7 @@ const InfoRes: React.SFC = () => {
 				</section>
 			</RightBox>
 		</RestInfo>
-	)
+	);
 };
 
 export default InfoRes;

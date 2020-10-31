@@ -1,5 +1,4 @@
-
-import "@testing-library/jest-dom/extend-expect"; // for matcher in the test files 
+import '@testing-library/jest-dom/extend-expect'; // for matcher in the test files
 export interface AuthState {
 	errorMessage: string,
 	token: string,
@@ -7,9 +6,11 @@ export interface AuthState {
 	expiresIn: string,
 	logged?: boolean | string | undefined
 }
+
 export interface ICartItemsObject {
 	[key: string]: IFoodList
 }
+
 export interface CartState {
 	products: IFoodList[];
 	items: ICartItemsObject;
@@ -22,10 +23,6 @@ export interface ICartTotalState {
 }
 
 
-
-
-
-
 export interface SubFoodState {
 	food: IFoodList[],
 	show: boolean
@@ -35,9 +32,11 @@ export interface ITTT {
 	food: testing;
 	like: boolean;
 }
+
 export interface testing {
 	[key: string]: INewFoodList
 }
+
 export interface MenuState {
 	foodListItem: testing,
 	foodList: IFoodList[],
@@ -51,15 +50,9 @@ declare module '*.scss' {
 }
 
 
-
 export interface TestLikeState {
 	[key: string]: INewFoodList
 }
-
-
-
-
-
 
 
 export interface LikeFoodState {
@@ -107,6 +100,7 @@ export interface IFoodList extends ISubFood {
 	categoryIndex?: number | undefined,
 	subFoods: ISubFood[];
 }
+
 interface INewFoodList extends IFoodList {
 	like: boolean
 }

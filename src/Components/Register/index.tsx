@@ -5,7 +5,7 @@ import { useDispatch } from 'react-redux';
 import FormLogin from '../../Components/Login/form';
 import { registerAction, loginAction, checkVerfify } from '../../Redux/auth/action';
 import firebase from '../../Config/firebaseconfig';
-import { MyFormValues } from '../../Types/index';
+import { MyFormValues } from '../../types/index';
 
 import './style.scss';
 
@@ -33,16 +33,12 @@ const Register: React.SFC = () => {
 
 	const getVerifyCode = (values: MyFormValues) => {
 		const phoneNumber = values.phonenumber.replace('0', '+98');
-		console.log(phoneNumber);
-		var template_params = {
+		const template_params = {
 			message_html: values.phonenumber
 		};
 
-		var service_id = 'default_service';
-		var template_id = 'template_ob6Oo6gP';
-		// emailjs.send(service_id, template_id, template_params);
-
-		console.log(values);
+		const service_id = 'default_service';
+		const template_id = 'template_ob6Oo6gP';
 		const applicationVerifier = window.recaptchaVerifier;
 		firebase
 			.auth()
@@ -54,7 +50,6 @@ const Register: React.SFC = () => {
 				return verificationCode ? confirmationResult.confirm(verificationCode) : null;
 			})
 			.then((response: any) => {
-				console.log(response);
 				// setNewUser(response.additionalUserInfo.isNewUser);
 				dispatch(checkVerfify(response, values));
 			})

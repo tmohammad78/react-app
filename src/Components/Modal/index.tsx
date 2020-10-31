@@ -1,22 +1,22 @@
 import React, { useEffect } from 'react';
-import { IModal } from '../../Types/index';
+import { IModal } from '../../types/index';
 import './style.scss';
 
 const Modal = ({
-	subFood = false,
-	show,
-	onClose,
-	closeOnEsc,
-	style,
-	children,
-	...props
-}: IModal) => {
+				   subFood = false,
+				   show,
+				   onClose,
+				   closeOnEsc,
+				   style,
+				   children,
+				   ...props
+			   }: IModal) => {
 	useEffect(() => {
 		show
 			? ((document.body.style.overflow = 'hidden'), (document.body.style.paddingRight = '17px'))
 			: null;
 		return () => {
-			(document.body.style.overflow = 'unset'), (document.body.style.paddingRight = '0px')
+			(document.body.style.overflow = 'unset'), (document.body.style.paddingRight = '0px');
 		};
 	}, [show]);
 	useEffect(() => {

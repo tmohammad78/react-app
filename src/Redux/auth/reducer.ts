@@ -1,6 +1,7 @@
 import { AuthSystemAction, authActionTypes } from './actionType';
 import { Reducer } from 'redux';
-import { AuthState } from '../../Types/index';
+import { AuthState } from '../../types/index';
+
 const initialState: AuthState = {
 	errorMessage: '',
 	token: '',
@@ -51,4 +52,4 @@ export const authReducer: Reducer<AuthState, AuthSystemAction> = (
 		default:
 			return state;
 	}
-}
+};

@@ -1,9 +1,9 @@
 import React, { Fragment } from 'react';
 import { Formik, Form, Field } from 'formik';
-import { validation } from '../../Helper/validation';
+import { validation } from '../../helper/validation';
 import { Button } from '../Buttons/Button';
 import Input from '../Input/index';
-import { MyFormValues } from '@Types/index';
+import { MyFormValues } from '../../types';
 import './style.scss';
 
 
@@ -13,6 +13,7 @@ interface Props {
 
 interface IInputForm {
 	[x: string]: any;
+
 	field: any;
 	className: string;
 	meta: string;
@@ -21,6 +22,7 @@ interface IInputForm {
 		errors: string;
 	};
 }
+
 const FormLogin = ({ submitAction }: Props) => {
 	const initialValues: MyFormValues = { email: '', phonenumber: '', password: '' };
 
@@ -65,7 +67,6 @@ const FormLogin = ({ submitAction }: Props) => {
 					/>
 					<Button
 						type='submit'
-						// onClick={test}
 						className='registerBtn'
 						onClick={() => submitForm(values)}
 						disabled={isSubmitting}
