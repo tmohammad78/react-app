@@ -19,34 +19,37 @@ interface IProps {
 const MainAuth: FunctionComponent<IProps> = (props) => {
 	// const location = useLocation<LocationState>();
 	return (
-		<div className='inner_content'>
-			<div className='title'>
-				<span>انتخاب کن و سفارش بده..!</span>
-			</div>
-			<div className='registerButton'>
-				<div className='registerbtn'>
-					<NavLink to={`e/test`}>
-						<Button ptb='16' prl='100' onClick={props.callBackChangeState}>
-							ثبت نام
-						</Button>
-					</NavLink>
-				</div>
-				<div></div>
-				<div className='registerbtn'>
-					<NavLink to="\test">
-						<Button
-							ptb='13'
-							prl='100'
-							bgcolor='transparent'
-							borderSize='2'
-							onClick={props.handleSkipAuth}
-						>
-							فعلا نه
-						</Button>
-					</NavLink>
-				</div>
-			</div>
+		<div>
+			dlfjn
 		</div>
+		// <div className='inner_content'>
+		// 	<div className='title'>
+		// 		<span>انتخاب کن و سفارش بده..!</span>
+		// 	</div>
+		// 	<div className='registerButton'>
+		// 		<div className='registerbtn'>
+		// 			<NavLink to={`e/test`}>
+		// 				<Button ptb='16' prl='100' onClick={props.callBackChangeState}>
+		// 					ثبت نام
+		// 				</Button>
+		// 			</NavLink>
+		// 		</div>
+		// 		<div></div>
+		// 		<div className='registerbtn'>
+		// 			<NavLink to="\test">
+		// 				<Button
+		// 					ptb='13'
+		// 					prl='100'
+		// 					bgcolor='transparent'
+		// 					borderSize='2'
+		// 					onClick={props.handleSkipAuth}
+		// 				>
+		// 					فعلا نه
+		// 				</Button>
+		// 			</NavLink>
+		// 		</div>
+		// 	</div>
+		// </div>
 	);
 };
 export default MainAuth;

@@ -11,7 +11,7 @@ import { SubFoodModal } from '../../../../Redux/subFood/action';
 
 import { FoodItem } from './style';
 import { IApplicationState } from '../../../../Redux/reducers';
-import { IFoodList, INewFoodList } from '../../../../types/index';
+import { IFoodList, INewFoodList } from '../../../../types';
 
 interface IProps {
 	food: IFoodList

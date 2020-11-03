@@ -2,7 +2,7 @@ import React from 'react';
 import { useDispatch } from 'react-redux';
 
 import { addFoodLike, removeFoodLike } from '../../../../../../Redux/likeFood/action';
-import { INewFoodList } from '../../../../../../types/index';
+import { INewFoodList } from '../../../../../../types';
 
 
 import Svg from './heart.svg';
@@ -29,16 +29,14 @@ const LikeFood = ({ food }: IProps) => {
 		e.stopPropagation();
 		checkDispatch();
 	};
-
-	// @ts-ignore
+	
 	return (
 		<div className={`${food.like ? 'show' : 'hide'}`}>
 			<LikeFoodStyle className="show" onClick={handleLikeFood}>
 				{food.like ? <Svg1 /> : <Svg />}
-				<div className='icon-heart'></div>
+				<div className='icon-heart'/>
 			</LikeFoodStyle>
 		</div>
 	);
 };
 export default LikeFood;
-// className={`${food.like ? 'show' : 'hide'}`}

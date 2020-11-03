@@ -63,22 +63,22 @@ const Routes: IRoutes[] = [
 			}
 		]
 	},
-	// {
-	// 	component: AuthPage,
-	// 	path: '/auth',
-	// 	routes: [
-	// 		{
-	// 			component: MainAuth,
-	// 			path: '/auth',
-	// 			exact: true
-	// 		},
-	// 		{
-	// 			component: Register,
-	// 			path: '/auth/test',
-	// 			exact: true
-	// 		}
-	// 	]
-	// }
+	{
+		component: AuthPage,
+		path: '/auth',
+		routes: [
+			{
+				component: MainAuth,
+				path: '/auth',
+				exact: true
+			},
+			{
+				component: Register,
+				path: '/auth/test',
+				exact: true
+			}
+		]
+	}
 ];
 
 export default Routes;

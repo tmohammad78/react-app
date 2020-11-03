@@ -10,7 +10,7 @@ import Spinner from '../../../Components/Spinner/index';
 const Modal = lazy(() => import('../../../Components/Modal/index'));
 const SearchBar = lazy(() => import('./searchBar/searchBar'));
 import { IApplicationState } from '../../../Redux/reducers';
-import { ISubFood, IFoodList, SubFoodState } from '../../../types/index';
+import { IFoodList, SubFoodState } from '../../../types';
 
 import { FoodList, NotFoundStyle, FoodMenu } from './style';
 
@@ -35,7 +35,7 @@ interface IProps {
 }
 
 const FoodListTable: FunctionComponent<IProps> = ({ itemFood }: IProps) => {
-	const originalItems = [...itemFood];
+	const originalItems: any = [...itemFood];
 	const row = [];
 	let lastCategory: string | undefined = '';
 
@@ -56,7 +56,7 @@ const FoodListTable: FunctionComponent<IProps> = ({ itemFood }: IProps) => {
 
 	const search = (text: string, stock: boolean, list = itemFood) => {
 		let newList = list;
-		let result = [];
+		let result: any[];
 		let searchIngredient = list;
 		if (stock) {
 			newList = newList.filter(item => item.available);
@@ -82,23 +82,21 @@ const FoodListTable: FunctionComponent<IProps> = ({ itemFood }: IProps) => {
 		setInStock(value);
 	};
 
-	const sortHandler = (value: string): void => {
-		// let newItem: IFoodList[] = [];
-		const sortItem = sortBy[value];
-		// if (sortItem) {
-		// 	const index = sortItem.asc ? 1 : -1;
-		// 	newItem = originalItems.sort((a, b) => {
-		//
-		// 		return (
-		//
-		// 			// a.catIndex - b.catIndex ||
-		// 			// a.catId - b.catId ||
-		// 			// (a.categoryIndex - b.categoryIndex) || ((a[sortItem.field] - b[sortItem.field]) * index)
-		// 		);
-		// 	});
-		// } else {
-		// 	newItem = originalItems;
-		// }
+	const sortHandler = (value: string) => {
+		let newItem: any[];
+		const sortItem: ITest2 = sortBy[value];
+		if (sortItem) {
+			const index = sortItem.asc ? 1 : -1;
+			newItem = originalItems.sort((a: any, b: any) => {
+				return (
+					a.catIndex - b.catIndex ||
+					a.catId - b.catId ||
+					(a.categoryIndex - b.categoryIndex) || ((a[sortItem.field] - b[sortItem.field]) * index)
+				);
+			});
+		} else {
+			newItem = originalItems;
+		}
 		search(searchKey, inStock, newItem);
 	};
 

@@ -1,5 +1,5 @@
 import React from 'react';
-import { currency } from '../../../../../../helper/index';
+import { currency } from '../../../../../../helper';
 import './style.scss';
 
 interface Props {

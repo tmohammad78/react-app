@@ -5,7 +5,7 @@ import { addFood, removeFood } from '../../../../../../Redux/cart/actions';
 import { SubFoodModal } from '../../../../../../Redux/subFood/action';
 import { Button } from '../../../../../Buttons/Button';
 import { Span } from './span';
-import { IFoodList } from '../../../../../../types/index';
+import { IFoodList } from '../../../../../../types';
 
 import { QtyStyle, AvailableBox } from './style';
 import './style.scss';

@@ -1,5 +1,5 @@
 import React, { FunctionComponent } from 'react';
-import { truncate } from '../../../../../../helper/index';
+import { truncate } from '../../../../../../helper';
 import './style.scss';
 
 

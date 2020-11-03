@@ -1,11 +1,11 @@
-import React, { useEffect, useState } from 'react';
+import React, { FunctionComponent, useEffect, useState } from 'react';
 import { useHistory } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 
 import FormLogin from '../../Components/Login/form';
 import { registerAction, loginAction, checkVerfify } from '../../Redux/auth/action';
 import firebase from '../../Config/firebaseconfig';
-import { MyFormValues } from '../../types/index';
+import { MyFormValues } from '../../types';
 
 import './style.scss';
 
@@ -19,8 +19,8 @@ const initialState = {
 	email: '',
 	phonenumber: '',
 	password: ''
-}
-const Register: React.SFC = () => {
+};
+const Register: FunctionComponent = () => {
 	const history = useHistory();
 	const dispatch = useDispatch();
 	const [newUser, setNewUser] = useState(true);
@@ -63,27 +63,29 @@ const Register: React.SFC = () => {
 		getVerifyCode(values);
 	};
 	return (
-		<div className='register_box'>
-			<i
-				className='fo fo-arrow-left'
-				onClick={() => {
-					history.goBack();
-				}}
-			/>
-			<div>
-				<FormLogin submitAction={handleAuth} />
-				<input
-					type='button'
-					value='دریافت کد'
-					id='recaptcha-container'
-					onClick={() => getVerifyCode}
-					style={{
-						opacity: 0
+		<>
+			<div className='register_box'>
+				<i
+					className='fo fo-arrow-left'
+					onClick={() => {
+						console.log('dscsdc');
 					}}
 				/>
-				<div id='recaptcha-container' className='recaptcha' />
+				<div>
+					<FormLogin submitAction={handleAuth} />
+					<input
+						type='button'
+						value='دریافت کد'
+						id='recaptcha-container'
+						onClick={() => getVerifyCode}
+						style={{
+							opacity: 0
+						}}
+					/>
+					<div id='recaptcha-container' className='recaptcha' />
+				</div>
 			</div>
-		</div>
+		</>
 	);
 };
 export default Register;

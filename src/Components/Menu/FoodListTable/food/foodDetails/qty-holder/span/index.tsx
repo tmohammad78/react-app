@@ -1,5 +1,5 @@
 import React, { FunctionComponent } from 'react';
-import { currency } from '../../../../../../../helper/index';
+import { currency } from '../../../../../../../helper';
 import { QtySpan } from './style';
 
 

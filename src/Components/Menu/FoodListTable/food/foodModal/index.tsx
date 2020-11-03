@@ -1,21 +1,21 @@
-import React, { useMemo } from 'react';
+import React, { FunctionComponent, useMemo } from 'react';
 
 import FoodImge from '../foodDetails/foodImage/index';
 import Tittle from '../foodDetails/Tittle/index';
 import Ingredient from '../foodDetails/ingredient/index';
 import QtyHolder from '../foodDetails/qty-holder/index';
 import Price from '../foodDetails/price/index';
-import { IFoodList } from '../../../../../types/index';
+import { IFoodList } from '../../../../../types';
 
 import './style.scss';
 
 interface IProps {
 	subfood?: boolean;
 	defaultDetail: IFoodList;
-	food: IFoodList;
+	food?: IFoodList;
 }
 
-const DetailModal: React.SFC<IProps> = ({ subfood = false, defaultDetail: items, food }) => {
+const DetailModal: FunctionComponent<IProps> = ({ subfood = false, defaultDetail: items, food }) => {
 	const Test = () => (
 		<React.Fragment>
 			<FoodImge image={items.img} />
@@ -32,7 +32,7 @@ const DetailModal: React.SFC<IProps> = ({ subfood = false, defaultDetail: items,
 			{renderDefault}
 			<div className='block'>
 				<Price price={items.price ? items.price : 0} />
-				{subfood ? null : <QtyHolder food={food} />}
+				{subfood ? null : food ? <QtyHolder food={food} /> : null}
 			</div>
 		</div>
 	);
