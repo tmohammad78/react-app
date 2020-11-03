@@ -1,6 +1,5 @@
-import { FunctionComponent } from 'react';
-// @ts-ignore
-import { truncate } from '../../../../../../Helper/index';
+import React, { FunctionComponent } from 'react';
+import { truncate } from '../../../../../../helper/index';
 import './style.scss';
 
 

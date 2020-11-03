@@ -1,7 +1,7 @@
-// @ts-ignore
-import { currency } from '../../../../../../../Helper/index';
+import React, { FunctionComponent } from 'react';
+import { currency } from '../../../../../../../helper/index';
 import { QtySpan } from './style';
-import { FunctionComponent } from 'react';
+
 
 interface IProps {
 	qty: number

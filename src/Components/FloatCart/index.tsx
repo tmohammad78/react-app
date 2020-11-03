@@ -4,8 +4,8 @@ import { useSelector } from 'react-redux';
 import { Button } from '../Buttons/Button';
 import CartProduct from './CartProduct/index';
 
-import { objectToArray, currency } from '../../Helper/index';
-import { ICartItemsObject, ICartTotalState } from '../../Types/index';
+import { objectToArray, currency } from '../../helper/index';
+import { ICartItemsObject, ICartTotalState } from '../../types/index';
 import { IApplicationState } from '../../Redux/reducers';
 
 import { CartListHolder, CartShowMobile, RestCart, LeftSideHolder } from './style';

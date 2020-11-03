@@ -12,7 +12,7 @@
 		// add .map file outDir  . debugger  forbid implicit any
 		"jsx": "react",
 		// transform JSX
-		"Strict": true,
+		"strict": true,
 		//enable strict  features
 		"strictNullChecks": true,
 		//check and compile JS

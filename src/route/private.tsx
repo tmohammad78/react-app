@@ -26,7 +26,7 @@ const PrivateRoute: FunctionComponent<PrivateRouteProps> = ({ component: Compone
 						<Redirect
 							to={{
 								pathname: '/auth',
-								state: location
+								state: 'd'
 							}}
 						/>
 					);

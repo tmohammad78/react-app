@@ -1,7 +1,5 @@
-import { FunctionComponent } from 'react';
-
-// @ts-ignore
-import { currency } from '../../../../../../Helper/index';
+import React, { FunctionComponent } from 'react';
+import { currency } from '../../../../../../helper/index';
 
 interface IProps {
 	quantity: number

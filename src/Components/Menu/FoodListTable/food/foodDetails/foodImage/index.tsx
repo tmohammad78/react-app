@@ -1,10 +1,10 @@
 import React from 'react';
-
 import './style.scss';
 
 interface IProps {
 	image: string
 }
+
 const FoodImage: React.SFC<IProps> = ({ image }) => {
 	let imageData = null;
 	if (image) {

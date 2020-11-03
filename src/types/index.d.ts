@@ -95,6 +95,7 @@ export interface ISubFood {
 }
 
 export interface IFoodList extends ISubFood {
+	catIndex?: number;
 	catId?: number,
 	categoryTitle?: string,
 	categoryIndex?: number | undefined,

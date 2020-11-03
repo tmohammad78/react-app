@@ -1,5 +1,5 @@
-// @ts-ignore
-import { currency } from '../../../../../../Helper/index';
+import React from 'react';
+import { currency } from '../../../../../../helper/index';
 import './style.scss';
 
 interface Props {

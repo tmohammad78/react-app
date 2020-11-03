@@ -1,4 +1,4 @@
-import { useState, useEffect, lazy, Suspense, FunctionComponent } from 'react';
+import React, { useState, useEffect, lazy, Suspense, FunctionComponent } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { closeSubFoodModal } from '../../../Redux/subFood/action';
 
@@ -10,7 +10,7 @@ import Spinner from '../../../Components/Spinner/index';
 const Modal = lazy(() => import('../../../Components/Modal/index'));
 const SearchBar = lazy(() => import('./searchBar/searchBar'));
 import { IApplicationState } from '../../../Redux/reducers';
-import { ISubFood, IFoodList, SubFoodState } from '../../../Types/index';
+import { ISubFood, IFoodList, SubFoodState } from '../../../types/index';
 
 import { FoodList, NotFoundStyle, FoodMenu } from './style';
 
@@ -82,22 +82,23 @@ const FoodListTable: FunctionComponent<IProps> = ({ itemFood }: IProps) => {
 		setInStock(value);
 	};
 
-	const sortHandler = (value: string) => {
-		let newItem: IFoodList[] = [];
+	const sortHandler = (value: string): void => {
+		// let newItem: IFoodList[] = [];
 		const sortItem = sortBy[value];
-		if (sortItem) {
-			const index = sortItem.asc ? 1 : -1;
-			newItem = originalItems.sort((a, b) => {
-
-				return (
-					//        a.catIndex - b.catIndex ||
-					//          a.catId - b.catId ||
-					(a.categoryIndex - b.categoryIndex) || ((a[sortItem.field] - b[sortItem.field]) * index)
-				);
-			});
-		} else {
-			newItem = originalItems;
-		}
+		// if (sortItem) {
+		// 	const index = sortItem.asc ? 1 : -1;
+		// 	newItem = originalItems.sort((a, b) => {
+		//
+		// 		return (
+		//
+		// 			// a.catIndex - b.catIndex ||
+		// 			// a.catId - b.catId ||
+		// 			// (a.categoryIndex - b.categoryIndex) || ((a[sortItem.field] - b[sortItem.field]) * index)
+		// 		);
+		// 	});
+		// } else {
+		// 	newItem = originalItems;
+		// }
 		search(searchKey, inStock, newItem);
 	};
 

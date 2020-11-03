@@ -1,11 +1,12 @@
 @media only screen and (min-width: 767px) {
-  .modal-food {
-    margin: 0px 25px;
-    figure {
-      &.image-food {
-        // width: 400px;
-        // display: inline-block;
-      }
-    }
-  }
+	.modal-food {
+		margin: 0px 25px;
+
+		figure {
+			&.image-food {
+				// width: 400px;
+				// display: inline-block;
+			}
+		}
+	}
 }

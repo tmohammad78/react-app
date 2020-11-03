@@ -1,5 +1,3 @@
-const webpack = require('webpack');
-const autoprefixer = require('autoprefixer');
 const commonVariables = require('./commonVariables');
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
@@ -8,13 +6,9 @@ const PORT = process.env.PORT || 3000;
 module.exports = [
 	{
 		mode: 'development',
-		devtool: 'cheap-module-source-map',
+		devtool: 'eval',
 		entry: {
 			app: [
-				// 'core-js/stable',
-				// 'regenerator-runtime/runtime',   // it was an error in @babel/runtime in starting project
-				// 'webpack-hot-middleware/client',
-				// 'react-hot-loader/patch',
 				`${commonVariables.appEntry}/index.tsx`
 			]
 		},
@@ -38,14 +32,19 @@ module.exports = [
 					test: /\.(sa|sc|c)ss$/,
 					use: [
 						{ loader: 'style-loader' },
-						{ loader: 'css-loader' },
+						{
+							loader: 'css-loader', options: {
+								importLoaders: 1
+							}
+						},
 						{
 							loader: 'postcss-loader',
 							options: {
 								sourceMap: true,
-								config: {
-									path: path.resolve(__dirname, 'postcss.config.js')
+								postcssOptions: {
+									config: path.resolve(__dirname, '../postcss.config.js')
 								}
+
 							}
 						},
 						{

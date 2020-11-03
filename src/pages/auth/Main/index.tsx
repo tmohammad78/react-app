@@ -10,14 +10,14 @@ interface IProps {
 	match: RouteComponentProps<IParams>
 }
 
-interface LocationState {
-	state: {
-		pathname: string;
-	};
-}
+// interface LocationState {
+// 	state: {
+// 		pathname: string;
+// 	};
+// }
 
 const MainAuth: FunctionComponent<IProps> = (props) => {
-	const location = useLocation<LocationState>();
+	// const location = useLocation<LocationState>();
 	return (
 		<div className='inner_content'>
 			<div className='title'>
@@ -25,7 +25,7 @@ const MainAuth: FunctionComponent<IProps> = (props) => {
 			</div>
 			<div className='registerButton'>
 				<div className='registerbtn'>
-					<NavLink to={`${props.match.url}/test`}>
+					<NavLink to={`e/test`}>
 						<Button ptb='16' prl='100' onClick={props.callBackChangeState}>
 							ثبت نام
 						</Button>
@@ -33,7 +33,7 @@ const MainAuth: FunctionComponent<IProps> = (props) => {
 				</div>
 				<div></div>
 				<div className='registerbtn'>
-					<NavLink to={`${location.state.pathname}`}>
+					<NavLink to="\test">
 						<Button
 							ptb='13'
 							prl='100'

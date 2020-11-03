@@ -9,12 +9,12 @@ interface SearchProps {
 }
 const SearchBar = ({ filterText, onfilterText, onChangeStock, inStock }: SearchProps) => {
 	const handleTextChange = (e: React.FormEvent<EventTarget>) => {
-		let target = e.target as HTMLInputElement;
+		const target = e.target as HTMLInputElement;
 		onfilterText(target.value);
 	};
 
 	const handleInStockChange = (e: React.FormEvent<EventTarget>): void => {
-		let target = e.target as HTMLInputElement;
+		const target = e.target as HTMLInputElement;
 		onChangeStock(target.checked);
 	};
 

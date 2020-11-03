@@ -8,8 +8,7 @@ import {
 import axios from '../../API/api';
 import { AxiosResponse } from 'axios';
 import { Dispatch, ActionCreator, AnyAction } from 'redux';
-// @ts-ignore
-import { browserHistory } from '../../Route/history';
+import browserHistory from '../../route/history';
 import { ThunkAction } from 'redux-thunk';
 import { IApplicationState } from '../reducers';
 
@@ -52,8 +51,8 @@ export const checkVerfify = (response: any, values: any) => (dispatch: any) => {
 export const loginAction: ActionCreator<ThunkAction<Promise<AnyAction>, IApplicationState, undefined, IAuthloginAction>> = ({ email, password }: Props) => (dispatch: Dispatch, getState: () => IApplicationState) => {
 	return axios
 		.post('/accounts:signInWithCustomToken?key=AIzaSyDa29GWAYmBAuPEE7gxgVepxYYr6JAyfMQ', {
-			email: email,
-			password: password,
+			email,
+			password,
 			returnSecureToken: true
 		})
 		.then((Response: AxiosResponse) => {
@@ -77,8 +76,8 @@ export const registerAction: ActionCreator<ThunkAction<Promise<AnyAction>, IAppl
 				credentials: 'same-origin'
 			},
 			{
-				email: email,
-				password: password,
+				email,
+				password,
 				returnSecureToken: true
 			}
 		)

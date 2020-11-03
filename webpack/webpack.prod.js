@@ -1,16 +1,14 @@
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
-const autoprefixer = require('autoprefixer');
 const path = require('path');
 const commonVariables = require('./commonVariables');
 const FriendlyErrorsWebpackPlugin = require('friendly-errors-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
-const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
+const TerserPlugin = require('terser-webpack-plugin');
 const MinifyPlugin = require('babel-minify-webpack-plugin');
-const CompressionPlugin = require('compression-webpack-plugin');
 const HtmlWebpackRootPlugin = require('html-webpack-root-plugin');
 const WorkboxPlugin = require('workbox-webpack-plugin');
-var WebpackPwaManifest = require('webpack-pwa-manifest');
+const WebpackPwaManifest = require('webpack-pwa-manifest');
 const SWPrecacheWebpackPlugin = require('sw-precache-webpack-plugin');
 const PUBLIC_PATH = 'https://food-delivery-7d366.firebaseapp.com/';
 module.exports = Object.keys(commonVariables.languages).map(function(language) {
@@ -18,7 +16,7 @@ module.exports = Object.keys(commonVariables.languages).map(function(language) {
 		mode: 'production',
 		devtool: 'source-map',
 		entry: {
-			app: ['core-js/stable', 'regenerator-runtime/runtime', `${commonVariables.appEntry}/index.js`]
+			app: [`${commonVariables.appEntry}/index.tsx`]
 		},
 		output: {
 			chunkFilename: `[name].[chunkhash:8].js`
@@ -34,25 +32,17 @@ module.exports = Object.keys(commonVariables.languages).map(function(language) {
 						{
 							loader: 'css-loader',
 							options: {
-								// minimize: true,
 								sourceMap: false
 							}
 						},
 						{
 							loader: 'postcss-loader',
 							options: {
-								ident: 'postcss',
 								sourceMap: false,
-								plugins: () => [
-									autoprefixer({
-										// browsers: [
-										//   ">1%",
-										//   "last 4 versions",
-										//   "Firefox ESR",
-										//   "not ie < 9"
-										// ]
-									})
-								]
+								postcssOptions: {
+									config: path.resolve(__dirname, '../postcss.config.js')
+								}
+
 							}
 						},
 						{
@@ -80,25 +70,16 @@ module.exports = Object.keys(commonVariables.languages).map(function(language) {
 			]
 		},
 		optimization: {
-			concatenateModules: true,
-			minimizer: [
-				new UglifyJsPlugin({
-					uglifyOptions: {
-						output: {
-							comments: false
-						}
-					}
-				})
-			]
+			minimize: true,
+			minimizer: [new TerserPlugin()]
 		},
 		devServer: {
 			historyApiFallback: true
 		},
 
 		plugins: [
-			//   new BundleAnalyzerPlugin(),
+			new BundleAnalyzerPlugin(),
 			new FriendlyErrorsWebpackPlugin(),
-			//   new CompressionPlugin(),
 			new MinifyPlugin(),
 			new MiniCssExtractPlugin({
 				filename: '[name].' + language + '.css',

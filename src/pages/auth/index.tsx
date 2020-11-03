@@ -13,20 +13,20 @@ import './style.scss';
 const AuthPage: FunctionComponent<any> = (props) => {
 	const dispatch = useDispatch();
 	const history = useHistory();
-	const location = useLocation();
+	// const location = useLocation();
 	const logged = useSelector<IApplicationState, AuthState>(state => state.auth);
 	const [RegisterUi, setRegisterUi] = useState(false);
 
 	useEffect(() => {
 
-		if (location.pathname === '/' && logged) {
-			props.redirect('/');
-		}
-		if (location.pathname === '/auth/test') {
-			setRegisterUi(true);
-		} else {
-			setRegisterUi(false);
-		}
+		// if (location.pathname === '/' && logged) {
+		// 	props.redirect('/');
+		// }
+		// if (location.pathname === '/auth/test') {
+		// 	setRegisterUi(true);
+		// } else {
+		// 	setRegisterUi(false);
+		// }
 	});
 	const handleShow = () => {
 		setRegisterUi(false);
@@ -40,16 +40,16 @@ const AuthPage: FunctionComponent<any> = (props) => {
 		<div>
 			<div className={`image-background ${RegisterUi ? 'active' : ''}`}>
 				<picture>
-					<div className='my_img'></div>
+					<div className='my_img' />
 				</picture>
 				<Route
-					exact
+					exact={true}
 					path={'/auth'}
 					component={() => (
 						<MainAuth {...props} callBackChangeState={handleShow} handleSkipAuth={handleSkipAuth} />
 					)}
 				/>
-				<Route exact path='/auth/test' component={Register} />
+				<Route exact={true} path='/auth/test' component={Register} />
 			</div>
 
 		</div>
