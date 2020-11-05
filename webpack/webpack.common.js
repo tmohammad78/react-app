@@ -11,27 +11,7 @@ module.exports = [
 		},
 		module: {
 			rules: [
-				// {
-				//   test: /\.ts(x?)$/,
-				//   exclude: /node_modules/,
-				//   use: [
-				//     {
-				//       loader: 'ts-loader',
-				//     },
-				//   ],
-				// },
 
-				{
-					test: /\.(js|ts)x?$/,
-					exclude: /node_modules/,
-					resolve: {
-						extensions: ['.js', 'jsx', '.tsx', '.ts']
-					},
-					use: [
-						{ loader: 'babel-loader' }
-						// { loader: "eslint-loader" }
-					]
-				},
 				{
 					enforce: 'pre',
 					test: /\.js$/,

@@ -6,22 +6,6 @@
   ],
   "plugins": [
     "react-hot-loader/babel",
-    // [
-    //   "module-resolver",
-    //   {
-    //     "root": ["."],
-    //     "alias": {
-    //       "Components": "./src/Components",
-    //       "Redux": "./src/Redux",
-    //       "Pages": "./src/Pages",
-    //       "Route": "./src/Route",
-    //       "Helper": "./src/Helper",
-    //       "Types": "./src/Types",
-    //       "Config": "./src/Config"
-    //     }
-    //   }
-    // ],
-    // "transform-react-jsx",
     "@babel/plugin-proposal-class-properties",
     ["@babel/plugin-proposal-decorators", { "legacy": true }],
     [

@@ -37,6 +37,7 @@ const Input = ({
 			setFocus(false);
 		}
 	};
+
 	return (
 		<ParentInput className={`${focus ? 'focus' : null}`}>
 			{icon ? (

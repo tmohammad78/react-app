@@ -55,8 +55,8 @@ const Cover: FunctionComponent = () => {
 					<aside>
 						<h1>{data?.name}</h1>
 						<div className='categoryList'>
-							{item.map((item: ICategory) => {
-								return <span key={item.catId}> {item.catTitle}.</span>;
+							{item.map((category: ICategory) => {
+								return <span key={category.catId}> {category.catTitle}.</span>;
 							})}
 						</div>
 						<h2>{data?.fullAddress}</h2>

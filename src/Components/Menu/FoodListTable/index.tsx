@@ -64,7 +64,6 @@ const FoodListTable: FunctionComponent<IProps> = ({ itemFood }: IProps) => {
 		if (text) {
 			newList = newList.filter(item => item.title.indexOf(text) > -1);
 			searchIngredient = searchIngredient.filter(item => item.ingredient.indexOf(text) > -1);
-			// @ts-ignore
 			result = newList.concat(searchIngredient);
 		} else {
 			newList ? (result = newList) : (result = itemFood);
@@ -109,7 +108,6 @@ const FoodListTable: FunctionComponent<IProps> = ({ itemFood }: IProps) => {
 			lastCategory = food.categoryTitle;
 		});
 	} else {
-		// @ts-ignore
 		row.push(<NotFound />);
 	}
 
@@ -117,12 +115,12 @@ const FoodListTable: FunctionComponent<IProps> = ({ itemFood }: IProps) => {
 		<FoodMenu>
 			<Suspense fallback={<Spinner />}>
 				<Sort onChange={sortHandler} />
-				<SearchBar
-					filterText={searchKey}
-					onfilterText={searchHandler}
-					inStock={inStock}
-					onChangeStock={stockHandler}
-				/>
+				{/*<SearchBar*/}
+				{/*	filterText={searchKey}*/}
+				{/*	onfilterText={searchHandler}*/}
+				{/*	inStock={inStock}*/}
+				{/*	onChangeStock={stockHandler}*/}
+				{/*/>*/}
 				{
 
 					subFood.show ?

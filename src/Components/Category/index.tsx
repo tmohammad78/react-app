@@ -1,13 +1,14 @@
-import React from 'react';
+import React, { FunctionComponent } from 'react';
 import { useSelector } from 'react-redux';
 import { Link } from 'react-scroll';
+// @ts-ignore
 import Carousel, { consts } from 'react-elastic-carousel';
 import { Iw, TextIw } from './style';
 import { Button } from '../../Components/Buttons/Button';
 import { IApplicationState } from '../../Redux/reducers';
-import { ICategory } from '../../Types/index';
+import { ICategory } from '../../types/index';
 
-const Category: React.SFC = () => {
+const Category: FunctionComponent = () => {
 	const item = useSelector<IApplicationState, ICategory[]>(state => state.menu.categoryList);
 	const breakPoints = [
 		{ width: 1, itemsToShow: 3 },
@@ -23,8 +24,8 @@ const Category: React.SFC = () => {
 				{type === consts.PREV ? (
 					<i className='fo fo-angle-right' />
 				) : (
-						<i className='fo fo-angle-left' />
-					)}
+					<i className='fo fo-angle-left' />
+				)}
 			</Button>
 		);
 	};
@@ -46,8 +47,8 @@ const Category: React.SFC = () => {
 									key={food.catId}
 									className=' indexbox'
 									to={food.catId.toString()}
-									spy
-									smooth
+									spy={true}
+									smooth={true}
 									offset={-100}
 								>
 									<Iw>

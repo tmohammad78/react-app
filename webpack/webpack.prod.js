@@ -1,11 +1,10 @@
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const path = require('path');
 const commonVariables = require('./commonVariables');
-const FriendlyErrorsWebpackPlugin = require('friendly-errors-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const CompressionPlugin = require('compression-webpack-plugin');
 const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
 const TerserPlugin = require('terser-webpack-plugin');
-const MinifyPlugin = require('babel-minify-webpack-plugin');
 const HtmlWebpackRootPlugin = require('html-webpack-root-plugin');
 const WorkboxPlugin = require('workbox-webpack-plugin');
 const WebpackPwaManifest = require('webpack-pwa-manifest');
@@ -19,10 +18,23 @@ module.exports = Object.keys(commonVariables.languages).map(function(language) {
 			app: [`${commonVariables.appEntry}/index.tsx`]
 		},
 		output: {
-			chunkFilename: `[name].[chunkhash:8].js`
+			filename: 'main.js',
+			chunkFilename: `[name].[chunkhash:8].js`,
+			publicPath: '/',
+			path: `${commonVariables.outputPath}`
 		},
 		module: {
 			rules: [
+				{
+					test: /\.(js|ts)x?$/,
+					exclude: /node_modules/,
+					resolve: {
+						extensions: ['.js', 'jsx', '.tsx', '.ts']
+					},
+					use: [
+						{ loader: 'babel-loader' }
+					]
+				},
 				{
 					test: /\.(sa|sc|c)ss$/,
 					use: [
@@ -70,56 +82,54 @@ module.exports = Object.keys(commonVariables.languages).map(function(language) {
 			]
 		},
 		optimization: {
-			minimize: true,
 			minimizer: [new TerserPlugin()]
 		},
-		devServer: {
-			historyApiFallback: true
-		},
+		// devServer: {
+		// 	historyApiFallback: true
+		// },
 
 		plugins: [
-			new BundleAnalyzerPlugin(),
-			new FriendlyErrorsWebpackPlugin(),
-			new MinifyPlugin(),
+			// new BundleAnalyzerPlugin(),
+			// new FriendlyErrorsWebpackPlugin(),
 			new MiniCssExtractPlugin({
 				filename: '[name].' + language + '.css',
 				chunkFilename: '[id].' + language + '.css',
 				filename: `static/css/[name].[contenthash].css`,
 				chunkFilename: `static/css/[id].[contenthash].css`
 			}),
-			new WorkboxPlugin.GenerateSW({
-				// these options encourage the ServiceWorkers to get in there fast
-				// and not allow any straggling "old" SWs to hang around
-				swDest: 'sw.js',
-				clientsClaim: true,
-				skipWaiting: true
-			}),
+			// new WorkboxPlugin.GenerateSW({
+			// 	// these options encourage the ServiceWorkers to get in there fast
+			// 	// and noraggling "old" SWs to hang around
+			// 	swDest: 'sw.js',
+			// 	clientsClaim: true,
+			// 	skipWaiting: true
+			// }),
 			//   webpack.optimize.DedupePlugin
-			new WebpackPwaManifest({
-				name: 'Food Delivery',
-				short_name: 'Food Delivery',
-				filename: 'manifest.json',
-				description: 'Food Delivery React App',
-				start_url: './index.html',
-				display: 'standalone',
-				orientation: 'portrait',
-				background_color: '#f0f2f5',
-				theme_color: '#FF7714',
-				icons: [
-					{
-						src: path.resolve('assets/react.png'),
-						sizes: [96, 128, 192, 256, 384, 512]
-					}
-				]
-			}),
-			new SWPrecacheWebpackPlugin({
-				cacheId: 'Food-Delivery',
-				dontCacheBustUrlsMatching: /\.\w{8}\./,
-				filename: 'serviceWorker.js',
-				minify: true,
-				navigateFallback: PUBLIC_PATH,
-				staticFileGlobsIgnorePatterns: [/\.map$/, /manifest\.json$/]
-			}),
+			// new WebpackPwaManifest({
+			// 	name: 'Food Delivery',
+			// 	short_name: 'Food Delivery',
+			// 	filename: 'manifest.json',
+			// 	description: 'Food Delivery React App',
+			// 	start_url: './index.html',
+			// 	display: 'standalone',
+			// 	orientation: 'portrait',
+			// 	background_color: '#f0f2f5',
+			// 	theme_color: '#FF7714',
+			// 	icons: [
+			// 		{
+			// 			src: path.resolve('assets/react.png'),
+			// 			sizes: [96, 128, 192, 256, 384, 512]
+			// 		}
+			// 	]
+			// }),
+			// new SWPrecacheWebpackPlugin({
+			// 	cacheId: 'Food-Delivery',
+			// 	dontCacheBustUrlsMatching: /\.\w{8}\./,
+			// 	filename: 'serviceWorker.js',
+			// 	minify: true,
+			// 	navigateFallback: PUBLIC_PATH,
+			// 	staticFileGlobsIgnorePatterns: [/\.map$/, /manifest\.json$/]
+			// }),
 			new HtmlWebpackPlugin({
 				meta: {
 					viewport: 'width=device-width, initial-scale=1,viewport-fit=cover, shrink-to-fit=no',
@@ -131,12 +141,11 @@ module.exports = Object.keys(commonVariables.languages).map(function(language) {
 				},
 				title: 'Food',
 				template: 'assets/index.html',
-				minify: true,
 				minify: {
 					collapseWhitespace: true
 				}
-			}),
-			new HtmlWebpackRootPlugin('root')
+			})
+			// new HtmlWebpackRootPlugin('root')
 		]
 	};
 });

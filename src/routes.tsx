@@ -11,9 +11,9 @@ const App = () => {
 				<Router>
 					<Switch>
 						{
-							Routes.map(({ path, component }) => {
+							Routes.map(({ path, component }, i) => {
 									return (
-										<Route path={path} component={component} key={path} />);
+										<Route path={path} component={component} key={i} />);
 								}
 							)
 						}
