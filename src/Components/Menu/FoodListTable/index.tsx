@@ -115,12 +115,12 @@ const FoodListTable: FunctionComponent<IProps> = ({ itemFood }: IProps) => {
 		<FoodMenu>
 			<Suspense fallback={<Spinner />}>
 				<Sort onChange={sortHandler} />
-				{/*<SearchBar*/}
-				{/*	filterText={searchKey}*/}
-				{/*	onfilterText={searchHandler}*/}
-				{/*	inStock={inStock}*/}
-				{/*	onChangeStock={stockHandler}*/}
-				{/*/>*/}
+				<SearchBar
+					filterText={searchKey}
+					onfilterText={searchHandler}
+					inStock={inStock}
+					onChangeStock={stockHandler}
+				/>
 				{
 
 					subFood.show ?

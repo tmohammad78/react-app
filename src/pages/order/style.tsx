@@ -4,7 +4,7 @@ import { LeftSideHolder, CartShowMobile } from '../../Components/FloatCart/style
 import { RestInfo, LeftBox, RightBox } from '../../Components/infoRes/style';
 
 const Clear = ({ className, children }: any): JSX.Element => {
-	return <div className={className}> {children} </div>
+	return <div className={className}> {children} </div>;
 };
 
 export const RightSideHolder = styled.div`
@@ -127,17 +127,20 @@ export const MenuTab = styled.nav`
   direction: rtl;
   position: relative;
   z-index: 2;
+ 
   top: 1px;
   .active:hover {
 			color: inherit;
   }
   .active {
-			border-width: 1px 1px 0;
+	border-width: 1px 1px 0;
+	color:black;
     border-style: solid;
     border-color: #e4e4e4;
     background-color: #fff;
   }
   a {
+   color:${({ theme }) => theme.text};
 			-webkit-box-flex: 1;
     -webkit-flex-grow: 1;
     -moz-flex-grow: 1;
@@ -145,7 +148,6 @@ export const MenuTab = styled.nav`
     flex-grow: 1;
     padding: 10px 15px;
     text-align: center;
-    color: #333;
     -webkit-border-radius: 5px 5px 0 0;
     -moz-border-radius: 5px 5px 0 0;
     border-radius: 5px 5px 0 0;

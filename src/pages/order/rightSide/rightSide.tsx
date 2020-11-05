@@ -12,7 +12,7 @@ const RightSide: React.SFC = () => {
 		<RightSideHolder>
 			<RestProfileContainer>
 				<Route path='/' component={TabBar} />
-				<Route exact path='/' component={Menu} />
+				<Route exact={true} path='/' component={Menu} />
 				<Route path='/:name' component={InnerRoute} />
 			</RestProfileContainer>
 		</RightSideHolder>

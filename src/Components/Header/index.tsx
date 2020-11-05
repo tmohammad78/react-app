@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { FunctionComponent, useState } from 'react';
 
 import { Button } from '../../Components/Buttons/Button';
 import Login from '../../Components/Login/index';
@@ -6,13 +6,11 @@ import Modal from '../../Components/Modal/index';
 import Portal from '../../Components/Portal/index';
 
 import './style.scss';
+import { ThemeToggleContext } from '../../themeProvider';
 
-interface Props {
-	toggleTheme: string | boolean | (() => void)
-}
-const Header: React.SFC<Props> = React.memo(({ toggleTheme }) => {
+const Header: FunctionComponent = React.memo(() => {
 	const [showModal, setShowModal] = useState(false);
-	console.log('header render');
+	const { toggle } = React.useContext(ThemeToggleContext);
 	const backgroundLogo =
 		'https://static.snapp-food.com/media/cache/vendor_logo/uploads/images/vendors/logos/5807123d25da1.jpg';
 	const toggleLoginShow = () => {
@@ -52,13 +50,13 @@ const Header: React.SFC<Props> = React.memo(({ toggleTheme }) => {
 									marginLeft: '20px',
 									marginRight: '20px'
 								}}
-								onClick={toggleTheme}
+								onClick={() => toggle()}
 							>
 								darkModa
-              				</Button>
+							</Button>
 							<Button onClick={toggleLoginShow} type='submit'>
 								ورود / عضویت
-                			<i className='fo fo-user' />
+								<i className='fo fo-user' />
 							</Button>
 						</div>
 					</div>

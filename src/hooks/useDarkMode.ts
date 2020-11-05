@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react';
+
 export const useDarkMode = (): (string | (() => void) | boolean)[] => {
 	const [theme, setTheme] = useState('light');
 	const [componentMounted, setComponentMounted] = useState(false);
@@ -9,6 +10,7 @@ export const useDarkMode = (): (string | (() => void) | boolean)[] => {
 	};
 
 	const toggleTheme = (): void => {
+		console.log("scsd");
 		if (theme === 'light') {
 			setMode('dark');
 		} else {
@@ -18,12 +20,11 @@ export const useDarkMode = (): (string | (() => void) | boolean)[] => {
 
 	useEffect(() => {
 		const localTheme = window.localStorage.getItem('theme');
-
 		window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches && !localTheme
 			? setMode('dark')
 			: localTheme
-				? setTheme(localTheme)
-				: setMode('light');
+			? setTheme(localTheme)
+			: setMode('light');
 
 		setComponentMounted(true);
 	}, []);

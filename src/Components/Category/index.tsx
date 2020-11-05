@@ -3,10 +3,10 @@ import { useSelector } from 'react-redux';
 import { Link } from 'react-scroll';
 // @ts-ignore
 import Carousel, { consts } from 'react-elastic-carousel';
-import { Iw, TextIw } from './style';
-import { Button } from '../../Components/Buttons/Button';
+import { Iw, TextIw, CategoryBar } from './style';
+import { Button } from '../Buttons/Button';
 import { IApplicationState } from '../../Redux/reducers';
-import { ICategory } from '../../types/index';
+import { ICategory } from '../../types';
 
 const Category: FunctionComponent = () => {
 	const item = useSelector<IApplicationState, ICategory[]>(state => state.menu.categoryList);
@@ -32,7 +32,7 @@ const Category: FunctionComponent = () => {
 
 	return (
 		<div className='parent'>
-			<div className='categories'>
+			<CategoryBar className='categories'>
 				<div className='owl-item'>
 					<Carousel
 						isRTL
@@ -60,7 +60,7 @@ const Category: FunctionComponent = () => {
 						})}
 					</Carousel>
 				</div>
-			</div>
+			</CategoryBar>
 		</div>
 	);
 };

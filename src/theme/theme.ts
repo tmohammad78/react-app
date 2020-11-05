@@ -13,7 +13,8 @@ interface ILightTheme {
 	AvailableBox: string,
 	AvailableBoxText: string
 }
-const lightTheme = {
+
+export const lightTheme = {
 	body: '#f8f8f8',
 	text: '#333',
 	inputText: '#fff',
@@ -23,40 +24,26 @@ const lightTheme = {
 	whitebg: '#fff',
 	btnbg: '#FF7714',
 	categoryColor: '#333',
+	categoryBar: '#ffffff',
 	bgCart: '#FFF',
 	foodItemTextSpan: '#FFF',
 	AvailableBox: '#FFF',
 	AvailableBoxText: '#888'
 };
 
-const darkTheme = {
-	body: '#1D1C2A',
+export const darkTheme = {
+	body: '#171717',
 	text: '#FFF',
 	inputText: '#fff',
 	color: '#FFF',
 	toggleBorder: '#6B8096',
-	foodItem_bgcolor: '#1D1C2A',
-	whitebg: '#373737',
-	foodItemTextSpan: "#fff",
+	foodItem_bgcolor: '#0a121b',
+	categoryBar: '#0a121b',
+	whitebg: '#2c3235',
+	foodItemTextSpan: '#fff',
 	btnbg: '#FF7714',
 	categoryColor: '#FF7714',
-	bgCart: '#373737',
-	AvailableBox: '#373737',
+	bgCart: '#2c3235',
+	AvailableBox: '#2c3235',
 	AvailableBoxText: '#FFF'
 };
-
-interface StyleClosetTheme {
-	lightTheme: { [key in keyof typeof lightTheme]: string };
-	darkTheme: { [key in keyof typeof darkTheme]: string };
-}
-const theme: StyleClosetTheme = {
-	lightTheme,
-	darkTheme
-};
-
-export { theme, StyleClosetTheme };
-
-// export const themes = {
-// 	light: lightTheme,
-// 	dark: darkTheme
-// }

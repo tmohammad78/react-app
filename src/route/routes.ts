@@ -8,7 +8,6 @@ import TabBar from '../pages/order/tabBar/index';
 import InfoRest from '../Components/infoRes/index';
 import Favorite from '../Components/Favorite/index';
 import { ComponentClass, FunctionComponent } from 'react';
-import { RouteComponentProps } from '@reach/router';
 
 class InnerRoutes {
 }
