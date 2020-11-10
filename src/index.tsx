@@ -2,7 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import Root from './Root';
 import Routs from './routes';
-import * as serviceWorker from '../assets/serviceWorker';
+import register from './serviceWorker';
 import './styles/main.scss';
 
 ReactDOM.render(
@@ -12,4 +12,6 @@ ReactDOM.render(
 	,
 	document.getElementById('root')
 );
-serviceWorker.register();
+register();
+
+

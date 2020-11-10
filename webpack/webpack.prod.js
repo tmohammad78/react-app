@@ -6,7 +6,7 @@ const CompressionPlugin = require('compression-webpack-plugin');
 const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
 const TerserPlugin = require('terser-webpack-plugin');
 const HtmlWebpackRootPlugin = require('html-webpack-root-plugin');
-const WorkboxPlugin = require('workbox-webpack-plugin');
+const { GenerateSW, InjectManifest } = require('workbox-webpack-plugin');
 const WebpackPwaManifest = require('webpack-pwa-manifest');
 const SWPrecacheWebpackPlugin = require('sw-precache-webpack-plugin');
 const PUBLIC_PATH = 'https://food-delivery-7d366.firebaseapp.com/';
@@ -81,9 +81,9 @@ module.exports = Object.keys(commonVariables.languages).map(function(language) {
 				}
 			]
 		},
-		optimization: {
-			minimizer: [new TerserPlugin()]
-		},
+		// optimization: {
+		// 	minimizer: [new TerserPlugin()]
+		// },
 		// devServer: {
 		// 	historyApiFallback: true
 		// },
@@ -97,31 +97,32 @@ module.exports = Object.keys(commonVariables.languages).map(function(language) {
 				filename: `static/css/[name].[contenthash].css`,
 				chunkFilename: `static/css/[id].[contenthash].css`
 			}),
-			// new WorkboxPlugin.GenerateSW({
-			// 	// these options encourage the ServiceWorkers to get in there fast
-			// 	// and noraggling "old" SWs to hang around
-			// 	swDest: 'sw.js',
-			// 	clientsClaim: true,
-			// 	skipWaiting: true
-			// }),
+			new GenerateSW({
+				swDest: 'sw.js',
+				clientsClaim: true,
+				skipWaiting: true
+			}),
+			// new InjectManifest({
+			//
+			// })
 			//   webpack.optimize.DedupePlugin
-			// new WebpackPwaManifest({
-			// 	name: 'Food Delivery',
-			// 	short_name: 'Food Delivery',
-			// 	filename: 'manifest.json',
-			// 	description: 'Food Delivery React App',
-			// 	start_url: './index.html',
-			// 	display: 'standalone',
-			// 	orientation: 'portrait',
-			// 	background_color: '#f0f2f5',
-			// 	theme_color: '#FF7714',
-			// 	icons: [
-			// 		{
-			// 			src: path.resolve('assets/react.png'),
-			// 			sizes: [96, 128, 192, 256, 384, 512]
-			// 		}
-			// 	]
-			// }),
+			new WebpackPwaManifest({
+				name: 'Food Delivery',
+				short_name: 'Food Delivery',
+				filename: 'manifest.json',
+				description: 'Food Delivery React App',
+				start_url: './index.html',
+				display: 'standalone',
+				orientation: 'portrait',
+				background_color: '#f0f2f5',
+				theme_color: '#FF7714',
+				icons: [
+					{
+						src: path.resolve('assets/react.png'),
+						sizes: [96, 128, 192, 256, 384, 512]
+					}
+				]
+			}),
 			// new SWPrecacheWebpackPlugin({
 			// 	cacheId: 'Food-Delivery',
 			// 	dontCacheBustUrlsMatching: /\.\w{8}\./,
