@@ -1,11 +1,11 @@
-import { useEffect } from 'react';
+import React, { FunctionComponent, useEffect } from 'react';
 import ReactDOM from 'react-dom';
 
 interface Props {
 	children: React.ReactNode
 }
 
-const Portal = ({ children }: Props) => {
+const Portal: FunctionComponent<Props> = ({ children }) => {
 	const modalRoot: HTMLElement | null = document.getElementById('modal-root');
 	const el = document.createElement('div');
 

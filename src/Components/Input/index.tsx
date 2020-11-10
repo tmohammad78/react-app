@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { InputStyle, ParentInput, IconName } from './style';
+
 interface DefaultInput {
 	type?: string | undefined;
 	label?: string | undefined;
@@ -12,19 +13,20 @@ interface DefaultInput {
 	className?: string | undefined;
 	name?: string | undefined;
 }
+
 const Input = ({
-	type,
-	label,
-	icon,
-	onChange,
-	id,
-	value,
-	onBlur,
-	onFocus,
-	className,
-	name,
-	...props
-}: DefaultInput) => {
+				   type,
+				   label,
+				   icon,
+				   onChange,
+				   id,
+				   value,
+				   onBlur,
+				   onFocus,
+				   className,
+				   name,
+				   ...props
+			   }: DefaultInput) => {
 	const [focus, setFocus] = useState(false);
 
 	const handleFocus = () => {
@@ -37,6 +39,7 @@ const Input = ({
 			setFocus(false);
 		}
 	};
+
 	return (
 		<ParentInput className={`${focus ? 'focus' : null}`}>
 			{icon ? (

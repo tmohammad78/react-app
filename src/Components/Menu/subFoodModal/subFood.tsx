@@ -1,24 +1,23 @@
-import React from 'react';
+import React, { FunctionComponent } from 'react';
 
 import DetailModal from '../FoodListTable/food/foodModal/index';
 import FoodDetails from '../FoodListTable/food/details-holder/index';
 import { FoodItem } from '../FoodListTable/food/style';
 import { SubFoodStyle } from './style';
-import { objectToArray } from '../../../Helper/index';
-import { SubFoodState, ISubFood } from '../../../Types/index';
-interface IProps {
-	subFood: SubFoodState
-}
-const SubFood: React.SFC<IProps> = ({ subFood }) => {
+import { IFoodList } from '../../../types';
 
-	console.log('ddd', subFood);
+interface IProps {
+	subFood: IFoodList
+}
+
+const SubFood: FunctionComponent<IProps> = ({ subFood }) => {
 	return (
 		<SubFoodStyle>
-			<DetailModal subfood={true} defaultDetail={subFood} food={subFood.food} />
+			<DetailModal subfood={true} defaultDetail={subFood} />
 			<div>
 				{subFood.subFoods.map((food, i) => {
 					return (
-						<FoodItem key={food.catId}>
+						<FoodItem key={i}>
 							<section>
 								<FoodDetails food={food} />
 							</section>

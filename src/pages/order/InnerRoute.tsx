@@ -1,5 +1,5 @@
 import React from 'react';
-import { Route, withRouter, Switch } from 'react-router-dom';
+import { Route, withRouter } from 'react-router-dom';
 
 import InfoRest from '../../Components/infoRes/index';
 import Favorite from '../../Components/Favorite/index';
@@ -8,7 +8,6 @@ import Menu from '../../Components/Menu/index';
 import { TabContentHolder } from './style';
 
 const InnerRoute = () => {
-	console.log('inner route')
 	return (
 		<TabContentHolder>
 			<Route exact path='/' component={Menu} />

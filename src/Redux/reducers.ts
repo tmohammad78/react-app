@@ -6,7 +6,7 @@ import { cartReducer } from './cart/reducer';
 import { subFoodReducer } from './subFood/reducer';
 import { likeFoodReducer } from './likeFood/reducer';
 import { authReducer } from './auth/reducer';
-import { AuthState, MenuState, CartState, SubFoodState, LikeFoodState } from '../Types/index';
+import { AuthState, MenuState, CartState, SubFoodState, LikeFoodState } from '../types/index';
 
 export interface IApplicationState {
 	menu: MenuState,
@@ -15,6 +15,7 @@ export interface IApplicationState {
 	subFood: SubFoodState,
 	likeFood: LikeFoodState
 }
+
 const newRootReducer: Reducer<IApplicationState, AnyAction> = combineReducers<IApplicationState>({
 	menu: menuReducer,
 	cart: cartReducer,

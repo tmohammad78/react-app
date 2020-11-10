@@ -8,15 +8,15 @@ const commonConfig = require('./webpack/webpack.common');
 process.noDeprecation = true;
 
 module.exports = env => {
-  if (!env) {
-    throw new Error('You must pass an --env.mode flag into your build for webpack to work!');
-  }
+	if (!env) {
+		throw new Error('You must pass an --env.mode flag into your build for webpack to work!');
+	}
 
-  const envConfig = require(`./webpack/webpack.${env.mode}.js`);
+	const envConfig = require(`./webpack/webpack.${env.mode}.js`);
 
-  const mergedConfig = webpackMerge(commonConfig[0], envConfig[0]); //merge file of webpack
+	const mergedConfig = envConfig[0]; //merge file of webpack
 
-  console.log(chalk.blue(JSON.stringify(mergedConfig)));
+	console.log(chalk.blue(JSON.stringify(mergedConfig)));
 
-  return mergedConfig;
+	return mergedConfig;
 };

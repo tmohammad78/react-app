@@ -1,6 +1,6 @@
 import { IRemoveFoodLikeAction, likeFoodActionTypes, IAddFoodLikeAction } from './actionType';
 import { likeProduct, dislikeProduct } from '../menu/actions';
-import { IFoodList } from '../../Types/index';
+import { IFoodList } from '../../types/index';
 import { Dispatch, ActionCreator, AnyAction } from 'redux';
 import { ThunkAction } from 'redux-thunk';
 import { IApplicationState } from '../reducers';

@@ -1,11 +1,11 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, FunctionComponent } from 'react';
 import { useDispatch } from 'react-redux';
 
 import { addFood, removeFood } from '../../../../../../Redux/cart/actions';
 import { SubFoodModal } from '../../../../../../Redux/subFood/action';
-import { Button } from '../../../../../../Components/Buttons/Button';
-import { Span } from './span/index';
-import { IFoodList } from '../../../../../../Types/index';
+import { Button } from '../../../../../Buttons/Button';
+import { Span } from './span';
+import { IFoodList } from '../../../../../../types';
 
 import { QtyStyle, AvailableBox } from './style';
 import './style.scss';
@@ -14,7 +14,7 @@ interface IProps {
 	food: IFoodList
 }
 
-const QtyHolder: React.SFC<IProps> = ({ food }) => {
+const QtyHolder: FunctionComponent<IProps> = ({ food }) => {
 	let removeBtn;
 	let subfoodIcon;
 	const [width, setWidth] = useState('test');
@@ -40,6 +40,7 @@ const QtyHolder: React.SFC<IProps> = ({ food }) => {
 		e.preventDefault();
 
 		dispatch(removeFood(food));
+		// tslint:disable-next-line:no-empty
 		if (!(food.quantity > 0)) {
 		}
 	};
@@ -78,12 +79,12 @@ const QtyHolder: React.SFC<IProps> = ({ food }) => {
 			{subfoodIcon}
 		</QtyStyle>
 	) : (
-			<AvailableBox>
+		<AvailableBox>
 				<span className='meal-badge'>
 					<span>{food.unavailableText}</span>
 				</span>
-			</AvailableBox>
-		);
+		</AvailableBox>
+	);
 };
 
 export default QtyHolder;

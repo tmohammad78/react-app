@@ -1,12 +1,12 @@
-import React from 'react';
-
-import { currency } from '../../../../../../../Helper/index';
+import React, { FunctionComponent } from 'react';
+import { currency } from '../../../../../../../helper';
 import { QtySpan } from './style';
+
 
 interface IProps {
 	qty: number
 }
 
-export const Span: React.SFC<IProps> = ({ qty }) => {
+export const Span: FunctionComponent<IProps> = ({ qty }) => {
 	return <QtySpan>{currency(qty, false)}</QtySpan>;
 };

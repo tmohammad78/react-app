@@ -1,11 +1,14 @@
-import React from 'react';
-import { truncate } from '../../../../../../Helper/index';
+import React, { FunctionComponent } from 'react';
+import { truncate } from '../../../../../../helper';
 import './style.scss';
+
+
 interface IProps {
 	ingredient: string,
 	checkTruncate?: boolean
 }
-const Ingredient: React.SFC<IProps> = ({ ingredient, checkTruncate = true }) => {
+
+const Ingredient: FunctionComponent<IProps> = ({ ingredient, checkTruncate = true }) => {
 	return ingredient ? (
 		<div className='ingredient'>{checkTruncate ? truncate(ingredient, 8) : ingredient}</div>
 	) : null;

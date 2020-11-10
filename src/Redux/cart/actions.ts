@@ -1,9 +1,15 @@
-import { ILoadCartAction, IUpdateCartAction, IRemoveFoodCartAction, IAddFoodCartAction, cartActionTypes } from './actionTypes';
+import {
+	ILoadCartAction,
+	IUpdateCartAction,
+	IRemoveFoodCartAction,
+	IAddFoodCartAction,
+	cartActionTypes
+} from './actionTypes';
 import { updateProduct } from '../menu/actions';
-import { objectToArray } from '../../Helper/index';
+import { objectToArray } from '../../helper/index';
 import { Dispatch, ActionCreator, AnyAction } from 'redux';
 import { ThunkAction } from 'redux-thunk';
-import { IFoodList } from '../../Types/index';
+import { IFoodList } from '../../types/index';
 import { IApplicationState } from '../reducers';
 
 export const loadCart: ActionCreator<ILoadCartAction> = (products) => ({
@@ -68,4 +74,4 @@ export const updateCart: ActionCreator<IUpdateCartAction> = (cartProducts: IFood
 			totalProduct
 		}
 	});
-}
+};

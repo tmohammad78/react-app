@@ -13,7 +13,7 @@ const Parent = ({ className, children, onClick }: IProps) => {
 		</div>
 	);
 };
-export const LikeFoodStyle = styled(Parent).attrs({
+export const LikeFoodStyle = styled(Parent).attrs<{className:string}>({
 	className: ''
 })`
   position: absolute;

@@ -1,11 +1,11 @@
 import React from 'react';
-
-import { currency } from '../../../../../../Helper/index';
+import { currency } from '../../../../../../helper';
 import './style.scss';
 
 interface Props {
 	price: number | undefined
 }
+
 const Price = ({ price }: Props) => {
 	return (
 		<span className='price'>

@@ -1,17 +1,18 @@
-import React, { useMemo } from 'react';
+import React from 'react';
 
 import Ingredient from '../foodDetails/ingredient/index';
 import Price from '../foodDetails/price/index';
 import QtyHolder from '../foodDetails/qty-holder/index';
 import Tittle from '../foodDetails/Tittle/index';
 import LikeFood from '../foodDetails/likeFood/index';
-import { INewFoodList } from '../../../../../Types/index';
+import { INewFoodList } from '../../../../../types';
 
 import './style.scss';
 
 interface Props {
 	food: INewFoodList
 }
+
 const Details = ({ food }: Props) => {
 
 	const Detail = () => {

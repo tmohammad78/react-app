@@ -1,7 +1,7 @@
-import React from 'react';
+import React, { FunctionComponent } from 'react';
 import './style.scss';
 
-const Footer: React.SFC = () => {
+const Footer: FunctionComponent = () => {
 	return (
 		<div className='main-footer clearfix'>
 			<div className='wrapper'>
@@ -19,7 +19,7 @@ const Footer: React.SFC = () => {
 					<div className='delino-copyright'>
 						<div>
 							طراحی و بیاده سازی توسط
-              <a href='https://www.delino.com/about'>
+							<a href='https://www.delino.com/about'>
 								<img
 									src='https://www.delino.com/img/icons/img-delino-symbol.png'
 									width='16'
@@ -29,8 +29,8 @@ const Footer: React.SFC = () => {
 										verticalAlign: 'middle'
 									}}
 								/>
-                دلینو
-              </a>
+								دلینو
+							</a>
 						</div>
 						<small className='en-num'>V 1.1.0</small>
 					</div>

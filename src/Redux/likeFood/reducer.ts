@@ -1,7 +1,7 @@
 import { likeFoodActionTypes, LikeFoodSystemAction } from './actionType';
 import { Reducer } from 'redux';
 
-import { LikeFoodState, IFoodList } from '../../Types/index';
+import { LikeFoodState, IFoodList } from '../../types/index';
 
 const initialState: LikeFoodState = {
 	likeFood: {}
@@ -31,4 +31,4 @@ export const likeFoodReducer: Reducer<LikeFoodState, LikeFoodSystemAction> = (st
 		default:
 			return state;
 	}
-}
+};

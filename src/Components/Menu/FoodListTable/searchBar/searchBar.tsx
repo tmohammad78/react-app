@@ -1,20 +1,22 @@
 import React, { Fragment } from 'react';
 import Input from '../../../../Components/Input/index';
 import './style.scss';
+
 interface SearchProps {
 	filterText: string;
 	onfilterText: (value: string) => void;
 	onChangeStock: (value: boolean) => void;
 	inStock: boolean;
 }
+
 const SearchBar = ({ filterText, onfilterText, onChangeStock, inStock }: SearchProps) => {
 	const handleTextChange = (e: React.FormEvent<EventTarget>) => {
-		let target = e.target as HTMLInputElement;
+		const target = e.target as HTMLInputElement;
 		onfilterText(target.value);
 	};
 
 	const handleInStockChange = (e: React.FormEvent<EventTarget>): void => {
-		let target = e.target as HTMLInputElement;
+		const target = e.target as HTMLInputElement;
 		onChangeStock(target.checked);
 	};
 
@@ -33,7 +35,7 @@ const SearchBar = ({ filterText, onfilterText, onChangeStock, inStock }: SearchP
 						/>
 						<span />
 						غذاهای موجود
-          		</label>
+					</label>
 				</div>
 			</div>
 		</Fragment>

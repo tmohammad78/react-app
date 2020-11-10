@@ -2,6 +2,7 @@ import { compose, createStore, applyMiddleware, Store } from 'redux';
 import thunk from 'redux-thunk';
 import newRootReducer from './reducers';
 import { IApplicationState } from './reducers';
+
 declare global {
 	interface Window {
 		__REDUX_DEVTOOLS_EXTENSION_COMPOSE__?: typeof compose;
@@ -18,7 +19,7 @@ export default (initialState: any): Store<IApplicationState> => {
 	} else {
 		enhancer = compose(
 			applyMiddleware(...middleware),
-			window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ && window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__(),
+			window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ && window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__()
 			// window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
 		);
 	}

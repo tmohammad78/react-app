@@ -1,22 +1,23 @@
-import React, { Fragment, useState, useEffect, Suspense, lazy } from 'react';
+import { useState, useEffect, Suspense, lazy, FunctionComponent } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
 import { fetchMenu } from '../../Redux/menu/actions';
 import Spinner from '../Spinner/index';
-import { TabContentHolder } from '../../Pages/order/style';
+import { TabContentHolder } from '../../pages/order/style';
 import { IApplicationState } from '../../Redux/reducers';
-import { IFoodList } from '../../Types/index';
-
+import { IFoodList } from '../../types/index';
 import Category from '../Category/index';
+import React from 'react';
+
 const FoodListTable = lazy(() => import('./FoodListTable/index'));
 
-const Menu: React.SFC = () => {
+const Menu: FunctionComponent<any> = () => {
 	const dispatch = useDispatch();
 	const foodList = useSelector<IApplicationState, IFoodList[]>(state => state.menu.foodList);
 	const [loading, setLoading] = useState(true);
 
 	useEffect(() => {
-		if (foodList.length == 0) {
+		if (foodList.length === 0) {
 			dispatch(
 				fetchMenu(() => {
 					setLoading(false);

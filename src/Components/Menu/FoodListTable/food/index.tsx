@@ -1,4 +1,4 @@
-import React, { useState, useMemo, useCallback } from 'react';
+import React, { useState, useMemo, useCallback, FunctionComponent } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
 import FoodDetails from './details-holder/index';
@@ -11,11 +11,13 @@ import { SubFoodModal } from '../../../../Redux/subFood/action';
 
 import { FoodItem } from './style';
 import { IApplicationState } from '../../../../Redux/reducers';
-import { IFoodList, INewFoodList } from '../../../../Types/index';
+import { IFoodList, INewFoodList } from '../../../../types';
+
 interface IProps {
 	food: IFoodList
 }
-const Food: React.SFC<IProps> = ({ food }) => {
+
+const Food: FunctionComponent<IProps> = ({ food }) => {
 	const ActiveclassName = [];
 	const newItem = useSelector<IApplicationState, INewFoodList>(state => state.menu.foodListItem[food.id]);
 	const dispatch = useDispatch();

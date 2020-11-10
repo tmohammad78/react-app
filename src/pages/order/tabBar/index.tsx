@@ -1,19 +1,19 @@
-import React from 'react';
+import React, { FunctionComponent } from 'react';
 import { NavLink } from 'react-router-dom';
 
 import { MenuTab } from '../style';
 
-const TabBar: React.SFC = (props) => {
-	console.log(props)
+
+const TabBar: FunctionComponent<any> = () => {
 	return (
 		<MenuTab>
-			<NavLink to='/' >منوی غذا</NavLink>
+			<NavLink to='/'>منوی غذا</NavLink>
 			<NavLink to='/info' activeClassName='active'>
 				اطلاعات رستوران
-      		</NavLink>
+			</NavLink>
 			<NavLink to='/favorite' activeClassName='active'>
 				علاقه مندی
-      		</NavLink>
+			</NavLink>
 		</MenuTab>
 	);
 };

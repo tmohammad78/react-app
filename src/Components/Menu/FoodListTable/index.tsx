@@ -1,4 +1,4 @@
-import React, { useState, useEffect, lazy, Suspense } from 'react';
+import React, { useState, useEffect, lazy, Suspense, FunctionComponent } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { closeSubFoodModal } from '../../../Redux/subFood/action';
 
@@ -6,10 +6,11 @@ import Food from './food/index';
 import SubFood from '../subFoodModal/subFood';
 import FoodListTitle from './FoodListTitle/index';
 import Spinner from '../../../Components/Spinner/index';
+
 const Modal = lazy(() => import('../../../Components/Modal/index'));
 const SearchBar = lazy(() => import('./searchBar/searchBar'));
 import { IApplicationState } from '../../../Redux/reducers';
-import { ISubFood, IFoodList, SubFoodState } from '../../../Types/index';
+import { IFoodList, SubFoodState } from '../../../types';
 
 import { FoodList, NotFoundStyle, FoodMenu } from './style';
 
@@ -19,18 +20,22 @@ interface ITest2 {
 	field: string,
 	asc: boolean
 }
+
 interface ITest {
 	[key: string]: ITest2
 }
+
 const sortBy: ITest = {
 	lowestprice: { field: 'price', asc: true },
 	highestprice: { field: 'price', asc: false }
 };
+
 interface IProps {
 	itemFood: IFoodList[]
 }
-const FoodListTable: React.SFC<IProps> = ({ itemFood }: IProps) => {
-	const originalItems = [...itemFood];
+
+const FoodListTable: FunctionComponent<IProps> = ({ itemFood }: IProps) => {
+	const originalItems: any = [...itemFood];
 	const row = [];
 	let lastCategory: string | undefined = '';
 
@@ -51,7 +56,7 @@ const FoodListTable: React.SFC<IProps> = ({ itemFood }: IProps) => {
 
 	const search = (text: string, stock: boolean, list = itemFood) => {
 		let newList = list;
-		let result = [];
+		let result: any[];
 		let searchIngredient = list;
 		if (stock) {
 			newList = newList.filter(item => item.available);
@@ -77,15 +82,14 @@ const FoodListTable: React.SFC<IProps> = ({ itemFood }: IProps) => {
 	};
 
 	const sortHandler = (value: string) => {
-		let newItem: IFoodList[] = [];
-		const sortItem = sortBy[value];
+		let newItem: any[];
+		const sortItem: ITest2 = sortBy[value];
 		if (sortItem) {
 			const index = sortItem.asc ? 1 : -1;
-			newItem = originalItems.sort((a, b) => {
-
+			newItem = originalItems.sort((a: any, b: any) => {
 				return (
-					//        a.catIndex - b.catIndex ||
-					//          a.catId - b.catId ||
+					a.catIndex - b.catIndex ||
+					a.catId - b.catId ||
 					(a.categoryIndex - b.categoryIndex) || ((a[sortItem.field] - b[sortItem.field]) * index)
 				);
 			});
@@ -107,7 +111,6 @@ const FoodListTable: React.SFC<IProps> = ({ itemFood }: IProps) => {
 		row.push(<NotFound />);
 	}
 
-	console.log(subFood);
 	return (
 		<FoodMenu>
 			<Suspense fallback={<Spinner />}>
@@ -126,7 +129,6 @@ const FoodListTable: React.SFC<IProps> = ({ itemFood }: IProps) => {
 								show={subFood.show}
 								onClose={() => dispatch(closeSubFoodModal(true))}
 								className='subFoodModal'
-								subFood
 							>
 								<SubFood subFood={subFood.food} />
 							</Modal>

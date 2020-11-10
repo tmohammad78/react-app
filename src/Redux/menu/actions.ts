@@ -1,17 +1,26 @@
-import axios, { AxiosResponse, } from 'axios';
-import { IRestDataGet, IUpdateMenuAction, IDisLikeProductAction, ILikeProductAction, menuActionTypes, IFetchMenuAction } from './actionTypes';
+import axios, { AxiosResponse } from 'axios';
+import {
+	IRestDataGet,
+	IUpdateMenuAction,
+	IDisLikeProductAction,
+	ILikeProductAction,
+	menuActionTypes,
+	IFetchMenuAction
+} from './actionTypes';
 import { restaurantMenu } from '../util';
-import { objectToArray } from '../../Helper/index';
+import { objectToArray } from '../../helper/index';
 import parseMenu from './util/menu';
 import { IDataMain } from './actionTypes';
 import { IApplicationState } from '../reducers';
-import { IFoodList } from '../../Types/index';
-import { arrayToObject } from '../../Helper/index';
+import { IFoodList } from '../../types/index';
+import { arrayToObject } from '../../helper/index';
 import { ThunkAction } from 'redux-thunk';
 import { Dispatch, ActionCreator, AnyAction } from 'redux';
+
 interface ttt {
 	foodList: IFoodList[] | null | object
 }
+
 const Data: ttt = {
 	foodList: null
 };
@@ -30,7 +39,6 @@ export const dislikeProduct: ActionCreator<IDisLikeProductAction> = product => (
 	type: menuActionTypes.DISLIKED_PRODUCT,
 	product
 });
-
 
 
 export const fetchMenu: ActionCreator<ThunkAction<Promise<AnyAction | void> | string, IApplicationState, undefined, IFetchMenuAction>> = (callback: () => void) => (dispatch: Dispatch, getState: () => IApplicationState) => {
@@ -78,9 +86,8 @@ export const fetchMenu: ActionCreator<ThunkAction<Promise<AnyAction | void> | st
 		});
 	};
 
-	return foodList.length == 0 ?
-		axios.
-			get<IRestDataGet[]>(restaurantMenu)
+	return foodList.length === 0 ?
+		axios.get<IRestDataGet[]>(restaurantMenu)
 			.then((response: AxiosResponse) => {
 				const { data } = response;
 				Data.foodList = data;
@@ -89,5 +96,5 @@ export const fetchMenu: ActionCreator<ThunkAction<Promise<AnyAction | void> | st
 			.catch(err => {
 				console.log(err, 'Could not fetch foodList. Try again later.');
 			})
-		: ''
+		: '';
 };

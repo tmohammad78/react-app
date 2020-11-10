@@ -1,17 +1,16 @@
-import React from 'react';
+import React, { FunctionComponent } from 'react';
 import { useSelector } from 'react-redux';
 import Food from '../Menu/FoodListTable/food/index';
-import { objectToArray } from '../../Helper/index';
+import { objectToArray } from '../../helper/index';
 import { IApplicationState } from '../../Redux/reducers';
-import { LikeFoodState, INewFoodList, TestLikeState } from '../../Types/index';
+import { LikeFoodState, INewFoodList, TestLikeState } from '../../types/index';
 
-const Favorite: React.SFC = () => {
-	console.log('favorite');
-	let favoriteFood = useSelector<IApplicationState, LikeFoodState>(state => state.likeFood);
+const Favorite: FunctionComponent = () => {
+	const favoriteFood = useSelector<IApplicationState, LikeFoodState>(state => state.likeFood);
 	const ToArray = (objectList: TestLikeState) => {
 		const list: INewFoodList[] = [];
 		Object.values(objectList).forEach((item: INewFoodList) => {
-			list[parseInt(item.index)] = item;
+			list[parseInt(item.index, 10)] = item;
 		});
 
 		return list;
