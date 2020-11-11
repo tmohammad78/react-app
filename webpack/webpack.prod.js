@@ -81,9 +81,9 @@ module.exports = Object.keys(commonVariables.languages).map(function(language) {
 				}
 			]
 		},
-		// optimization: {
-		// 	minimizer: [new TerserPlugin()]
-		// },
+		optimization: {
+			minimizer: [new TerserPlugin()]
+		},
 		// devServer: {
 		// 	historyApiFallback: true
 		// },
@@ -97,21 +97,32 @@ module.exports = Object.keys(commonVariables.languages).map(function(language) {
 				filename: `static/css/[name].[contenthash].css`,
 				chunkFilename: `static/css/[id].[contenthash].css`
 			}),
+			new HtmlWebpackPlugin({
+				meta: {
+					viewport: 'width=device-width, initial-scale=1,viewport-fit=cover, shrink-to-fit=no',
+					'theme-color': '#FF7714',
+					'apple-mobile-web-app-status-bar-style': '#FF7714',
+					'og:title': 'Food Delivery',
+					'og:description': 'A simple Boilerplate of React Js',
+					'content-type': { 'http-equiv': 'content-type', content: 'text/html; charset=UTF-8' }
+				},
+				title: 'Food Delivery',
+				template: 'assets/index.html',
+				minify: {
+					collapseWhitespace: true
+				}
+			}),
 			new GenerateSW({
 				swDest: 'sw.js',
 				clientsClaim: true,
-				skipWaiting: true
+				skipWaiting: false
 			}),
-			// new InjectManifest({
-			//
-			// })
-			//   webpack.optimize.DedupePlugin
 			new WebpackPwaManifest({
 				name: 'Food Delivery',
 				short_name: 'Food Delivery',
 				filename: 'manifest.json',
 				description: 'Food Delivery React App',
-				start_url: './index.html',
+				start_url: '/',
 				display: 'standalone',
 				orientation: 'portrait',
 				background_color: '#f0f2f5',
@@ -123,29 +134,15 @@ module.exports = Object.keys(commonVariables.languages).map(function(language) {
 					}
 				]
 			}),
-			// new SWPrecacheWebpackPlugin({
-			// 	cacheId: 'Food-Delivery',
-			// 	dontCacheBustUrlsMatching: /\.\w{8}\./,
-			// 	filename: 'serviceWorker.js',
-			// 	minify: true,
-			// 	navigateFallback: PUBLIC_PATH,
-			// 	staticFileGlobsIgnorePatterns: [/\.map$/, /manifest\.json$/]
-			// }),
-			new HtmlWebpackPlugin({
-				meta: {
-					viewport: 'width=device-width, initial-scale=1,viewport-fit=cover, shrink-to-fit=no',
-					'theme-color': '#FF7714',
-					'apple-mobile-web-app-status-bar-style': '#FF7714',
-					'og:title': 'Food Delivery',
-					'og:description': 'A simple Boilerplate of React Js',
-					'content-type': { 'http-equiv': 'content-type', content: 'text/html; charset=UTF-8' }
-				},
-				title: 'Food',
-				template: 'assets/index.html',
-				minify: {
-					collapseWhitespace: true
-				}
+			new SWPrecacheWebpackPlugin({
+				cacheId: 'Food-Delivery',
+				dontCacheBustUrlsMatching: /\.\w{8}\./,
+				filename: 'serviceWorker.js',
+				minify: true,
+				navigateFallback:'/',
+				staticFileGlobsIgnorePatterns: [/\.map$/, /manifest\.json$/]
 			})
+
 			// new HtmlWebpackRootPlugin('root')
 		]
 	};
