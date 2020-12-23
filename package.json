@@ -10,7 +10,7 @@
 		"server": "nodemon server/app",
 		"publish": "node server/app",
 		"dev:bundleanalyzer": "yarn dev --env.addons=bundleanalyzer",
-		"build": "npm run clean & cross-env NODE_ENV=production webpack -p --env.mode=prod --mode production",
+		"build": "npm run clean & cross-env NODE_ENV=production webpack -p --env.mode=prod --env.PUBLIC_URL=http://localhost:5000 --mode production",
 		"clean": "rimraf dist",
 		"lint": "eslint --ext .jsx --ext .js src",
 		"test": "jest --watchAll",

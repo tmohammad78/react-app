@@ -113,16 +113,20 @@ module.exports = Object.keys(commonVariables.languages).map(function(language) {
 				}
 			}),
 			new GenerateSW({
-				swDest: 'sw.js',
+				swDest: 'service-worker.js',
 				clientsClaim: true,
 				skipWaiting: false
 			}),
+			// new InjectManifest({
+			// 	swSrc:"../src/service-worker/customWorker",
+			// 	mode:"production"
+			// }),
 			new WebpackPwaManifest({
 				name: 'Food Delivery',
 				short_name: 'Food Delivery',
 				filename: 'manifest.json',
 				description: 'Food Delivery React App',
-				start_url: '/',
+				start_url: '.',
 				display: 'standalone',
 				orientation: 'portrait',
 				background_color: '#f0f2f5',
@@ -133,15 +137,16 @@ module.exports = Object.keys(commonVariables.languages).map(function(language) {
 						sizes: [96, 128, 192, 256, 384, 512]
 					}
 				]
-			}),
-			new SWPrecacheWebpackPlugin({
-				cacheId: 'Food-Delivery',
-				dontCacheBustUrlsMatching: /\.\w{8}\./,
-				filename: 'serviceWorker.js',
-				minify: true,
-				navigateFallback:'/',
-				staticFileGlobsIgnorePatterns: [/\.map$/, /manifest\.json$/]
 			})
+			// deprecated
+			// new SWPrecacheWebpackPlugin({
+			// 	cacheId: 'Food-Delivery',
+			// 	dontCacheBustUrlsMatching: /\.\w{8}\./,
+			// 	filename: 'serviceWorker.js',
+			// 	minify: true,
+			// 	navigateFallback:'/',
+			// 	staticFileGlobsIgnorePatterns: [/\.map$/, /manifest\.json$/]
+			// })
 
 			// new HtmlWebpackRootPlugin('root')
 		]
