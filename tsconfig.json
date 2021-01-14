@@ -47,7 +47,9 @@
 		]
 	},
 	"include": [
-		"./src/**/*"
+		"./src/**/*",
+		"node_modules/@firebase/messaging/dist/util/sw-types.d.ts",
+		"node_modules/@firebase/messaging/dist/util/sw-types.d.ts"
 	],
 	"exclude": [
 		"node_modules",

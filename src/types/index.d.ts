@@ -7,6 +7,12 @@ export interface AuthState {
 	logged?: boolean | string | undefined
 }
 
+declare global {
+	interface WorkerGlobalScope {
+		__WB_MANIFEST: (PrecacheEntry | string)[];
+	}
+}
+
 export interface ICartItemsObject {
 	[key: string]: IFoodList
 }

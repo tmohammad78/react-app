@@ -2,13 +2,11 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const path = require('path');
 const commonVariables = require('./commonVariables');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-const CompressionPlugin = require('compression-webpack-plugin');
 const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
 const TerserPlugin = require('terser-webpack-plugin');
 const HtmlWebpackRootPlugin = require('html-webpack-root-plugin');
 const { GenerateSW, InjectManifest } = require('workbox-webpack-plugin');
 const WebpackPwaManifest = require('webpack-pwa-manifest');
-const SWPrecacheWebpackPlugin = require('sw-precache-webpack-plugin');
 const PUBLIC_PATH = 'https://food-delivery-7d366.firebaseapp.com/';
 module.exports = Object.keys(commonVariables.languages).map(function(language) {
 	return {
@@ -66,6 +64,13 @@ module.exports = Object.keys(commonVariables.languages).map(function(language) {
 					]
 				},
 				{
+					test: /\.(png|jpg|woff|woff2|eot|ttf|jpe?g|gif)$/,
+					loader: 'url-loader',
+					options: {
+						name: 'static/images/[name].[ext]'
+					}
+				},
+				{
 					test: /\.svg$/,
 					use: [
 						{
@@ -84,16 +89,9 @@ module.exports = Object.keys(commonVariables.languages).map(function(language) {
 		optimization: {
 			minimizer: [new TerserPlugin()]
 		},
-		// devServer: {
-		// 	historyApiFallback: true
-		// },
-
 		plugins: [
 			// new BundleAnalyzerPlugin(),
-			// new FriendlyErrorsWebpackPlugin(),
 			new MiniCssExtractPlugin({
-				filename: '[name].' + language + '.css',
-				chunkFilename: '[id].' + language + '.css',
 				filename: `static/css/[name].[contenthash].css`,
 				chunkFilename: `static/css/[id].[contenthash].css`
 			}),
@@ -112,15 +110,11 @@ module.exports = Object.keys(commonVariables.languages).map(function(language) {
 					collapseWhitespace: true
 				}
 			}),
-			new GenerateSW({
+			new InjectManifest({
+				swSrc: path.resolve(process.cwd(), './src/sw.ts'),
 				swDest: 'service-worker.js',
-				clientsClaim: true,
-				skipWaiting: false
+				mode: 'production'
 			}),
-			// new InjectManifest({
-			// 	swSrc:"../src/service-worker/customWorker",
-			// 	mode:"production"
-			// }),
 			new WebpackPwaManifest({
 				name: 'Food Delivery',
 				short_name: 'Food Delivery',
@@ -138,17 +132,6 @@ module.exports = Object.keys(commonVariables.languages).map(function(language) {
 					}
 				]
 			})
-			// deprecated
-			// new SWPrecacheWebpackPlugin({
-			// 	cacheId: 'Food-Delivery',
-			// 	dontCacheBustUrlsMatching: /\.\w{8}\./,
-			// 	filename: 'serviceWorker.js',
-			// 	minify: true,
-			// 	navigateFallback:'/',
-			// 	staticFileGlobsIgnorePatterns: [/\.map$/, /manifest\.json$/]
-			// })
-
-			// new HtmlWebpackRootPlugin('root')
 		]
 	};
 });

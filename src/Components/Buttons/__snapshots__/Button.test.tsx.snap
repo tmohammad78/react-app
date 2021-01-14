@@ -1,0 +1,8 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`render test  1`] = `
+<button
+  className="sc-bdfBwQ sc-gsTCUz iKbolA bHKSDE"
+  color="white"
+/>
+`;
