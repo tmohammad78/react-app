@@ -11,6 +11,7 @@
 		"server": "nodemon server/app",
 		"publish": "node server/app",
 		"dev:bundleanalyzer": "yarn dev --env.addons=bundleanalyzer",
+		"predeploy": "npm run build",
 		"deploy": "gh-pages -b feature-pwa -d dist",
 		"build": "npm run clean & cross-env NODE_ENV=production webpack -p --env.mode=prod --env.PUBLIC_URL=http://localhost:5000 --mode production",
 		"clean": "rimraf dist",

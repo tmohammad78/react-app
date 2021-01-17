@@ -167,7 +167,7 @@ module.exports = Object.keys(commonVariables.languages).map(function(language) {
 			}
 		},
 		plugins: [
-			new BundleAnalyzerPlugin(),
+			// new BundleAnalyzerPlugin(),
 			new MiniCssExtractPlugin({
 				filename: `static/css/[name].[contenthash].css`,
 				chunkFilename: `static/css/[id].[contenthash].css`
