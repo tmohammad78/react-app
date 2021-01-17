@@ -6,6 +6,7 @@ const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPl
 const TerserPlugin = require('terser-webpack-plugin');
 const { InjectManifest } = require('workbox-webpack-plugin');
 const WebpackPwaManifest = require('webpack-pwa-manifest');
+const CssMinimizerPlugin = require('css-minimizer-webpack-plugin');
 const PUBLIC_PATH = 'https://food-delivery-7d366.firebaseapp.com/';
 module.exports = Object.keys(commonVariables.languages).map(function(language) {
 	return {
@@ -131,9 +132,30 @@ module.exports = Object.keys(commonVariables.languages).map(function(language) {
 			 * For tree shaking and minimize , I think it's true default
 			 */
 			minimize: true,
-			minimizer: [new TerserPlugin()],
+			minimizer: [
+				new TerserPlugin({
+					// enable parallel running
+					parallel: true
+				}),
+				new CssMinimizerPlugin({
+					minimizerOptions: {
+						// to delete comment in the css file
+						preset: [
+							'default',
+							{
+								discardComments: { removeAll: true }
+							}
+						]
+					}
+				})],
 			splitChunks: {
 				cacheGroups: {
+					// styles: {
+					// 	name: 'styles',
+					// 	test: /\.css$/,
+					// 	chunks: 'all',
+					// 	enforce: true,
+					// },
 					/**
 					 * this is good for split chunk file base same imported module
 					 */
@@ -189,6 +211,11 @@ module.exports = Object.keys(commonVariables.languages).map(function(language) {
 					{
 						src: path.resolve('assets/react.png'),
 						sizes: [96, 128, 192, 256, 384, 512]
+					},
+					{
+						src: path.resolve('assets/static/maskable.png'),
+						sizes: '128x128',
+						purpose: 'maskable'
 					}
 				]
 			})
