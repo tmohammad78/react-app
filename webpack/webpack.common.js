@@ -11,7 +11,6 @@ module.exports = [
 		},
 		module: {
 			rules: [
-
 				{
 					enforce: 'pre',
 					test: /\.js$/,
@@ -19,26 +18,11 @@ module.exports = [
 				}
 			]
 		},
-		optimization: {
-			splitChunks: {
-				cacheGroups: {
-					vendor: {
-						chunks: 'initial',
-						test: 'vendor',
-						name: 'vendor',
-						filename: 'vendor.js',
-						enforce: true
-					}
-				}
-			}
-		},
-
 		plugins: [
 			new HtmlWebpackPlugin({
 				title: 'Food Delivery',
 				template: 'assets/index.html',
 				favicon: 'assets/favicon.ico'
-				// cache: true,
 			})
 		]
 	}

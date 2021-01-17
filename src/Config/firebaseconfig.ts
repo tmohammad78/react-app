@@ -1,4 +1,3 @@
-
 import 'firebase/auth';
 import firebase from 'firebase/app';
 
