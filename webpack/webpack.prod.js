@@ -79,7 +79,8 @@ module.exports = Object.keys(commonVariables.languages).map(function(language) {
 					test: /\.(png|jpg|woff|woff2|eot|ttf|jpe?g|gif)$/,
 					loader: 'url-loader',
 					options: {
-						name: 'static/images/[name].[ext]'
+						name: 'static/images/[name].[ext]',
+						noquotes: false
 					}
 				},
 				{
@@ -91,7 +92,10 @@ module.exports = Object.keys(commonVariables.languages).map(function(language) {
 						{
 							loader: 'react-svg-loader',
 							options: {
-								jsx: true
+								jsx: true,
+								// Remove the quotes from the url
+								// (they’re unnecessary in most cases)
+								noquotes: true
 							}
 						}
 					]
@@ -126,7 +130,7 @@ module.exports = Object.keys(commonVariables.languages).map(function(language) {
 			// Once again, if you want to optimize browser caching, then it might be useful to extract the manifest into
 			// a separate bundle. This saves your users from unnecessarily re-downloading files. However
 			runtimeChunk: {
-				name: 'manifest'
+				name: entrypoint => `runtimechunk~${entrypoint.name}`
 			},
 			/**
 			 * For tree shaking and minimize , I think it's true default
@@ -135,7 +139,9 @@ module.exports = Object.keys(commonVariables.languages).map(function(language) {
 			minimizer: [
 				new TerserPlugin({
 					// enable parallel running
-					parallel: true
+					cache: true,
+					parallel: true,
+					sourceMap: true
 				}),
 				new CssMinimizerPlugin({
 					minimizerOptions: {
@@ -149,25 +155,33 @@ module.exports = Object.keys(commonVariables.languages).map(function(language) {
 					}
 				})],
 			splitChunks: {
+				// name: false,
 				cacheGroups: {
-					// styles: {
-					// 	name: 'styles',
-					// 	test: /\.css$/,
-					// 	chunks: 'all',
-					// 	enforce: true,
-					// },
+					styles: {
+						name: 'styles',
+						test: /\.css$/,
+						chunks: 'all',
+						enforce: true,
+					},
+					// commons: {
+					// 	test: /[\\/]node_modules[\\/]/,
+					// 	name: 'vendorssss',
+					// 	chunks: 'all'
+					// }
 					/**
 					 * this is good for split chunk file base same imported module
 					 */
 					node_vendors: {
-						chunks: 'all',
-						priority: 1
+							test: /[\\/]node_modules[\\/]/,
+							name: 'node_vendors',
+							chunks: 'all'
+						// priority: 1
 					}
 				}
 			}
 		},
 		plugins: [
-			// new BundleAnalyzerPlugin(),
+			new BundleAnalyzerPlugin(),
 			new MiniCssExtractPlugin({
 				filename: `static/css/[name].[contenthash].css`,
 				chunkFilename: `static/css/[id].[contenthash].css`
