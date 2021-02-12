@@ -1,0 +1,48 @@
+{
+  "icons": [
+    {
+      "src": "/icon_128x128.554da0854182ca1a2ade4e76ea964da9.png",
+      "sizes": "128x128",
+      "type": "image/png",
+      "purpose": "maskable"
+    },
+    {
+      "src": "/icon_512x512.d49f5c3a888dc67c99cd9f1dd658680c.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    },
+    {
+      "src": "/icon_384x384.8c440b0363420159be99b93fe521e03b.png",
+      "sizes": "384x384",
+      "type": "image/png"
+    },
+    {
+      "src": "/icon_256x256.5f4e81560e1ddb3c9097bb2932623fab.png",
+      "sizes": "256x256",
+      "type": "image/png"
+    },
+    {
+      "src": "/icon_192x192.8c4535100f0a663147b944c7be807149.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "/icon_128x128.55d0468d9fd3ef0eba4c17e989434b26.png",
+      "sizes": "128x128",
+      "type": "image/png"
+    },
+    {
+      "src": "/icon_96x96.d2f9baebc12ba55bf6f1e7437c5bcaa3.png",
+      "sizes": "96x96",
+      "type": "image/png"
+    }
+  ],
+  "name": "Food Delivery",
+  "short_name": "Food Delivery",
+  "orientation": "portrait",
+  "display": "standalone",
+  "start_url": ".",
+  "description": "Food Delivery React App",
+  "background_color": "#f0f2f5",
+  "theme_color": "#FF7714"
+}
